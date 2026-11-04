@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>نفس الجمر | منصة القيمة من الطازج</title>
+<title>منصة القيمة | الطازج</title>
 <link rel="stylesheet" href="colors_and_type.css">
 <style>
 /* ===== TMD slide foundation (tmd-brand/slides.css) ===== */
@@ -211,118 +211,136 @@ table.tmd .badge.new { background: #29366C; color: #fff; }
   .slide-wrap { width: 1280px; height: 720px; transform: none !important; margin: 0 !important; break-after: page; page-break-after: always; }
   .slide-wrap:last-child { break-after: auto; page-break-after: auto; }
 }
+/* ===== v3 additions (TMD palette only) ===== */
+details.notes { width: 1280px; box-sizing: border-box; background: #fff; border: 1px dashed #29366C; padding: 10px 18px; font-size: 15px; line-height: 1.7; color: #0C0E1D; direction: rtl; text-align: right; margin-top: -16px; }
+details.notes summary { cursor: pointer; font-weight: 700; color: #29366C; }
+details.notes p { margin: 6px 0 0; }
+.deck > .unit-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+@media print { details.notes { display: none !important; } }
+
+/* executive summary 2x2 */
+.quad { position: absolute; top: 200px; left: 64px; right: 64px; bottom: 70px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; direction: rtl; }
+.quad .q { border: 1px dashed rgba(252,191,44,0.55); padding: 18px 22px; text-align: right; }
+.quad .q .k { font-size: 14px; font-weight: 700; color: #fcbf2c; margin-bottom: 6px; }
+.quad .q h4 { margin: 0 0 10px; font-size: 25px; font-weight: 700; color: #fff; line-height: 1.4; }
+.quad .q p { margin: 0; font-size: 17px; line-height: 1.6; color: #f0f2f9; }
+.quad .q.ask { background: #fcbf2c; border-color: #fcbf2c; }
+.quad .q.ask .k, .quad .q.ask h4, .quad .q.ask p { color: #0C0E1D; }
+
+/* source tags */
+.src { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+.slide.dark .src { background: #2f3e75; color: #f0f2f9; }
+.slide.light .src { background: #f0f2f9; color: #29366C; }
+.src.as { background: #fff9eb !important; color: #dd9c03 !important; }
+.src.gap { background: #fdedf0 !important; color: #92112d !important; }
+
+/* horizontal bars (sales mix) */
+.hb { position: absolute; top: 210px; right: 64px; width: 620px; direction: rtl; }
+.hb .row { display: grid; grid-template-columns: 150px 1fr; align-items: center; height: 40px; }
+.hb .lbl { font-size: 16px; color: #0C0E1D; text-align: right; padding-left: 12px; }
+.hb .lbl.us { font-weight: 700; color: #29366C; }
+.hb .track { position: relative; height: 40px; }
+.hb .b { position: absolute; right: 0; top: 11px; height: 18px; background: #2f3e75; }
+.hb .b.us { background: #fcbf2c; }
+.hb .v { position: absolute; top: 9px; font-size: 14px; font-weight: 700; color: #29366C; }
+.side { position: absolute; top: 210px; left: 64px; width: 470px; direction: rtl; text-align: right; }
+.side .so { border-right: 6px solid #fcbf2c; padding: 6px 18px 6px 0; margin-bottom: 22px; }
+.side .so h4 { margin: 0 0 6px; font-size: 22px; font-weight: 700; color: #0C0E1D; }
+.side .so p { margin: 0; font-size: 16px; line-height: 1.65; color: #0C0E1D; }
+.slide.dark .side .so h4 { color: #fff; }
+.slide.dark .side .so p { color: #f0f2f9; }
+
+/* ticket columns */
+.tk { position: absolute; top: 230px; right: 64px; width: 640px; height: 360px; direction: rtl; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; align-items: end; border-bottom: 1px solid #f0f2f9; }
+.tk .c { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.tk .bar { width: 100%; background: #2f3e75; }
+.tk .bar.hi { background: #fcbf2c; }
+.tk .val { font-size: 34px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.tk .lb { position: absolute; bottom: -44px; font-size: 14px; color: #f0f2f9; text-align: center; width: 140px; line-height: 1.4; }
+.tk .c { position: relative; }
+.tk .line { position: absolute; left: -10px; right: -10px; border-top: 2px dashed #92112d; }
+.tk .line span { position: absolute; right: 0; top: -26px; font-size: 13px; font-weight: 700; color: #fdedf0; background: #92112d; padding: 1px 8px; border-radius: 2px; }
+
+/* reveal */
+.reveal { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; direction: rtl; gap: 26px; }
+.reveal .big { font-size: 120px; font-weight: 700; color: #fff; line-height: 1; }
+.reveal .line2 { font-size: 34px; font-weight: 500; color: #fcbf2c; }
+.reveal .small { font-size: 18px; color: #f0f2f9; max-width: 760px; line-height: 1.7; }
+
+/* options (3 cards) */
+.opts { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; direction: rtl; }
+.opt { border: 1px dashed rgba(252,191,44,0.55); padding: 22px; text-align: right; display: flex; flex-direction: column; gap: 10px; }
+.opt.rec { border: 2px solid #fcbf2c; }
+.opt .tag { font-size: 13px; font-weight: 700; color: #fcbf2c; }
+.opt h4 { margin: 0; font-size: 22px; font-weight: 700; color: #fff; }
+.opt p { margin: 0; font-size: 15px; line-height: 1.6; color: #f0f2f9; }
+.opt dl { margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #f0f2f9; }
+.opt dt { font-weight: 700; color: #fcbf2c; }
+.opt dd { margin: 0 0 6px; }
+.slide.light .opt { border-color: #29366C; }
+.slide.light .opt.rec { border: 2px solid #fcbf2c; background: #fff9eb; }
+.slide.light .opt h4, .slide.light .opt p, .slide.light .opt dl { color: #0C0E1D; }
+.slide.light .opt .tag, .slide.light .opt dt { color: #29366C; }
+
+/* compact table variants */
+table.tmd.sm td { padding: 7px 10px; font-size: 14px; }
+table.tmd.sm th { font-size: 13px; padding: 8px 10px; }
+.slide.dark table.tmd.sm td { padding: 9px 10px; font-size: 15px; }
+td .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 2px; }
+.pill.h { background: #92112d; color: #fff; }
+.pill.m { background: #dd9c03; color: #0C0E1D; }
+.pill.u { background: #2f3e75; color: #fff; }
+.lede-top { position: absolute; top: 172px; right: 64px; left: 64px; font-size: 18px; color: #f0f2f9; text-align: right; direction: rtl; }
+.slide.light .lede-top { color: #29366C; }
+
+details.notes { width: min(1280px, calc(100vw - 16px)); }
 </style>
 </head>
 <body>
 <main class="deck">
 
-<!-- 01 COVER (T1) -->
-<div class="slide-wrap"><section class="slide dark cover">
+<!-- 1 COVER -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark cover">
   <img class="logo" src="assets/TMD-logo-white.svg" alt="The Marketing Department">
   <div class="text-block">
     <h1 class="title">منصة القيمة من الطازج</h1>
-    <p class="subtitle">استراتيجية الإطلاق والفكرة الإبداعية</p>
+    <p class="subtitle">توصية وخطة تجربة للقرار</p>
   </div>
-  <div class="versioning">
-    <span>رد على موجز منصة القيمة، النسخة 2</span>
-    <span>نوفمبر 2026</span>
-  </div>
-</section></div>
+  <div class="versioning"><span>رد على موجز منصة القيمة، النسخة 3</span><span>نوفمبر 2026</span></div>
+</section></div></div>
 
-<!-- 02 AGENDA (T3) -->
-<div class="slide-wrap"><section class="slide dark ag">
-  <div class="page-num">2</div>
-  <div class="title-block"><h1 class="title">محتويات العرض</h1></div>
-  <div class="items">
-    <div class="item"><span class="box">1</span><span class="bar">الخلاصة في صفحة</span></div>
-    <div class="item"><span class="box">2</span><span class="bar">فهم التحدي: ماذا يقول السوق عن القيمة</span></div>
-    <div class="item"><span class="box">3</span><span class="bar">الاستراتيجية: كيف نملك القيمة بدون نزول في التذكرة</span></div>
-    <div class="item"><span class="box">4</span><span class="bar">الفكرة الإبداعية وكيف نتكلم عن القيمة</span></div>
-    <div class="item"><span class="box">5</span><span class="bar">المنيو والتسعير وترقية المشروب</span></div>
-    <div class="item"><span class="box">6</span><span class="bar">الإطلاق، التفاعل، والقنوات</span></div>
-    <div class="item"><span class="box">7</span><span class="bar">القياس وما نحتاجه من الطازج</span></div>
-  </div>
-</section></div>
-
-<!-- 03 EXEC SUMMARY (T5) -->
-<div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">03</div>
+<!-- 2 EXEC SUMMARY -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">02</div>
   <div class="header">
-    <div class="crumb">الخلاصة | في صفحة</div>
-    <div class="title">نملك القيمة من الجمر، لا من الخصم</div>
+    <div class="crumb">الخلاصة | التوصية والقرار</div>
+    <div class="title">نوصي بتجربة منصة مشوية فردية 6 أسابيع قبل أي تعميم</div>
   </div>
-  <div class="body">
-    <div class="lede">السوق كله يتنافس على <em>رقم أقل</em> بأصناف مقلية. الطازج يقدر يتنافس على <em>مشوي أكثر لكل ريال</em>، وهي مساحة لا يملكها أحد اليوم.</div>
-    <div class="points">
-      <div class="pt"><h4>المنصة</h4><p>10 أصناف فردية من 12 إلى 20 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، أغلبها مشوي. كل سعر = مجموع الأصناف ناقص 10%، وبدون مشروب.</p></div>
-      <div class="pt"><h4>الحماية من النزول</h4><p>مناسبات جديدة، صيغ خاصة بالمنصة، بيبسي إضافة منفصلة، وفئة 10 في الفرع والتطبيق فقط.</p></div>
-      <div class="pt"><h4>الإطلاق</h4><p>تجربة قياس 6 أسابيع، ثم تشويق "نفس الجمر"، ثم إطلاق كامل، ثم ترسيخ بالتطبيق وصنف الأسبوع.</p></div>
-    </div>
-  </div>
-  <div class="footnote">الأرقام من رصد السوق بتاريخ 19 أكتوبر 2026. كل الأسعار المقترحة للنقاش وتحتاج أرقام التكلفة من الطازج.</div>
-</section></div>
-
-<!-- 04 SECTION 01 (T2) -->
-<div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">4</div>
-  <div class="bignum">01</div>
-  <div class="content">
-    <p class="kicker">فهم التحدي</p>
-    <h2 class="name">ماذا يقول السوق عن القيمة</h2>
+  <div class="quad">
+    <div class="q"><div class="k">ماذا نوصي</div><h4>10 أصناف فردية من 12 إلى 20، 8 منها مشوية</h4><p>السعر = مجموع الأصناف ناقص 10%. المشروب ترقية منفصلة: +4 و+5 و+6. الحملة: "نفس الجمر".</p></div>
+    <div class="q"><div class="k">لماذا</div><h4>المشوي تحت 20 بلا مالك، والطازج يملك أقوى منتج فيه</h4><p>لا منصة قيمة مشوية عند أي سلسلة كبرى <span class="src">رصد</span>. الفروج 24% من مبيعات الطازج <span class="src">مبيعات</span>.</p></div>
+    <div class="q"><div class="k">الأثر المتوقع</div><h4>زيارات غداء وسناك إضافية، بفاتورة محمية عند ترقية المشروب</h4><p>الحجم الفعلي يُقاس في التجربة. لا نقدّره قبل أرقام التكلفة <span class="src gap">ناقص</span>.</p></div>
+    <div class="q ask"><div class="k">القرار المطلوب اليوم</div><h4>اعتماد تجربة 6 أسابيع بمعايير نجاح وتوقف متفق عليها</h4><p>ومعها: مشاركة بيانات التكلفة، اختيار اسمين للاختبار، وبدء تطوير "نفس الجمر".</p></div>
   </div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>ابدأ بالقرار لا بالسوق. أكّد أننا لا نطلب إطلاقًا شاملًا، بل تجربة تحمي القرار. لا تذكر أرقام أثر لا نملكها، وقل صراحة إن الحجم يُقاس في التجربة.</p></details></div>
 
-<!-- 05 THE TENSION (T5) -->
-<div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">05</div>
+<!-- 3 SECTION A -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">3</div><div class="bignum">01</div>
+  <div class="content"><p class="kicker">لماذا</p><h2 class="name">فرصة في المشوي، وعائقان</h2></div>
+</section></div></div>
+
+<!-- 4 MARKET -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
+  <div class="page-num">04</div>
   <div class="header">
-    <div class="crumb">فهم التحدي | السؤال</div>
-    <div class="title">السؤال الحقيقي في الموجز</div>
-  </div>
-  <div class="body">
-    <div class="lede">كيف ندخل سباق القيمة <em>بدون</em> أن نعلّم عملاءنا يدفعون أقل في نفس الطلب؟</div>
-    <div class="points">
-      <div class="pt"><h4>زيارات إضافية، لا منقولة</h4><p>النجاح هو عميل جديد أو زيارة جديدة، لا عميل حالي نزل من وجبته.</p></div>
-      <div class="pt"><h4>موقع تنافسي</h4><p>المنصات صارت قسمًا ثابتًا عند برجر كنج وهرفي وماكدونالدز وكنتاكي وصب واي.</p></div>
-      <div class="pt"><h4>علامة ومتوسط فاتورة محميان</h4><p>المنصة لازم تبدو اختيارًا ذكيًا، لا نسخة أرخص من الطازج.</p></div>
-    </div>
-  </div>
-</section></div>
-
-<!-- 06 MARKET STATS (T6) -->
-<div class="slide-wrap"><section class="slide dark st rtl">
-  <div class="page-num">06</div>
-  <div class="header">
-    <div class="title">3 أرقام تحدد اللعبة</div>
-    <div class="subtitle">رصد 16 منصة وعرضًا من 14 علامة في السوق السعودي</div>
-  </div>
-  <div class="body">
-    <div class="sc">
-      <div class="num"><svg class="sar" viewBox="0 0 1124.14 1256.39"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>15</div>
-      <div class="unit">السعر الأكثر تكرارًا لوجبة القيمة في السوق</div>
-    </div>
-    <div class="sc">
-      <div class="num">0</div>
-      <div class="unit">وجبة دجاج مشوي كاملة تحت 20 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg> عند السلاسل الكبرى</div>
-    </div>
-    <div class="sc">
-      <div class="num">24<small>%</small></div>
-      <div class="unit">حصة الفروج من مبيعات الطازج في 2025</div>
-    </div>
-  </div>
-  <p class="caption"><span>السوق يتنافس على السعر بأصناف مقلية وبرجر لحم وشاورما.</span><span>المساحة المشوية فاضية، والطازج يملك أقوى منتج فيها.</span></p>
-</section></div>
-
-<!-- 07 LANDSCAPE (light, range chart) -->
-<div class="slide-wrap"><section class="slide light rtl">
-  <div class="page-num">07</div>
-  <div class="header">
-    <div class="crumb">فهم التحدي | خريطة الأسعار</div>
-    <div class="title">كل منصات القيمة تحت 20 مقلية أو لحم</div>
+    <div class="crumb">لماذا | السوق</div>
+    <div class="title">السوق يتنافس على 15 ريال بالمقلي، والمشوي تحت 20 بلا مالك</div>
   </div>
   <div class="rc">
     <div style="position:absolute;top:0;bottom:0;left:0;right:210px;">
-    <div class="zone" style="right:25.000%;width:20.000%"><span class="zone-lbl" style="right:0">نطاق جمرة: 10 إلى 18</span></div>
+    <div class="zone" style="right:30.000%;width:20.000%"><span class="zone-lbl" style="right:0">نطاق المنصة: 12 إلى 20</span></div>
     <div class="anchor" style="right:37.500%"></div>
     </div>
     <div style="position:relative">
@@ -342,275 +360,119 @@ table.tmd .badge.new { background: #29366C; color: #fff; }
     <div class="axis"><div></div><div class="ticks"><span style="right:0.000%;">0</span><span style="right:12.500%;">5</span><span style="right:25.000%;">10</span><span style="right:37.500%;color:#92112d;font-weight:700">15</span><span style="right:50.000%;">20</span><span style="right:62.500%;">25</span><span style="right:75.000%;">30</span><span style="right:87.500%;">35</span><span style="right:100.000%;">40</span></div></div>
   </div>
   <div class="legend">
-    <span><i style="background:#2f3e75"></i>مقلي أو برجر لحم أو شاورما أو بيتزا</span>
+    <span><i style="background:#2f3e75"></i>مقلي أو برجر لحم أو شاورما</span>
     <span><i style="background:#33716b"></i>دجاج مشوي</span>
     <span><i style="background:#fcbf2c"></i>الطازج اليوم</span>
   </div>
-  <div class="footnote">مدى أسعار الوجبات المرصودة، بالريال شاملة الضريبة. كنتاكي وماكدونالدز والبيك وكودو بأسعار تطبيقات التوصيل.</div>
+  <div class="footnote">رصد 19 أكتوبر 2026، بالريال شاملة الضريبة. كنتاكي وماكدونالدز والبيك وكودو بأسعار تطبيقات التوصيل. أرخص مشوي عند سلسلة كبرى: الرومانسية 28 شامل أرز وجانبين وبيبسي صغير.</div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>النزول تحت 15 يضعنا في سباق مع علامات أكبر في المقلي. التميز المتاح في المنتج لا في الرقم. إن سُئلت عن المطاعم المحلية: محل محلي يبيع ربعًا مع أرز بـ 16 بلا مشروب، لكنه ليس سلسلة.</p></details></div>
 
-<!-- 08 AL TAZAJ TODAY (T5) -->
-<div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">08</div>
+<!-- 5 ASSET -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
+  <div class="page-num">05</div>
   <div class="header">
-    <div class="crumb">فهم التحدي | الطازج اليوم</div>
-    <div class="title">قريبون من السوق في الساندوتش، بعيدون في الوجبة</div>
+    <div class="crumb">لماذا | الأصل</div>
+    <div class="title">أقوى منتج عند الطازج غائب عن شريحة القيمة</div>
   </div>
-  <div class="body">
-    <div class="lede">ساندوتشات الطازج بـ <em>11 إلى 12 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></em>، قريبة من مفردات القيمة في السوق. المسافة تبدأ عند تحويلها لوجبة.</div>
-    <div class="points">
-      <div class="pt"><h4>خطوة الوجبة</h4><p>برجر كنج وهرفي يضيفون 5 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg> للوجبة. الطازج يضيف 7 إلى 9، فتبدأ الوجبات من 20.</p></div>
-      <div class="pt"><h4>فرق التطبيقات</h4><p>أسعار الطازج في تطبيقات التوصيل أعلى بـ 19 إلى 25%. وجبة محمص صاج 20 في الموقع و24.95 في هنقرستيشن.</p></div>
-      <div class="pt"><h4>البطل غائب عن القيمة</h4><p>الفروج هو الصنف الأول في المبيعات، ولا يوجد ربع فروج فردي في المنيو اليوم.</p></div>
-    </div>
+  <div class="hb">
+    <div class="row"><div class="lbl us">الفروج</div><div class="track"><div class="b us" style="width:82.00%"></div><span class="v" style="right:calc(82.00% + 8px)">24.4%</span></div></div>
+    <div class="row"><div class="lbl">البروست</div><div class="track"><div class="b" style="width:59.15%"></div><span class="v" style="right:calc(59.15% + 8px)">17.6%</span></div></div>
+    <div class="row"><div class="lbl">كرسبي رول</div><div class="track"><div class="b" style="width:29.24%"></div><span class="v" style="right:calc(29.24% + 8px)">8.7%</span></div></div>
+    <div class="row"><div class="lbl">كرسبي برجر</div><div class="track"><div class="b" style="width:17.14%"></div><span class="v" style="right:calc(17.14% + 8px)">5.1%</span></div></div>
+    <div class="row"><div class="lbl">ساندوتش الكباب</div><div class="track"><div class="b" style="width:13.44%"></div><span class="v" style="right:calc(13.44% + 8px)">4.0%</span></div></div>
+    <div class="row"><div class="lbl">برجر عربي</div><div class="track"><div class="b" style="width:9.41%"></div><span class="v" style="right:calc(9.41% + 8px)">2.8%</span></div></div>
+    <div class="row"><div class="lbl">محمص صاج</div><div class="track"><div class="b" style="width:6.39%"></div><span class="v" style="right:calc(6.39% + 8px)">1.9%</span></div></div>
+    <div class="row"><div class="lbl">تندوري 360</div><div class="track"><div class="b" style="width:4.70%"></div><span class="v" style="right:calc(4.70% + 8px)">1.4%</span></div></div>
   </div>
-  <div class="footnote">المصدر: موقع الطلب الرسمي للطازج وتطبيقات التوصيل، 19 أكتوبر 2026. حصة المبيعات من ملف Product Mix 2025.</div>
+  <div class="side">
+    <div class="so"><h4>الفروج ربع المبيعات</h4><p>24.4% من مبيعات 2025، ولا توجد منه صيغة فردية في المنيو اليوم <span class="src">منيو</span>.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>ربع الفروج يُدخل الصنف الأقوى في مناسبة جديدة، الغداء الفردي، بدل أن يبقى منتج عائلة فقط.</p></div>
+    <div class="so"><h4>الخطر</h4><p>قد يسحب من الفروج الكامل. لذلك يدخل مؤشره في معايير التوقف.</p></div>
+  </div>
+  <div class="footnote">حصص المبيعات من ملف Product Mix 2025.</div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اعترف بخطر السحب من الفروج الكامل قبل أن يُسأل عنه، وأحِل إلى شريحة الأسوار ومعايير التجربة.</p></details></div>
 
-<!-- 09 SECTION 02 (T2) -->
-<div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">9</div>
-  <div class="bignum">02</div>
-  <div class="content">
-    <p class="kicker">الاستراتيجية</p>
-    <h2 class="name">قيمة بلا نزول في التذكرة</h2>
-  </div>
-</section></div>
-
-<!-- 10 VALUE EQUATION (T7 light) -->
-<div class="slide-wrap"><section class="slide light cmp rtl">
-  <div class="page-num">10</div>
+<!-- 6 MEAL STEP -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">06</div>
   <div class="header">
-    <div class="title">نغيّر معادلة القيمة</div>
-    <div class="subtitle">السوق يقسم على سعر أقل، ونحن نضرب في جودة أعلى</div>
+    <div class="crumb">لماذا | العائق الأول</div>
+    <div class="title">الفجوة ليست في سعر الساندوتش، بل في قفزة الوجبة</div>
   </div>
-  <div class="body">
-    <div class="cc us">
-      <div class="tag">منصة الطازج</div>
-      <h3>القيمة = جمر أكثر لكل ريال.</h3>
-      <ul>
-        <li>المنتج المشوي هو بطل الإعلان، والسعر دليل صغير.</li>
-        <li>أحجام وتركيبات خاصة بنفس الجودة، والأصناف البطلة تبقى بسعرها.</li>
-        <li>اسم يقول الطازج والفحم، لا التوفير.</li>
-        <li>خصم ثابت 10% فقط، والمشروب يرجّع الفرق.</li>
-      </ul>
-    </div>
-    <div class="cc">
-      <div class="tag">منصات السوق اليوم</div>
-      <h3>القيمة = سعر أقل.</h3>
-      <ul>
-        <li>الرقم هو بطل الإعلان: 5 و9.99 و16 بخط ضخم.</li>
-        <li>مقلي أو برجر لحم أو شاورما في كل المنصات تحت 20.</li>
-        <li>أسماء تقول رخيص: كفو مرتين، توفير مرتين، تسكيتة.</li>
-        <li>سباق نزول مفتوح، والفائز من يقدر يخسر أكثر.</li>
-      </ul>
-    </div>
-  </div>
-</section></div>
-
-<!-- 11 GUARDRAILS (T12) -->
-<div class="slide-wrap"><section class="slide dark ps rtl">
-  <div class="page-num">11</div>
-  <div class="header">
-    <div class="title">4 أسوار ضد النزول في التذكرة</div>
-    <div class="subtitle">كل سور يجيب على قلق الطازج من الموجز</div>
-  </div>
-  <div class="body">
-    <div class="step">
-      <div class="badge">1</div>
-      <span class="tag">سور المناسبة</span>
-      <h4>فردي ويومي</h4>
-      <p>المنصة لغداء الدوام وسناك المساء والطالب. لا باقات عائلية داخل المنصة، فطلب العائلة يبقى على الفروج الكامل.</p>
-    </div>
-    <div class="step">
-      <div class="badge">2</div>
-      <span class="tag">سور المنتج</span>
-      <h4>صيغ خاصة بالمنصة</h4>
-      <p>أحجام وتركيبات خاصة بالمنصة: ربع فروج، سيخ صاج، صحن كباب. الفروج الكامل والبريوش المشوي يبقيان خارج المنصة بسعرهما.</p>
-    </div>
-    <div class="step">
-      <div class="badge">3</div>
-      <span class="tag">سور الفاتورة</span>
-      <h4>خصم 10% فقط، والمشروب منفصل</h4>
-      <p>لا أسعار مدوّرة لتطابق السوق. خصم الأكل أقصاه 2 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، وترقية المشروب تغطيه وزيادة.</p>
-    </div>
-    <div class="step">
-      <div class="badge">4</div>
-      <span class="tag">سور القناة</span>
-      <h4>أرخص الأصناف في الفرع والتطبيق فقط</h4>
-      <p>أقل سعر يسحب الزيارة للفرع ولتطبيق الطازج، ولا يذهب هامشه لعمولة تطبيقات التوصيل.</p>
-    </div>
-  </div>
-  <div class="footnote">الأسوار تُختبر في مرحلة التجربة قبل الإطلاق الكامل. انظر صفحة القياس.</div>
-</section></div>
-
-<!-- 12 SECTION 03 (T2) -->
-<div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">12</div>
-  <div class="bignum">03</div>
-  <div class="content">
-    <p class="kicker">الفكرة الإبداعية</p>
-    <h2 class="name">نفس الجمر.</h2>
-  </div>
-</section></div>
-
-<!-- 13 BIG IDEA (T5) -->
-<div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">13</div>
-  <div class="header">
-    <div class="crumb">الفكرة الإبداعية | المنصة</div>
-    <div class="title">نفس الجمر.</div>
-  </div>
-  <div class="body">
-    <div class="lede">منصة القيمة من الطازج: مشوي الطازج <em>نفسه</em>، على الفحم <em>نفسه</em>، بأحجام على قد يومك.</div>
-    <div class="points">
-      <div class="pt"><h4>الحقيقة</h4><p>العميل يقبل يدفع أقل ويأخذ حجمًا أقل. ما يقبل يأخذ جودة أقل.</p></div>
-      <div class="pt"><h4>الفكرة</h4><p>ما عندنا جمر للغالي وجمر للرخيص. المنصة تثبت الجودة قبل ما تقول السعر.</p></div>
-      <div class="pt"><h4>الدور</h4><p>المنصة تفتح للطازج مناسبات يومية فردية، والفروج الكامل يبقى بطل العائلة.</p></div>
-    </div>
-  </div>
-  <div class="footnote">"نفس الجمر" هي فكرة الحملة. اسم المنصة نفسه في الصفحة التالية للاختيار.</div>
-</section></div>
-
-<!-- 14 FIVE CRITERIA (T3 style) -->
-<div class="slide-wrap"><section class="slide dark ag crit">
-  <div class="page-num">14</div>
-  <div class="title-block"><h1 class="title">المنصة على معايير الموجز الخمسة</h1></div>
-  <div class="items">
-    <div class="item"><span class="box">1</span><span class="bar"><b>ملاءمة</b><span>تخدم أكثر مناسبتين نموًا في القيمة: غداء الدوام وسناك المساء.</span></span></div>
-    <div class="item"><span class="box">2</span><span class="bar"><b>في المتناول</b><span>تبدأ من 12 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، وكل سعر محسوب من أصناف الطازج نفسها.</span></span></div>
-    <div class="item"><span class="box">3</span><span class="bar"><b>تُشتهى</b><span>الفحم والدخان وخطوط الشوي هي بطل كل صورة، لا الرقم.</span></span></div>
-    <div class="item"><span class="box">4</span><span class="bar"><b>ذكية</b><span>العميل يختار الحجم المناسب ليومه، ويختار حجم مشروبه. اختيار لا تنازل.</span></span></div>
-    <div class="item"><span class="box">5</span><span class="bar"><b>من الطازج فقط</b><span>لا أحد من منافسي القيمة يقدر يقول "نفس الجمر". منصات القيمة كلها في الزيت.</span></span></div>
-  </div>
-</section></div>
-
-<!-- NAMING (T8 light table) -->
-<div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">15</div>
-  <div class="header">
-    <div class="crumb">الفكرة الإبداعية | الاسم</div>
-    <div class="title">6 خيارات لاسم المنصة</div>
-  </div>
-  <div class="body">
+  <div class="body" style="left:560px">
     <table class="tmd">
-      <thead><tr><th>الاسم</th><th>ماذا يقول</th><th>لماذا يناسب</th><th>ما ننتبه له</th></tr></thead>
+      <thead><tr><th>العلامة والصنف</th><th>الساندوتش</th><th>الوجبة</th><th>القفزة</th></tr></thead>
       <tbody>
-        <tr><td class="tier">ع الفحم</td><td>المشوي مباشرة</td><td>يملك المساحة الفاضية ويفرّقنا عن منصات الزيت</td><td>وصف أكثر منه اسم</td></tr>
-        <tr><td class="tier">على قد يومك</td><td>الحجم والمناسبة</td><td>يربط القيمة باليوم والشبع، لا بالسعر</td><td>طويل على شارة المنيو</td></tr>
-        <tr><td class="tier">مشويّك</td><td>وجبتك الفردية</td><td>شخصي، ويخدم سور المناسبة الفردية</td><td>قريب من أسماء أصناف</td></tr>
-        <tr><td class="tier">يومي</td><td>عادة يومية</td><td>يصنع موعد الغداء اليومي، وسهل في التطبيق</td><td>عام، يحتاج هوية بصرية قوية</td></tr>
-        <tr><td class="tier">خطوط</td><td>خطوط الشوي</td><td>الاسم هو الشارة البصرية نفسها على التغليف</td><td>يحتاج شرح في أول حملة</td></tr>
-        <tr><td class="tier">الشوّاية</td><td>مطبخ الطازج</td><td>يحيل للمصدر والجودة، ويخدم "نفس الجمر"</td><td>قد يُفهم كمكان لا كمنيو</td></tr>
+        <tr><td class="k">برجر كنج، كنج تشيكن راب</td><td>10</td><td>15</td><td>+5</td></tr>
+        <tr><td class="k">هرفي، دبل ماكس</td><td>10</td><td>15</td><td>+5</td></tr>
+        <tr><td class="k">الطازج، محمص صاج</td><td>11</td><td>20</td><td>+9</td></tr>
+        <tr><td class="k">الطازج، كرسبي برجر</td><td>12</td><td>20</td><td>+8</td></tr>
+        <tr><td class="k">الطازج، بريوش مشوي</td><td>17</td><td>24</td><td>+7</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="footnote">تجنبنا كلمات المنافسين: كفو، توفير، تسكيتة. الاسم المختار يحتاج فحص تسجيل العلامة التجارية.</div>
+  <div class="side">
+    <div class="so"><h4>ساندوتشات الطازج قريبة من السوق</h4><p>11 إلى 12 ريال، مقابل 10 عند برجر كنج وهرفي <span class="src">رصد</span>.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>فصل المشروب عن الأكل يعالج القفزة مباشرة، دون المساس بسعر أي صنف.</p></div>
+  </div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا تقل إن أسعار الطازج مرتفعة. قل إن تركيبة الوجبة هي ما يرفعها، وهذا ما يبرر فصل المشروب.</p></details></div>
 
-<!-- 15 EXECUTIONS (T4 light) -->
-<div class="slide-wrap"><section class="slide light ct rtl">
-  <div class="page-num">16</div>
+<!-- 7 CHANNEL -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">07</div>
   <div class="header">
-    <div class="title">كيف تعيش الفكرة</div>
-    <div class="subtitle">3 تنفيذات رئيسية للإطلاق</div>
+    <div class="crumb">لماذا | العائق الثاني</div>
+    <div class="title">فرق التطبيقات يلغي أي سعر قيمة ما لم نحدد سياسة القناة</div>
+  </div>
+  <div class="lede-top">وجبة محمص صاج 20 في الموقع و24.95 في هنقرستيشن. وجبة فروج 31 و36.95. الفرق 19 إلى 25% <span class="src">رصد</span>. حصة كل قناة <span class="src gap">ناقص</span></div>
+  <div class="opts">
+    <div class="opt"><span class="tag">خيار أ</span><h4>نفس السعر في كل القنوات</h4><p>كما يفعل برجر كنج وشاورمر.</p><dl><dt>الوصول</dt><dd>الأعلى</dd><dt>الهامش</dt><dd>تأكله العمولة</dd></dl></div>
+    <div class="opt"><span class="tag">خيار ب</span><h4>الفرع والتطبيق فقط</h4><p>كما تفعل بوبايز مع وجبة 9.99.</p><dl><dt>الوصول</dt><dd>الأقل</dd><dt>الهامش</dt><dd>محمي بالكامل</dd></dl></div>
+    <div class="opt rec"><span class="tag">خيار ج: توصيتنا</span><h4>الأرخص في القنوات المملوكة، والباقي في التوصيل</h4><p>أصناف 12 و13 في الفرع والتطبيق. من 14 فما فوق في تطبيقات التوصيل بسعر القناة.</p><dl><dt>الوصول</dt><dd>متوسط</dd><dt>الهامش</dt><dd>محمي، والزيارة تتجه للقنوات المملوكة</dd></dl></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>القرار النهائي يعتمد على عمولات التطبيقات، وهي عند الطازج. اطلبها صراحة في هذه الشريحة.</p></details></div>
+
+<!-- 8 TRADE-DOWN MATH -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">08</div>
+  <div class="header">
+    <div class="crumb">لماذا | قلق الموجز</div>
+    <div class="title">خطر النزول حقيقي، لكن السعر يجعله محايدًا لمن يأخذ مشروبًا</div>
+  </div>
+  <div class="tk" style="top:200px;height:370px">
+    <div class="line" style="bottom:286px"><span>وجبة محمص صاج الحالية 20</span></div>
+    <div class="c"><div class="val">15</div><div class="bar" style="height:214px"></div><div class="lb">صاج وبطاطس بلا مشروب</div></div>
+    <div class="c"><div class="val">19</div><div class="bar" style="height:271px"></div><div class="lb">+ بيبسي صغير</div></div>
+    <div class="c"><div class="val">20</div><div class="bar hi" style="height:286px"></div><div class="lb">+ بيبسي وسط</div></div>
+    <div class="c"><div class="val">21</div><div class="bar hi" style="height:300px"></div><div class="lb">+ بيبسي كبير</div></div>
+  </div>
+  <div class="side" style="top:230px;width:440px">
+    <div class="so"><h4>أين الخسارة فعلًا</h4><p>عميل الوجبة الحالية يخسر 5 ريال فقط إن طلب بلا مشروب. مع الوسط تتساوى الفاتورة.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>نسبة ترقية المشروب هي المؤشر الحاسم في التجربة، لا عدد الطلبات وحده.</p></div>
+    <div class="so"><h4>ما لا نعرفه</h4><p>الحسبة إيراد لا هامش. حجم البطاطس والمشروب في الوجبة الحالية <span class="src gap">ناقص</span></p></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>أقوى شريحة أمام المالية. لا تفترض هامش المشروب رقمًا، حتى لو كان معروفًا أنه عالٍ عادة. اطلب التكلفة.</p></details></div>
+
+<!-- 9 SECTION B -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">9</div><div class="bignum">02</div>
+  <div class="content"><p class="kicker">ماذا</p><h2 class="name">منصة فردية بقاعدتين وأربعة أسوار</h2></div>
+</section></div></div>
+
+<!-- 10 MENU -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">10</div>
+  <div class="header">
+    <div class="crumb">ماذا | المنيو</div>
+    <div class="title">10 أصناف بقاعدة سعر واحدة: المجموع ناقص 10%</div>
   </div>
   <div class="body">
-    <div class="col accent">
-      <div class="num">01 · الفيلم الرئيسي</div>
-      <h3>نفس الجمر.</h3>
-      <p>كاميرا ثابتة على شواية الطازج. يطلع فروج العائلة وربع الفروج الفردي من نفس الفحم، نفس اليد، نفس الوقت. الصوت في النهاية: "ما عندنا جمر للغالي وجمر للرخيص."</p>
-    </div>
-    <div class="col">
-      <div class="num">02 · السوشال</div>
-      <h3>كم يشبعك 15؟</h3>
-      <p>سلسلة مع صناع محتوى في يوم دوام حقيقي، وتحدي تذوق أعمى: مشوي الطازج مقابل وجبات القيمة المقلية في السوق. المحتوى نفسه هو دليل الجودة.</p>
-    </div>
-    <div class="col">
-      <div class="num">03 · الفرع والخارجي</div>
-      <h3>الربع ربع، والجمر كامل.</h3>
-      <p>شارة "خطوط الشوي" بدل ملصق الخصم. السعر صغير داخل الشارة على التغليف ولوحة المنيو. سطور بديلة: "حجم أذكى، نفس الجمر." و"غداك على الفحم."</p>
-    </div>
-  </div>
-</section></div>
-
-<!-- 16 HOW WE TALK (T13 light) -->
-<div class="slide-wrap"><section class="slide light pcn rtl">
-  <div class="page-num">17</div>
-  <div class="header">
-    <div class="title">كيف نقول "قيمة" بدون ما نقول "رخيص"</div>
-    <div class="subtitle">تسلسل الرسالة: الجمر أولًا، ثم الدليل، ثم السعر كإذن</div>
-  </div>
-  <div class="body">
-    <div class="col pros">
-      <h4>نقول</h4>
-      <ul>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#33716b" stroke-width="2"/><path d="M7 12.5 L10.5 16 L17 8.5" fill="none" stroke="#33716b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>المنتج المشوي والفحم بطل الصورة، والسعر صغير داخل شارة الجمر.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#33716b" stroke-width="2"/><path d="M7 12.5 L10.5 16 L17 8.5" fill="none" stroke="#33716b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>لغة الحجم والشبع: "على قد يومك" و"يكفيك" و"يشبعك".</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#33716b" stroke-width="2"/><path d="M7 12.5 L10.5 16 L17 8.5" fill="none" stroke="#33716b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>دليل الجودة: نفس الدجاج، نفس الشواية، نفس المطبخ.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#33716b" stroke-width="2"/><path d="M7 12.5 L10.5 16 L17 8.5" fill="none" stroke="#33716b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>المناسبة قبل السعر: غداك في الدوام، سناكك بعد المغرب.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#33716b" stroke-width="2"/><path d="M7 12.5 L10.5 16 L17 8.5" fill="none" stroke="#33716b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>السلم كله مرئي، فالعين تروح للخيار الأعلى.</span></li>
-      </ul>
-    </div>
-    <div class="col cons">
-      <h4>لا نقول</h4>
-      <ul>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#92112d" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#92112d" stroke-width="2.2" stroke-linecap="round"/></svg><span>أسعار مشطوبة، أو "وفّر"، أو "خصم"، أو "عرض".</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#92112d" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#92112d" stroke-width="2.2" stroke-linecap="round"/></svg><span>كلمات المنافسين: كفو، توفير، تسكيتة.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#92112d" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#92112d" stroke-width="2.2" stroke-linecap="round"/></svg><span>الرقم الضخم بطلًا للإعلان، كما يفعل السوق.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#92112d" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#92112d" stroke-width="2.2" stroke-linecap="round"/></svg><span>مقارنة مع وجبات الطازج الأساسية، أو تخفيض الفروج الكامل.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#92112d" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#92112d" stroke-width="2.2" stroke-linecap="round"/></svg><span>باقات عائلية أو مشاركة تحت اسم المنصة.</span></li>
-      </ul>
-    </div>
-  </div>
-</section></div>
-
-<!-- 17 SECTION 04 (T2) -->
-<div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">18</div>
-  <div class="bignum">04</div>
-  <div class="content">
-    <p class="kicker">المنيو والتسعير</p>
-    <h2 class="name">10 أصناف وترقية المشروب</h2>
-  </div>
-</section></div>
-
-<!-- 18 LADDER (T6) -->
-<div class="slide-wrap"><section class="slide dark st rtl">
-  <div class="page-num">19</div>
-  <div class="header">
-    <div class="title">التسعير: قاعدة واحدة، بدون أرقام مدوّرة</div>
-    <div class="subtitle">سعر المنصة = مجموع أسعار الأصناف اليوم ناقص 10%، مقرّب لأقرب ريال</div>
-  </div>
-  <div class="body">
-    <div class="sc">
-      <div class="num"><svg class="sar" viewBox="0 0 1124.14 1256.39"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>12</div>
-      <div class="name">أقل سعر</div>
-      <div class="unit">تشيزي بوكس، مجموعه 13</div>
-    </div>
-    <div class="sc">
-      <div class="num">10<small>%</small></div>
-      <div class="name">خصم ثابت</div>
-      <div class="unit">على كل صنف، وأقصاه 2 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></div>
-    </div>
-    <div class="sc">
-      <div class="num"><svg class="sar" viewBox="0 0 1124.14 1256.39"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>20</div>
-      <div class="name">أعلى سعر</div>
-      <div class="unit">برجر عربي وملفوف، مجموعه 22</div>
-    </div>
-  </div>
-  <p class="caption"><span>الخصم صغير ومبرر، ولا يحرق سعر أي صنف أساسي. كل الأسعار بدون مشروب.</span></p>
-</section></div>
-
-<!-- 19 MENU TABLE (T8 light) -->
-<div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">20</div>
-  <div class="header">
-    <div class="crumb">المنيو والتسعير | الأصناف</div>
-    <div class="title">10 أصناف، 8 منها مشوية بالكامل</div>
-  </div>
-  <div class="body">
-    <table class="tmd">
+    <table class="tmd sm">
       <thead><tr><th>الصنف (اسم مؤقت)</th><th>المكونات</th><th>مجموع الأصناف اليوم</th><th>ناقص 10%</th><th>سعر المنصة</th></tr></thead>
       <tbody>
         <tr><td>تشيزي بوكس</td><td>4 قطع تشيزي ناجتس، بطاطس صغير</td><td class="was">7 + 6 = 13 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">11.7</td><td class="price">12 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
@@ -622,243 +484,319 @@ table.tmd .badge.new { background: #29366C; color: #fff; }
         <tr><td>دجاج وذرة</td><td>ساندوتش دجاج مشوي، ذرة</td><td class="was">11 + 7 = 18 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">16.2</td><td class="price">16 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
         <tr><td>صحن كباب<span class="badge new">جديد</span></td><td>سيخين كباب، أرز الطازج، صوص دقوس</td><td class="was">12 + 6 + 1 = 19 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">17.1</td><td class="price">17 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
         <tr><td>مشوي ومقرمش</td><td>محمص صاج، 5 قطع ناجتس</td><td class="was">11 + 8 = 19 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">17.1</td><td class="price">17 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
-        <tr><td>برجر عربي وملفوف</td><td>برجر عربي، سلطة ملفوف</td><td class="was">16 + 6 = 22 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">19.8</td><td class="price">20 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>برجر عربي وملفوف<span class="badge new">فوق 18</span></td><td>برجر عربي، سلطة ملفوف</td><td class="was">16 + 6 = 22 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">19.8</td><td class="price">20 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
       </tbody>
     </table>
   </div>
-  <div class="footnote">الأسعار من موقع الطازج الرسمي، وسيخ الكباب الإضافي من منيو الكاونتر سبتمبر 2026. الربع غير موجود اليوم: محسوب كربع سعر الفروج (25) ونصف سعر التندوري 360 (28 لنصف دجاجة)، ويُعتمد بعد تسعير الطازج.</div>
+  <div class="footnote">الأسعار من موقع الطازج، وسيخ الكباب من منيو الكاونتر سبتمبر 2026. الربع محسوب كربع سعر الفروج (25) ونصف سعر تندوري 360 (28 لنصف دجاجة)، ويُعتمد بعد تسعير الطازج. برجر عربي وملفوف يتجاوز سقف 18.</div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا نخترع أسعارًا لتطابق السوق، كل سعر مشتق من منيو الطازج. اعترف أن برجر عربي وملفوف (20) فوق السقف، واعرض حذفه. اعترف أن أسعارنا مع المشروب ليست الأرخص، وهذا مقصود: نتنافس بالمشوي.</p></details></div>
 
-<!-- 20 PEPSI UPGRADE (T6) -->
-<div class="slide-wrap"><section class="slide dark st rtl">
-  <div class="page-num">21</div>
+<!-- 11 DRINK -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark st rtl">
+  <div class="page-num">11</div>
   <div class="header">
-    <div class="title">ترقية المشروب ترجّع الخصم</div>
-    <div class="subtitle">خيار واضح بجانب كل صنف: "زِدها بيبسي"، بثلاثة أحجام</div>
+    <div class="title">ترقية المشروب تعيد الفاتورة إلى مستوى الوجبة الحالية أو أعلى</div>
+    <div class="subtitle">"زِدها بيبسي" بجانب كل صنف، بثلاثة أحجام</div>
   </div>
   <div class="body">
-    <div class="sc">
-      <div class="num"><small>+</small>4</div>
-      <div class="name">بيبسي صغير</div>
-      <div class="unit">بدل 6 منفردًا</div>
-    </div>
-    <div class="sc">
-      <div class="num"><small>+</small>5</div>
-      <div class="name">بيبسي وسط</div>
-      <div class="unit">بدل 7 منفردًا</div>
-    </div>
-    <div class="sc">
-      <div class="num"><small>+</small>6</div>
-      <div class="name">بيبسي كبير</div>
-      <div class="unit">بدل 8 منفردًا</div>
-    </div>
+    <div class="sc"><div class="num"><small>+</small>4</div><div class="name">صغير</div><div class="unit">بدل 6 منفردًا</div></div>
+    <div class="sc"><div class="num"><small>+</small>5</div><div class="name">وسط</div><div class="unit">بدل 7 منفردًا (افتراض)</div></div>
+    <div class="sc"><div class="num"><small>+</small>6</div><div class="name">كبير</div><div class="unit">بدل 8 منفردًا (افتراض)</div></div>
   </div>
-  <p class="caption"><span>أكبر خصم على الأكل 2 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، وأقل ترقية 4 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>. كل ترقية تغطي الخصم وزيادة.</span><span>مثال: صاج وبطاطس 15 + بيبسي وسط 5 = 20، أي أعلى من سعر الأكل كاملًا (17).</span></p>
-  <div class="footnote">سعر البيبسي الصغير 6 من منيو الطازج. الوسط والكبير محسوبان من ترقية الحجم الحالية (+1 و+2) ويحتاجان تأكيد. فرصة لتمويل مشترك مع بيبسيكو.</div>
+  <p class="caption"><span>أكبر خصم على الأكل 2 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، وأقل ترقية 4 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>. المنصة لا تخفض الفاتورة إلا لمن يرفض المشروب.</span><span>لذلك نقيس النجاح بنسبة الترقية ومتوسط فاتورة الفرع ككل، لا بعدد الطلبات فقط.</span></p>
+  <div class="footnote">سعر البيبسي الصغير 6 من منيو الطازج. الوسط والكبير محسوبان من ترقية الحجم الحالية (+1 و+2). فرصة لبحث تمويل مشترك مع بيبسيكو، وشروط الاتفاقية غير معروفة.</div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اقترح التمويل المشترك مع بيبسيكو دون وعد. أسعار الوسط والكبير افتراض حتى يؤكدها الطازج.</p></details></div>
 
-<!-- 21 SECTION 05 (T2) -->
-<div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">22</div>
-  <div class="bignum">05</div>
-  <div class="content">
-    <p class="kicker">الإطلاق والتفعيل</p>
-    <h2 class="name">من التجربة إلى العادة</h2>
-  </div>
-</section></div>
-
-<!-- 22 LAUNCH PHASES (T11 light) -->
-<div class="slide-wrap"><section class="slide light pc-flow rtl">
-  <div class="page-num">23</div>
+<!-- 12 GUARDRAILS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">12</div>
   <div class="header">
-    <div class="title">4 مراحل للإطلاق</div>
-    <div class="subtitle">نقيس قبل أن نعلن، ونعلن الجمر قبل السعر</div>
+    <div class="crumb">ماذا | الحماية</div>
+    <div class="title">أربعة أسوار تحصر المنصة في زيارات جديدة لا منقولة</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>السور</th><th>الآلية</th><th>المؤشر الذي يكشف انكساره</th></tr></thead>
+      <tbody>
+        <tr><td class="k">المناسبة</td><td>فردي فقط، بلا باقات عائلية أو مشاركة</td><td>حصة المنصة في طلبات العائلة</td></tr>
+        <tr><td class="k">المنتج</td><td>الفروج الكامل والبريوش المشوي وأرز الكباب خارج المنصة بسعرها</td><td>مبيعات هذه الأصناف في فروع التجربة مقابل المرجعية</td></tr>
+        <tr><td class="k">الفاتورة</td><td>خصم 10% فقط، والمشروب منفصل بثلاثة أحجام</td><td>نسبة ترقية المشروب، ومتوسط فاتورة الفرع</td></tr>
+        <tr><td class="k">القناة</td><td>أصناف 12 و13 في الفرع والتطبيق فقط</td><td>توزيع طلبات المنصة حسب القناة</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">المفاضلة: الأسوار تقلل الوصول، خاصة في التوصيل، مقابل حماية الهامش. صحن كباب (17) قريب من أرز الكباب (24)، ويُختبر تحديدًا في التجربة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>كل سور له مؤشر. إذا سُئلت "كيف نعرف أنه نجح؟" أشر إلى العمود الأخير.</p></details></div>
+
+<!-- 13 SECTION C -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">13</div><div class="bignum">03</div>
+  <div class="content"><p class="kicker">الفكرة الإبداعية</p><h2 class="name">كيف نقول قيمة بدون أن نقول رخيص</h2></div>
+</section></div></div>
+
+<!-- 14 REVEAL -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">14</div>
+  <div class="reveal">
+    <div class="big">نفس الجمر.</div>
+    <div class="line2">ما عندنا جمر للغالي وجمر للرخيص.</div>
+    <div class="small">فروج العائلة وربع الفروج الفردي يطلعان من الشواية نفسها. نثبت الجودة قبل أن نقول السعر، فيبقى السعر دليلًا صغيرًا لا بطلًا، وتبقى صورة الطازج كما هي.</div>
+  </div>
+  <div class="footnote">الحقيقة التي نبني عليها: العميل يقبل حجمًا أقل، ولا يقبل جودة أقل. فرضية تُختبر في أبحاث التجربة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>توقف بعد السطر الأول. لا تشرح كثيرًا. الفكرة تخدم الهدف الثالث في الموجز: حماية العلامة.</p></details></div>
+
+<!-- 15 BEHAVIOR MAP -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">15</div>
+  <div class="header">
+    <div class="crumb">الفكرة الإبداعية | السلوك</div>
+    <div class="title">الفكرة تنقل العميل من "أطلب الأرخص" إلى "أجرب المشوي في الغداء"</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>السلوك المستهدف</th><th>التنفيذ</th><th>المؤشر التجاري</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">تجربة أولى</td><td>تحدي تذوق أعمى: مشوي الطازج مقابل وجبات القيمة المقلية في السوق</td><td>عملاء جدد ومنقطعون</td></tr>
+        <tr><td class="tier">تكرار</td><td>بطاقة ولاء في التطبيق: كل 4 طلبات، ترقية مشروب مجانية</td><td>تكرار الطلب خلال 30 يومًا</td></tr>
+        <tr><td class="tier">وقت جديد</td><td>"ساعة الجمر" من 12 إلى 3 أيام الدوام، إعلانات جغرافية حول المكاتب والجامعات</td><td>معاملات وقت الغداء</td></tr>
+        <tr><td class="tier">فاتورة محمية</td><td>"زِدها بيبسي" عند الكاشير وفي التطبيق</td><td>نسبة ترقية المشروب</td></tr>
+        <tr><td class="tier">صورة العلامة</td><td>الفيلم الرئيسي "نفس الجمر"، والسعر صغير داخل شارة خطوط الشوي</td><td>صورة "طازج ومشوي وجودة" قبل وبعد</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>هذا ما يحوّل الإبداع من رأي إلى أداة قابلة للقياس. كل تنفيذ له مؤشر.</p></details></div>
+
+<!-- 16 NAMES -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">16</div>
+  <div class="header">
+    <div class="crumb">الفكرة الإبداعية | الاسم</div>
+    <div class="title">نطلب اختيار اسمين من 6 لاختبارهما في التجربة</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>الاسم</th><th>ماذا يقول</th><th>لماذا يناسب</th><th>ما ننتبه له</th></tr></thead>
+      <tbody>
+        <tr><td class="k">ع الفحم</td><td>المشوي مباشرة</td><td>يملك المساحة الفارغة ويفرّقنا عن منصات الزيت</td><td>وصف أكثر منه اسم</td></tr>
+        <tr><td class="k">على قد يومك</td><td>الحجم والمناسبة</td><td>يربط القيمة باليوم والشبع، لا بالسعر</td><td>طويل على شارة المنيو</td></tr>
+        <tr><td class="k">مشويّك</td><td>وجبتك الفردية</td><td>شخصي، ويخدم سور المناسبة</td><td>قريب من أسماء أصناف</td></tr>
+        <tr><td class="k">يومي</td><td>عادة يومية</td><td>يصنع موعد الغداء، وسهل في التطبيق</td><td>عام، يحتاج هوية بصرية قوية</td></tr>
+        <tr><td class="k">خطوط</td><td>خطوط الشوي</td><td>الاسم هو الشارة على التغليف</td><td>يحتاج شرح في أول حملة</td></tr>
+        <tr><td class="k">الشوّاية</td><td>مطبخ الطازج</td><td>يحيل للمصدر، ويخدم "نفس الجمر"</td><td>قد يُفهم كمكان لا كمنيو</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">تجنبنا كلمات المنافسين: كفو، توفير، تسكيتة. أسماء مذكرة يوليو (الفزعة، المنقذ، الزنقات) مدخل سابق لم يُعتمد. الاسم المختار يحتاج فحص تسجيل.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا تدافع عن اسم بعينه. اطلب اسمين للاختبار في فرعين مختلفين، وليقرر الأداء.</p></details></div>
+
+<!-- 17 SECTION D -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">17</div><div class="bignum">04</div>
+  <div class="content"><p class="kicker">كيف</p><h2 class="name">نقيس قبل أن نعلن</h2></div>
+</section></div></div>
+
+<!-- 18 PILOT -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">18</div>
+  <div class="header">
+    <div class="crumb">كيف | التجربة</div>
+    <div class="title">التجربة تجيب على سؤال واحد: هل المنصة تضيف زيارات أكثر مما تنقل؟</div>
+  </div>
+  <div class="lede-top">6 فروع تجربة مقابل 6 فروع مرجعية متشابهة في المدينة والحجم، لمدة 6 أسابيع <span class="src as">افتراض</span></div>
+  <div class="body" style="top:220px">
+    <table class="tmd">
+      <thead><tr><th>المعيار</th><th>الحد المقترح للاتفاق</th><th>مصدر القياس</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">نمو المعاملات</td><td>أعلى من المرجعية بـ 5% على الأقل</td><td>نقاط البيع</td></tr>
+        <tr><td class="tier">ترقية المشروب</td><td>50% أو أكثر من طلبات المنصة</td><td>نقاط البيع والتطبيق</td></tr>
+        <tr><td class="tier">فاتورة الفرع ككل</td><td>لا تنخفض أكثر من 3%</td><td>نقاط البيع</td></tr>
+        <tr><td class="tier">الفروج الكامل</td><td>لا ينخفض أكثر من 5% عن المرجعية</td><td>نقاط البيع</td></tr>
+        <tr class="hero"><td class="tier">معيار التوقف</td><td>إذا جاءت أكثر من 40% من طلبات المنصة من عملاء الوجبات الأساسية، نعيد التصميم</td><td>التطبيق والولاء</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">كل الحدود مقترحة للنقاش، والأهم الاتفاق عليها قبل البدء. قياس السحب يعتمد على الطلبات المعرّفة عبر التطبيق والولاء، ونسبتها غير معروفة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>الأرقام مقترحة. شدد أن قيمتها في الاتفاق المسبق: لا نقيّم النتائج بمعايير نختارها بعدها.</p></details></div>
+
+<!-- 19 ROLLOUT -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light pc-flow rtl">
+  <div class="page-num">19</div>
+  <div class="header">
+    <div class="title">بعد التجربة نطلق في 4 مراحل، ولكل قناة دور واحد</div>
+    <div class="subtitle">السوشال للإثبات، الرقمي للغداء، الفرع للترقية، التطبيق للتكرار، التوصيل للظهور</div>
   </div>
   <div class="body">
     <div class="phases">
-      <div class="phase">
-        <span class="n">01</span>
-        <h4>التجربة</h4>
-        <span class="duration">6 أسابيع قبل الإطلاق</span>
-        <p>المنصة في فروع مختارة مقابل فروع مرجعية. نقيس الزيارات الإضافية والسحب من الوجبات الأساسية، ونضبط الأسعار والتشغيل.</p>
-      </div>
-      <div class="phase">
-        <span class="n">02</span>
-        <h4>التشويق</h4>
-        <span class="duration">الأسبوع 1 إلى 2</span>
-        <p>"نفس الجمر" بدون سعر وبدون اسم. محتوى الفحم والمطبخ، وأول حلقات تحدي التذوق.</p>
-      </div>
-      <div class="phase active">
-        <span class="n">03</span>
-        <h4>الإطلاق</h4>
-        <span class="duration">الأسبوع 3 إلى 8</span>
-        <p>كشف الاسم والمنيو. ربع الفروج بطل الدليل، وتغطية كاملة في كل القنوات.</p>
-      </div>
-      <div class="phase">
-        <span class="n">04</span>
-        <h4>الترسيخ</h4>
-        <span class="duration">من الأسبوع 9</span>
-        <p>صنف الأسبوع، بطاقة الولاء في التطبيق، ساعة الجمر، ومراجعة المنيو بالبيانات.</p>
-      </div>
+      <div class="phase active"><span class="n">01</span><h4>التجربة</h4><span class="duration">الأسابيع 1 إلى 6</span><p>فروع تجربة ومرجعية، اسمان، وقياس أسبوعي.</p></div>
+      <div class="phase"><span class="n">02</span><h4>القرار</h4><span class="duration">الأسبوعان 7 و8</span><p>تعميم أو تعديل أو توقف حسب المعايير. حذف الأصناف الضعيفة.</p></div>
+      <div class="phase"><span class="n">03</span><h4>التشويق</h4><span class="duration">أسبوعان</span><p>"نفس الجمر" بلا سعر وبلا اسم. محتوى الشواية وتحدي التذوق.</p></div>
+      <div class="phase"><span class="n">04</span><h4>الإطلاق والترسيخ</h4><span class="duration">من بعدها</span><p>كشف الاسم والمنيو، ساعة الجمر، بطاقة الولاء، وصنف الأسبوع.</p></div>
     </div>
   </div>
 </section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>ميزانية الإنتاج والإعلام تُقدَّم بعد اعتماد الاتجاه والفروع. لا نضع رقمًا الآن.</p></details></div>
 
-<!-- 23 COMMS JOURNEY (T9) -->
-<div class="slide-wrap"><section class="slide dark tl rtl">
+<!-- 20 RISKS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">20</div>
+  <div class="header">
+    <div class="crumb">كيف | المخاطر</div>
+    <div class="title">أكبر 4 مخاطر لها معالجة محددة قبل الإطلاق</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>الخطر</th><th>الاحتمال</th><th>المعالجة</th></tr></thead>
+      <tbody>
+        <tr><td class="k">تعارض مع منيو "الواحد واحد" (11 ريال)</td><td><span class="pill h">عالٍ إن أُطلقا معًا</span></td><td>قرار تموضع قبل التجربة: دمج أو فصل (ملحق م4)</td></tr>
+        <tr><td class="k">سحب من الوجبات الأساسية</td><td><span class="pill m">متوسط</span></td><td>ترقية المشروب، ومعيار توقف متفق عليه</td></tr>
+        <tr><td class="k">ضعف الجذب لأن السعر ليس الأرخص</td><td><span class="pill m">متوسط</span></td><td>"نفس الجمر" وتحدي التذوق، ومراجعة الأصناف بعد التجربة</td></tr>
+        <tr><td class="k">ضغط تشغيلي من الأرباع في الذروة</td><td><span class="pill u">غير معروف</span></td><td>اختبار في فروع التجربة، وسقف يومي للأرباع</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>الخطر الأول يُحسم قبل الاجتماع لا فيه. إن لم يُحسم، اعرض الخيارين في الملحق واطلب قرارًا.</p></details></div>
+
+<!-- 21 DECISION -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">21</div>
+  <div class="header">
+    <div class="crumb">القرار</div>
+    <div class="title">المطلوب اعتماده اليوم: 4 قرارات تبدأ التجربة خلال أسبوعين</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>القرار</th><th>المسؤول عند الطازج</th><th>التوقيت</th></tr></thead>
+      <tbody>
+        <tr><td class="k">1. الاتجاه وقاعدة التسعير: ناقص 10%، والمشروب منفصل</td><td>الإدارة التنفيذية</td><td>اليوم</td></tr>
+        <tr><td class="k">2. التجربة: عدد الفروع، ومعايير النجاح والتوقف</td><td>العمليات والمالية</td><td>خلال أسبوع</td></tr>
+        <tr><td class="k">3. البيانات: التكلفة والهامش، أسعار الربع والمشروب، العمولات، نقاط البيع</td><td>المالية والرقمي</td><td>خلال أسبوع</td></tr>
+        <tr><td class="k">4. اختيار اسمين، وبدء تطوير "نفس الجمر"</td><td>التسويق</td><td>خلال أسبوع</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">الخطوة التالية من TMD: خلال أسبوع من استلام البيانات نسلّم خطة التجربة التفصيلية وتقدير ميزانية الإنتاج والإعلام.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اختم بسؤال مباشر: "هل نعتمد التجربة بهذه المعايير؟"</p></details></div>
+
+<!-- 22 APPENDIX DIVIDER -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">22</div><div class="bignum">م</div>
+  <div class="content"><p class="kicker">الملحق</p><h2 class="name">تفاصيل الإثبات</h2></div>
+</section></div></div>
+
+<!-- 23 A1 COMPETITORS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">23</div>
+  <div class="header">
+    <div class="crumb">ملحق م1 | المنافسون</div>
+    <div class="title">منصات القيمة المرصودة: الأسعار والرسائل والقنوات</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>العلامة</th><th>المنصة</th><th>نطاق الوجبات</th><th>الرسالة أو الأسلوب</th><th>القناة المرصودة</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">برجر كنج</td><td>منيو كنج التوفير</td><td>15 إلى 19.99</td><td>فئة سعرية في المنيو</td><td>الموقع والتطبيق</td></tr>
+        <tr><td class="tier">هرفي</td><td>منيو الكفو</td><td>15 إلى 23</td><td>شارة وسلم أحجام</td><td>الموقع</td></tr>
+        <tr><td class="tier">بوبايز</td><td>عائلة الكفو</td><td>9.99 إلى 19.99</td><td>شخصيات لكل وجبة</td><td>داخل الفروع</td></tr>
+        <tr><td class="tier">تكساس</td><td>ميغا بايتس</td><td>9.99</td><td>الرقم هو البطل</td><td>سوشال</td></tr>
+        <tr><td class="tier">كنتاكي</td><td>Worth It</td><td>13 إلى 19</td><td>غير مرصود</td><td>نينجا</td></tr>
+        <tr><td class="tier">شاورمر</td><td>تمكيس في كيس</td><td>16 إلى 27</td><td>اختر بسعر ثابت</td><td>الموقع والتطبيق</td></tr>
+        <tr><td class="tier">ماكدونالدز</td><td>منيو التسكيتة</td><td>20 إلى 25</td><td>شارة في المنيو</td><td>هنقرستيشن</td></tr>
+        <tr><td class="tier">صب واي</td><td>قائمة التوفير</td><td>20 إلى 24</td><td>غير مرصود</td><td>الموقع</td></tr>
+        <tr><td class="tier">الرومانسية</td><td>ربع شواية والتكتكة</td><td>27 إلى 33</td><td>بوكسات مشوية</td><td>الموقع والتطبيق</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">المصدر: ملف Value Platform Benchmark، رصد 19 أكتوبر 2026.</div>
+</section></div></div>
+
+<!-- 24 A2 OPS/CHANNELS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
   <div class="page-num">24</div>
   <div class="header">
-    <div class="title">رحلة التواصل</div>
-    <div class="subtitle">ماذا نريد العميل أن يقول في كل محطة</div>
+    <div class="crumb">ملحق م2 | القنوات</div>
+    <div class="title">لكل قناة دور واحد وأصناف محددة</div>
   </div>
   <div class="body">
-    <div class="axis">
-      <div class="year-cell">
-        <div class="year">الأسبوع 1</div><div class="dot"></div>
-        <h4>الفضول</h4>
-        <p class="q">"وش قصة الجمر؟"</p>
-        <p>فيلم قصير للشواية، ومحتوى المطبخ بدون أسعار.</p>
-      </div>
-      <div class="year-cell">
-        <div class="year">الأسبوع 3</div><div class="dot"></div>
-        <h4>الكشف</h4>
-        <p class="q">"مشوي الطازج من 12؟"</p>
-        <p>الفيلم الرئيسي، لوحات المنيو، وقسم المنصة في التطبيقات.</p>
-      </div>
-      <div class="year-cell">
-        <div class="year">الأسبوع 5</div><div class="dot"></div>
-        <h4>الإثبات</h4>
-        <p class="q">"ما توقعت المشوي بهالسعر."</p>
-        <p>تحدي التذوق وصناع المحتوى في الجامعات ومناطق الدوام.</p>
-      </div>
-      <div class="year-cell">
-        <div class="year">الأسبوع 9</div><div class="dot"></div>
-        <h4>العادة</h4>
-        <p class="q">"غداي اليوم على الفحم."</p>
-        <p>ساعة الجمر، بطاقة الولاء في التطبيق، وصنف الأسبوع.</p>
-      </div>
-      <div class="year-cell">
-        <div class="year">المواسم</div><div class="dot"></div>
-        <h4>التجديد</h4>
-        <p class="q">"وش صنف هالأسبوع؟"</p>
-        <p>نسخ موسمية مثل أصناف السحور في رمضان، بنفس القاعدة.</p>
-      </div>
-    </div>
+    <table class="tmd sm">
+      <thead><tr><th>القناة</th><th>الدور</th><th>الفعل الرئيسي</th><th>الأصناف</th></tr></thead>
+      <tbody>
+        <tr><td class="k">السوشال</td><td>الإثبات</td><td>الفيلم، تحدي التذوق، صنّاع محتوى في يوم دوام</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">الرقمي المدفوع</td><td>الوصول وقت الغداء</td><td>استهداف جغرافي حول المكاتب والجامعات، وإعلانات البحث</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">الفرع</td><td>التحويل والترقية</td><td>لوحة منيو مستقلة، شارة خطوط الشوي، "تزيدها بيبسي؟"</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">تطبيق الطازج</td><td>التكرار</td><td>بطاقة الولاء، إشعارات ساعة الجمر</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">تطبيقات التوصيل</td><td>الظهور</td><td>قسم أعلى المنيو، ظهور مدفوع وقت الغداء، ترقية المشروب كخيار</td><td>من 14 فما فوق</td></tr>
+        <tr><td class="k">الرسائل</td><td>استعادة المنقطعين</td><td>لمن لم يطلب خلال 90 يومًا: ترقية مشروب مجانية مع أول طلب</td><td>كل الأصناف</td></tr>
+      </tbody>
+    </table>
   </div>
-</section></div>
+</section></div></div>
 
-<!-- 24 ENGAGEMENT (T12) -->
-<div class="slide-wrap"><section class="slide dark ps rtl">
+<!-- 25 A3 STAKEHOLDERS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
   <div class="page-num">25</div>
   <div class="header">
-    <div class="title">4 أفكار تصنع زيارات جديدة</div>
-    <div class="subtitle">تجربة، ثم تكرار، ثم سبب للرجوع</div>
+    <div class="crumb">ملحق م3 | التوافق المسبق</div>
+    <div class="title">7 أطراف نراجع معهم التوصية قبل الاجتماع</div>
   </div>
   <div class="body">
-    <div class="step">
-      <div class="badge">1</div>
-      <span class="tag">التجربة</span>
-      <h4>تحدي نفس الجمر</h4>
-      <p>تذوق أعمى في الجامعات والمولات: مشوي الطازج مقابل وجبات القيمة المقلية في السوق. كل تجربة تصير محتوى يثبت الجودة.</p>
-    </div>
-    <div class="step">
-      <div class="badge">2</div>
-      <span class="tag">التكرار</span>
-      <h4>بطاقة الولاء في التطبيق</h4>
-      <p>كل 4 طلبات من المنصة، الخامس معه ترقية مشروب مجانية. يبني العادة ويسحب الطلب للتطبيق.</p>
-    </div>
-    <div class="step">
-      <div class="badge">3</div>
-      <span class="tag">وقت جديد</span>
-      <h4>ساعة الجمر</h4>
-      <p>12 إلى 3 الظهر أيام الدوام. إشعارات وإعلانات جغرافية حول المكاتب والجامعات لفتح وقت الغداء.</p>
-    </div>
-    <div class="step">
-      <div class="badge">4</div>
-      <span class="tag">سبب للرجوع</span>
-      <h4>صنف الأسبوع</h4>
-      <p>صنف دوّار لفترة محدودة كل أسبوعين، مثل ربع تندوري. ومعه رسالة للمنقطعين: ترقية بيبسي مجانًا مع أول طلب.</p>
-    </div>
+    <table class="tmd sm">
+      <thead><tr><th>الطرف</th><th>ما يهمه</th><th>الاعتراض المتوقع</th><th>ما نحسمه قبل العرض</th></tr></thead>
+      <tbody>
+        <tr><td class="k">الرئيس التنفيذي</td><td>النمو وصورة العلامة</td><td>"لا نريد أن نُرى رخيصين"</td><td>"نفس الجمر"، والتجربة قبل الإطلاق</td></tr>
+        <tr><td class="k">المالية</td><td>الهامش والسحب</td><td>"الخصم يأكل الهامش"</td><td>حسبة الفاتورة، ومعيار التوقف، والتكلفة</td></tr>
+        <tr><td class="k">العمليات</td><td>سرعة الخدمة</td><td>"الأرباع تبطئ الذروة"</td><td>الفروع، والسقف اليومي</td></tr>
+        <tr><td class="k">التسويق</td><td>البريوش والناتشو</td><td>"تزاحم مع إطلاق البريوش"</td><td>البريوش خارج المنصة، والتوقيت</td></tr>
+        <tr><td class="k">فريق "الواحد واحد"</td><td>مصير المبادرة</td><td>"لدينا منصة 11 ريال"</td><td>الدمج أو الفصل</td></tr>
+        <tr><td class="k">الرقمي</td><td>العمولات والأنظمة</td><td>"النظام لا يدعم الأحجام"</td><td>قدرة نقاط البيع، وسعر التوصيل</td></tr>
+        <tr><td class="k">علاقة بيبسيكو</td><td>شروط الاتفاقية</td><td>"لا نسعّر المشروب كما نشاء"</td><td>أسعار الأحجام، والتمويل المشترك</td></tr>
+      </tbody>
+    </table>
   </div>
-</section></div>
+  <div class="footnote">هذه جلسات تحضير فعلية لم تتم بعد.</div>
+</section></div></div>
 
-<!-- 25 CHANNELS (T8 dark) -->
-<div class="slide-wrap"><section class="slide dark tb rtl">
+<!-- 26 A4 WAHED WAHED -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
   <div class="page-num">26</div>
   <div class="header">
-    <div class="crumb">الإطلاق والتفعيل | القنوات</div>
-    <div class="title">لكل قناة دور واحد واضح</div>
+    <div class="crumb">ملحق م4 | الواحد واحد</div>
+    <div class="title">منصتا قيمة معًا تربكان العميل: نحتاج قرار دمج أو فصل</div>
   </div>
-  <div class="body">
-    <table class="tmd">
-      <thead><tr><th>القناة</th><th>الدور</th><th>الفعل الرئيسي</th><th>الفئات المتاحة</th></tr></thead>
-      <tbody>
-        <tr><td class="k">السوشال</td><td>التشويق والإثبات</td><td>تيك توك وسناب وإنستقرام: الفيلم، تحدي التذوق، "كم يشبعك 15؟"</td><td>كل الفئات</td></tr>
-        <tr><td class="k">الرقمي المدفوع</td><td>الوصول وقت القرار</td><td>استهداف جغرافي وقت الغداء حول المكاتب والجامعات، وإعلانات البحث</td><td>كل الفئات</td></tr>
-        <tr><td class="k">الفرع</td><td>التحويل والترقية</td><td>لوحة منيو مستقلة للمنصة، شارة الجمر على التغليف، وسؤال الكاشير "تزيدها بيبسي؟"</td><td>كل الأصناف</td></tr>
-        <tr><td class="k">تطبيق الطازج</td><td>الولاء والتكرار</td><td>بانر الصفحة الرئيسية، بطاقة الولاء، وإشعارات ساعة الجمر</td><td>كل الأصناف</td></tr>
-        <tr><td class="k">تطبيقات التوصيل</td><td>الظهور والتجربة</td><td>قسم المنصة أعلى المنيو، وظهور مدفوع وقت الغداء، وترقية بيبسي كخيار</td><td>من 14 فما فوق</td></tr>
-        <tr><td class="k">الرسائل والعملاء</td><td>استعادة المنقطعين</td><td>رسالة لمن لم يطلب خلال 90 يومًا: ترقية بيبسي مجانًا مع أول طلب</td><td>كل الأصناف</td></tr>
-        <tr><td class="k">اللوحات الخارجية</td><td>اختياري للمدن الرئيسية</td><td>حول الجامعات ومناطق الدوام: "الربع ربع، والجمر كامل."</td><td>ربع الفروج</td></tr>
-      </tbody>
-    </table>
+  <div class="lede-top">"الواحد واحد": ستة أصناف بـ 11، وخلها وجبة +5 و+7 و+8، بحملتي "بين وبين" و"الحيرة الحلوة". حالة الاعتماد <span class="src gap">ناقص</span></div>
+  <div class="opts" style="grid-template-columns:1fr 1fr">
+    <div class="opt rec"><span class="tag">الخيار أ: دمج</span><h4>منصة واحدة بدرجتين</h4><p>"الواحد واحد" بـ 11 تصبح درجة الدخول للمفرد، والمنصة المشوية درجة الوجبة الفردية. "بين وبين" تصبح فكرة مناسبة السناك، و"نفس الجمر" فكرة العلامة.</p><dl><dt>المكسب</dt><dd>قصة واحدة، وتكامل بين السناك والغداء</dd><dt>الكلفة</dt><dd>توحيد منطق سعر الوجبة (+5 مقابل المشروب المنفصل)</dd></dl></div>
+    <div class="opt"><span class="tag">الخيار ب: فصل</span><h4>منصة واحدة فقط تُطلق</h4><p>نختار الأنسب للهدف: "الواحد واحد" لتوزيع المبيعات على ستة أصناف، أو المنصة المشوية لامتلاك المشوي في شريحة القيمة.</p><dl><dt>المكسب</dt><dd>وضوح كامل للعميل والفرع</dd><dt>الكلفة</dt><dd>نؤجل إحدى الفكرتين</dd></dl></div>
   </div>
-  <div class="footnote">سعر المنصة في تطبيقات التوصيل قرار للطازج حسب العمولة. نقترح نفس السعر خلال مرحلة الإطلاق كاستثمار في الظهور، ثم المراجعة.</div>
-</section></div>
+</section></div></div>
 
-<!-- 26 KPIs (T8 dark) -->
-<div class="slide-wrap"><section class="slide dark tb rtl">
+<!-- 27 A5 GAPS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light ct rtl">
   <div class="page-num">27</div>
   <div class="header">
-    <div class="crumb">القياس | المؤشرات</div>
-    <div class="title">كيف نعرف إن المنصة أضافت ولم تنقل</div>
+    <div class="title">ما نحتاجه من الطازج، وما افترضناه</div>
+    <div class="subtitle">ملحق م5: الفجوات والافتراضات</div>
   </div>
   <div class="body">
-    <table class="tmd">
-      <thead><tr><th>المؤشر</th><th>كيف نقيسه</th><th>ماذا يقرر</th></tr></thead>
-      <tbody>
-        <tr><td class="k">الزيارات الإضافية</td><td>نمو المعاملات في فروع التجربة مقابل الفروع المرجعية</td><td>التوسع للإطلاق الكامل أو لا</td></tr>
-        <tr><td class="k">عملاء جدد ومنقطعون</td><td>نسبة طلبات المنصة من عملاء لم يطلبوا خلال 90 يومًا، من التطبيق والولاء</td><td>هل المنصة تجلب عملاء جدد فعلًا</td></tr>
-        <tr><td class="k">معدل السحب</td><td>نسبة طلبات المنصة من عملاء كانوا يطلبون الوجبات الأساسية</td><td>حد إيقاف يُتفق عليه مع الطازج قبل التجربة</td></tr>
-        <tr><td class="k">الفاتورة والإضافة</td><td>نسبة ترقية بيبسي، ومتوسط فاتورة الفرع ككل لا فاتورة المنصة فقط</td><td>ضبط أسعار ترقية المشروب</td></tr>
-        <tr><td class="k">مزيج الأصناف</td><td>توزيع الطلبات على الأصناف العشرة، وحجم المشروب المختار</td><td>تدوير الأصناف الضعيفة وتثبيت الأقوى</td></tr>
-        <tr><td class="k">صحة العلامة</td><td>تتبع صورة "طازج ومشوي وجودة" قبل الإطلاق وبعده</td><td>التأكد أن القيمة لم تتحول إلى رخص</td></tr>
-      </tbody>
-    </table>
+    <div class="col accent"><div class="num">ناقص · الأرقام</div><h3>التكلفة والقنوات.</h3><p>التكلفة والهامش لكل صنف ومشروب. عمولات التطبيقات وحصة كل قناة. نسبة الطلبات المعرّفة عبر التطبيق والولاء.</p></div>
+    <div class="col"><div class="num">ناقص · التشغيل</div><h3>الأنظمة والمنيو.</h3><p>قدرة نقاط البيع على الأحجام. جدوى الأرباع. تعارض الأسعار: وجبة الدجاج 27 في الموقع و23 في الكاونتر، وبوكس المزاج 35 و26.</p></div>
+    <div class="col"><div class="num">افتراض</div><h3>ما نؤكده معكم.</h3><p>سعر الربع نسبي من الكامل. الوسط والكبير = الصغير +1 و+2. عدد الفروع ومعايير التجربة مقترحة. "يقبل حجمًا أقل لا جودة أقل" فرضية تُختبر.</p></div>
   </div>
-</section></div>
-
-<!-- 27 WHAT WE NEED (T4 light) -->
-<div class="slide-wrap"><section class="slide light ct rtl">
-  <div class="page-num">28</div>
-  <div class="header">
-    <div class="title">ما نحتاجه من الطازج قبل القرار</div>
-    <div class="subtitle">أسئلتنا على الموجز</div>
-  </div>
-  <div class="body">
-    <div class="col accent">
-      <div class="num">01 · الأرقام</div>
-      <h3>التكلفة والهامش.</h3>
-      <p>تكلفة كل صنف، وسعر ربع الفروج وربع التندوري والصيغ الجديدة. وعمولة كل تطبيق توصيل، وأسعار المشروب الوسط والكبير.</p>
-    </div>
-    <div class="col">
-      <div class="num">02 · التشغيل</div>
-      <h3>الفروع والأنظمة.</h3>
-      <p>هل نقاط البيع والتطبيق تدعم قسمًا مستقلًا وترقية منفصلة؟ وما قدرة الفروع على تجهيز الأرباع في الذروة؟</p>
-    </div>
-    <div class="col">
-      <div class="num">03 · الشراكات والأسعار</div>
-      <h3>بيبسي والمنيو الحالي.</h3>
-      <p>هل اتفاقية بيبسي تسمح بتمويل مشترك للترقية؟ وتوحيد تعارض الأسعار الحالي، مثل وجبة الدجاج 27 في الموقع و23 في الكاونتر.</p>
-    </div>
-  </div>
-</section></div>
+</section></div></div>
 
 <!-- 28 CLOSING -->
-<div class="slide-wrap"><section class="slide dark end">
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark end">
   <img class="logo" src="assets/TMD-logo-white.svg" alt="The Marketing Department, A TTP Company">
   <p class="thanks">شكرًا لكم</p>
-</section></div>
+</section></div></div>
 
 </main>
 <script>
