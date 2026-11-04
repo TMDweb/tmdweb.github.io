@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>منصة القيمة | الطازج</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+<style>/* ============================================================
+   TMD — The Marketing Department
+   Foundations: Colors & Typography
+   Source: TMD_Presentation_Master_Guidelines.txt + TMD Color Palette.pdf
+   ============================================================ */
+
+
+
+/* IBM Plex Sans Arabic family is also published on Google Fonts; this
+   covers the additional weights (300, 500, 600, 700) that the brand
+   guidelines reference but aren't bundled in the uploaded TTF. */
+
+
+/* ============================================================
+   BRAND RULE — CHARACTER SPACING (TRACKING)
+   ============================================================
+   Strictly prohibited: any non-normal letter-spacing on ANY text.
+   This applies to ALL brand materials — headings, subheadings, body,
+   footnotes, websites, presentations, every asset. No "tight" and no
+   "loose" tracking under any circumstances. The override below
+   enforces the rule globally even if a stale declaration slips in.
+   ============================================================ */
+*, *::before, *::after { letter-spacing: normal !important; }
+
+:root {
+  /* ---------- CORE (4) ------------------------------------- */
+  --tmd-dark:          #0C0E1D;  /* Official Dark — replaces pure black */
+  --tmd-white:         #ffffff;
+  --tmd-blue:          #29366C;  /* Primary Blue — ONLY on white */
+  --tmd-gold:          #fcbf2c;  /* Accent Gold */
+
+  /* ---------- SECONDARY · DARK SHADES (4) ----------------- */
+  --tmd-blue-dark:     #2f3e75;
+  --tmd-gold-dark:     #dd9c03;
+  --tmd-red-dark:      #92112d;
+  --tmd-teal-dark:     #33716b;
+
+  /* ---------- SECONDARY · LIGHT SHADES (4) ---------------- */
+  --tmd-blue-light:    #f0f2f9;
+  --tmd-gold-light:    #fff9eb;
+  --tmd-red-light:     #fdedf0;
+  --tmd-teal-light:    #f1f9f8;
+
+  /* ---------- EXTRA (2) ----------------------------------- */
+  --tmd-section-num:   #141B36;  /* Massive section numbers on dark */
+  --tmd-gray-100:      #F2F2F2;  /* Neutral hairline / surface */
+
+  /* ---------- LEGACY ALIASES (kept for backward refs) ----- */
+  --tmd-gray-50:       #f0f2f9;
+  --tmd-blue-700:      #2f3e75;
+  --tmd-yellow-50:     #fff9eb;
+
+  /* ---------- SEMANTIC — LIGHT MODE (white bg) ------------ */
+  --tmd-bg:            var(--tmd-white);
+  --tmd-fg:            var(--tmd-dark);
+  --tmd-fg-muted:      var(--tmd-blue-700);
+  --tmd-fg-subtle:     var(--tmd-gray-50);
+  --tmd-primary:       var(--tmd-blue);
+  --tmd-accent:        var(--tmd-gold);
+  --tmd-border:        var(--tmd-gray-50);
+  --tmd-surface:       var(--tmd-gray-50);   /* one-shade-deeper analytical boxes */
+
+  /* Data viz */
+  --tmd-data-views:    var(--tmd-teal-dark);
+  --tmd-data-engage:   var(--tmd-red-dark);
+  --tmd-data-publish:  var(--tmd-gold);
+
+  /* ---------- TYPE ---------------------------------------- */
+  --tmd-font:          "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --tmd-font-mono:     "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Scale (px @1080-line slide / 16px web base) */
+  --tmd-size-cover:    96px;  /* Cover title — massive */
+  --tmd-size-section:  72px;  /* Section divider subsection */
+  --tmd-size-h1:       56px;  /* Slide main title — large bold */
+  --tmd-size-h2:       40px;
+  --tmd-size-h3:       28px;
+  --tmd-size-body:     20px;
+  --tmd-size-sm:       16px;  /* Subtitle / breadcrumb */
+  --tmd-size-xs:       12px;  /* Footnote / page number */
+  --tmd-size-stat:     128px; /* Statistical typography — massive bold */
+
+  --tmd-weight-bold:   700;
+  --tmd-weight-semi:   600;
+  --tmd-weight-med:    500;
+  --tmd-weight-reg:    400;
+  --tmd-weight-light:  300;
+
+  --tmd-track-tight:   0;       /* BRAND RULE: never tighten */
+  --tmd-track-normal:  0;
+  --tmd-track-wide:    0;       /* BRAND RULE: never loosen */
+
+  --tmd-leading-tight: 1.1;
+  --tmd-leading-snug:  1.25;
+  --tmd-leading-body:  1.5;
+
+  /* ---------- SPACING ------------------------------------- */
+  --tmd-space-1:       4px;
+  --tmd-space-2:       8px;
+  --tmd-space-3:       12px;
+  --tmd-space-4:       16px;
+  --tmd-space-5:       24px;
+  --tmd-space-6:       32px;
+  --tmd-space-7:       48px;
+  --tmd-space-8:       64px;
+  --tmd-space-9:       96px;
+  --tmd-safe-margin:   48px;   /* 0.5in @ ~96dpi */
+
+  /* ---------- RADII / BORDERS / LINES --------------------- */
+  /* TMD is a sharp, geometric system. Radii are SMALL by default. */
+  --tmd-radius-none:   0;
+  --tmd-radius-sm:     2px;
+  --tmd-radius-md:     4px;
+  --tmd-radius-pill:   999px;
+  --tmd-border-hair:   1px;
+  --tmd-border-thin:   2px;
+  --tmd-accent-line:   6px;   /* Generic gold divider element. NOT used on the Cover slide. */
+
+  /* No shadow system — TMD forbids depth/gradients. Use borders + lines. */
+  --tmd-shadow-none:   none;
+}
+
+/* Dark mode tokens are applied with [data-theme="dark"] OR inside
+   a .tmd-dark surface. Both forms supported. */
+:root[data-theme="dark"],
+.tmd-dark {
+  --tmd-bg:            var(--tmd-dark);
+  --tmd-fg:            var(--tmd-white);
+  --tmd-fg-muted:      var(--tmd-gray-50);
+  --tmd-fg-subtle:     var(--tmd-blue-700);
+  --tmd-primary:       var(--tmd-gold);   /* Primary Blue forbidden on dark */
+  --tmd-accent:        var(--tmd-gold);
+  --tmd-border:        var(--tmd-blue-700);
+  --tmd-surface:       #141B36;            /* one-shade-deeper than --tmd-dark */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   ============================================================ */
+
+.tmd-body, body.tmd {
+  background: var(--tmd-bg);
+  color: var(--tmd-fg);
+  font-family: var(--tmd-font);
+  font-size: var(--tmd-size-body);
+  font-weight: var(--tmd-weight-reg);
+  line-height: var(--tmd-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tmd-h1, h1.tmd {
+  font-family: var(--tmd-font);
+  font-size: var(--tmd-size-h1);
+  font-weight: var(--tmd-weight-bold);
+  line-height: var(--tmd-leading-tight);
+  letter-spacing: var(--tmd-track-tight);
+  color: var(--tmd-fg);
+  margin: 0;
+}
+.tmd-h2, h2.tmd {
+  font-size: var(--tmd-size-h2);
+  font-weight: var(--tmd-weight-bold);
+  line-height: var(--tmd-leading-snug);
+  letter-spacing: var(--tmd-track-tight);
+  color: var(--tmd-fg);
+  margin: 0;
+}
+.tmd-h3, h3.tmd {
+  font-size: var(--tmd-size-h3);
+  font-weight: var(--tmd-weight-semi);
+  line-height: var(--tmd-leading-snug);
+  color: var(--tmd-fg);
+  margin: 0;
+}
+.tmd-subtitle {
+  font-size: var(--tmd-size-sm);
+  font-weight: var(--tmd-weight-med);
+  letter-spacing: var(--tmd-track-wide);
+  color: var(--tmd-accent);          /* gold on dark, set per-mode */
+  text-transform: none;
+}
+.tmd-dark .tmd-subtitle { color: var(--tmd-gold); }
+:root[data-theme="light"] .tmd-subtitle,
+.tmd-light .tmd-subtitle { color: var(--tmd-blue); }
+
+.tmd-breadcrumb {
+  font-size: var(--tmd-size-sm);
+  letter-spacing: var(--tmd-track-wide);
+  color: var(--tmd-blue-700);
+}
+.tmd-dark .tmd-breadcrumb { color: var(--tmd-gold); }
+
+.tmd-page-num {
+  font-size: var(--tmd-size-xs);
+  font-weight: var(--tmd-weight-med);
+  letter-spacing: var(--tmd-track-wide);
+  color: var(--tmd-blue-700);
+}
+.tmd-dark .tmd-page-num { color: var(--tmd-gray-50); }
+
+.tmd-footnote {
+  font-size: var(--tmd-size-xs);
+  color: var(--tmd-blue-700);
+}
+
+.tmd-stat-num {
+  font-size: var(--tmd-size-stat);
+  font-weight: var(--tmd-weight-bold);
+  line-height: 0.9;
+  letter-spacing: var(--tmd-track-tight);
+  color: var(--tmd-blue);
+}
+.tmd-dark .tmd-stat-num { color: var(--tmd-white); }
+.tmd-stat-unit {
+  font-size: var(--tmd-size-sm);
+  font-weight: var(--tmd-weight-med);
+  color: var(--tmd-blue-700);
+  letter-spacing: var(--tmd-track-wide);
+}
+.tmd-dark .tmd-stat-unit { color: var(--tmd-gold); }
+
+.tmd-badge {
+  display: inline-block;
+  background: var(--tmd-gold);
+  color: var(--tmd-dark);
+  font-size: var(--tmd-size-xs);
+  font-weight: var(--tmd-weight-semi);
+  letter-spacing: var(--tmd-track-wide);
+  padding: 6px 12px;
+  border-radius: var(--tmd-radius-sm);
+  text-transform: uppercase;
+}
+
+.tmd-accent-line {
+  display: block;
+  width: 96px;
+  height: var(--tmd-accent-line);
+  background: var(--tmd-gold);
+  border: 0;
+}
+</style>
+<style>
+/* ===== TMD slide foundation (tmd-brand/slides.css) ===== */
+html, body { margin: 0; padding: 0; }
+body { font-family: var(--tmd-font); background: #f0f2f9; }
+.deck { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+.slide-wrap { width: 1280px; height: 720px; flex-shrink: 0; }
+.slide { width: 33.867cm; height: 19.05cm; box-sizing: border-box; padding: 48px 64px; position: relative; overflow: hidden; }
+.slide.dark { background: #0C0E1D; color: #fff; }
+.slide.light { background: #ffffff; color: #0C0E1D; }
+.page-num { position: absolute; top: 48px; right: 64px; font-size: 13px; font-weight: 500; }
+.slide.dark .page-num { color: #f0f2f9; }
+.slide.light .page-num { color: #2f3e75; }
+.header { position: absolute; top: 48px; left: 64px; text-align: left; max-width: 700px; }
+.header .crumb { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+.slide.dark .header .crumb { color: #fcbf2c; }
+.slide.light .header .crumb { color: #2f3e75; }
+.header .title { font-size: 37px; font-weight: 700; line-height: 1.15; }
+.header .subtitle { font-size: 24px; font-weight: 500; margin-top: 6px; }
+.slide.dark .header .subtitle { color: #fcbf2c; }
+.slide.light .header .subtitle { color: #29366C; }
+.footnote { position: absolute; bottom: 28px; left: 64px; font-size: 11px; color: #2f3e75; }
+.slide.dark .footnote { color: #f0f2f9; }
+.slide.rtl .page-num { right: auto; left: 64px; }
+.slide.rtl .header { left: auto; right: 64px; text-align: right; max-width: none; }
+.slide.rtl .footnote { left: auto; right: 64px; }
+.sar { width: 0.8em; height: 0.8em; fill: currentColor; display: inline-block; vertical-align: -0.05em; }
+
+/* ===== T1 Cover ===== */
+.cover { padding: 0; direction: rtl; }
+.cover .logo { position: absolute; top: 56px; left: 72px; height: 170px; width: auto; display: block; }
+.cover .text-block { position: absolute; right: 80px; bottom: 200px; max-width: 1100px; text-align: right; }
+.cover .title { font-size: 68px; font-weight: 700; line-height: 1.05; color: #fff; margin: 0 0 18px 0; }
+.cover .subtitle { font-size: 36px; color: #fcbf2c; font-weight: 500; margin: 0; }
+.cover .versioning { position: absolute; right: 80px; bottom: 64px; font-size: 16px; color: #fff; line-height: 1.5; text-align: right; }
+.cover .versioning span { display: block; }
+
+/* ===== T2 Section divider ===== */
+.sd { padding: 0; direction: rtl; }
+.sd .page-num { position: absolute; top: 36px; left: 48px; right: auto; font-size: 18px; color: #f0f2f9; }
+.sd .bignum { position: absolute; right: 64px; top: 50%; transform: translateY(-50%); font-size: 360px; font-weight: 700; line-height: 0.8; color: #141B36; z-index: 1; }
+.sd .content { position: absolute; right: 410px; top: 50%; transform: translateY(-50%); z-index: 2; max-width: 740px; text-align: right; }
+.sd .kicker { font-size: 28px; font-weight: 400; color: #fff; margin: 0 0 10px 0; }
+.sd .name { font-size: 64px; font-weight: 700; line-height: 1.15; color: #fff; margin: 0; }
+
+/* ===== T3 Agenda ===== */
+.ag { padding: 0; direction: rtl; }
+.ag .title-block { position: absolute; top: 56px; right: 80px; }
+.ag .title-block .title { font-size: 37px; font-weight: 700; color: #fff; margin: 0; }
+.ag .page-num { position: absolute; top: 36px; left: 48px; right: auto; font-size: 16px; color: #f0f2f9; }
+.ag .items { position: absolute; top: 160px; right: 80px; left: 360px; display: flex; flex-direction: column; gap: 14px; }
+.item { display: flex; align-items: stretch; gap: 14px; min-height: 50px; }
+.item .box { width: 50px; min-height: 50px; background: #fcbf2c; color: #0C0E1D; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px; flex-shrink: 0; box-sizing: border-box; }
+.item .bar { flex: 1; min-height: 50px; border: 1px dashed rgba(252,191,44,0.55); display: flex; align-items: center; padding: 0 18px; color: #fcbf2c; font-size: 18px; font-weight: 700; box-sizing: border-box; }
+.ag.crit .items { top: 200px; left: 80px; gap: 16px; }
+.ag.crit .item { min-height: 72px; }
+.ag.crit .item .box { min-height: 72px; width: 72px; }
+.ag.crit .bar { flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; padding: 10px 20px; }
+.ag.crit .bar b { font-size: 20px; color: #fcbf2c; }
+.ag.crit .bar span { font-size: 16px; font-weight: 400; color: #f0f2f9; }
+
+/* ===== T4 Content light ===== */
+.ct .body { position: absolute; top: 230px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; direction: rtl; }
+.ct .col { padding-top: 22px; border-top: 6px solid #29366C; text-align: right; }
+.ct .col.accent { border-top-color: #fcbf2c; }
+.ct .col h3 { font-size: 28px; font-weight: 700; margin: 0 0 14px; color: #0C0E1D; }
+.ct .col p { font-size: 17px; line-height: 1.7; color: #0C0E1D; margin: 0; max-width: 340px; }
+.ct .col .num { font-size: 13px; font-weight: 700; color: #2f3e75; margin-bottom: 12px; }
+
+/* ===== T5 Content dark ===== */
+.cd .body { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; direction: rtl; }
+.lede { font-size: 32px; line-height: 1.5; font-weight: 500; color: #fff; max-width: 540px; text-align: right; }
+.lede em { font-style: normal; color: #fcbf2c; }
+.points { display: flex; flex-direction: column; gap: 18px; }
+.pt { padding: 16px 22px; border: 1px dashed rgba(252,191,44,0.55); text-align: right; }
+.pt h4 { margin: 0 0 6px; font-size: 22px; font-weight: 700; color: #fff; }
+.pt p { margin: 0; font-size: 16px; line-height: 1.6; color: #f0f2f9; }
+
+/* ===== T6 Stats ===== */
+.st .body { position: absolute; top: 200px; left: 64px; right: 64px; bottom: 260px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; align-items: end; direction: rtl; }
+.sc { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.sc .unit { font-size: 15px; color: #fcbf2c; margin-top: 16px; line-height: 1.5; font-weight: 700; max-width: 100%; }
+.sc .num { font-size: 112px; font-weight: 700; line-height: 0.9; color: #fff; direction: ltr; }
+.sc .num small { font-size: 0.45em; font-weight: 600; margin-left: 2px; vertical-align: top; color: #fcbf2c; }
+.sc .num .sar { width: 0.42em; height: 0.42em; color: #fcbf2c; vertical-align: top; margin-right: 8px; margin-top: 6px; }
+.sc .name { font-size: 22px; font-weight: 700; color: #fff; margin-top: 18px; }
+.sc .name + .unit { margin-top: 6px; }
+.st .caption { position: absolute; left: 64px; right: 64px; bottom: 120px; font-size: 22px; line-height: 1.7; color: #fff; font-weight: 400; text-align: center; margin: 0; }
+.st .caption span { display: block; }
+.st .caption .sar { width: 0.8em; height: 0.8em; }
+
+/* ===== T7 Comparison ===== */
+.cmp .body { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; direction: rtl; }
+.cc { background: #0C0E1D; padding: 32px; display: flex; flex-direction: column; gap: 16px; color: #fff; text-align: right; }
+.cc.us { background: #fff; border: 1.5px dashed #29366C; color: #0C0E1D; }
+.cc .tag { font-size: 14px; font-weight: 700; color: #fcbf2c; }
+.cc.us .tag { color: #29366C; }
+.cc h3 { margin: 0; font-size: 38px; font-weight: 700; color: #fff; }
+.cc.us h3 { color: #0C0E1D; }
+.cc ul { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.cc li { font-size: 17px; color: #fff; padding-right: 18px; position: relative; line-height: 1.6; }
+.cc.us li { color: #0C0E1D; }
+.cc li:before { content: ""; position: absolute; right: 0; top: 13px; width: 10px; height: 2px; background: #f0f2f9; }
+.cc.us li:before { background: #fcbf2c; }
+
+/* ===== T8 Tables ===== */
+.tb .body { position: absolute; top: 190px; left: 64px; right: 64px; bottom: 70px; direction: rtl; }
+table.tmd { width: 100%; border-collapse: collapse; font-size: 16px; text-align: right; }
+table.tmd th { background: #29366C; color: #fff; font-weight: 700; padding: 10px 12px; font-size: 14px; }
+table.tmd td { padding: 8px 12px; line-height: 1.45; vertical-align: middle; }
+.slide.light table.tmd tbody tr:nth-child(odd) td { background: #ffffff; }
+.slide.light table.tmd tbody tr:nth-child(even) td { background: #f0f2f9; }
+.slide.dark table.tmd th { background: #2f3e75; font-size: 16px; padding: 12px; }
+.slide.dark table.tmd td { padding: 13px 12px; border-bottom: 1px solid rgba(252,191,44,0.35); color: #f0f2f9; }
+.slide.dark table.tmd td.k { color: #fcbf2c; font-weight: 700; }
+table.tmd td.tier { font-weight: 700; color: #29366C; }
+table.tmd td.price { font-weight: 700; font-size: 18px; color: #0C0E1D; white-space: nowrap; }
+table.tmd td.was { color: #2f3e75; white-space: nowrap; }
+table.tmd .badge { display: inline-block; background: #fcbf2c; color: #0C0E1D; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 2px; margin-right: 6px; }
+table.tmd .badge.new { background: #29366C; color: #fff; }
+.slide.light table.tmd tbody tr.hero td { background: #fff9eb; }
+
+/* Range chart (landscape) */
+.rc { position: absolute; top: 196px; left: 64px; right: 64px; bottom: 64px; direction: rtl; }
+.rc .row { display: grid; grid-template-columns: 210px 1fr; align-items: center; height: 36px; }
+.rc .lbl { font-size: 14px; font-weight: 500; color: #0C0E1D; text-align: right; padding-left: 12px; }
+.rc .lbl b { font-weight: 700; }
+.rc .lbl.us { color: #29366C; font-weight: 700; }
+.rc .track { position: relative; height: 36px; border-right: 1px solid #c5cce8; }
+.rc .rbar { position: absolute; top: 11px; height: 14px; background: #2f3e75; }
+.rc .rbar.grill { background: #33716b; }
+.rc .rbar.us { background: #fcbf2c; }
+.rc .rbar.mark { width: 6px !important; }
+.rc .val { position: absolute; top: 9px; font-size: 12px; font-weight: 500; color: #2f3e75; white-space: nowrap; direction: ltr; }
+.rc .axis { display: grid; grid-template-columns: 210px 1fr; margin-top: 6px; }
+.rc .axis .ticks { position: relative; height: 20px; border-top: 1px solid #c5cce8; }
+.rc .axis .ticks span { position: absolute; top: 4px; font-size: 12px; color: #2f3e75; transform: translateX(50%); }
+.rc .zone { position: absolute; top: 0; height: 432px; background: #fff9eb; }
+.rc .zone-lbl { position: absolute; top: -26px; font-size: 13px; font-weight: 700; color: #dd9c03; white-space: nowrap; }
+.rc .anchor { position: absolute; top: 0; height: 432px; border-right: 1px dashed #92112d; }
+.rc .anchor-lbl { position: absolute; top: -26px; font-size: 13px; font-weight: 700; color: #92112d; white-space: nowrap; }
+.legend { position: absolute; bottom: 28px; left: 64px; display: flex; gap: 24px; font-size: 12px; color: #2f3e75; direction: rtl; }
+.legend i { display: inline-block; width: 14px; height: 10px; margin-left: 6px; vertical-align: middle; }
+
+/* ===== T9 Timeline ===== */
+.tl .body { position: absolute; top: 220px; left: 64px; right: 64px; bottom: 80px; direction: rtl; }
+.tl .axis { position: relative; display: flex; align-items: stretch; gap: 0; }
+.tl .axis::before { content: ""; position: absolute; left: 0; right: 0; top: 56px; height: 1px; background: rgba(252,191,44,0.4); }
+.tl .year-cell { flex: 1; position: relative; padding-top: 96px; display: flex; flex-direction: column; gap: 14px; border-left: 1px dashed rgba(252,191,44,0.25); padding-right: 22px; padding-left: 22px; }
+.tl .year-cell:last-child { border-left: 0; }
+.tl .year-cell .year { position: absolute; top: 0; right: 22px; font-size: 26px; font-weight: 700; color: #fff; }
+.tl .year-cell .dot { position: absolute; top: 50px; right: 22px; width: 14px; height: 14px; background: #fcbf2c; border-radius: 50%; }
+.tl .year-cell h4 { margin: 0; font-size: 18px; font-weight: 700; color: #fcbf2c; }
+.tl .year-cell p { margin: 0; font-size: 14px; line-height: 1.6; color: #f0f2f9; max-width: 210px; }
+.tl .year-cell .q { font-size: 15px; color: #fff; font-weight: 500; }
+
+/* ===== T11 Phase chevrons ===== */
+.pc-flow .body { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: flex; flex-direction: column; justify-content: center; direction: rtl; }
+.phases { display: flex; align-items: stretch; gap: 0; height: 360px; }
+.phase { flex: 1; clip-path: polygon(38px 0, 100% 0, calc(100% - 38px) 50%, 100% 100%, 38px 100%, 0 50%); padding: 36px 64px 36px 56px; background: #f0f2f9; color: #0C0E1D; display: flex; flex-direction: column; justify-content: center; gap: 10px; text-align: right; }
+.phase:first-child { clip-path: polygon(38px 0, 100% 0, 100% 100%, 38px 100%, 0 50%); padding-right: 32px; }
+.phase + .phase { margin-right: -28px; }
+.phase.active { background: #fcbf2c; }
+.phase .n { font-size: 14px; font-weight: 700; color: #29366C; direction: ltr; text-align: right; }
+.phase.active .n { color: #0C0E1D; }
+.phase h4 { font-size: 26px; font-weight: 700; margin: 0; color: #0C0E1D; }
+.phase .duration { font-size: 13px; font-weight: 600; color: #29366C; }
+.phase.active .duration { color: #0C0E1D; }
+.phase p { font-size: 14px; line-height: 1.7; margin: 6px 0 0; color: #29366C; max-width: 230px; }
+.phase.active p { color: #0C0E1D; }
+
+/* ===== T12 Process steps ===== */
+.ps .body { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; direction: rtl; }
+.ps .step { padding: 24px 28px 24px 24px; position: relative; display: flex; flex-direction: column; gap: 14px; border-left: 1px dashed rgba(252,191,44,0.35); text-align: right; }
+.ps .step:last-child { border-left: 0; }
+.ps .step .badge { width: 44px; height: 44px; background: #fcbf2c; color: #0C0E1D; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; }
+.ps .step h4 { margin: 0; font-size: 21px; font-weight: 700; color: #fff; }
+.ps .step p { margin: 0; font-size: 15px; line-height: 1.65; color: #f0f2f9; max-width: 240px; }
+.ps .step .tag { font-size: 13px; font-weight: 500; color: #fcbf2c; }
+
+/* ===== T13 Pros vs cons ===== */
+.pcn .body { position: absolute; top: 200px; left: 64px; right: 64px; bottom: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; direction: rtl; }
+.pcn .col { display: flex; flex-direction: column; gap: 12px; padding: 24px 28px; background: #fff; text-align: right; }
+.pcn .col h4 { margin: 0; font-size: 22px; font-weight: 700; color: #0C0E1D; padding-bottom: 12px; }
+.pcn .col.pros h4 { border-bottom: 6px solid #33716b; }
+.pcn .col.cons h4 { border-bottom: 6px solid #92112d; }
+.pcn .col ul { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.pcn .col li { font-size: 16px; line-height: 1.65; color: #0C0E1D; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; }
+.pcn .col li svg { width: 22px; height: 22px; margin-top: 3px; }
+
+/* ===== T-Closing ===== */
+.end { padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; direction: rtl; }
+.end .logo { width: 520px; height: auto; display: block; }
+.end .thanks { font-size: 64px; font-weight: 700; color: #fff; margin: 0; line-height: 1; }
+
+/* ===== Viewer + print ===== */
+@media screen and (max-width: 1340px) {
+  .deck { gap: 16px; padding: 16px 0; }
+}
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .deck { display: block; padding: 0; gap: 0; }
+  .slide-wrap { width: 1280px; height: 720px; transform: none !important; margin: 0 !important; break-after: page; page-break-after: always; }
+  .slide-wrap:last-child { break-after: auto; page-break-after: auto; }
+}
+/* ===== v3 additions (TMD palette only) ===== */
+details.notes { width: 1280px; box-sizing: border-box; background: #fff; border: 1px dashed #29366C; padding: 10px 18px; font-size: 15px; line-height: 1.7; color: #0C0E1D; direction: rtl; text-align: right; margin-top: -16px; }
+details.notes summary { cursor: pointer; font-weight: 700; color: #29366C; }
+details.notes p { margin: 6px 0 0; }
+.deck > .unit-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+@media print { details.notes { display: none !important; } }
+
+/* executive summary 2x2 */
+.quad { position: absolute; top: 200px; left: 64px; right: 64px; bottom: 70px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; direction: rtl; }
+.quad .q { border: 1px dashed rgba(252,191,44,0.55); padding: 18px 22px; text-align: right; }
+.quad .q .k { font-size: 14px; font-weight: 700; color: #fcbf2c; margin-bottom: 6px; }
+.quad .q h4 { margin: 0 0 10px; font-size: 25px; font-weight: 700; color: #fff; line-height: 1.4; }
+.quad .q p { margin: 0; font-size: 17px; line-height: 1.6; color: #f0f2f9; }
+.quad .q.ask { background: #fcbf2c; border-color: #fcbf2c; }
+.quad .q.ask .k, .quad .q.ask h4, .quad .q.ask p { color: #0C0E1D; }
+
+/* source tags */
+.src { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+.slide.dark .src { background: #2f3e75; color: #f0f2f9; }
+.slide.light .src { background: #f0f2f9; color: #29366C; }
+.src.as { background: #fff9eb !important; color: #dd9c03 !important; }
+.src.gap { background: #fdedf0 !important; color: #92112d !important; }
+
+/* horizontal bars (sales mix) */
+.hb { position: absolute; top: 210px; right: 64px; width: 620px; direction: rtl; }
+.hb .row { display: grid; grid-template-columns: 150px 1fr; align-items: center; height: 40px; }
+.hb .lbl { font-size: 16px; color: #0C0E1D; text-align: right; padding-left: 12px; }
+.hb .lbl.us { font-weight: 700; color: #29366C; }
+.hb .track { position: relative; height: 40px; }
+.hb .b { position: absolute; right: 0; top: 11px; height: 18px; background: #2f3e75; }
+.hb .b.us { background: #fcbf2c; }
+.hb .v { position: absolute; top: 9px; font-size: 14px; font-weight: 700; color: #29366C; }
+.side { position: absolute; top: 210px; left: 64px; width: 470px; direction: rtl; text-align: right; }
+.side .so { border-right: 6px solid #fcbf2c; padding: 6px 18px 6px 0; margin-bottom: 22px; }
+.side .so h4 { margin: 0 0 6px; font-size: 22px; font-weight: 700; color: #0C0E1D; }
+.side .so p { margin: 0; font-size: 16px; line-height: 1.65; color: #0C0E1D; }
+.slide.dark .side .so h4 { color: #fff; }
+.slide.dark .side .so p { color: #f0f2f9; }
+
+/* ticket columns */
+.tk { position: absolute; top: 230px; right: 64px; width: 640px; height: 360px; direction: rtl; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; align-items: end; border-bottom: 1px solid #f0f2f9; }
+.tk .c { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.tk .bar { width: 100%; background: #2f3e75; }
+.tk .bar.hi { background: #fcbf2c; }
+.tk .val { font-size: 34px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.tk .lb { position: absolute; bottom: -44px; font-size: 14px; color: #f0f2f9; text-align: center; width: 140px; line-height: 1.4; }
+.tk .c { position: relative; }
+.tk .line { position: absolute; left: -10px; right: -10px; border-top: 2px dashed #92112d; }
+.tk .line span { position: absolute; right: 0; top: -26px; font-size: 13px; font-weight: 700; color: #fdedf0; background: #92112d; padding: 1px 8px; border-radius: 2px; }
+
+/* reveal */
+.reveal { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; direction: rtl; gap: 26px; }
+.reveal .big { font-size: 120px; font-weight: 700; color: #fff; line-height: 1; }
+.reveal .line2 { font-size: 34px; font-weight: 500; color: #fcbf2c; }
+.reveal .small { font-size: 18px; color: #f0f2f9; max-width: 760px; line-height: 1.7; }
+
+/* options (3 cards) */
+.opts { position: absolute; top: 210px; left: 64px; right: 64px; bottom: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; direction: rtl; }
+.opt { border: 1px dashed rgba(252,191,44,0.55); padding: 22px; text-align: right; display: flex; flex-direction: column; gap: 10px; }
+.opt.rec { border: 2px solid #fcbf2c; }
+.opt .tag { font-size: 13px; font-weight: 700; color: #fcbf2c; }
+.opt h4 { margin: 0; font-size: 22px; font-weight: 700; color: #fff; }
+.opt p { margin: 0; font-size: 15px; line-height: 1.6; color: #f0f2f9; }
+.opt dl { margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: #f0f2f9; }
+.opt dt { font-weight: 700; color: #fcbf2c; }
+.opt dd { margin: 0 0 6px; }
+.slide.light .opt { border-color: #29366C; }
+.slide.light .opt.rec { border: 2px solid #fcbf2c; background: #fff9eb; }
+.slide.light .opt h4, .slide.light .opt p, .slide.light .opt dl { color: #0C0E1D; }
+.slide.light .opt .tag, .slide.light .opt dt { color: #29366C; }
+
+/* compact table variants */
+table.tmd.sm td { padding: 7px 10px; font-size: 14px; }
+table.tmd.sm th { font-size: 13px; padding: 8px 10px; }
+.slide.dark table.tmd.sm td { padding: 9px 10px; font-size: 15px; }
+td .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 2px; }
+.pill.h { background: #92112d; color: #fff; }
+.pill.m { background: #dd9c03; color: #0C0E1D; }
+.pill.u { background: #2f3e75; color: #fff; }
+.lede-top { position: absolute; top: 172px; right: 64px; left: 64px; font-size: 18px; color: #f0f2f9; text-align: right; direction: rtl; }
+.slide.light .lede-top { color: #29366C; }
+
+details.notes { width: min(1280px, calc(100vw - 16px)); }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<!-- 1 COVER -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark cover">
+  <img class="logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGZpbGw9IiNmZmZmZmYiIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODMwLjMgMTA3MC40Ij48cGF0aCBkPSJNNDkxLjUsOTA4LjFsLTI4LjgsODcuMmgxOS4ybDYuMi0yMC44aDI5LjFsNi4yLDIwLjhoMjBsLTI4LjQtODcuMmgtMjMuNVpNNDkyLjYsOTU4LjRsOS42LTMzLjFoLjZsOS44LDMzLjFoLTIwWk04NzMuNCw5NjYuOGwxNS41LDljLTMuMiw2LjctNy41LDExLjgtMTIuOCwxNS40LTUuMywzLjYtMTIsNS40LTIwLjEsNS40di4yYy01LjksMC0xMS4yLS45LTE2LTIuOHMtOC44LTQuNy0xMi4xLTguNC01LjktOC4zLTcuOC0xMy45Yy0xLjgtNS41LTIuOC0xMi0yLjgtMTkuNHMuOS0xMy45LDIuOC0xOS42YzEuOC01LjcsNC40LTEwLjUsNy44LTE0LjQsMy4zLTMuOSw3LjQtNi44LDEyLjEtOC44czEwLjEtMywxNi0zLDE0LjgsMS42LDIwLDQuOWM1LjIsMy4zLDkuNSw4LjUsMTIuNiwxNS42bC0xNi40LDguNWMtMS4yLTMuNy0zLTYuNi01LjQtOC44LTIuNS0yLjItNi4xLTMuMy0xMC44LTMuM3MtMTAuMSwxLjgtMTMuNCw1LjQtNS4xLDguOS01LjEsMTUuOHYxNGMwLDYuOSwxLjcsMTIuMiw1LjEsMTUuOHM3LjksNS40LDEzLjQsNS40LDguNC0xLjMsMTEuMi0zLjgsNC45LTUuNiw2LjItOS4yWk05NTAuMyw5MzcuNGMtMi42LTIuOS01LjgtNS4yLTkuNi02LjgtMy44LTEuNi04LjEtMi40LTEyLjktMi40cy05LjEuOC0xMi45LDIuNC03LDMuOC05LjYsNi44Yy0yLjcsMi45LTQuNyw2LjYtNi4xLDEwLjgtMS40LDQuMi0yLjEsOS0yLjEsMTQuMnMuNywxMCwyLjEsMTQuMmMxLjUsNC4zLDMuNSw3LjksNi4xLDEwLjlzNS44LDUuMyw5LjYsNi45YzMuOCwxLjYsOC4xLDIuNCwxMi45LDIuNHM5LjEtLjgsMTIuOS0yLjRjMy44LTEuNiw2LjktMy45LDkuNi02LjlzNC43LTYuNyw2LjEtMTAuOWMxLjQtNC4yLDIuMS05LDIuMS0xNC4ycy0uNy0xMC0yLjEtMTQuMmMtMS41LTQuMi0zLjUtNy44LTYuMS0xMC44Wk05MzkuMyw5NjkuMmMwLDQuMS0xLDcuMy0zLDkuNnMtNC44LDMuNC04LjUsMy40LTYuNS0xLjItOC41LTMuNC0zLTUuNC0zLTkuNnYtMTMuNGMwLTQuMSwxLTcuMywzLTkuNnM0LjgtMy40LDguNS0zLjQsNi41LDEuMiw4LjUsMy40LDMsNS40LDMsOS42djEzLjRaTTEwNjEuOSw5MzVjMy40LDQuNiw1LjEsMTAuOSw1LjEsMTkuMnY0MS4xaC0xOC41di0zOS42YzAtOC4zLTMtMTIuNS05LTEyLjVzLTUuMi44LTcuNSwyLjRjLTIuMiwxLjYtMy40LDQtMy40LDcuMnY0Mi41aC0xOC41di0zOS42YzAtOC4zLTMtMTIuNS05LTEyLjVzLTIuNi4yLTMuOS42Yy0xLjMuNC0yLjUsMS0zLjUsMS44cy0xLjksMS45LTIuNSwzLjFjLS42LDEuMi0uOSwyLjYtLjksNC4ydjQyLjVoLTE4LjVsLS4yLS4xdi02NS42aDE4LjV2MTEuMWguOGMxLjItMy41LDMuMi02LjUsNi04LjksMi44LTIuNSw2LjctMy43LDExLjYtMy43czguMywxLjEsMTEuNSwzLjRjMy4yLDIuMiw1LjUsNS41LDYuOSw5LjloLjRjLjYtMS44LDEuNS0zLjYsMi43LTUuMiwxLjItMS42LDIuNy0zLDQuNC00LjIsMS44LTEuMiwzLjctMi4xLDUuOS0yLjgsMi4yLS43LDQuNS0xLjEsNy0xLjEsNi4zLDAsMTEuMiwyLjIsMTQuNiw2LjhaTTExMjAuMSw5MjguMmMtNC4yLDAtOCwxLjItMTEuMywzLjVzLTUuNCw1LjMtNi4zLDloLS42di0xMWgtMTguNXYuMnMwLDkwLjYsMCw5MC42aDE4LjV2LTM2aC42Yy41LDEuNywxLjMsMy40LDIuNCw0LjksMSwxLjUsMi40LDIuOSwzLjksNCwxLjYsMS4xLDMuMywyLDUuMiwyLjYsMS45LjYtMi4zLjksNi4xLjlzMTQuNi0yLjksMTguOS04LjgsNi40LTE0LjQsNi40LTI1LjYtMi4yLTE5LjctNi40LTI1LjVjLTQuMy01LjktMTAuNi04LjgtMTguOS04LjhaTTExMjYuMSw5NjguMmMwLDQuMS0xLjEsNy40LTMuNCw5LjktMi4zLDIuNS01LjIsMy43LTguNywzLjd2LjJjLTMuNSwwLTYuNC0uOS04LjctMi42LTIuMy0xLjctMy40LTQuMS0zLjQtNy4xdi0xOS40YzAtMywxLjEtNS40LDMuNC03LjEsMi4zLTEuNyw1LjItMi42LDguNy0yLjZzNi40LDEuMiw4LjcsMy43YzIuMywyLjQsMy40LDUuNywzLjQsOS45djExLjRaTTEyMTIuMSw5NTIuNGMwLTcuOS0yLjMtMTMuOC03LTE3LjlzLTE0LjEtNi4xLTIxLTYuMS0xMi40LDEuMS0xNi40LDMuM2MtNC4xLDIuMi03LjQsNS4zLTEwLjEsOS4ybDExLDkuOGMxLjQtMiwzLjItMy44LDUuNC01LjQsMi4yLTEuNiw0LjktMi40LDguOC0yLjRzNi43LjksOC40LDIuOGMxLjcsMS45LDIuNSw0LjQsMi41LDcuNnY0LjFoLTEwLjRjLTguNywwLTE1LjYsMS42LTIwLjYsNS01LjEsMy40LTcuNiw5LjctNy42LDE1LjRzMS43LDEwLjMsNS4yLDEzLjgsMTAuMSw1LjIsMTUuMSw1LjIsOS4yLTEuMSwxMi42LTMuMyw1LjYtNS41LDYuNi05LjdoLjhjLjYsMy41LDIsNi4zLDQuMiw4LjQsMi4yLDIuMSw1LDMuMSw4LjMsMy4xbC4xLjNoMTAuMnYtMTQuNGgtNi4xdi0yOC44Wk0xMTkzLjUsOTc1LjRjMCwzLTEuMSw1LjItMy4zLDYuNS0yLjIsMS4zLTQuOCwyLTcuOSwyaC0uMWMtMi44LDAtNS0uNi02LjQtMS43cy0yLjItMi45LTIuMi01LjN2LTEuOWMwLTQuOSwzLjctNy4zLDEwLjktNy4zaDl2Ny43Wk0xMjgzLjMsOTM0LjljMy41LDQuNSw1LjIsMTAuOSw1LjIsMTkuMnY0MS4xaC0xOC41di0zOS42YzAtNC4yLS43LTcuNC0yLTkuNHMtMy43LTMuMS03LjEtMy4xLTMsLjItNC40LjZjLTEuNC40LTIuNywxLTMuOCwxLjgtMS4xLjgtMiwxLjktMi43LDMuMS0uNywxLjItMSwyLjYtMSw0LjJ2NDIuNWgtMTguNXYtNjUuNmgxOC41djExLjFoLjhjMS4yLTMuNCwzLjItNi40LDYuMS04LjlzNy0zLjgsMTIuMS0zLjgsMTEuOSwyLjIsMTUuMyw2LjhaTTEzNDQuMSw5MjkuN2gxNy4ybC0yNS4yLDc1LjhjLTEuNyw1LjEtNCw4LjgtNy4xLDExLjItMywyLjQtNy40LDMuNi0xMy4xLDMuNmgtMTEuNXYtMTQuNGgxMi40bDIuMi03LjItMjMtNjloMTguNGw5LjYsMzAuNiw0LjgsMTloLjhsNC45LTE5LDkuNi0zMC42Wk03NjEsOTA2LjVoMHMtMzEuMiwwLTMxLjIsMGMtMi4zLDAtNC4xLDEuOC00LjEsNC4xdjgwLjZjMCwyLjMsMS44LDQuMSw0LjEsNC4xaDE2LjljMi4zLDAsNC4xLTEuOCw0LjEtNC4xdi0xOS45aDEwLjJjMjMuNy0uMiwzNS42LTE0LjMsMzUuNi0zMi41cy0xMS44LTMyLjMtMzUuNi0zMi4zWk03NjEuNyw5NTAuNGMtNi45LDAtMTIuNS01LjYtMTIuNS0xMi41czUuNi0xMi41LDEyLjUtMTIuNSwxMi41LDUuNiwxMi41LDEyLjUtNS42LDEyLjUtMTIuNSwxMi41Wk02MzQuOSw5MTAuNnYxMi41YzAsMi4zLTEuOCw0LjEtNC4xLDQuMWgtMjEuOXY2NGMwLDIuMy0xLjgsNC4xLTQuMSw0LjFoLTE2LjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtNjRoLTIxLjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtMTIuNWMwLTIuMywxLjgtNC4xLDQuMS00LjFoNjguN2MyLjMsMCw0LjEsMS44LDQuMSw0LjFaTTcxOCw5MTAuNnYxMi41YzAsMi4zLTEuOCw0LjEtNC4xLDQuMWgtMjEuOXY2NGMwLDIuMy0xLjgsNC4xLTQuMSw0LjFoLTE2LjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtNjRoLTIxLjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtMTIuNWMwLTIuMywxLjgtNC4xLDQuMS00LjFoNjguN2MyLjMsMCw0LjEsMS44LDQuMSw0LjFaTTAsMHY4NjZoMTgzMC4zVjBIMFpNMTgwMS4xLDgzNi45SDI5LjJWMjkuMmgxNzcxLjl2ODA3LjdaTTU3My40LDEyNy41aC0yOS41di0yNi42aDg3LjZ2MjYuNmgtMjkuNnYxNTcuOWgtMjguNVYxMjcuNVpNNjc0LDI4NS40aC0yOC4yVjEwMC45aDI4LjJ2NzUuM2gyOC41di03NS4zaDI4LjV2MTg0LjVoLTI4LjV2LTgyLjVoLTI4LjV2ODIuNVpNODI4LjEsMjg1LjRoLTc0LjNWMTAwLjloNzQuM3YyNi43aC00NS44djQ4LjNoMzN2MjYuN2gtMzN2NTUuMWg0NS44djI3LjdaTTQ4My4xLDU3OWgtNDAuOHYxODYuMmg0Mi4xYzE1LjcsMCwyNy4yLTQuMSwzNC40LTEyLjQsNy4yLTguMiwxMC44LTIxLjQsMTAuOC0zOS41di04My4yYzAtMTcuNC0zLjgtMzAuMy0xMS40LTM4LjYtNy42LTguMy0xOS4zLTEyLjUtMzUuMS0xMi41Wk01MDAuMiw3MTguMWgwYzAsNi43LTEuMiwxMS42LTMuNywxNC44cy02LjIsNC44LTExLjMsNC44aC0xNC41di0xMzEuM2g2LjZjNy45LDAsMTMuNywxLjgsMTcuNCw1LjMsMy43LDMuNSw1LjUsOS4yLDUuNSwxNi44djg5LjZaTTU1MC40LDU3OWg3NC45djI2LjloLTQ2LjJ2NDguOGgzMy4zdjI2LjloLTMzLjN2NTUuNmg0Ni4ydjI3LjloLTc0Ljl2LTE4Ni4xWk02ODYsNTc5aDBzLTQyLjEsMC00Mi4xLDB2MTg2LjJoMjguN3YtNzUuN2gxOS43YzExLjksMCwyMS4zLTUsMjguMi0xNS4xczEwLjMtMjMuOSwxMC4zLTQxLjUtMy41LTMyLjYtMTAuNi00MS4xLTE4LjUtMTIuOC0zNC4yLTEyLjhaTTY5Ny45LDY1Ni43aC0uMWMtMi41LDQuMS03LjIsNi4xLTEzLjgsNi4xaC0xMS4zdi01Ni45aDEwLjNjNy4xLDAsMTIsMS45LDE0LjcsNS44LDIuNywzLjksNCwxMS4xLDQsMjEuNnMtMS4zLDE5LjMtMy44LDIzLjRaTTc2Mi45LDU3OWgtLjFsLTMwLjYsMTg2LjJoMjguMmw2LjItNDAuM2gyOWw1LjgsNDAuM2gyOS41bC0zMC41LTE4Ni4yaC0zNy41Wk03NzAuMSw2OTguNGwxMC4zLTc3LjhoMS44bDkuOCw3Ny44aC0yMS45Wk05MjkuMyw2NjEuMWgtLjFjMi44LTcuMiw0LjItMTYuNyw0LjItMjguMywwLTE4LjktMy41LTMyLjYtMTAuNS00MS4xcy0xOC41LTEyLjgtMzQuMi0xMi44aC00Mi4xdjE4Ni4yaDI4Ljd2LTc4LjNoMTMuNmwxNy44LDc4LjNoMjkuOGwtMjEuMS04Ni41YzYuNC00LjUsMTEuMS0xMC4zLDEzLjktMTcuNVpNOTAwLjQsNjU0Yy0yLjYsNC03LjIsNi0xMy44LDZoLTExLjN2LTU0LjFoMTAuM2M3LDAsMTEuOSwxLjksMTQuNiw1LjYsMi43LDMuNyw0LDEwLjUsNCwyMC4zcy0xLjMsMTguMi0zLjksMjIuMmguMVpNOTQzLjYsNTc5aDg4LjN2MjYuOWgtMjkuOXYxNTkuMmgtMjguN3YtMTU5LjJoLTI5Ljd2LTI2LjlaTTExMjYuMiw1NzloMzguOHYxODYuMmgtMjYuOXYtMTE3LjZjMC0zLjMuMi03LjguNi0xMy41LjQtNS42LjktMTEuOSwxLjYtMTguOS0uNSwyLjUtMSw1LjktMS43LDEwLjMtMS40LDguMy0yLjMsMTMuNy0yLjgsMTYuMWwtMjMuNCwxMjMuNmgtMTQuM2wtMjIuNC0xMjMuOGMtLjktNC45LTEuOC0xMC40LTIuOC0xNi4zLS45LTUuOS0xLjUtOS4yLTEuNy05LjkuNiw2LjMsMS4xLDEyLjMsMS40LDE3LjhzLjUsMTAuNC41LDE0LjZ2MTE3LjZoLTI2Ljd2LTE4Ni4yaDM4LjJsMTguNywxMDMuMWMuNyw0LjEsMS4zLDguNSwxLjcsMTMuMnMuNiw5LjYuNiwxNC43YzAtNC4zLjItOC44LjctMTMuM3MxLjEtOS4zLDItMTQuNHYuMXMxNy45LTEwMy40LDE3LjktMTAzLjRaTTExODcuOSw1NzloNzQuOXYyNi45aC00Ni4ydjQ4LjhoMzMuM3YyNi45aC0zMy4zdjU1LjZoNDYuMnYyNy45aC03NC45di0xODYuMVpNMTM0Ni4xLDU3OWgyNi45djE4Ni4yaC0yNi45bC0zNS0xMDIuOWMtLjItLjQtLjUtMS4xLS43LTEuOS0yLjQtNy4xLTQuMi0xMy4xLTUuNC0xOC4zLDEuMSw2LjUsMS44LDEyLDIuNCwxNi4zLjUsNC40LjgsNy41LjgsOS41djk3LjNoLTI2Ljd2LTE4Ni4yaDI1LjhsMzYuNCwxMTEuMmMuNywyLjEsMS41LDUsMi41LDguNXMyLDcuMywzLDExLjNjLS45LTUuNC0xLjctMTAuNC0yLjMtMTVzLS45LTgtLjktMTAuMWwuMS4xdi0xMDZaTTEzODcuMSw1NzloODguNHYyNi45aC0yOS45djE1OS4yaC0yOC43di0xNTkuMmgtMjkuOHYtMjYuOVpNMTAzLDExOS4yYzAtMTAuMSw4LjItMTguMywxOC4zLTE4LjNzMTguMyw4LjIsMTguMywxOC4zLTguMiwxOC4zLTE4LjMsMTguMy0xOC4zLTguMi0xOC4zLTE4LjNaTTE3MDUsMTE5LjJjMC0xMC4xLDguMi0xOC4zLDE4LjMtMTguM3MxOC4zLDguMiwxOC4zLDE4LjMtOC4yLDE4LjMtMTguMywxOC4zLTE4LjMtOC4yLTE4LjMtMTguM1pNODguNiw3NDkuNGMwLTEwLjEsOC4yLTE4LjMsMTguMy0xOC4zczE4LjMsOC4yLDE4LjMsMTguMy04LjIsMTguMy0xOC4zLDE4LjMtMTguMy04LjItMTguMy0xOC4zWk0xNzA1LDc0Ni44YzAtMTAuMSw4LjItMTguMywxOC4zLTE4LjNzMTguMyw4LjIsMTguMywxOC4zLTguMiwxOC4zLTE4LjMsMTguMy0xOC4zLTguMi0xOC4zLTE4LjNaTTEzMDguNiwzMTZjLTQuNC00LjEtNi42LTkuOC02LjYtMTcuM3MyLjktMTMuNiw4LjgtMTguNmM2LTUuMiwxNC40LTcuNywyMi41LTcuN3MxNC43LDEuOSwxOS42LDUuOGM0LjgsMy44LDcuMSw3LjIsNy4xLDE1LjlzLTIuNywxNS40LTguMywyMC41Yy01LjY5LDUuMDktMTMuMDgsNy41OS0yMi42Niw3LjYtOS4xNywwLTE2LjA1LTIuMTEtMjAuNDQtNi4yWk01MzIuNSw0OTguOGM4LjMsMTAuMSwxOS4xLDE1LDMzLjEsMTVzMzIuNC05LjQsNDQuMy0yOC42bDMuMy01LjMsMi4xLDUuOGMzLjEsOC43LDcuOCwxNS43LDEzLjksMjAuNyw2LjEsNSwxMi41LDcuNCwxOS43LDcuNHMxOS42LTQsMzAtMTEuOWMxLjItLjksMi40LTEuOSwzLjYtMi45bDQuNi0zLjgsMS40LDQuMS42LDIuMWMzLjIsOC4zLDguNiwxMi40LDE2LjMsMTIuNHMxMS4yLTEuNywxNC00LjljMy4xLTMuNSw1LjktMTAuNyw4LjUtMjEuNCwzLjYtMTQuNiw4LjMtMjguNywxNC4xLTQyLDUuOC0xMy4yLDExLjctMjQuMSwxNy43LTMyLjIsNi42LTksMTEuOC0xMy4yLDE2LjUtMTMuMnM2LjkuNiw2LjksOC43LS4yLDUtLjgsMTAuMmMtMi4xLDEwLjctMS4yLDI0LjEsNi4yLDMyLjgsNC4xLDQuOCwxMCw3LjcsMTYuMiw5LDguOCwxLjksMTguNSwxLjQsMjcuMi0uOWw3LjItMS0xLjQsNC41Yy01LjQsMTcuOC0xMC4yLDMyLjUtMTUuMiw0Ni4zLTEuOSw1LjMtMS41LDEwLjEsMS4zLDE0LDMuMiw0LjYsOS4zLDcuNSwxNS44LDcuNXMxNS00LjYsMTcuNy0xMi4zYzguMy0yMy4xLDE1LjktNDcuMywyMi42LTcxLjdsLjQtMS40LDEuMy0uNmM3LTMsMTQtNi4yLDIxLTkuNWw0LjMtMnY0LjhjLS40LDI2LDQuNCw1OS45LDI4LjksNzQuMywxMC4yLDYsMjAuMyw5LDMwLjgsOSwyMS43LDAsNDEuOS0xMi43LDYxLjUtMjVsMS45LTEuMiwxLjcsMS40YzEzLDExLjIsMzAuOSwxNi45LDUzLjIsMTYuOXMzNC42LTQuNCw1MC4yLTEzLjJjMTUuNy04LjgsMjgtMTguNiwzNi41LTI5LDEuMi0xLjQsMi4yLTMuMSwzLjMtNS41bDMuMi03LjIsMi40LDcuNWMxMCwzMS45LDMwLjcsNDcuNCw2My4yLDQ3LjRzMjguNi0zLjksNDAuMi0xMS43YzIuMy0xLjUsNC42LTMuMiw2LjgtNC45bDMtMS4zLDEuNywyLjhjNi41LDEwLjEsMTYuNywxNS4xLDMxLjMsMTUuMXMyNC44LTUuNCwzOC4xLTE2LjFsMy4zLTIuNywxLjQsNCwuNywyLjNjMy4yLDguMyw4LjYsMTIuNCwxNi4zLDEyLjRzMTEuMS0xLjYsMTQtNC45YzMuMS0zLjUsNi0xMC44LDguNS0yMS40LDMuNi0xNC42LDguNC0yOC43LDE0LjMtNDIsNS45LTEzLjIsMTEuNy0yNCwxNy40LTMyLjEsNi40LTkuMiwxMS4yLTEzLjIsMTUuNS0xMy4yczYuOS42LDYuOSw4LjctMS41LDE2LjQtNC43LDMxLjdjLTMuMywxNi45LTQuOSwyOC43LTQuOSwzNS4yLDAsMTIuNSwyLjksMjIuMiw4LjYsMjguNiw1LjYsNi4zLDE0LjEsOS41LDI1LjMsOS41czI3LjMtMy45LDM4LjUtMTEuNmMyLjgtMS45LDUuNS00LDguMi02LjFsMi40LTIsMS44LDIuNWMuMy40LjYuOC44LDEuMi4yLjMuNC43LjcsMSw4LjMsMTAuMSwxOS4xLDE1LDMzLjEsMTVzMTMuNi0xLjcsMTkuNy00LjljNi4xLTMuMiwxMi4zLTYuNywxNi0xMi42bDIuNiwxLTIuMywxNS4xLS45LjdjLTM2LjMsMjgtNjEuMyw1MS45LTc0LjQsNzEtMTIuOSwxOC44LTE5LjUsMzYuNi0xOS41LDUyLjhzMy41LDIwLjQsMTAuNiwyNy4zYzcuMSw3LDE2LjEsMTAuNCwyNy42LDEwLjQsMjQuMywwLDQ0LjEtMTcuNCw1OC45LTUxLjYsMTEuOC0yNy4yLDIxLjgtNjIuOSwyOS45LTEwNmwuMi0xLjIuOS0uN2MxNy41LTEyLjksMzUuMy0yNC45LDUzLjEtMzUuNyw2LjEtMy43LDUuMy05LjQsNC43LTExLjdsLS43LjJjLTEuMi00LjMtNS04LjYtMTAtOC42cy0zLjYuNi01LjQsMS42Yy05LjgsNi0yMC4yLDEyLjctMzIuNSwyMS4xbC01LjUsMywxLTYuN2MuOS02LjcsMy4yLTIwLjQsNi44LTQxLjEsNC44LTI5LjYsNy45LTQ5LjQsOC45LTU3LjEuMi0xLjYuMy0zLjcuMy02LjRzLS40LTYuNi0yLjUtOC4xYy0xLjQtMS00LjQtMi4xLTEwLjktMi4xaC0zLjJjLS4zLS42LS43LTEuMy0xLjItMS45LTMuNS00LjMtOC45LTYuOC0xNC04LjctMi42LTEtNS4xLTEuNC03LjUtMS42LTEuMi0uMi0yLjgtLjQtNC44LS40LTE1LjcsMC0zMC44LDUtNDQuOSwxNS0xNC4yLDEwLTI1LjcsMjMuNS0zNC4zLDQwLTguNiwxNi41LTEyLjksMzQuMy0xMi45LDUyLjgsMCw0Ljk5LDAsNy41MS4wMiw4LjU3bC0uMTIuNDNzLTIuOSwyLjgtMy43LDMuNWMtNy4yLDYuNC0xMy40LDkuNS0xOC45LDkuNXMtMTMuMy0yLjItMTMuMy0xNy4zLDIuMi0yMC42LDYuOC00MS43YzUuMi0yNCw3LjgtNDAuNyw3LjgtNDkuOCwwLTEzLjgtNi40LTIwLjItMjAuMi0yMC4ycy0xNS41LDIuNi0yNC40LDcuOGMtOS4xLDUuMy0xOC40LDE0LjMtMjcuOSwyNi43LTUuMyw2LjktOS44LDE0LjQtMTMuOCwyMi4xLTIuMyw0LjQtNC40LDguOC02LjQsMTMuMy0xLjEsMi40LTIuMSw0LjgtMy4xLDcuMi0uNSwxLjItMSwyLjUtMS41LDMuNy0uNCwxLS43LDIuMS0xLjMsMy0uMi4yLS40LjUtLjYuNy0uOC44LTIuMiwxLjItMy4yLjctLjktLjQtMS40LTEuMy0xLjctMi4zLS4yLTEuMiwwLTIuNC4yLTMuNS4xLTEuMy4zLTIuNi40LTMuOS4zLTIuNS42LTQuOS45LTcuMy42LTQuMiwxLjItOC40LDItMTIuNSwxLjQtNy4yLDMuNC0xNS42LDUuOC0yNS4yLDQuMy0xNi4yLDUuMy0yMi41LDUuMy0yNXMtLjUtMy43LTEuNC00LjNjLS44LS41LTMtMS4zLTguNC0xLjMtOC4yLDAtMTQuNiwxLjUtMTguOSw0LjNzLTcuNCw3LjQtOS4zLDEzLjZjLTguNywyNy40LTEzLjEsNTYuOC0xMy4xLDg3LjR2NS4yYy4xLDAtLjcuOS0uNy45LTIuOSwzLTUuNiw1LjgtNy45LDcuOS03LjEsNi41LTEzLDkuNy0xOC4xLDkuN3MtOS45LTIuNi0xMi4zLTcuNGMtMi00LTMtOS41LTMuMS0xNy4zLjEtMS40LjMtMi45LjItNC42di0uOWMtLjEsMCwwLS4zLDAtLjMuOC0xMC4zLDMuNi0yNi42LDguNC00OC42LDQuNC0yMS40LDYuNy0zNS4xLDYuNy00MC44czAtOS4yLTE1LjItOS4yLTEyLjMsMS4yLTE1LjMsMy42Yy0zLjEsMi41LTUuNiw3LjItNy42LDE0LjItNC4yLDE0LjQtNy44LDMwLTEwLjUsNDYuNi0yLjcsMTYuNi00LjEsMzAuMy00LjEsNDAuOHMuMSwzLjcuMiw1LjVsLjIsMi4xLS4zLDEuOC0xLjEsMWMtMS40LDEuMi0yLjgsMi40LTQuMSwzLjUtOC40LDYuNi0xOC4yLDkuOS0yOSw5LjlzLTIzLjktNS41LTMwLjMtMTYuNWMtMi40LTQuMi00LjQtOS44LTYtMTYuOC0yLjktMjEuNC0zLjYtNDMuMi0yLjItNjQuOWwuMi0yLjhoMjcuMWMzNy40LDAsMzcuNC0xNi4zLDM3LjQtMjEuN3MtMS02LjYtMS42LTcuMmMtMS4xLTEuMS0zLjItMS42LTYuMS0xLjZoLTUzLjJsLjYtMy41YzUuNS0zMS44LDE1LjUtNjUuMSwzMC41LTEwMiwyLjEtNS4xLDEuOC05LjgtLjctMTMuNi0zLTQuNS05LjItNy40LTE1LjktNy40cy0xNS4zLDQuNS0xOC40LDEyLjFjLTE2LDM5LjMtMjYuNCw3NS44LTMxLjgsMTExLjhsLS40LDIuNWgtMjQuN2MtNS42LDAtMTMuMSwxLjgtMTMuMSwxN3MxLDguNCwyLjksMTAuNWMxLjMsMS40LDQuNSwzLDEyLjMsM2gxNy4xbC0uMiwzLjJjLS43LDEwLjctMS4xLDIxLjMtMS4xLDMxLjZzLjMsMTQsLjksMjEuMWwuMiwyLjFjLTMuMi0uNy02LjMuMy04LjgsMi40LS45LjYtMS44LDEuNC0yLjcsMi40LTEwLjIsMTIuNC0yMi41LDIyLjUtMzYuNCwzMC4yLTE0LjEsNy43LTI2LjksMTEuNi0zOC4xLDExLjYtMTcuOCwwLTMwLjEtNi0zNi42LTE4bC0xLjgtMy40LDMuOC0uOWMyNy40LTYuNyw0Ny4xLTE1LjksNTguNS0yNy4zLDExLjItMTEuMiwxNi44LTI0LjcsMTYuOC00MC4ycy0zLjktMjMuNy0xMS42LTMxLjNjLTcuOC03LjctMTgtMTEuNS0zMS4xLTExLjVzLTI4LjMsNC00MCwxMmMtMTEuOCw4LTIxLjEsMTktMjcuOCwzMi42LTYuNywxMy43LTEwLjEsMjguNy0xMC4xLDQ0LjZzLjgsMTUuNCwyLjUsMjIuM2wuNSwyLTEuNywxLjJjLTEyLjgsOS0yNC45LDE3LjUtNDMuNiwxNy41LTYuMiwwLTExLjMtMi40LTE1LjItNy0xMS44LTEzLjgtOS40LTQ0LjgtNi45LTYyLjFsLjItMS40LDEuMi0uN2MyMS41LTEyLjgsNDIuNy0yNy4zLDYzLTQzLjEsNS41LTQuMyw3LjQtOS44LDUuNC0xNS42LTIuNi03LjYtMTEuMi0xMy42LTE5LjYtMTMuNnMtOC4yLDEuNC0xMS44LDQuMmMtMTkuNCwxNS4xLTQwLjUsMjkuMi02My4yLDQxLjktMS4yLjQtMi4yLDEtMy41LDEuOWwtMi45LDEuNmMtMy4xLDEuOC02LjMsMy41LTkuNSw1LjJsLTEyLjgsNi44LDEuMy02LjNjMTIuNy01OS4xLDE5LjktMTE5LjQsMjEuNC0xNzkuMy4xLTQuOS0xLjMtOS00LjMtMTIuMS0zLjItMy4zLTgtNS4xLTEzLjItNS4xLTguNywwLTE4LjIsNS40LTE4LjUsMTcuNC0xLjcsNjcuNi0xMS4xLDEzNS44LTI3LjgsMjAyLjZsLS40LDEuNi0xLjYuNWMtNy43LDIuNS0xNS4zLDQtMjIuNCw0LjVoLTEuMmwtLjktLjZjLTMuMi0yLjYtNC44LTctNC44LTEzczEtOC43LDIuOS0xOC40YzIuMS0xMS43LDMuMi0xOS4xLDMuMi0yMiwwLTEzLjgtNi40LTIwLjItMjAuMi0yMC4ycy0xNS41LDIuNi0yNC40LDcuOGMtOSw1LjMtMTguNCwxNC4yLTI3LjksMjYuNy0zLjQsNC41LTYuNSw5LjMtOS40LDE0LjItMi40LDMuNC00LjcsNy02LjksMTAuNi0yLjMsMy44LTQuNSw3LjYtNi44LDExLjQtMS4yLDEuOS01LjksMTAuOS04LjUsMTEuMiwwLTEsLjEtMiwuMi0zLC4yLTEuOC40LTMuNi42LTUuNC40LTMuNC44LTYuOSwxLjQtMTAuMy40LTIuNS44LTUsMS4zLTcuNSwxLjQtNy4yLDMuMy0xNS42LDUuOC0yNS4yLDQuMy0xNi4yLDUuMy0yMi41LDUuMy0yNXMtLjUtMy43LTEuNS00LjNjLS44LS41LTMtMS4zLTguNC0xLjMtOC4yLDAtMTQuNSwxLjUtMTguOSw0LjMtNC4zLDIuOS03LjQsNy4zLTkuMywxMy42LTguNywyNy40LTEzLjEsNTYuOC0xMy4xLDg3LjR2NS4xYy4xLDAtLjcuOS0uNy45LTMsMy4yLTUuOCw2LTguMiw4LjItNy4xLDYuNC0xMy4xLDkuNS0xOC40LDkuNXMtNi45LTEuNS05LjMtNC4zYy0yLjItMi43LTMuNC02LjItMy40LTEwLjUsMC0xMC45LDIuOC0zMC4zLDguMy01Ny43LDMuNS0xOC42LDUuMy0zMC40LDUuMy0zNS4ycy0xLjYtOS41LTE0LjUtOS41aC0uN2MtLjMtLjYtLjctMS4yLTEuMi0xLjgtMy41LTQuMy04LjktNi44LTE0LTguNy0zLjctMS40LTcuMS0xLjctMTAuNS0xLjYtMS4xLS4yLTIuNS0uMy00LjQtLjMtMTUuNywwLTMwLjgsNS00NC45LDE1LTE0LjIsMTAtMjUuNywyMy41LTM0LjMsNDAtOC41LDE2LjUtMTIuOSwzNC4zLTEyLjksNTIuOHM0LjIsMzAuMSwxMi41LDQwLjNaTTE2MDAuMiw1NTQuMmMtNi45LDMxLjMtMTQuMyw1NC41LTIxLjksNjktOC4xLDE1LjUtMTUuNiwyMy0yMi44LDIzcy04LjgtMi45LTEwLjMtNS40Yy0xLjgtMy4xLTIuNy03LTIuNy0xMS41LDAtMTAuMSw0LjItMjEuOCwxMi42LTM0LjgsOC4yLTEyLjgsMjEuOC0yNy4zLDQwLjItNDMuMmw2LjgtNS44LTEuOSw4LjdoMFpNMTU3Myw0MjAuMmM1LjItMTIuMywxMi4yLTIyLjMsMjAuOC0yOS45LDguOC03LjcsMTguNi0xMS44LDI5LTEyaDMuN2wtMTIuMSw2NC42aC4xYy0yLjIsMTIuOC02LDIyLjktMTEuMywyOS45LTUuNiw3LjQtMTEuNywxMS4yLTE4LjEsMTEuMnMtMTEuMS0yLjItMTQuNi02LjRjLTMuNC00LjEtNS4yLTEwLjMtNS4yLTE4LjQsMC0xMy43LDIuNi0yNi44LDcuNy0zOVpNMTUyNyw0NjMuNmwuMiwyLjEtLjQxLDEuNDRjLjA1LTEuNDkuMTItNC4yNy4yMS0zLjU0Wk0xMDU1LjMsMzk3LjZoMGM2LjYtMTEuMiwxNS0xNi44LDI0LjktMTYuOHM5LjMsMS43LDEyLjQsNS4xYzMsMy4zLDQuNSw3LjYsNC41LDEyLjksMCw5LjctNC40LDE4LjMtMTMuMiwyNS41LS44LjctMS43LDEuNC0yLjYsMi0xMC43LDYuMy0yMy4xLDguNS0zNS40LDYuNi40LTEzLjYsMy42LTI1LjUsOS40LTM1LjNaTTU2Niw0MjAuMmM1LjItMTIuMywxMi4yLTIyLjMsMjEtMjkuOSw5LTcuNywxOC45LTExLjcsMjkuNi0xMmgzLjdsLTE0LDY5LjNoLjFjLTIuMiwxMC42LTUuOSwxOS4zLTEwLjksMjUuOS01LjMsNi45LTExLjIsMTAuNS0xNy40LDEwLjVzLTExLjEtMi4yLTE0LjYtNi40Yy0zLjUtNC4xLTUuMi0xMC4xLTUuMi0xOC40LDAtMTMuNywyLjYtMjYuOCw3LjctMzlaTTE0NCw2NjcuOGMtMy42LTUuOS0zLjgtMTIuNy0uNi0xOS4xLDU3LjgtMTE1LjEsMTA0LjMtMjUwLjMsMTQ2LjMtNDI1LjQsMi4zLTkuNSwxMi41LTEzLjcsMTkuNS0xMy43czE2LDMuNiwxNy44LDEzLjZjMTAsNTQuOCwyMi41LDExOS40LDQwLjMsMTgyLjhsMS43LDYsMy42LTUuMWM0MS41LTU4LjEsNzkuNS0xMjAsMTE2LjItMTc5LjhsNy4yLTExLjhjMy43LTYuMiw5LjktOS42LDE1LjYtOS42czExLjUsMi44LDE1LjQsNy41YzQsNC43LDUuNiwxMC45LDQuNCwxNy4yLTMuMywxOC40LTcuMiwzNy4xLTExLDU1LjItNy45LDM4LjEtMTYuMSw3Ny41LTE5LjksMTE3djEuNmMtNy4xLDc2LTIuMiwxMTcuNSwxNS4xLDEyNywxLjIuNywyLjcsMiwxLjksNS4zLTEuNyw2LjgtMTIuNywxNy0yNS43LDE3cy0yMy4yLTEwLjMtMjkuNy0yOS42Yy0xMS4xLTMzLjQtMS0xMjQuOSw1LjktMTY4LjcuNS0zLjEsMS02LjIsMS42LTkuMi4yLS43LjMtMS40LjQtMi4xLjItMSwuNi0yLC41LTMuMS0uMi0xLjktMi4yLTIuNi0zLjktMi40LS41LDAtMS4xLjItMS41LjUtLjcuNi0xLjEsMS41LTEuNiwyLjMtLjYsMS0xLjEsMi4xLTEuNywzLjEtMS4zLDIuMS0yLjYsNC4xLTQsNi4yaC4yYy0yLjIsMy40LTQuNSw2LjgtNi43LDEwLjItNC4zLDYuNS04LjYsMTMtMTIuOSwxOS41LTQuMSw2LjItOC4zLDEyLjQtMTIuNSwxOC41LTQsNS45LTgsMTEuNy0xMi4xLDE3LjUtNCw1LjYtNy45LDExLjItMTEuOSwxNi43LTMuOSw1LjMtNy44LDEwLjYtMTEuNywxNS45LTMuOCw1LjEtNy42LDEwLjItMTEuNSwxNS4yLTQuNSw1LjgtOS42LDkuMy0xOCw5LjNzLTE1LTUuMi0xNy44LTEzLjhjLS4zLTEuMS0uNy0yLjMtMS4xLTMuNS0yLTYuNS00LTEzLjEtNi0xOS42LTItNi43LTQtMTMuNS01LjktMjAuMy0xLjktNy4xLTMuOC0xNC4xLTUuNy0yMS4yLTItNy4zLTMuOC0xNC43LTUuNi0yMi4xLTEuOS03LjctMy43LTE1LjQtNS41LTIzLjEtLjktMy45LTEuOC03LjktMi43LTExLjktLjQtMi4xLS45LTQuMS0xLjMtNi4xLS4zLTEuNi0uNS0zLjMtMi00LjItMS4xLS42LTIuNS0uNS0zLjQuMi0xLjEuOS0xLjIsMi40LTEuNiwzLjctLjUsMS41LS45LDMuMS0xLjMsNC42LS45LDMuMS0xLjcsNi4yLTIuNiw5LjMtMi4yLDcuNy00LjQsMTUuNC02LjYsMjMuMS0yLjIsNy42LTQuNCwxNS4xLTYuNywyMi43LTIuMyw3LjQtNC42LDE0LjktNi45LDIyLjMtMi4zLDcuMy00LjYsMTQuNi03LDIxLjktMi4zLDcuMi00LjcsMTQuNC03LjEsMjEuNS0yLjMsNy4xLTQuNywxNC4xLTcuMiwyMS4xLTIuNCw2LjktNC44LDEzLjgtNy4zLDIwLjctMi41LDYuOC01LDEzLjUtNy41LDIwLjMtMi41LDYuNy01LDEzLjQtNy42LDIwLTIuNiw2LjYtNS4yLDEzLjEtNy44LDE5LjYtMi42LDYuNC01LjIsMTIuOC03LjksMTkuMi0yLjcsNi4zLTUuNCwxMi42LTguMSwxOC45LTIuNyw2LjItNS40LDEyLjMtOC4yLDE4LjUtMi44LDYuMS01LjYsMTIuMi04LjQsMTguMi0yLjgsNi01LjYsMTEuOS04LjUsMTcuOS0yLjgsNS44LTUuNywxMS43LTguNiwxNy41LTQuMSw4LTcuNiw5LjctMTQuNiw5LjdzLTE0LjMtNC4zLTE4LjItMTAuNloiPjwvcGF0aD48L3N2Zz4=" alt="The Marketing Department">
+  <div class="text-block">
+    <h1 class="title">منصة القيمة من الطازج</h1>
+    <p class="subtitle">توصية وخطة تجربة للقرار</p>
+  </div>
+  <div class="versioning"><span>رد على موجز منصة القيمة، النسخة 3</span><span>نوفمبر 2026</span></div>
+</section></div></div>
+
+<!-- 2 EXEC SUMMARY -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">02</div>
+  <div class="header">
+    <div class="crumb">الخلاصة | التوصية والقرار</div>
+    <div class="title">نوصي بتجربة منصة مشوية فردية 6 أسابيع قبل أي تعميم</div>
+  </div>
+  <div class="quad">
+    <div class="q"><div class="k">ماذا نوصي</div><h4>10 أصناف فردية من 12 إلى 20، 8 منها مشوية</h4><p>السعر = مجموع الأصناف ناقص 10%. المشروب ترقية منفصلة: +4 و+5 و+6. الحملة: "نفس الجمر".</p></div>
+    <div class="q"><div class="k">لماذا</div><h4>المشوي تحت 20 بلا مالك، والطازج يملك أقوى منتج فيه</h4><p>لا منصة قيمة مشوية عند أي سلسلة كبرى <span class="src">رصد</span>. الفروج 24% من مبيعات الطازج <span class="src">مبيعات</span>.</p></div>
+    <div class="q"><div class="k">الأثر المتوقع</div><h4>زيارات غداء وسناك إضافية، بفاتورة محمية عند ترقية المشروب</h4><p>الحجم الفعلي يُقاس في التجربة. لا نقدّره قبل أرقام التكلفة <span class="src gap">ناقص</span>.</p></div>
+    <div class="q ask"><div class="k">القرار المطلوب اليوم</div><h4>اعتماد تجربة 6 أسابيع بمعايير نجاح وتوقف متفق عليها</h4><p>ومعها: مشاركة بيانات التكلفة، اختيار اسمين للاختبار، وبدء تطوير "نفس الجمر".</p></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>ابدأ بالقرار لا بالسوق. أكّد أننا لا نطلب إطلاقًا شاملًا، بل تجربة تحمي القرار. لا تذكر أرقام أثر لا نملكها، وقل صراحة إن الحجم يُقاس في التجربة.</p></details></div>
+
+<!-- 3 SECTION A -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">3</div><div class="bignum">01</div>
+  <div class="content"><p class="kicker">لماذا</p><h2 class="name">فرصة في المشوي، وعائقان</h2></div>
+</section></div></div>
+
+<!-- 4 MARKET -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
+  <div class="page-num">04</div>
+  <div class="header">
+    <div class="crumb">لماذا | السوق</div>
+    <div class="title">السوق يتنافس على 15 ريال بالمقلي، والمشوي تحت 20 بلا مالك</div>
+  </div>
+  <div class="rc">
+    <div style="position:absolute;top:0;bottom:0;left:0;right:210px;">
+    <div class="zone" style="right:30.000%;width:20.000%"><span class="zone-lbl" style="right:0">نطاق المنصة: 12 إلى 20</span></div>
+    <div class="anchor" style="right:37.500%"></div>
+    </div>
+    <div style="position:relative">
+    <div class="row"><div class="lbl"><b>بوبايز</b> | عائلة الكفو</div><div class="track"><div class="rbar" style="right:24.975%;width:25.000%"></div><span class="val" style="right:calc(49.975% + 10px)">9.99 - 19.99</span></div></div>
+    <div class="row"><div class="lbl"><b>تكساس</b> | ميغا بايتس</div><div class="track"><div class="rbar mark" style="right:24.975%;width:0.000%"></div><span class="val" style="right:calc(24.975% + 10px)">9.99</span></div></div>
+    <div class="row"><div class="lbl"><b>كنتاكي</b> | قائمة Worth It</div><div class="track"><div class="rbar" style="right:32.500%;width:15.000%"></div><span class="val" style="right:calc(47.500% + 10px)">13 - 19</span></div></div>
+    <div class="row"><div class="lbl"><b>برجر كنج</b> | منيو كنج التوفير</div><div class="track"><div class="rbar" style="right:37.500%;width:12.475%"></div><span class="val" style="right:calc(49.975% + 10px)">15 - 19.99</span></div></div>
+    <div class="row"><div class="lbl"><b>هرفي</b> | منيو الكفو</div><div class="track"><div class="rbar" style="right:37.500%;width:20.000%"></div><span class="val" style="right:calc(57.500% + 10px)">15 - 23</span></div></div>
+    <div class="row"><div class="lbl"><b>شاورمر</b> | تمكيس في كيس</div><div class="track"><div class="rbar" style="right:40.000%;width:27.500%"></div><span class="val" style="right:calc(67.500% + 10px)">16 - 27</span></div></div>
+    <div class="row"><div class="lbl"><b>صب واي</b> | وجبات قائمة التوفير</div><div class="track"><div class="rbar" style="right:50.000%;width:10.000%"></div><span class="val" style="right:calc(60.000% + 10px)">20 - 24</span></div></div>
+    <div class="row"><div class="lbl"><b>ماكدونالدز</b> | منيو التسكيتة</div><div class="track"><div class="rbar" style="right:50.000%;width:12.500%"></div><span class="val" style="right:calc(62.500% + 10px)">20 - 25</span></div></div>
+    <div class="row"><div class="lbl"><b>البيك</b> | بدون منصة</div><div class="track"><div class="rbar mark" style="right:55.000%;width:0.000%"></div><span class="val" style="right:calc(55.000% + 10px)">22</span></div></div>
+    <div class="row"><div class="lbl"><b>كودو</b> | بدون منصة</div><div class="track"><div class="rbar" style="right:60.000%;width:32.500%"></div><span class="val" style="right:calc(92.500% + 10px)">24 - 37</span></div></div>
+    <div class="row"><div class="lbl"><b>الرومانسية</b> | ربع شواية والتكتكة</div><div class="track"><div class="rbar grill" style="right:67.500%;width:15.000%"></div><span class="val" style="right:calc(82.500% + 10px)">27 - 33</span></div></div>
+    <div class="row"><div class="lbl us"><b>الطازج اليوم</b> | وجبات المنيو</div><div class="track"><div class="rbar us" style="right:50.000%;width:37.500%"></div><span class="val" style="right:calc(87.500% + 10px)">20 - 35</span></div></div>
+    </div>
+    <div class="axis"><div></div><div class="ticks"><span style="right:0.000%;">0</span><span style="right:12.500%;">5</span><span style="right:25.000%;">10</span><span style="right:37.500%;color:#92112d;font-weight:700">15</span><span style="right:50.000%;">20</span><span style="right:62.500%;">25</span><span style="right:75.000%;">30</span><span style="right:87.500%;">35</span><span style="right:100.000%;">40</span></div></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:#2f3e75"></i>مقلي أو برجر لحم أو شاورما</span>
+    <span><i style="background:#33716b"></i>دجاج مشوي</span>
+    <span><i style="background:#fcbf2c"></i>الطازج اليوم</span>
+  </div>
+  <div class="footnote">رصد 19 أكتوبر 2026، بالريال شاملة الضريبة. كنتاكي وماكدونالدز والبيك وكودو بأسعار تطبيقات التوصيل. أرخص مشوي عند سلسلة كبرى: الرومانسية 28 شامل أرز وجانبين وبيبسي صغير.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>النزول تحت 15 يضعنا في سباق مع علامات أكبر في المقلي. التميز المتاح في المنتج لا في الرقم. إن سُئلت عن المطاعم المحلية: محل محلي يبيع ربعًا مع أرز بـ 16 بلا مشروب، لكنه ليس سلسلة.</p></details></div>
+
+<!-- 5 ASSET -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
+  <div class="page-num">05</div>
+  <div class="header">
+    <div class="crumb">لماذا | الأصل</div>
+    <div class="title">أقوى منتج عند الطازج غائب عن شريحة القيمة</div>
+  </div>
+  <div class="hb">
+    <div class="row"><div class="lbl us">الفروج</div><div class="track"><div class="b us" style="width:82.00%"></div><span class="v" style="right:calc(82.00% + 8px)">24.4%</span></div></div>
+    <div class="row"><div class="lbl">البروست</div><div class="track"><div class="b" style="width:59.15%"></div><span class="v" style="right:calc(59.15% + 8px)">17.6%</span></div></div>
+    <div class="row"><div class="lbl">كرسبي رول</div><div class="track"><div class="b" style="width:29.24%"></div><span class="v" style="right:calc(29.24% + 8px)">8.7%</span></div></div>
+    <div class="row"><div class="lbl">كرسبي برجر</div><div class="track"><div class="b" style="width:17.14%"></div><span class="v" style="right:calc(17.14% + 8px)">5.1%</span></div></div>
+    <div class="row"><div class="lbl">ساندوتش الكباب</div><div class="track"><div class="b" style="width:13.44%"></div><span class="v" style="right:calc(13.44% + 8px)">4.0%</span></div></div>
+    <div class="row"><div class="lbl">برجر عربي</div><div class="track"><div class="b" style="width:9.41%"></div><span class="v" style="right:calc(9.41% + 8px)">2.8%</span></div></div>
+    <div class="row"><div class="lbl">محمص صاج</div><div class="track"><div class="b" style="width:6.39%"></div><span class="v" style="right:calc(6.39% + 8px)">1.9%</span></div></div>
+    <div class="row"><div class="lbl">تندوري 360</div><div class="track"><div class="b" style="width:4.70%"></div><span class="v" style="right:calc(4.70% + 8px)">1.4%</span></div></div>
+  </div>
+  <div class="side">
+    <div class="so"><h4>الفروج ربع المبيعات</h4><p>24.4% من مبيعات 2025، ولا توجد منه صيغة فردية في المنيو اليوم <span class="src">منيو</span>.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>ربع الفروج يُدخل الصنف الأقوى في مناسبة جديدة، الغداء الفردي، بدل أن يبقى منتج عائلة فقط.</p></div>
+    <div class="so"><h4>الخطر</h4><p>قد يسحب من الفروج الكامل. لذلك يدخل مؤشره في معايير التوقف.</p></div>
+  </div>
+  <div class="footnote">حصص المبيعات من ملف Product Mix 2025.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اعترف بخطر السحب من الفروج الكامل قبل أن يُسأل عنه، وأحِل إلى شريحة الأسوار ومعايير التجربة.</p></details></div>
+
+<!-- 6 MEAL STEP -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">06</div>
+  <div class="header">
+    <div class="crumb">لماذا | العائق الأول</div>
+    <div class="title">الفجوة ليست في سعر الساندوتش، بل في قفزة الوجبة</div>
+  </div>
+  <div class="body" style="left:560px">
+    <table class="tmd">
+      <thead><tr><th>العلامة والصنف</th><th>الساندوتش</th><th>الوجبة</th><th>القفزة</th></tr></thead>
+      <tbody>
+        <tr><td class="k">برجر كنج، كنج تشيكن راب</td><td>10</td><td>15</td><td>+5</td></tr>
+        <tr><td class="k">هرفي، دبل ماكس</td><td>10</td><td>15</td><td>+5</td></tr>
+        <tr><td class="k">الطازج، محمص صاج</td><td>11</td><td>20</td><td>+9</td></tr>
+        <tr><td class="k">الطازج، كرسبي برجر</td><td>12</td><td>20</td><td>+8</td></tr>
+        <tr><td class="k">الطازج، بريوش مشوي</td><td>17</td><td>24</td><td>+7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="side">
+    <div class="so"><h4>ساندوتشات الطازج قريبة من السوق</h4><p>11 إلى 12 ريال، مقابل 10 عند برجر كنج وهرفي <span class="src">رصد</span>.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>فصل المشروب عن الأكل يعالج القفزة مباشرة، دون المساس بسعر أي صنف.</p></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا تقل إن أسعار الطازج مرتفعة. قل إن تركيبة الوجبة هي ما يرفعها، وهذا ما يبرر فصل المشروب.</p></details></div>
+
+<!-- 7 CHANNEL -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">07</div>
+  <div class="header">
+    <div class="crumb">لماذا | العائق الثاني</div>
+    <div class="title">فرق التطبيقات يلغي أي سعر قيمة ما لم نحدد سياسة القناة</div>
+  </div>
+  <div class="lede-top">وجبة محمص صاج 20 في الموقع و24.95 في هنقرستيشن. وجبة فروج 31 و36.95. الفرق 19 إلى 25% <span class="src">رصد</span>. حصة كل قناة <span class="src gap">ناقص</span></div>
+  <div class="opts">
+    <div class="opt"><span class="tag">خيار أ</span><h4>نفس السعر في كل القنوات</h4><p>كما يفعل برجر كنج وشاورمر.</p><dl><dt>الوصول</dt><dd>الأعلى</dd><dt>الهامش</dt><dd>تأكله العمولة</dd></dl></div>
+    <div class="opt"><span class="tag">خيار ب</span><h4>الفرع والتطبيق فقط</h4><p>كما تفعل بوبايز مع وجبة 9.99.</p><dl><dt>الوصول</dt><dd>الأقل</dd><dt>الهامش</dt><dd>محمي بالكامل</dd></dl></div>
+    <div class="opt rec"><span class="tag">خيار ج: توصيتنا</span><h4>الأرخص في القنوات المملوكة، والباقي في التوصيل</h4><p>أصناف 12 و13 في الفرع والتطبيق. من 14 فما فوق في تطبيقات التوصيل بسعر القناة.</p><dl><dt>الوصول</dt><dd>متوسط</dd><dt>الهامش</dt><dd>محمي، والزيارة تتجه للقنوات المملوكة</dd></dl></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>القرار النهائي يعتمد على عمولات التطبيقات، وهي عند الطازج. اطلبها صراحة في هذه الشريحة.</p></details></div>
+
+<!-- 8 TRADE-DOWN MATH -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">08</div>
+  <div class="header">
+    <div class="crumb">لماذا | قلق الموجز</div>
+    <div class="title">خطر النزول حقيقي، لكن السعر يجعله محايدًا لمن يأخذ مشروبًا</div>
+  </div>
+  <div class="tk" style="top:200px;height:370px">
+    <div class="line" style="bottom:286px"><span>وجبة محمص صاج الحالية 20</span></div>
+    <div class="c"><div class="val">15</div><div class="bar" style="height:214px"></div><div class="lb">صاج وبطاطس بلا مشروب</div></div>
+    <div class="c"><div class="val">19</div><div class="bar" style="height:271px"></div><div class="lb">+ بيبسي صغير</div></div>
+    <div class="c"><div class="val">20</div><div class="bar hi" style="height:286px"></div><div class="lb">+ بيبسي وسط</div></div>
+    <div class="c"><div class="val">21</div><div class="bar hi" style="height:300px"></div><div class="lb">+ بيبسي كبير</div></div>
+  </div>
+  <div class="side" style="top:230px;width:440px">
+    <div class="so"><h4>أين الخسارة فعلًا</h4><p>عميل الوجبة الحالية يخسر 5 ريال فقط إن طلب بلا مشروب. مع الوسط تتساوى الفاتورة.</p></div>
+    <div class="so"><h4>ماذا يعني للبيزنس</h4><p>نسبة ترقية المشروب هي المؤشر الحاسم في التجربة، لا عدد الطلبات وحده.</p></div>
+    <div class="so"><h4>ما لا نعرفه</h4><p>الحسبة إيراد لا هامش. حجم البطاطس والمشروب في الوجبة الحالية <span class="src gap">ناقص</span></p></div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>أقوى شريحة أمام المالية. لا تفترض هامش المشروب رقمًا، حتى لو كان معروفًا أنه عالٍ عادة. اطلب التكلفة.</p></details></div>
+
+<!-- 9 SECTION B -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">9</div><div class="bignum">02</div>
+  <div class="content"><p class="kicker">ماذا</p><h2 class="name">منصة فردية بقاعدتين وأربعة أسوار</h2></div>
+</section></div></div>
+
+<!-- 10 MENU -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">10</div>
+  <div class="header">
+    <div class="crumb">ماذا | المنيو</div>
+    <div class="title">10 أصناف بقاعدة سعر واحدة: المجموع ناقص 10%</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>الصنف (اسم مؤقت)</th><th>المكونات</th><th>مجموع الأصناف اليوم</th><th>ناقص 10%</th><th>سعر المنصة</th></tr></thead>
+      <tbody>
+        <tr><td>تشيزي بوكس</td><td>4 قطع تشيزي ناجتس، بطاطس صغير</td><td class="was">7 + 6 = 13 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">11.7</td><td class="price">12 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>سيخ صاج<span class="badge new">جديد</span></td><td>سيخ كباب في خبز صاج مع ثومية، بطاطس صغير</td><td class="was">6 + 1 + 1 + 6 = 14 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">12.6</td><td class="price">13 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr class="hero"><td>ربع فروج<span class="badge">البطل</span></td><td>ربع فروج مشوي، بطاطس صغير، خبز صاج، ثومية</td><td class="was">6.25 + 6 + 1 + 1 = 14.25 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">12.825</td><td class="price">13 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>ربع تندوري<span class="badge new">جديد</span></td><td>ربع تندوري 360، خبز صاج، ثومية</td><td class="was">14 + 1 + 1 = 16 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">14.4</td><td class="price">14 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>صاج وبطاطس</td><td>محمص صاج، بطاطس صغير</td><td class="was">11 + 6 = 17 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">15.3</td><td class="price">15 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>كباب وحمص</td><td>ساندوتش كباب، حمص</td><td class="was">11 + 7 = 18 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">16.2</td><td class="price">16 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>دجاج وذرة</td><td>ساندوتش دجاج مشوي، ذرة</td><td class="was">11 + 7 = 18 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">16.2</td><td class="price">16 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>صحن كباب<span class="badge new">جديد</span></td><td>سيخين كباب، أرز الطازج، صوص دقوس</td><td class="was">12 + 6 + 1 = 19 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">17.1</td><td class="price">17 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>مشوي ومقرمش</td><td>محمص صاج، 5 قطع ناجتس</td><td class="was">11 + 8 = 19 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">17.1</td><td class="price">17 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+        <tr><td>برجر عربي وملفوف<span class="badge new">فوق 18</span></td><td>برجر عربي، سلطة ملفوف</td><td class="was">16 + 6 = 22 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td><td class="was">19.8</td><td class="price">20 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">الأسعار من موقع الطازج، وسيخ الكباب من منيو الكاونتر سبتمبر 2026. الربع محسوب كربع سعر الفروج (25) ونصف سعر تندوري 360 (28 لنصف دجاجة)، ويُعتمد بعد تسعير الطازج. برجر عربي وملفوف يتجاوز سقف 18.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا نخترع أسعارًا لتطابق السوق، كل سعر مشتق من منيو الطازج. اعترف أن برجر عربي وملفوف (20) فوق السقف، واعرض حذفه. اعترف أن أسعارنا مع المشروب ليست الأرخص، وهذا مقصود: نتنافس بالمشوي.</p></details></div>
+
+<!-- 11 DRINK -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark st rtl">
+  <div class="page-num">11</div>
+  <div class="header">
+    <div class="title">ترقية المشروب تعيد الفاتورة إلى مستوى الوجبة الحالية أو أعلى</div>
+    <div class="subtitle">"زِدها بيبسي" بجانب كل صنف، بثلاثة أحجام</div>
+  </div>
+  <div class="body">
+    <div class="sc"><div class="num"><small>+</small>4</div><div class="name">صغير</div><div class="unit">بدل 6 منفردًا</div></div>
+    <div class="sc"><div class="num"><small>+</small>5</div><div class="name">وسط</div><div class="unit">بدل 7 منفردًا (افتراض)</div></div>
+    <div class="sc"><div class="num"><small>+</small>6</div><div class="name">كبير</div><div class="unit">بدل 8 منفردًا (افتراض)</div></div>
+  </div>
+  <p class="caption"><span>أكبر خصم على الأكل 2 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>، وأقل ترقية 4 <svg class="sar" viewBox="0 0 1124.14 1256.39" aria-label="ريال"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>. المنصة لا تخفض الفاتورة إلا لمن يرفض المشروب.</span><span>لذلك نقيس النجاح بنسبة الترقية ومتوسط فاتورة الفرع ككل، لا بعدد الطلبات فقط.</span></p>
+  <div class="footnote">سعر البيبسي الصغير 6 من منيو الطازج. الوسط والكبير محسوبان من ترقية الحجم الحالية (+1 و+2). فرصة لبحث تمويل مشترك مع بيبسيكو، وشروط الاتفاقية غير معروفة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اقترح التمويل المشترك مع بيبسيكو دون وعد. أسعار الوسط والكبير افتراض حتى يؤكدها الطازج.</p></details></div>
+
+<!-- 12 GUARDRAILS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">12</div>
+  <div class="header">
+    <div class="crumb">ماذا | الحماية</div>
+    <div class="title">أربعة أسوار تحصر المنصة في زيارات جديدة لا منقولة</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>السور</th><th>الآلية</th><th>المؤشر الذي يكشف انكساره</th></tr></thead>
+      <tbody>
+        <tr><td class="k">المناسبة</td><td>فردي فقط، بلا باقات عائلية أو مشاركة</td><td>حصة المنصة في طلبات العائلة</td></tr>
+        <tr><td class="k">المنتج</td><td>الفروج الكامل والبريوش المشوي وأرز الكباب خارج المنصة بسعرها</td><td>مبيعات هذه الأصناف في فروع التجربة مقابل المرجعية</td></tr>
+        <tr><td class="k">الفاتورة</td><td>خصم 10% فقط، والمشروب منفصل بثلاثة أحجام</td><td>نسبة ترقية المشروب، ومتوسط فاتورة الفرع</td></tr>
+        <tr><td class="k">القناة</td><td>أصناف 12 و13 في الفرع والتطبيق فقط</td><td>توزيع طلبات المنصة حسب القناة</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">المفاضلة: الأسوار تقلل الوصول، خاصة في التوصيل، مقابل حماية الهامش. صحن كباب (17) قريب من أرز الكباب (24)، ويُختبر تحديدًا في التجربة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>كل سور له مؤشر. إذا سُئلت "كيف نعرف أنه نجح؟" أشر إلى العمود الأخير.</p></details></div>
+
+<!-- 13 SECTION C -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">13</div><div class="bignum">03</div>
+  <div class="content"><p class="kicker">الفكرة الإبداعية</p><h2 class="name">كيف نقول قيمة بدون أن نقول رخيص</h2></div>
+</section></div></div>
+
+<!-- 14 REVEAL -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">14</div>
+  <div class="reveal">
+    <div class="big">نفس الجمر.</div>
+    <div class="line2">ما عندنا جمر للغالي وجمر للرخيص.</div>
+    <div class="small">فروج العائلة وربع الفروج الفردي يطلعان من الشواية نفسها. نثبت الجودة قبل أن نقول السعر، فيبقى السعر دليلًا صغيرًا لا بطلًا، وتبقى صورة الطازج كما هي.</div>
+  </div>
+  <div class="footnote">الحقيقة التي نبني عليها: العميل يقبل حجمًا أقل، ولا يقبل جودة أقل. فرضية تُختبر في أبحاث التجربة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>توقف بعد السطر الأول. لا تشرح كثيرًا. الفكرة تخدم الهدف الثالث في الموجز: حماية العلامة.</p></details></div>
+
+<!-- 15 BEHAVIOR MAP -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">15</div>
+  <div class="header">
+    <div class="crumb">الفكرة الإبداعية | السلوك</div>
+    <div class="title">الفكرة تنقل العميل من "أطلب الأرخص" إلى "أجرب المشوي في الغداء"</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>السلوك المستهدف</th><th>التنفيذ</th><th>المؤشر التجاري</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">تجربة أولى</td><td>تحدي تذوق أعمى: مشوي الطازج مقابل وجبات القيمة المقلية في السوق</td><td>عملاء جدد ومنقطعون</td></tr>
+        <tr><td class="tier">تكرار</td><td>بطاقة ولاء في التطبيق: كل 4 طلبات، ترقية مشروب مجانية</td><td>تكرار الطلب خلال 30 يومًا</td></tr>
+        <tr><td class="tier">وقت جديد</td><td>"ساعة الجمر" من 12 إلى 3 أيام الدوام، إعلانات جغرافية حول المكاتب والجامعات</td><td>معاملات وقت الغداء</td></tr>
+        <tr><td class="tier">فاتورة محمية</td><td>"زِدها بيبسي" عند الكاشير وفي التطبيق</td><td>نسبة ترقية المشروب</td></tr>
+        <tr><td class="tier">صورة العلامة</td><td>الفيلم الرئيسي "نفس الجمر"، والسعر صغير داخل شارة خطوط الشوي</td><td>صورة "طازج ومشوي وجودة" قبل وبعد</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>هذا ما يحوّل الإبداع من رأي إلى أداة قابلة للقياس. كل تنفيذ له مؤشر.</p></details></div>
+
+<!-- 16 NAMES -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">16</div>
+  <div class="header">
+    <div class="crumb">الفكرة الإبداعية | الاسم</div>
+    <div class="title">نطلب اختيار اسمين من 6 لاختبارهما في التجربة</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>الاسم</th><th>ماذا يقول</th><th>لماذا يناسب</th><th>ما ننتبه له</th></tr></thead>
+      <tbody>
+        <tr><td class="k">ع الفحم</td><td>المشوي مباشرة</td><td>يملك المساحة الفارغة ويفرّقنا عن منصات الزيت</td><td>وصف أكثر منه اسم</td></tr>
+        <tr><td class="k">على قد يومك</td><td>الحجم والمناسبة</td><td>يربط القيمة باليوم والشبع، لا بالسعر</td><td>طويل على شارة المنيو</td></tr>
+        <tr><td class="k">مشويّك</td><td>وجبتك الفردية</td><td>شخصي، ويخدم سور المناسبة</td><td>قريب من أسماء أصناف</td></tr>
+        <tr><td class="k">يومي</td><td>عادة يومية</td><td>يصنع موعد الغداء، وسهل في التطبيق</td><td>عام، يحتاج هوية بصرية قوية</td></tr>
+        <tr><td class="k">خطوط</td><td>خطوط الشوي</td><td>الاسم هو الشارة على التغليف</td><td>يحتاج شرح في أول حملة</td></tr>
+        <tr><td class="k">الشوّاية</td><td>مطبخ الطازج</td><td>يحيل للمصدر، ويخدم "نفس الجمر"</td><td>قد يُفهم كمكان لا كمنيو</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">تجنبنا كلمات المنافسين: كفو، توفير، تسكيتة. أسماء مذكرة يوليو (الفزعة، المنقذ، الزنقات) مدخل سابق لم يُعتمد. الاسم المختار يحتاج فحص تسجيل.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>لا تدافع عن اسم بعينه. اطلب اسمين للاختبار في فرعين مختلفين، وليقرر الأداء.</p></details></div>
+
+<!-- 17 SECTION D -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">17</div><div class="bignum">04</div>
+  <div class="content"><p class="kicker">كيف</p><h2 class="name">نقيس قبل أن نعلن</h2></div>
+</section></div></div>
+
+<!-- 18 PILOT -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">18</div>
+  <div class="header">
+    <div class="crumb">كيف | التجربة</div>
+    <div class="title">التجربة تجيب على سؤال واحد: هل المنصة تضيف زيارات أكثر مما تنقل؟</div>
+  </div>
+  <div class="lede-top">6 فروع تجربة مقابل 6 فروع مرجعية متشابهة في المدينة والحجم، لمدة 6 أسابيع <span class="src as">افتراض</span></div>
+  <div class="body" style="top:220px">
+    <table class="tmd">
+      <thead><tr><th>المعيار</th><th>الحد المقترح للاتفاق</th><th>مصدر القياس</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">نمو المعاملات</td><td>أعلى من المرجعية بـ 5% على الأقل</td><td>نقاط البيع</td></tr>
+        <tr><td class="tier">ترقية المشروب</td><td>50% أو أكثر من طلبات المنصة</td><td>نقاط البيع والتطبيق</td></tr>
+        <tr><td class="tier">فاتورة الفرع ككل</td><td>لا تنخفض أكثر من 3%</td><td>نقاط البيع</td></tr>
+        <tr><td class="tier">الفروج الكامل</td><td>لا ينخفض أكثر من 5% عن المرجعية</td><td>نقاط البيع</td></tr>
+        <tr class="hero"><td class="tier">معيار التوقف</td><td>إذا جاءت أكثر من 40% من طلبات المنصة من عملاء الوجبات الأساسية، نعيد التصميم</td><td>التطبيق والولاء</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">كل الحدود مقترحة للنقاش، والأهم الاتفاق عليها قبل البدء. قياس السحب يعتمد على الطلبات المعرّفة عبر التطبيق والولاء، ونسبتها غير معروفة.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>الأرقام مقترحة. شدد أن قيمتها في الاتفاق المسبق: لا نقيّم النتائج بمعايير نختارها بعدها.</p></details></div>
+
+<!-- 19 ROLLOUT -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light pc-flow rtl">
+  <div class="page-num">19</div>
+  <div class="header">
+    <div class="title">بعد التجربة نطلق في 4 مراحل، ولكل قناة دور واحد</div>
+    <div class="subtitle">السوشال للإثبات، الرقمي للغداء، الفرع للترقية، التطبيق للتكرار، التوصيل للظهور</div>
+  </div>
+  <div class="body">
+    <div class="phases">
+      <div class="phase active"><span class="n">01</span><h4>التجربة</h4><span class="duration">الأسابيع 1 إلى 6</span><p>فروع تجربة ومرجعية، اسمان، وقياس أسبوعي.</p></div>
+      <div class="phase"><span class="n">02</span><h4>القرار</h4><span class="duration">الأسبوعان 7 و8</span><p>تعميم أو تعديل أو توقف حسب المعايير. حذف الأصناف الضعيفة.</p></div>
+      <div class="phase"><span class="n">03</span><h4>التشويق</h4><span class="duration">أسبوعان</span><p>"نفس الجمر" بلا سعر وبلا اسم. محتوى الشواية وتحدي التذوق.</p></div>
+      <div class="phase"><span class="n">04</span><h4>الإطلاق والترسيخ</h4><span class="duration">من بعدها</span><p>كشف الاسم والمنيو، ساعة الجمر، بطاقة الولاء، وصنف الأسبوع.</p></div>
+    </div>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>ميزانية الإنتاج والإعلام تُقدَّم بعد اعتماد الاتجاه والفروع. لا نضع رقمًا الآن.</p></details></div>
+
+<!-- 20 RISKS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">20</div>
+  <div class="header">
+    <div class="crumb">كيف | المخاطر</div>
+    <div class="title">أكبر 4 مخاطر لها معالجة محددة قبل الإطلاق</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>الخطر</th><th>الاحتمال</th><th>المعالجة</th></tr></thead>
+      <tbody>
+        <tr><td class="k">تعارض مع منيو "الواحد واحد" (11 ريال)</td><td><span class="pill h">عالٍ إن أُطلقا معًا</span></td><td>قرار تموضع قبل التجربة: دمج أو فصل (ملحق م4)</td></tr>
+        <tr><td class="k">سحب من الوجبات الأساسية</td><td><span class="pill m">متوسط</span></td><td>ترقية المشروب، ومعيار توقف متفق عليه</td></tr>
+        <tr><td class="k">ضعف الجذب لأن السعر ليس الأرخص</td><td><span class="pill m">متوسط</span></td><td>"نفس الجمر" وتحدي التذوق، ومراجعة الأصناف بعد التجربة</td></tr>
+        <tr><td class="k">ضغط تشغيلي من الأرباع في الذروة</td><td><span class="pill u">غير معروف</span></td><td>اختبار في فروع التجربة، وسقف يومي للأرباع</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>الخطر الأول يُحسم قبل الاجتماع لا فيه. إن لم يُحسم، اعرض الخيارين في الملحق واطلب قرارًا.</p></details></div>
+
+<!-- 21 DECISION -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">21</div>
+  <div class="header">
+    <div class="crumb">القرار</div>
+    <div class="title">المطلوب اعتماده اليوم: 4 قرارات تبدأ التجربة خلال أسبوعين</div>
+  </div>
+  <div class="body">
+    <table class="tmd">
+      <thead><tr><th>القرار</th><th>المسؤول عند الطازج</th><th>التوقيت</th></tr></thead>
+      <tbody>
+        <tr><td class="k">1. الاتجاه وقاعدة التسعير: ناقص 10%، والمشروب منفصل</td><td>الإدارة التنفيذية</td><td>اليوم</td></tr>
+        <tr><td class="k">2. التجربة: عدد الفروع، ومعايير النجاح والتوقف</td><td>العمليات والمالية</td><td>خلال أسبوع</td></tr>
+        <tr><td class="k">3. البيانات: التكلفة والهامش، أسعار الربع والمشروب، العمولات، نقاط البيع</td><td>المالية والرقمي</td><td>خلال أسبوع</td></tr>
+        <tr><td class="k">4. اختيار اسمين، وبدء تطوير "نفس الجمر"</td><td>التسويق</td><td>خلال أسبوع</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">الخطوة التالية من TMD: خلال أسبوع من استلام البيانات نسلّم خطة التجربة التفصيلية وتقدير ميزانية الإنتاج والإعلام.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اختم بسؤال مباشر: "هل نعتمد التجربة بهذه المعايير؟"</p></details></div>
+
+<!-- 22 APPENDIX DIVIDER -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
+  <div class="page-num">22</div><div class="bignum">م</div>
+  <div class="content"><p class="kicker">الملحق</p><h2 class="name">تفاصيل الإثبات</h2></div>
+</section></div></div>
+
+<!-- 23 A1 COMPETITORS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
+  <div class="page-num">23</div>
+  <div class="header">
+    <div class="crumb">ملحق م1 | المنافسون</div>
+    <div class="title">منصات القيمة المرصودة: الأسعار والرسائل والقنوات</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>العلامة</th><th>المنصة</th><th>نطاق الوجبات</th><th>الرسالة أو الأسلوب</th><th>القناة المرصودة</th></tr></thead>
+      <tbody>
+        <tr><td class="tier">برجر كنج</td><td>منيو كنج التوفير</td><td>15 إلى 19.99</td><td>فئة سعرية في المنيو</td><td>الموقع والتطبيق</td></tr>
+        <tr><td class="tier">هرفي</td><td>منيو الكفو</td><td>15 إلى 23</td><td>شارة وسلم أحجام</td><td>الموقع</td></tr>
+        <tr><td class="tier">بوبايز</td><td>عائلة الكفو</td><td>9.99 إلى 19.99</td><td>شخصيات لكل وجبة</td><td>داخل الفروع</td></tr>
+        <tr><td class="tier">تكساس</td><td>ميغا بايتس</td><td>9.99</td><td>الرقم هو البطل</td><td>سوشال</td></tr>
+        <tr><td class="tier">كنتاكي</td><td>Worth It</td><td>13 إلى 19</td><td>غير مرصود</td><td>نينجا</td></tr>
+        <tr><td class="tier">شاورمر</td><td>تمكيس في كيس</td><td>16 إلى 27</td><td>اختر بسعر ثابت</td><td>الموقع والتطبيق</td></tr>
+        <tr><td class="tier">ماكدونالدز</td><td>منيو التسكيتة</td><td>20 إلى 25</td><td>شارة في المنيو</td><td>هنقرستيشن</td></tr>
+        <tr><td class="tier">صب واي</td><td>قائمة التوفير</td><td>20 إلى 24</td><td>غير مرصود</td><td>الموقع</td></tr>
+        <tr><td class="tier">الرومانسية</td><td>ربع شواية والتكتكة</td><td>27 إلى 33</td><td>بوكسات مشوية</td><td>الموقع والتطبيق</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">المصدر: ملف Value Platform Benchmark، رصد 19 أكتوبر 2026.</div>
+</section></div></div>
+
+<!-- 24 A2 OPS/CHANNELS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">24</div>
+  <div class="header">
+    <div class="crumb">ملحق م2 | القنوات</div>
+    <div class="title">لكل قناة دور واحد وأصناف محددة</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>القناة</th><th>الدور</th><th>الفعل الرئيسي</th><th>الأصناف</th></tr></thead>
+      <tbody>
+        <tr><td class="k">السوشال</td><td>الإثبات</td><td>الفيلم، تحدي التذوق، صنّاع محتوى في يوم دوام</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">الرقمي المدفوع</td><td>الوصول وقت الغداء</td><td>استهداف جغرافي حول المكاتب والجامعات، وإعلانات البحث</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">الفرع</td><td>التحويل والترقية</td><td>لوحة منيو مستقلة، شارة خطوط الشوي، "تزيدها بيبسي؟"</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">تطبيق الطازج</td><td>التكرار</td><td>بطاقة الولاء، إشعارات ساعة الجمر</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">تطبيقات التوصيل</td><td>الظهور</td><td>قسم أعلى المنيو، ظهور مدفوع وقت الغداء، ترقية المشروب كخيار</td><td>من 14 فما فوق</td></tr>
+        <tr><td class="k">الرسائل</td><td>استعادة المنقطعين</td><td>لمن لم يطلب خلال 90 يومًا: ترقية مشروب مجانية مع أول طلب</td><td>كل الأصناف</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section></div></div>
+
+<!-- 25 A3 STAKEHOLDERS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
+  <div class="page-num">25</div>
+  <div class="header">
+    <div class="crumb">ملحق م3 | التوافق المسبق</div>
+    <div class="title">7 أطراف نراجع معهم التوصية قبل الاجتماع</div>
+  </div>
+  <div class="body">
+    <table class="tmd sm">
+      <thead><tr><th>الطرف</th><th>ما يهمه</th><th>الاعتراض المتوقع</th><th>ما نحسمه قبل العرض</th></tr></thead>
+      <tbody>
+        <tr><td class="k">الرئيس التنفيذي</td><td>النمو وصورة العلامة</td><td>"لا نريد أن نُرى رخيصين"</td><td>"نفس الجمر"، والتجربة قبل الإطلاق</td></tr>
+        <tr><td class="k">المالية</td><td>الهامش والسحب</td><td>"الخصم يأكل الهامش"</td><td>حسبة الفاتورة، ومعيار التوقف، والتكلفة</td></tr>
+        <tr><td class="k">العمليات</td><td>سرعة الخدمة</td><td>"الأرباع تبطئ الذروة"</td><td>الفروع، والسقف اليومي</td></tr>
+        <tr><td class="k">التسويق</td><td>البريوش والناتشو</td><td>"تزاحم مع إطلاق البريوش"</td><td>البريوش خارج المنصة، والتوقيت</td></tr>
+        <tr><td class="k">فريق "الواحد واحد"</td><td>مصير المبادرة</td><td>"لدينا منصة 11 ريال"</td><td>الدمج أو الفصل</td></tr>
+        <tr><td class="k">الرقمي</td><td>العمولات والأنظمة</td><td>"النظام لا يدعم الأحجام"</td><td>قدرة نقاط البيع، وسعر التوصيل</td></tr>
+        <tr><td class="k">علاقة بيبسيكو</td><td>شروط الاتفاقية</td><td>"لا نسعّر المشروب كما نشاء"</td><td>أسعار الأحجام، والتمويل المشترك</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnote">هذه جلسات تحضير فعلية لم تتم بعد.</div>
+</section></div></div>
+
+<!-- 26 A4 WAHED WAHED -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light rtl">
+  <div class="page-num">26</div>
+  <div class="header">
+    <div class="crumb">ملحق م4 | الواحد واحد</div>
+    <div class="title">منصتا قيمة معًا تربكان العميل: نحتاج قرار دمج أو فصل</div>
+  </div>
+  <div class="lede-top">"الواحد واحد": ستة أصناف بـ 11، وخلها وجبة +5 و+7 و+8، بحملتي "بين وبين" و"الحيرة الحلوة". حالة الاعتماد <span class="src gap">ناقص</span></div>
+  <div class="opts" style="grid-template-columns:1fr 1fr">
+    <div class="opt rec"><span class="tag">الخيار أ: دمج</span><h4>منصة واحدة بدرجتين</h4><p>"الواحد واحد" بـ 11 تصبح درجة الدخول للمفرد، والمنصة المشوية درجة الوجبة الفردية. "بين وبين" تصبح فكرة مناسبة السناك، و"نفس الجمر" فكرة العلامة.</p><dl><dt>المكسب</dt><dd>قصة واحدة، وتكامل بين السناك والغداء</dd><dt>الكلفة</dt><dd>توحيد منطق سعر الوجبة (+5 مقابل المشروب المنفصل)</dd></dl></div>
+    <div class="opt"><span class="tag">الخيار ب: فصل</span><h4>منصة واحدة فقط تُطلق</h4><p>نختار الأنسب للهدف: "الواحد واحد" لتوزيع المبيعات على ستة أصناف، أو المنصة المشوية لامتلاك المشوي في شريحة القيمة.</p><dl><dt>المكسب</dt><dd>وضوح كامل للعميل والفرع</dd><dt>الكلفة</dt><dd>نؤجل إحدى الفكرتين</dd></dl></div>
+  </div>
+</section></div></div>
+
+<!-- 27 A5 GAPS -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide light ct rtl">
+  <div class="page-num">27</div>
+  <div class="header">
+    <div class="title">ما نحتاجه من الطازج، وما افترضناه</div>
+    <div class="subtitle">ملحق م5: الفجوات والافتراضات</div>
+  </div>
+  <div class="body">
+    <div class="col accent"><div class="num">ناقص · الأرقام</div><h3>التكلفة والقنوات.</h3><p>التكلفة والهامش لكل صنف ومشروب. عمولات التطبيقات وحصة كل قناة. نسبة الطلبات المعرّفة عبر التطبيق والولاء.</p></div>
+    <div class="col"><div class="num">ناقص · التشغيل</div><h3>الأنظمة والمنيو.</h3><p>قدرة نقاط البيع على الأحجام. جدوى الأرباع. تعارض الأسعار: وجبة الدجاج 27 في الموقع و23 في الكاونتر، وبوكس المزاج 35 و26.</p></div>
+    <div class="col"><div class="num">افتراض</div><h3>ما نؤكده معكم.</h3><p>سعر الربع نسبي من الكامل. الوسط والكبير = الصغير +1 و+2. عدد الفروع ومعايير التجربة مقترحة. "يقبل حجمًا أقل لا جودة أقل" فرضية تُختبر.</p></div>
+  </div>
+</section></div></div>
+
+<!-- 28 CLOSING -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark end">
+  <img class="logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGZpbGw9IiNmZmZmZmYiIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODMwLjMgMTA3MC40Ij48cGF0aCBkPSJNNDkxLjUsOTA4LjFsLTI4LjgsODcuMmgxOS4ybDYuMi0yMC44aDI5LjFsNi4yLDIwLjhoMjBsLTI4LjQtODcuMmgtMjMuNVpNNDkyLjYsOTU4LjRsOS42LTMzLjFoLjZsOS44LDMzLjFoLTIwWk04NzMuNCw5NjYuOGwxNS41LDljLTMuMiw2LjctNy41LDExLjgtMTIuOCwxNS40LTUuMywzLjYtMTIsNS40LTIwLjEsNS40di4yYy01LjksMC0xMS4yLS45LTE2LTIuOHMtOC44LTQuNy0xMi4xLTguNC01LjktOC4zLTcuOC0xMy45Yy0xLjgtNS41LTIuOC0xMi0yLjgtMTkuNHMuOS0xMy45LDIuOC0xOS42YzEuOC01LjcsNC40LTEwLjUsNy44LTE0LjQsMy4zLTMuOSw3LjQtNi44LDEyLjEtOC44czEwLjEtMywxNi0zLDE0LjgsMS42LDIwLDQuOWM1LjIsMy4zLDkuNSw4LjUsMTIuNiwxNS42bC0xNi40LDguNWMtMS4yLTMuNy0zLTYuNi01LjQtOC44LTIuNS0yLjItNi4xLTMuMy0xMC44LTMuM3MtMTAuMSwxLjgtMTMuNCw1LjQtNS4xLDguOS01LjEsMTUuOHYxNGMwLDYuOSwxLjcsMTIuMiw1LjEsMTUuOHM3LjksNS40LDEzLjQsNS40LDguNC0xLjMsMTEuMi0zLjgsNC45LTUuNiw2LjItOS4yWk05NTAuMyw5MzcuNGMtMi42LTIuOS01LjgtNS4yLTkuNi02LjgtMy44LTEuNi04LjEtMi40LTEyLjktMi40cy05LjEuOC0xMi45LDIuNC03LDMuOC05LjYsNi44Yy0yLjcsMi45LTQuNyw2LjYtNi4xLDEwLjgtMS40LDQuMi0yLjEsOS0yLjEsMTQuMnMuNywxMCwyLjEsMTQuMmMxLjUsNC4zLDMuNSw3LjksNi4xLDEwLjlzNS44LDUuMyw5LjYsNi45YzMuOCwxLjYsOC4xLDIuNCwxMi45LDIuNHM5LjEtLjgsMTIuOS0yLjRjMy44LTEuNiw2LjktMy45LDkuNi02LjlzNC43LTYuNyw2LjEtMTAuOWMxLjQtNC4yLDIuMS05LDIuMS0xNC4ycy0uNy0xMC0yLjEtMTQuMmMtMS41LTQuMi0zLjUtNy44LTYuMS0xMC44Wk05MzkuMyw5NjkuMmMwLDQuMS0xLDcuMy0zLDkuNnMtNC44LDMuNC04LjUsMy40LTYuNS0xLjItOC41LTMuNC0zLTUuNC0zLTkuNnYtMTMuNGMwLTQuMSwxLTcuMywzLTkuNnM0LjgtMy40LDguNS0zLjQsNi41LDEuMiw4LjUsMy40LDMsNS40LDMsOS42djEzLjRaTTEwNjEuOSw5MzVjMy40LDQuNiw1LjEsMTAuOSw1LjEsMTkuMnY0MS4xaC0xOC41di0zOS42YzAtOC4zLTMtMTIuNS05LTEyLjVzLTUuMi44LTcuNSwyLjRjLTIuMiwxLjYtMy40LDQtMy40LDcuMnY0Mi41aC0xOC41di0zOS42YzAtOC4zLTMtMTIuNS05LTEyLjVzLTIuNi4yLTMuOS42Yy0xLjMuNC0yLjUsMS0zLjUsMS44cy0xLjksMS45LTIuNSwzLjFjLS42LDEuMi0uOSwyLjYtLjksNC4ydjQyLjVoLTE4LjVsLS4yLS4xdi02NS42aDE4LjV2MTEuMWguOGMxLjItMy41LDMuMi02LjUsNi04LjksMi44LTIuNSw2LjctMy43LDExLjYtMy43czguMywxLjEsMTEuNSwzLjRjMy4yLDIuMiw1LjUsNS41LDYuOSw5LjloLjRjLjYtMS44LDEuNS0zLjYsMi43LTUuMiwxLjItMS42LDIuNy0zLDQuNC00LjIsMS44LTEuMiwzLjctMi4xLDUuOS0yLjgsMi4yLS43LDQuNS0xLjEsNy0xLjEsNi4zLDAsMTEuMiwyLjIsMTQuNiw2LjhaTTExMjAuMSw5MjguMmMtNC4yLDAtOCwxLjItMTEuMywzLjVzLTUuNCw1LjMtNi4zLDloLS42di0xMWgtMTguNXYuMnMwLDkwLjYsMCw5MC42aDE4LjV2LTM2aC42Yy41LDEuNywxLjMsMy40LDIuNCw0LjksMSwxLjUsMi40LDIuOSwzLjksNCwxLjYsMS4xLDMuMywyLDUuMiwyLjYsMS45LjYtMi4zLjksNi4xLjlzMTQuNi0yLjksMTguOS04LjgsNi40LTE0LjQsNi40LTI1LjYtMi4yLTE5LjctNi40LTI1LjVjLTQuMy01LjktMTAuNi04LjgtMTguOS04LjhaTTExMjYuMSw5NjguMmMwLDQuMS0xLjEsNy40LTMuNCw5LjktMi4zLDIuNS01LjIsMy43LTguNywzLjd2LjJjLTMuNSwwLTYuNC0uOS04LjctMi42LTIuMy0xLjctMy40LTQuMS0zLjQtNy4xdi0xOS40YzAtMywxLjEtNS40LDMuNC03LjEsMi4zLTEuNyw1LjItMi42LDguNy0yLjZzNi40LDEuMiw4LjcsMy43YzIuMywyLjQsMy40LDUuNywzLjQsOS45djExLjRaTTEyMTIuMSw5NTIuNGMwLTcuOS0yLjMtMTMuOC03LTE3LjlzLTE0LjEtNi4xLTIxLTYuMS0xMi40LDEuMS0xNi40LDMuM2MtNC4xLDIuMi03LjQsNS4zLTEwLjEsOS4ybDExLDkuOGMxLjQtMiwzLjItMy44LDUuNC01LjQsMi4yLTEuNiw0LjktMi40LDguOC0yLjRzNi43LjksOC40LDIuOGMxLjcsMS45LDIuNSw0LjQsMi41LDcuNnY0LjFoLTEwLjRjLTguNywwLTE1LjYsMS42LTIwLjYsNS01LjEsMy40LTcuNiw5LjctNy42LDE1LjRzMS43LDEwLjMsNS4yLDEzLjgsMTAuMSw1LjIsMTUuMSw1LjIsOS4yLTEuMSwxMi42LTMuMyw1LjYtNS41LDYuNi05LjdoLjhjLjYsMy41LDIsNi4zLDQuMiw4LjQsMi4yLDIuMSw1LDMuMSw4LjMsMy4xbC4xLjNoMTAuMnYtMTQuNGgtNi4xdi0yOC44Wk0xMTkzLjUsOTc1LjRjMCwzLTEuMSw1LjItMy4zLDYuNS0yLjIsMS4zLTQuOCwyLTcuOSwyaC0uMWMtMi44LDAtNS0uNi02LjQtMS43cy0yLjItMi45LTIuMi01LjN2LTEuOWMwLTQuOSwzLjctNy4zLDEwLjktNy4zaDl2Ny43Wk0xMjgzLjMsOTM0LjljMy41LDQuNSw1LjIsMTAuOSw1LjIsMTkuMnY0MS4xaC0xOC41di0zOS42YzAtNC4yLS43LTcuNC0yLTkuNHMtMy43LTMuMS03LjEtMy4xLTMsLjItNC40LjZjLTEuNC40LTIuNywxLTMuOCwxLjgtMS4xLjgtMiwxLjktMi43LDMuMS0uNywxLjItMSwyLjYtMSw0LjJ2NDIuNWgtMTguNXYtNjUuNmgxOC41djExLjFoLjhjMS4yLTMuNCwzLjItNi40LDYuMS04LjlzNy0zLjgsMTIuMS0zLjgsMTEuOSwyLjIsMTUuMyw2LjhaTTEzNDQuMSw5MjkuN2gxNy4ybC0yNS4yLDc1LjhjLTEuNyw1LjEtNCw4LjgtNy4xLDExLjItMywyLjQtNy40LDMuNi0xMy4xLDMuNmgtMTEuNXYtMTQuNGgxMi40bDIuMi03LjItMjMtNjloMTguNGw5LjYsMzAuNiw0LjgsMTloLjhsNC45LTE5LDkuNi0zMC42Wk03NjEsOTA2LjVoMHMtMzEuMiwwLTMxLjIsMGMtMi4zLDAtNC4xLDEuOC00LjEsNC4xdjgwLjZjMCwyLjMsMS44LDQuMSw0LjEsNC4xaDE2LjljMi4zLDAsNC4xLTEuOCw0LjEtNC4xdi0xOS45aDEwLjJjMjMuNy0uMiwzNS42LTE0LjMsMzUuNi0zMi41cy0xMS44LTMyLjMtMzUuNi0zMi4zWk03NjEuNyw5NTAuNGMtNi45LDAtMTIuNS01LjYtMTIuNS0xMi41czUuNi0xMi41LDEyLjUtMTIuNSwxMi41LDUuNiwxMi41LDEyLjUtNS42LDEyLjUtMTIuNSwxMi41Wk02MzQuOSw5MTAuNnYxMi41YzAsMi4zLTEuOCw0LjEtNC4xLDQuMWgtMjEuOXY2NGMwLDIuMy0xLjgsNC4xLTQuMSw0LjFoLTE2LjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtNjRoLTIxLjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtMTIuNWMwLTIuMywxLjgtNC4xLDQuMS00LjFoNjguN2MyLjMsMCw0LjEsMS44LDQuMSw0LjFaTTcxOCw5MTAuNnYxMi41YzAsMi4zLTEuOCw0LjEtNC4xLDQuMWgtMjEuOXY2NGMwLDIuMy0xLjgsNC4xLTQuMSw0LjFoLTE2LjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtNjRoLTIxLjhjLTIuMywwLTQuMS0xLjgtNC4xLTQuMXYtMTIuNWMwLTIuMywxLjgtNC4xLDQuMS00LjFoNjguN2MyLjMsMCw0LjEsMS44LDQuMSw0LjFaTTAsMHY4NjZoMTgzMC4zVjBIMFpNMTgwMS4xLDgzNi45SDI5LjJWMjkuMmgxNzcxLjl2ODA3LjdaTTU3My40LDEyNy41aC0yOS41di0yNi42aDg3LjZ2MjYuNmgtMjkuNnYxNTcuOWgtMjguNVYxMjcuNVpNNjc0LDI4NS40aC0yOC4yVjEwMC45aDI4LjJ2NzUuM2gyOC41di03NS4zaDI4LjV2MTg0LjVoLTI4LjV2LTgyLjVoLTI4LjV2ODIuNVpNODI4LjEsMjg1LjRoLTc0LjNWMTAwLjloNzQuM3YyNi43aC00NS44djQ4LjNoMzN2MjYuN2gtMzN2NTUuMWg0NS44djI3LjdaTTQ4My4xLDU3OWgtNDAuOHYxODYuMmg0Mi4xYzE1LjcsMCwyNy4yLTQuMSwzNC40LTEyLjQsNy4yLTguMiwxMC44LTIxLjQsMTAuOC0zOS41di04My4yYzAtMTcuNC0zLjgtMzAuMy0xMS40LTM4LjYtNy42LTguMy0xOS4zLTEyLjUtMzUuMS0xMi41Wk01MDAuMiw3MTguMWgwYzAsNi43LTEuMiwxMS42LTMuNywxNC44cy02LjIsNC44LTExLjMsNC44aC0xNC41di0xMzEuM2g2LjZjNy45LDAsMTMuNywxLjgsMTcuNCw1LjMsMy43LDMuNSw1LjUsOS4yLDUuNSwxNi44djg5LjZaTTU1MC40LDU3OWg3NC45djI2LjloLTQ2LjJ2NDguOGgzMy4zdjI2LjloLTMzLjN2NTUuNmg0Ni4ydjI3LjloLTc0Ljl2LTE4Ni4xWk02ODYsNTc5aDBzLTQyLjEsMC00Mi4xLDB2MTg2LjJoMjguN3YtNzUuN2gxOS43YzExLjksMCwyMS4zLTUsMjguMi0xNS4xczEwLjMtMjMuOSwxMC4zLTQxLjUtMy41LTMyLjYtMTAuNi00MS4xLTE4LjUtMTIuOC0zNC4yLTEyLjhaTTY5Ny45LDY1Ni43aC0uMWMtMi41LDQuMS03LjIsNi4xLTEzLjgsNi4xaC0xMS4zdi01Ni45aDEwLjNjNy4xLDAsMTIsMS45LDE0LjcsNS44LDIuNywzLjksNCwxMS4xLDQsMjEuNnMtMS4zLDE5LjMtMy44LDIzLjRaTTc2Mi45LDU3OWgtLjFsLTMwLjYsMTg2LjJoMjguMmw2LjItNDAuM2gyOWw1LjgsNDAuM2gyOS41bC0zMC41LTE4Ni4yaC0zNy41Wk03NzAuMSw2OTguNGwxMC4zLTc3LjhoMS44bDkuOCw3Ny44aC0yMS45Wk05MjkuMyw2NjEuMWgtLjFjMi44LTcuMiw0LjItMTYuNyw0LjItMjguMywwLTE4LjktMy41LTMyLjYtMTAuNS00MS4xcy0xOC41LTEyLjgtMzQuMi0xMi44aC00Mi4xdjE4Ni4yaDI4Ljd2LTc4LjNoMTMuNmwxNy44LDc4LjNoMjkuOGwtMjEuMS04Ni41YzYuNC00LjUsMTEuMS0xMC4zLDEzLjktMTcuNVpNOTAwLjQsNjU0Yy0yLjYsNC03LjIsNi0xMy44LDZoLTExLjN2LTU0LjFoMTAuM2M3LDAsMTEuOSwxLjksMTQuNiw1LjYsMi43LDMuNyw0LDEwLjUsNCwyMC4zcy0xLjMsMTguMi0zLjksMjIuMmguMVpNOTQzLjYsNTc5aDg4LjN2MjYuOWgtMjkuOXYxNTkuMmgtMjguN3YtMTU5LjJoLTI5Ljd2LTI2LjlaTTExMjYuMiw1NzloMzguOHYxODYuMmgtMjYuOXYtMTE3LjZjMC0zLjMuMi03LjguNi0xMy41LjQtNS42LjktMTEuOSwxLjYtMTguOS0uNSwyLjUtMSw1LjktMS43LDEwLjMtMS40LDguMy0yLjMsMTMuNy0yLjgsMTYuMWwtMjMuNCwxMjMuNmgtMTQuM2wtMjIuNC0xMjMuOGMtLjktNC45LTEuOC0xMC40LTIuOC0xNi4zLS45LTUuOS0xLjUtOS4yLTEuNy05LjkuNiw2LjMsMS4xLDEyLjMsMS40LDE3LjhzLjUsMTAuNC41LDE0LjZ2MTE3LjZoLTI2Ljd2LTE4Ni4yaDM4LjJsMTguNywxMDMuMWMuNyw0LjEsMS4zLDguNSwxLjcsMTMuMnMuNiw5LjYuNiwxNC43YzAtNC4zLjItOC44LjctMTMuM3MxLjEtOS4zLDItMTQuNHYuMXMxNy45LTEwMy40LDE3LjktMTAzLjRaTTExODcuOSw1NzloNzQuOXYyNi45aC00Ni4ydjQ4LjhoMzMuM3YyNi45aC0zMy4zdjU1LjZoNDYuMnYyNy45aC03NC45di0xODYuMVpNMTM0Ni4xLDU3OWgyNi45djE4Ni4yaC0yNi45bC0zNS0xMDIuOWMtLjItLjQtLjUtMS4xLS43LTEuOS0yLjQtNy4xLTQuMi0xMy4xLTUuNC0xOC4zLDEuMSw2LjUsMS44LDEyLDIuNCwxNi4zLjUsNC40LjgsNy41LjgsOS41djk3LjNoLTI2Ljd2LTE4Ni4yaDI1LjhsMzYuNCwxMTEuMmMuNywyLjEsMS41LDUsMi41LDguNXMyLDcuMywzLDExLjNjLS45LTUuNC0xLjctMTAuNC0yLjMtMTVzLS45LTgtLjktMTAuMWwuMS4xdi0xMDZaTTEzODcuMSw1NzloODguNHYyNi45aC0yOS45djE1OS4yaC0yOC43di0xNTkuMmgtMjkuOHYtMjYuOVpNMTAzLDExOS4yYzAtMTAuMSw4LjItMTguMywxOC4zLTE4LjNzMTguMyw4LjIsMTguMywxOC4zLTguMiwxOC4zLTE4LjMsMTguMy0xOC4zLTguMi0xOC4zLTE4LjNaTTE3MDUsMTE5LjJjMC0xMC4xLDguMi0xOC4zLDE4LjMtMTguM3MxOC4zLDguMiwxOC4zLDE4LjMtOC4yLDE4LjMtMTguMywxOC4zLTE4LjMtOC4yLTE4LjMtMTguM1pNODguNiw3NDkuNGMwLTEwLjEsOC4yLTE4LjMsMTguMy0xOC4zczE4LjMsOC4yLDE4LjMsMTguMy04LjIsMTguMy0xOC4zLDE4LjMtMTguMy04LjItMTguMy0xOC4zWk0xNzA1LDc0Ni44YzAtMTAuMSw4LjItMTguMywxOC4zLTE4LjNzMTguMyw4LjIsMTguMywxOC4zLTguMiwxOC4zLTE4LjMsMTguMy0xOC4zLTguMi0xOC4zLTE4LjNaTTEzMDguNiwzMTZjLTQuNC00LjEtNi42LTkuOC02LjYtMTcuM3MyLjktMTMuNiw4LjgtMTguNmM2LTUuMiwxNC40LTcuNywyMi41LTcuN3MxNC43LDEuOSwxOS42LDUuOGM0LjgsMy44LDcuMSw3LjIsNy4xLDE1LjlzLTIuNywxNS40LTguMywyMC41Yy01LjY5LDUuMDktMTMuMDgsNy41OS0yMi42Niw3LjYtOS4xNywwLTE2LjA1LTIuMTEtMjAuNDQtNi4yWk01MzIuNSw0OTguOGM4LjMsMTAuMSwxOS4xLDE1LDMzLjEsMTVzMzIuNC05LjQsNDQuMy0yOC42bDMuMy01LjMsMi4xLDUuOGMzLjEsOC43LDcuOCwxNS43LDEzLjksMjAuNyw2LjEsNSwxMi41LDcuNCwxOS43LDcuNHMxOS42LTQsMzAtMTEuOWMxLjItLjksMi40LTEuOSwzLjYtMi45bDQuNi0zLjgsMS40LDQuMS42LDIuMWMzLjIsOC4zLDguNiwxMi40LDE2LjMsMTIuNHMxMS4yLTEuNywxNC00LjljMy4xLTMuNSw1LjktMTAuNyw4LjUtMjEuNCwzLjYtMTQuNiw4LjMtMjguNywxNC4xLTQyLDUuOC0xMy4yLDExLjctMjQuMSwxNy43LTMyLjIsNi42LTksMTEuOC0xMy4yLDE2LjUtMTMuMnM2LjkuNiw2LjksOC43LS4yLDUtLjgsMTAuMmMtMi4xLDEwLjctMS4yLDI0LjEsNi4yLDMyLjgsNC4xLDQuOCwxMCw3LjcsMTYuMiw5LDguOCwxLjksMTguNSwxLjQsMjcuMi0uOWw3LjItMS0xLjQsNC41Yy01LjQsMTcuOC0xMC4yLDMyLjUtMTUuMiw0Ni4zLTEuOSw1LjMtMS41LDEwLjEsMS4zLDE0LDMuMiw0LjYsOS4zLDcuNSwxNS44LDcuNXMxNS00LjYsMTcuNy0xMi4zYzguMy0yMy4xLDE1LjktNDcuMywyMi42LTcxLjdsLjQtMS40LDEuMy0uNmM3LTMsMTQtNi4yLDIxLTkuNWw0LjMtMnY0LjhjLS40LDI2LDQuNCw1OS45LDI4LjksNzQuMywxMC4yLDYsMjAuMyw5LDMwLjgsOSwyMS43LDAsNDEuOS0xMi43LDYxLjUtMjVsMS45LTEuMiwxLjcsMS40YzEzLDExLjIsMzAuOSwxNi45LDUzLjIsMTYuOXMzNC42LTQuNCw1MC4yLTEzLjJjMTUuNy04LjgsMjgtMTguNiwzNi41LTI5LDEuMi0xLjQsMi4yLTMuMSwzLjMtNS41bDMuMi03LjIsMi40LDcuNWMxMCwzMS45LDMwLjcsNDcuNCw2My4yLDQ3LjRzMjguNi0zLjksNDAuMi0xMS43YzIuMy0xLjUsNC42LTMuMiw2LjgtNC45bDMtMS4zLDEuNywyLjhjNi41LDEwLjEsMTYuNywxNS4xLDMxLjMsMTUuMXMyNC44LTUuNCwzOC4xLTE2LjFsMy4zLTIuNywxLjQsNCwuNywyLjNjMy4yLDguMyw4LjYsMTIuNCwxNi4zLDEyLjRzMTEuMS0xLjYsMTQtNC45YzMuMS0zLjUsNi0xMC44LDguNS0yMS40LDMuNi0xNC42LDguNC0yOC43LDE0LjMtNDIsNS45LTEzLjIsMTEuNy0yNCwxNy40LTMyLjEsNi40LTkuMiwxMS4yLTEzLjIsMTUuNS0xMy4yczYuOS42LDYuOSw4LjctMS41LDE2LjQtNC43LDMxLjdjLTMuMywxNi45LTQuOSwyOC43LTQuOSwzNS4yLDAsMTIuNSwyLjksMjIuMiw4LjYsMjguNiw1LjYsNi4zLDE0LjEsOS41LDI1LjMsOS41czI3LjMtMy45LDM4LjUtMTEuNmMyLjgtMS45LDUuNS00LDguMi02LjFsMi40LTIsMS44LDIuNWMuMy40LjYuOC44LDEuMi4yLjMuNC43LjcsMSw4LjMsMTAuMSwxOS4xLDE1LDMzLjEsMTVzMTMuNi0xLjcsMTkuNy00LjljNi4xLTMuMiwxMi4zLTYuNywxNi0xMi42bDIuNiwxLTIuMywxNS4xLS45LjdjLTM2LjMsMjgtNjEuMyw1MS45LTc0LjQsNzEtMTIuOSwxOC44LTE5LjUsMzYuNi0xOS41LDUyLjhzMy41LDIwLjQsMTAuNiwyNy4zYzcuMSw3LDE2LjEsMTAuNCwyNy42LDEwLjQsMjQuMywwLDQ0LjEtMTcuNCw1OC45LTUxLjYsMTEuOC0yNy4yLDIxLjgtNjIuOSwyOS45LTEwNmwuMi0xLjIuOS0uN2MxNy41LTEyLjksMzUuMy0yNC45LDUzLjEtMzUuNyw2LjEtMy43LDUuMy05LjQsNC43LTExLjdsLS43LjJjLTEuMi00LjMtNS04LjYtMTAtOC42cy0zLjYuNi01LjQsMS42Yy05LjgsNi0yMC4yLDEyLjctMzIuNSwyMS4xbC01LjUsMywxLTYuN2MuOS02LjcsMy4yLTIwLjQsNi44LTQxLjEsNC44LTI5LjYsNy45LTQ5LjQsOC45LTU3LjEuMi0xLjYuMy0zLjcuMy02LjRzLS40LTYuNi0yLjUtOC4xYy0xLjQtMS00LjQtMi4xLTEwLjktMi4xaC0zLjJjLS4zLS42LS43LTEuMy0xLjItMS45LTMuNS00LjMtOC45LTYuOC0xNC04LjctMi42LTEtNS4xLTEuNC03LjUtMS42LTEuMi0uMi0yLjgtLjQtNC44LS40LTE1LjcsMC0zMC44LDUtNDQuOSwxNS0xNC4yLDEwLTI1LjcsMjMuNS0zNC4zLDQwLTguNiwxNi41LTEyLjksMzQuMy0xMi45LDUyLjgsMCw0Ljk5LDAsNy41MS4wMiw4LjU3bC0uMTIuNDNzLTIuOSwyLjgtMy43LDMuNWMtNy4yLDYuNC0xMy40LDkuNS0xOC45LDkuNXMtMTMuMy0yLjItMTMuMy0xNy4zLDIuMi0yMC42LDYuOC00MS43YzUuMi0yNCw3LjgtNDAuNyw3LjgtNDkuOCwwLTEzLjgtNi40LTIwLjItMjAuMi0yMC4ycy0xNS41LDIuNi0yNC40LDcuOGMtOS4xLDUuMy0xOC40LDE0LjMtMjcuOSwyNi43LTUuMyw2LjktOS44LDE0LjQtMTMuOCwyMi4xLTIuMyw0LjQtNC40LDguOC02LjQsMTMuMy0xLjEsMi40LTIuMSw0LjgtMy4xLDcuMi0uNSwxLjItMSwyLjUtMS41LDMuNy0uNCwxLS43LDIuMS0xLjMsMy0uMi4yLS40LjUtLjYuNy0uOC44LTIuMiwxLjItMy4yLjctLjktLjQtMS40LTEuMy0xLjctMi4zLS4yLTEuMiwwLTIuNC4yLTMuNS4xLTEuMy4zLTIuNi40LTMuOS4zLTIuNS42LTQuOS45LTcuMy42LTQuMiwxLjItOC40LDItMTIuNSwxLjQtNy4yLDMuNC0xNS42LDUuOC0yNS4yLDQuMy0xNi4yLDUuMy0yMi41LDUuMy0yNXMtLjUtMy43LTEuNC00LjNjLS44LS41LTMtMS4zLTguNC0xLjMtOC4yLDAtMTQuNiwxLjUtMTguOSw0LjNzLTcuNCw3LjQtOS4zLDEzLjZjLTguNywyNy40LTEzLjEsNTYuOC0xMy4xLDg3LjR2NS4yYy4xLDAtLjcuOS0uNy45LTIuOSwzLTUuNiw1LjgtNy45LDcuOS03LjEsNi41LTEzLDkuNy0xOC4xLDkuN3MtOS45LTIuNi0xMi4zLTcuNGMtMi00LTMtOS41LTMuMS0xNy4zLjEtMS40LjMtMi45LjItNC42di0uOWMtLjEsMCwwLS4zLDAtLjMuOC0xMC4zLDMuNi0yNi42LDguNC00OC42LDQuNC0yMS40LDYuNy0zNS4xLDYuNy00MC44czAtOS4yLTE1LjItOS4yLTEyLjMsMS4yLTE1LjMsMy42Yy0zLjEsMi41LTUuNiw3LjItNy42LDE0LjItNC4yLDE0LjQtNy44LDMwLTEwLjUsNDYuNi0yLjcsMTYuNi00LjEsMzAuMy00LjEsNDAuOHMuMSwzLjcuMiw1LjVsLjIsMi4xLS4zLDEuOC0xLjEsMWMtMS40LDEuMi0yLjgsMi40LTQuMSwzLjUtOC40LDYuNi0xOC4yLDkuOS0yOSw5LjlzLTIzLjktNS41LTMwLjMtMTYuNWMtMi40LTQuMi00LjQtOS44LTYtMTYuOC0yLjktMjEuNC0zLjYtNDMuMi0yLjItNjQuOWwuMi0yLjhoMjcuMWMzNy40LDAsMzcuNC0xNi4zLDM3LjQtMjEuN3MtMS02LjYtMS42LTcuMmMtMS4xLTEuMS0zLjItMS42LTYuMS0xLjZoLTUzLjJsLjYtMy41YzUuNS0zMS44LDE1LjUtNjUuMSwzMC41LTEwMiwyLjEtNS4xLDEuOC05LjgtLjctMTMuNi0zLTQuNS05LjItNy40LTE1LjktNy40cy0xNS4zLDQuNS0xOC40LDEyLjFjLTE2LDM5LjMtMjYuNCw3NS44LTMxLjgsMTExLjhsLS40LDIuNWgtMjQuN2MtNS42LDAtMTMuMSwxLjgtMTMuMSwxN3MxLDguNCwyLjksMTAuNWMxLjMsMS40LDQuNSwzLDEyLjMsM2gxNy4xbC0uMiwzLjJjLS43LDEwLjctMS4xLDIxLjMtMS4xLDMxLjZzLjMsMTQsLjksMjEuMWwuMiwyLjFjLTMuMi0uNy02LjMuMy04LjgsMi40LS45LjYtMS44LDEuNC0yLjcsMi40LTEwLjIsMTIuNC0yMi41LDIyLjUtMzYuNCwzMC4yLTE0LjEsNy43LTI2LjksMTEuNi0zOC4xLDExLjYtMTcuOCwwLTMwLjEtNi0zNi42LTE4bC0xLjgtMy40LDMuOC0uOWMyNy40LTYuNyw0Ny4xLTE1LjksNTguNS0yNy4zLDExLjItMTEuMiwxNi44LTI0LjcsMTYuOC00MC4ycy0zLjktMjMuNy0xMS42LTMxLjNjLTcuOC03LjctMTgtMTEuNS0zMS4xLTExLjVzLTI4LjMsNC00MCwxMmMtMTEuOCw4LTIxLjEsMTktMjcuOCwzMi42LTYuNywxMy43LTEwLjEsMjguNy0xMC4xLDQ0LjZzLjgsMTUuNCwyLjUsMjIuM2wuNSwyLTEuNywxLjJjLTEyLjgsOS0yNC45LDE3LjUtNDMuNiwxNy41LTYuMiwwLTExLjMtMi40LTE1LjItNy0xMS44LTEzLjgtOS40LTQ0LjgtNi45LTYyLjFsLjItMS40LDEuMi0uN2MyMS41LTEyLjgsNDIuNy0yNy4zLDYzLTQzLjEsNS41LTQuMyw3LjQtOS44LDUuNC0xNS42LTIuNi03LjYtMTEuMi0xMy42LTE5LjYtMTMuNnMtOC4yLDEuNC0xMS44LDQuMmMtMTkuNCwxNS4xLTQwLjUsMjkuMi02My4yLDQxLjktMS4yLjQtMi4yLDEtMy41LDEuOWwtMi45LDEuNmMtMy4xLDEuOC02LjMsMy41LTkuNSw1LjJsLTEyLjgsNi44LDEuMy02LjNjMTIuNy01OS4xLDE5LjktMTE5LjQsMjEuNC0xNzkuMy4xLTQuOS0xLjMtOS00LjMtMTIuMS0zLjItMy4zLTgtNS4xLTEzLjItNS4xLTguNywwLTE4LjIsNS40LTE4LjUsMTcuNC0xLjcsNjcuNi0xMS4xLDEzNS44LTI3LjgsMjAyLjZsLS40LDEuNi0xLjYuNWMtNy43LDIuNS0xNS4zLDQtMjIuNCw0LjVoLTEuMmwtLjktLjZjLTMuMi0yLjYtNC44LTctNC44LTEzczEtOC43LDIuOS0xOC40YzIuMS0xMS43LDMuMi0xOS4xLDMuMi0yMiwwLTEzLjgtNi40LTIwLjItMjAuMi0yMC4ycy0xNS41LDIuNi0yNC40LDcuOGMtOSw1LjMtMTguNCwxNC4yLTI3LjksMjYuNy0zLjQsNC41LTYuNSw5LjMtOS40LDE0LjItMi40LDMuNC00LjcsNy02LjksMTAuNi0yLjMsMy44LTQuNSw3LjYtNi44LDExLjQtMS4yLDEuOS01LjksMTAuOS04LjUsMTEuMiwwLTEsLjEtMiwuMi0zLC4yLTEuOC40LTMuNi42LTUuNC40LTMuNC44LTYuOSwxLjQtMTAuMy40LTIuNS44LTUsMS4zLTcuNSwxLjQtNy4yLDMuMy0xNS42LDUuOC0yNS4yLDQuMy0xNi4yLDUuMy0yMi41LDUuMy0yNXMtLjUtMy43LTEuNS00LjNjLS44LS41LTMtMS4zLTguNC0xLjMtOC4yLDAtMTQuNSwxLjUtMTguOSw0LjMtNC4zLDIuOS03LjQsNy4zLTkuMywxMy42LTguNywyNy40LTEzLjEsNTYuOC0xMy4xLDg3LjR2NS4xYy4xLDAtLjcuOS0uNy45LTMsMy4yLTUuOCw2LTguMiw4LjItNy4xLDYuNC0xMy4xLDkuNS0xOC40LDkuNXMtNi45LTEuNS05LjMtNC4zYy0yLjItMi43LTMuNC02LjItMy40LTEwLjUsMC0xMC45LDIuOC0zMC4zLDguMy01Ny43LDMuNS0xOC42LDUuMy0zMC40LDUuMy0zNS4ycy0xLjYtOS41LTE0LjUtOS41aC0uN2MtLjMtLjYtLjctMS4yLTEuMi0xLjgtMy41LTQuMy04LjktNi44LTE0LTguNy0zLjctMS40LTcuMS0xLjctMTAuNS0xLjYtMS4xLS4yLTIuNS0uMy00LjQtLjMtMTUuNywwLTMwLjgsNS00NC45LDE1LTE0LjIsMTAtMjUuNywyMy41LTM0LjMsNDAtOC41LDE2LjUtMTIuOSwzNC4zLTEyLjksNTIuOHM0LjIsMzAuMSwxMi41LDQwLjNaTTE2MDAuMiw1NTQuMmMtNi45LDMxLjMtMTQuMyw1NC41LTIxLjksNjktOC4xLDE1LjUtMTUuNiwyMy0yMi44LDIzcy04LjgtMi45LTEwLjMtNS40Yy0xLjgtMy4xLTIuNy03LTIuNy0xMS41LDAtMTAuMSw0LjItMjEuOCwxMi42LTM0LjgsOC4yLTEyLjgsMjEuOC0yNy4zLDQwLjItNDMuMmw2LjgtNS44LTEuOSw4LjdoMFpNMTU3Myw0MjAuMmM1LjItMTIuMywxMi4yLTIyLjMsMjAuOC0yOS45LDguOC03LjcsMTguNi0xMS44LDI5LTEyaDMuN2wtMTIuMSw2NC42aC4xYy0yLjIsMTIuOC02LDIyLjktMTEuMywyOS45LTUuNiw3LjQtMTEuNywxMS4yLTE4LjEsMTEuMnMtMTEuMS0yLjItMTQuNi02LjRjLTMuNC00LjEtNS4yLTEwLjMtNS4yLTE4LjQsMC0xMy43LDIuNi0yNi44LDcuNy0zOVpNMTUyNyw0NjMuNmwuMiwyLjEtLjQxLDEuNDRjLjA1LTEuNDkuMTItNC4yNy4yMS0zLjU0Wk0xMDU1LjMsMzk3LjZoMGM2LjYtMTEuMiwxNS0xNi44LDI0LjktMTYuOHM5LjMsMS43LDEyLjQsNS4xYzMsMy4zLDQuNSw3LjYsNC41LDEyLjksMCw5LjctNC40LDE4LjMtMTMuMiwyNS41LS44LjctMS43LDEuNC0yLjYsMi0xMC43LDYuMy0yMy4xLDguNS0zNS40LDYuNi40LTEzLjYsMy42LTI1LjUsOS40LTM1LjNaTTU2Niw0MjAuMmM1LjItMTIuMywxMi4yLTIyLjMsMjEtMjkuOSw5LTcuNywxOC45LTExLjcsMjkuNi0xMmgzLjdsLTE0LDY5LjNoLjFjLTIuMiwxMC42LTUuOSwxOS4zLTEwLjksMjUuOS01LjMsNi45LTExLjIsMTAuNS0xNy40LDEwLjVzLTExLjEtMi4yLTE0LjYtNi40Yy0zLjUtNC4xLTUuMi0xMC4xLTUuMi0xOC40LDAtMTMuNywyLjYtMjYuOCw3LjctMzlaTTE0NCw2NjcuOGMtMy42LTUuOS0zLjgtMTIuNy0uNi0xOS4xLDU3LjgtMTE1LjEsMTA0LjMtMjUwLjMsMTQ2LjMtNDI1LjQsMi4zLTkuNSwxMi41LTEzLjcsMTkuNS0xMy43czE2LDMuNiwxNy44LDEzLjZjMTAsNTQuOCwyMi41LDExOS40LDQwLjMsMTgyLjhsMS43LDYsMy42LTUuMWM0MS41LTU4LjEsNzkuNS0xMjAsMTE2LjItMTc5LjhsNy4yLTExLjhjMy43LTYuMiw5LjktOS42LDE1LjYtOS42czExLjUsMi44LDE1LjQsNy41YzQsNC43LDUuNiwxMC45LDQuNCwxNy4yLTMuMywxOC40LTcuMiwzNy4xLTExLDU1LjItNy45LDM4LjEtMTYuMSw3Ny41LTE5LjksMTE3djEuNmMtNy4xLDc2LTIuMiwxMTcuNSwxNS4xLDEyNywxLjIuNywyLjcsMiwxLjksNS4zLTEuNyw2LjgtMTIuNywxNy0yNS43LDE3cy0yMy4yLTEwLjMtMjkuNy0yOS42Yy0xMS4xLTMzLjQtMS0xMjQuOSw1LjktMTY4LjcuNS0zLjEsMS02LjIsMS42LTkuMi4yLS43LjMtMS40LjQtMi4xLjItMSwuNi0yLC41LTMuMS0uMi0xLjktMi4yLTIuNi0zLjktMi40LS41LDAtMS4xLjItMS41LjUtLjcuNi0xLjEsMS41LTEuNiwyLjMtLjYsMS0xLjEsMi4xLTEuNywzLjEtMS4zLDIuMS0yLjYsNC4xLTQsNi4yaC4yYy0yLjIsMy40LTQuNSw2LjgtNi43LDEwLjItNC4zLDYuNS04LjYsMTMtMTIuOSwxOS41LTQuMSw2LjItOC4zLDEyLjQtMTIuNSwxOC41LTQsNS45LTgsMTEuNy0xMi4xLDE3LjUtNCw1LjYtNy45LDExLjItMTEuOSwxNi43LTMuOSw1LjMtNy44LDEwLjYtMTEuNywxNS45LTMuOCw1LjEtNy42LDEwLjItMTEuNSwxNS4yLTQuNSw1LjgtOS42LDkuMy0xOCw5LjNzLTE1LTUuMi0xNy44LTEzLjhjLS4zLTEuMS0uNy0yLjMtMS4xLTMuNS0yLTYuNS00LTEzLjEtNi0xOS42LTItNi43LTQtMTMuNS01LjktMjAuMy0xLjktNy4xLTMuOC0xNC4xLTUuNy0yMS4yLTItNy4zLTMuOC0xNC43LTUuNi0yMi4xLTEuOS03LjctMy43LTE1LjQtNS41LTIzLjEtLjktMy45LTEuOC03LjktMi43LTExLjktLjQtMi4xLS45LTQuMS0xLjMtNi4xLS4zLTEuNi0uNS0zLjMtMi00LjItMS4xLS42LTIuNS0uNS0zLjQuMi0xLjEuOS0xLjIsMi40LTEuNiwzLjctLjUsMS41LS45LDMuMS0xLjMsNC42LS45LDMuMS0xLjcsNi4yLTIuNiw5LjMtMi4yLDcuNy00LjQsMTUuNC02LjYsMjMuMS0yLjIsNy42LTQuNCwxNS4xLTYuNywyMi43LTIuMyw3LjQtNC42LDE0LjktNi45LDIyLjMtMi4zLDcuMy00LjYsMTQuNi03LDIxLjktMi4zLDcuMi00LjcsMTQuNC03LjEsMjEuNS0yLjMsNy4xLTQuNywxNC4xLTcuMiwyMS4xLTIuNCw2LjktNC44LDEzLjgtNy4zLDIwLjctMi41LDYuOC01LDEzLjUtNy41LDIwLjMtMi41LDYuNy01LDEzLjQtNy42LDIwLTIuNiw2LjYtNS4yLDEzLjEtNy44LDE5LjYtMi42LDYuNC01LjIsMTIuOC03LjksMTkuMi0yLjcsNi4zLTUuNCwxMi42LTguMSwxOC45LTIuNyw2LjItNS40LDEyLjMtOC4yLDE4LjUtMi44LDYuMS01LjYsMTIuMi04LjQsMTguMi0yLjgsNi01LjYsMTEuOS04LjUsMTcuOS0yLjgsNS44LTUuNywxMS43LTguNiwxNy41LTQuMSw4LTcuNiw5LjctMTQuNiw5LjdzLTE0LjMtNC4zLTE4LjItMTAuNloiPjwvcGF0aD48L3N2Zz4=" alt="The Marketing Department, A TTP Company">
+  <p class="thanks">شكرًا لكم</p>
+</section></div></div>
+
+</main>
+<script>
+(function(){
+  function fit(){
+    var w = window.innerWidth, s = Math.min(1, (w - 16) / 1280);
+    document.querySelectorAll('.slide-wrap').forEach(function(el){
+      el.style.transform = s < 1 ? 'scale(' + s + ')' : '';
+      el.style.transformOrigin = 'top center';
+      el.style.marginBottom = s < 1 ? (-(720 * (1 - s))) + 'px' : '';
+    });
+  }
+  if (!window.matchMedia('print').matches) { window.addEventListener('resize', fit); fit(); }
+})();
+</script>
+</body>
+</html>
