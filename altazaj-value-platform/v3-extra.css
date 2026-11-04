@@ -90,6 +90,6 @@ td .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2p
 /* storyboard grid */
 .sgrid { position: absolute; top: 180px; left: 64px; right: 64px; bottom: 56px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 14px 18px; direction: rtl; }
 .sgrid figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-.sgrid img { width: 100%; flex: 1; min-height: 0; object-fit: cover; display: block; }
+.sgrid img { width: 100%; flex: 1; min-height: 0; object-fit: contain; object-position: right center; display: block; }
 .sgrid figcaption { font-size: 13px; line-height: 1.45; color: #f0f2f9; text-align: right; }
 .sgrid figcaption b { display: inline-block; background: #fcbf2c; color: #0C0E1D; padding: 0 6px; margin-left: 6px; border-radius: 2px; }
