@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Large Account Memory Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+<style>
+/* Layout: TMD cover-style hero, then a sticky mode bar over a 70/30 dark/light study space.
+   Map = root > chapters > concepts tree with a detail panel; practice modes use light cards. */
+:root {
+  color-scheme: dark;
+  /* TMD palette (14 official colors only) */
+  --tmd-dark: #0C0E1D;
+  --tmd-white: #ffffff;
+  --tmd-blue: #29366C;
+  --tmd-gold: #fcbf2c;
+  --tmd-blue-dark: #2f3e75;
+  --tmd-gold-dark: #dd9c03;
+  --tmd-red-dark: #92112d;
+  --tmd-teal-dark: #33716b;
+  --tmd-blue-light: #f0f2f9;
+  --tmd-gold-light: #fff9eb;
+  --tmd-red-light: #fdedf0;
+  --tmd-teal-light: #f1f9f8;
+  --tmd-surface: #141B36;
+  --tmd-gray: #F2F2F2;
+
+  --bg: var(--tmd-dark);
+  --fg: var(--tmd-white);
+  --fg-2: var(--tmd-blue-light);
+  --panel: var(--tmd-surface);
+  --line: var(--tmd-blue-dark);
+  --accent: var(--tmd-gold);
+
+  --font: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 2px;
+}
+*, *::before, *::after { letter-spacing: normal !important; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font); font-size: 16px; line-height: 1.5; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+.wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Hero (cover composition: logo top-right, title lower-left) ---------- */
+.hero { padding-block: 32px 28px; }
+.hero-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: start; }
+.hero-logo { grid-column: 2; grid-row: 1; width: 150px; }
+.hero-logo svg { display: block; width: 100%; height: auto; }
+.hero-text { grid-column: 1; grid-row: 1 / span 2; align-self: end; display: grid; gap: 10px; padding-top: 48px; }
+.crumb { font-size: 14px; font-weight: 500; color: var(--accent); }
+.hero h1 { font-size: clamp(30px, 5.2vw, 56px); font-weight: 700; line-height: 1.08; max-width: 18ch; }
+.hero .sub { font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; color: var(--accent); }
+.hero .meta { font-size: 14px; color: var(--fg-2); }
+.progress {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+  border-top: 1px solid var(--line); padding-top: 20px; margin-top: 8px;
+}
+.prog-ring { display: flex; align-items: center; gap: 12px; }
+.prog-ring svg { width: 52px; height: 52px; }
+.prog-num { font-size: 28px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.prog-lbl { font-size: 13px; color: var(--fg-2); }
+.prog-facts { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--fg-2); }
+.prog-facts b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+.reset { margin-left: auto; display: flex; gap: 8px; align-items: center; font-size: 13px; }
+.btn-ghost { background: none; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 12px; font-size: 13px; color: var(--fg-2); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--fg); }
+
+/* ---------- Mode bar ---------- */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar-in { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between; gap: 0 16px; }
+.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.tab {
+  background: none; border: 0; border-bottom: 3px solid transparent; padding: 14px 12px 11px;
+  font-size: 15px; font-weight: 500; color: var(--fg-2); white-space: nowrap;
+}
+.tab:hover { color: var(--fg); }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); font-weight: 600; }
+.chips { display: flex; align-items: center; gap: 6px; padding-block: 8px; }
+.chips span { font-size: 13px; color: var(--fg-2); margin-right: 4px; }
+.chip {
+  border: 1px solid var(--line); background: none; border-radius: var(--r);
+  padding: 5px 11px; font-size: 13px; font-weight: 500; color: var(--fg-2);
+}
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+
+main { padding-block: 28px 56px; }
+.view[hidden] { display: none !important; }
+.view-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 20px; }
+.view-head h2 { font-size: 28px; font-weight: 700; }
+.view-head p { color: var(--fg-2); font-size: 15px; max-width: 60ch; }
+
+/* ---------- Mind map ---------- */
+.map-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 420px); gap: 24px; align-items: start; }
+.map-scroll { min-width: 0; }
+.map { position: relative; display: flex; align-items: center; gap: 56px; padding-block: 8px; }
+.map svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.links path { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.links path.on { stroke: var(--accent); stroke-width: 2; }
+.groups { display: flex; flex-direction: column; gap: 32px; flex: 1; min-width: 0; }
+.group { display: flex; align-items: center; gap: 56px; }
+.leaves { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+.node {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; text-align: left;
+  border: 1px solid var(--line); background: var(--panel); border-radius: var(--r);
+  padding: 9px 12px; min-height: 46px; width: 100%;
+}
+.node:hover { border-color: var(--fg-2); }
+.node[aria-current="true"] { border-color: var(--accent); outline: 1px solid var(--accent); }
+.node .t { flex: 1; min-width: 0; font-size: 15px; font-weight: 500; line-height: 1.3; }
+.node .n { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--accent); border: 1px solid var(--line); border-radius: var(--r); font-variant-numeric: tabular-nums; }
+.node .ring { flex: none; width: 20px; height: 20px; }
+.node.root { width: 172px; flex: none; background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); display: grid; gap: 2px; padding: 14px; }
+.node.root .t { font-size: 17px; font-weight: 700; }
+.node.root small { font-size: 12px; font-weight: 500; }
+.node.root[aria-current="true"] { outline-color: var(--fg); }
+.node.chap { width: 196px; flex: none; background: var(--tmd-white); border-color: var(--tmd-white); color: var(--tmd-dark); display: grid; gap: 2px; padding: 12px 14px; }
+.node.chap small { font-size: 12px; font-weight: 600; color: var(--tmd-blue); }
+.node.chap .t { font-size: 16px; font-weight: 700; color: var(--tmd-dark); }
+.node.chap[aria-current="true"] { outline: 2px solid var(--accent); }
+.group.dim .node.chap { opacity: .35; }
+.group.dim .leaves { opacity: .35; }
+.map-hint { margin-top: 18px; font-size: 13px; color: var(--fg-2); }
+
+/* Detail panel */
+.panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); max-height: calc(100vh - 96px); overflow-y: auto; }
+.panel-in { padding: 24px; display: grid; gap: 18px; }
+.panel-close { display: none; }
+.p-crumb { font-size: 13px; font-weight: 500; color: var(--accent); }
+.p-title { font-size: 26px; font-weight: 700; line-height: 1.15; }
+.p-hook { font-size: 17px; color: var(--fg-2); }
+.p-sec { display: grid; gap: 10px; }
+.p-sec h3 { font-size: 13px; font-weight: 600; color: var(--accent); }
+.pts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.pts li { position: relative; padding-left: 18px; font-size: 15px; }
+.pts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 3px; background: var(--accent); }
+.quote { border-left: 2px solid var(--accent); padding: 2px 0 2px 14px; display: grid; gap: 6px; }
+.quote p { font-size: 16px; font-style: italic; }
+.quote cite { font-size: 13px; font-style: normal; color: var(--fg-2); }
+.remember { background: var(--tmd-gold-light); color: var(--tmd-dark); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; }
+.remember b { font-size: 12px; font-weight: 600; color: var(--tmd-gold-dark); }
+.remember p { font-size: 16px; font-weight: 600; }
+.p-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn {
+  border: 1px solid var(--accent); background: var(--accent); color: var(--tmd-dark);
+  border-radius: var(--r); padding: 10px 16px; font-size: 14px; font-weight: 600;
+}
+.btn:hover { background: var(--tmd-gold-dark); border-color: var(--tmd-gold-dark); }
+.btn.alt { background: none; color: var(--fg); border-color: var(--line); }
+.btn.alt:hover { border-color: var(--fg-2); background: none; }
+.aid { font-size: 12px; color: var(--fg-2); }
+.p-mastery { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--fg-2); }
+.p-mastery svg { width: 22px; height: 22px; }
+
+/* Diagrams (dark context) */
+.dg { border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; gap: 10px; }
+.dg svg { width: 100%; height: auto; display: block; }
+.dg-cap { font-size: 12px; color: var(--fg-2); }
+.dg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dg-cell { border: 1px solid var(--line); border-radius: var(--r); padding: 10px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.dg-cell b { font-size: 14px; font-weight: 600; }
+.dg-cell span { font-size: 13px; color: var(--fg-2); }
+.dg-cell .k { font-size: 12px; font-weight: 700; color: var(--accent); }
+.dg-cell.hi { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+.dg-cell.hi span, .dg-cell.hi .k { color: var(--tmd-dark); }
+.flow { display: grid; gap: 6px; }
+.flow .st { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; font-size: 14px; }
+.flow .st .k { width: 22px; height: 22px; flex: none; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--tmd-dark); background: var(--accent); border-radius: var(--r); }
+.flow .st.end { background: var(--tmd-white); border-color: var(--tmd-white); color: var(--tmd-dark); font-weight: 600; }
+.flow .ar { height: 10px; width: 2px; background: var(--line); margin-left: 20px; }
+.stat { display: grid; gap: 2px; }
+.stat b { font-size: 44px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--fg-2); }
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--r); }
+.cmp > div { padding: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.cmp > div + div { border-left: 1px solid var(--line); }
+.cmp h4 { font-size: 13px; font-weight: 600; color: var(--accent); }
+.cmp ul { margin: 0; padding-left: 16px; font-size: 13px; display: grid; gap: 4px; }
+
+/* ---------- Light cards (30% light) ---------- */
+.light { background: var(--tmd-white); color: var(--tmd-dark); border-radius: var(--r); }
+.light .lab { font-size: 13px; font-weight: 600; color: var(--tmd-blue); }
+
+/* Flashcards */
+.fc-wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 16px; }
+.fc-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: var(--fg-2); }
+.fc-meta b { color: var(--fg); font-variant-numeric: tabular-nums; }
+.fc-bar { height: 4px; background: var(--line); }
+.fc-bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+.card { perspective: 1400px; border: 0; background: none; padding: 0; width: 100%; text-align: left; }
+.card-in { position: relative; display: grid; transition: transform .5s; transform-style: preserve-3d; min-height: 320px; }
+.card.flip .card-in { transform: rotateY(180deg); }
+.face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 28px; display: grid; gap: 14px; align-content: start; border-radius: var(--r); }
+.face.front { background: var(--tmd-white); color: var(--tmd-dark); }
+.face.back { background: var(--tmd-blue-light); color: var(--tmd-dark); transform: rotateY(180deg); }
+.face .q { font-size: clamp(20px, 3vw, 26px); font-weight: 600; line-height: 1.3; }
+.face .tap { margin-top: auto; font-size: 13px; color: var(--tmd-blue); }
+.face h3 { font-size: 22px; font-weight: 700; color: var(--tmd-blue); }
+.face .pts li { font-size: 15px; }
+.face .pts li::before { background: var(--tmd-blue); }
+.face .hook { font-size: 16px; font-weight: 500; }
+.fc-actions { display: grid; grid-template-columns: auto 1fr 1fr; gap: 8px; }
+.btn.again { background: none; border-color: var(--tmd-red-dark); color: var(--fg); }
+.btn.again:hover { background: var(--tmd-red-dark); }
+.btn.got { background: var(--tmd-teal-dark); border-color: var(--tmd-teal-dark); color: var(--tmd-white); }
+.btn.got:hover { background: var(--tmd-teal-dark); border-color: var(--fg-2); }
+
+/* Quiz */
+.qz-wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 16px; }
+.qz-score { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--fg-2); align-items: center; }
+.qz-score b { color: var(--fg); font-variant-numeric: tabular-nums; }
+.qz-score .streak b { color: var(--accent); }
+.qz-card { padding: 28px; display: grid; gap: 18px; }
+.qz-q { font-size: clamp(19px, 2.6vw, 23px); font-weight: 600; line-height: 1.35; }
+.opts { display: grid; gap: 8px; }
+.opt {
+  text-align: left; background: var(--tmd-blue-light); color: var(--tmd-dark);
+  border: 1px solid var(--tmd-blue-light); border-radius: var(--r); padding: 12px 14px; font-size: 15px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.opt:hover:not(:disabled) { border-color: var(--tmd-blue); }
+.opt .k { flex: none; width: 24px; height: 24px; display: grid; place-items: center; font-size: 12px; font-weight: 700; border: 1px solid var(--tmd-blue); color: var(--tmd-blue); border-radius: var(--r); }
+.opt:disabled { cursor: default; }
+.opt.ok { background: var(--tmd-teal-light); border-color: var(--tmd-teal-dark); }
+.opt.ok .k { background: var(--tmd-teal-dark); border-color: var(--tmd-teal-dark); color: var(--tmd-white); }
+.opt.bad { background: var(--tmd-red-light); border-color: var(--tmd-red-dark); }
+.opt.bad .k { background: var(--tmd-red-dark); border-color: var(--tmd-red-dark); color: var(--tmd-white); }
+.why { border-top: 1px solid var(--tmd-blue-light); padding-top: 14px; display: grid; gap: 6px; font-size: 15px; }
+.why b { font-size: 13px; font-weight: 600; }
+.why b.ok { color: var(--tmd-teal-dark); }
+.why b.bad { color: var(--tmd-red-dark); }
+.qz-foot { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.linkish { background: none; border: 0; padding: 0; color: var(--tmd-blue); font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.btn.dark { background: var(--tmd-blue); border-color: var(--tmd-blue); color: var(--tmd-white); }
+.btn.dark:hover { background: var(--tmd-dark); border-color: var(--tmd-dark); }
+.result { padding: 28px; display: grid; gap: 18px; }
+.result-top { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.result-top svg { width: 96px; height: 96px; }
+.result-top .big { font-size: 44px; font-weight: 700; line-height: 1; color: var(--tmd-blue); font-variant-numeric: tabular-nums; }
+.weak { display: grid; gap: 6px; }
+.weak button { text-align: left; background: var(--tmd-blue-light); border: 1px solid var(--tmd-blue-light); border-radius: var(--r); padding: 10px 12px; color: var(--tmd-dark); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; }
+.weak button:hover { border-color: var(--tmd-blue); }
+
+/* Drills */
+.dr-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.dr-tab { border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); padding: 12px 14px; text-align: left; display: grid; gap: 2px; min-width: 0; flex: 1 1 200px; }
+.dr-tab b { font-size: 15px; font-weight: 600; }
+.dr-tab span { font-size: 13px; color: var(--fg-2); }
+.dr-tab[aria-pressed="true"] { border-color: var(--accent); outline: 1px solid var(--accent); }
+.drill { max-width: 860px; display: grid; gap: 16px; }
+.drill-card { padding: 24px; display: grid; gap: 16px; }
+.order-done { display: grid; gap: 6px; counter-reset: o; }
+.order-done div { display: flex; gap: 10px; align-items: center; background: var(--tmd-teal-light); border: 1px solid var(--tmd-teal-dark); border-radius: var(--r); padding: 8px 12px; font-size: 15px; }
+.order-done div .k { width: 24px; height: 24px; flex: none; display: grid; place-items: center; background: var(--tmd-teal-dark); color: var(--tmd-white); font-size: 12px; font-weight: 700; border-radius: var(--r); }
+.order-done .slot { background: none; border: 1px dashed var(--tmd-blue); color: var(--tmd-blue); }
+.order-done .slot .k { background: none; border: 1px solid var(--tmd-blue); color: var(--tmd-blue); }
+.pool { display: flex; flex-wrap: wrap; gap: 8px; }
+.pool button { background: var(--tmd-blue-light); border: 1px solid var(--tmd-blue-light); color: var(--tmd-dark); border-radius: var(--r); padding: 10px 12px; font-size: 14px; font-weight: 500; text-align: left; }
+.pool button:hover { border-color: var(--tmd-blue); }
+.pool button.shake { background: var(--tmd-red-light); border-color: var(--tmd-red-dark); animation: shake .35s; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.drill-stat { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--tmd-blue); font-weight: 500; }
+.sort-item { font-size: clamp(19px, 2.6vw, 23px); font-weight: 600; line-height: 1.35; min-height: 2.7em; }
+.bins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.bin { border: 1px solid var(--tmd-blue); background: var(--tmd-white); color: var(--tmd-blue); border-radius: var(--r); padding: 14px 10px; font-size: 14px; font-weight: 600; display: grid; gap: 4px; }
+.bin small { font-size: 12px; font-weight: 400; color: var(--tmd-dark); }
+.bin:hover:not(:disabled) { background: var(--tmd-blue-light); }
+.bin.ok { background: var(--tmd-teal-light); border-color: var(--tmd-teal-dark); color: var(--tmd-teal-dark); }
+.bin.bad { background: var(--tmd-red-light); border-color: var(--tmd-red-dark); color: var(--tmd-red-dark); }
+.feedback { font-size: 15px; min-height: 1.5em; }
+.quote-big { font-size: clamp(18px, 2.4vw, 21px); font-style: italic; line-height: 1.45; border-left: 3px solid var(--tmd-gold); padding-left: 14px; }
+.lesson-pick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.lesson-pick .opt { font-size: 14px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 20px 32px; font-size: 13px; color: var(--fg-2); }
+footer .wrap { display: grid; gap: 6px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1060px) {
+  .map-layout { grid-template-columns: minmax(0, 1fr); }
+  .panel {
+    position: fixed; inset: 0; z-index: 40; max-height: none; border: 0; border-radius: 0;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px);
+  }
+  .panel:not(.open) { display: none; }
+  .panel-in { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 40px; }
+  .panel-close { display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--panel); padding-block: 10px; border-bottom: 1px solid var(--line); z-index: 1; }
+  body.lock { overflow: hidden; }
+}
+@media (max-width: 760px) {
+  .hero-logo { width: 104px; }
+  .hero-text { padding-top: 24px; }
+  .map { flex-direction: column; align-items: stretch; gap: 20px; }
+  .map svg.links { display: none; }
+  .node.root, .node.chap { width: 100%; }
+  .groups { gap: 24px; }
+  .group { flex-direction: column; align-items: stretch; gap: 10px; }
+  .leaves { border-left: 2px solid var(--line); padding-left: 14px; margin-left: 12px; }
+  .leaves .node::before { content: ""; position: absolute; left: -15px; top: 50%; width: 13px; height: 2px; background: var(--line); }
+  .chips span { display: none; }
+  .bar-in { gap: 0; }
+  .reset { margin-left: 0; }
+  .bins { grid-template-columns: 1fr; }
+  .lesson-pick { grid-template-columns: 1fr; }
+  .fc-actions { grid-template-columns: 1fr 1fr; }
+  .fc-actions .btn.alt { grid-column: 1 / -1; }
+  .face, .qz-card, .result, .drill-card { padding: 20px; }
+  .dg-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .hero-in { grid-template-columns: minmax(0, 1fr); }
+  .hero-logo { grid-column: 1; grid-row: 1; width: 96px; }
+  .hero-text { grid-column: 1; grid-row: 2; padding-top: 8px; }
+  .cmp { grid-template-columns: 1fr; }
+  .cmp > div + div { border-left: 0; border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-logo" role="img" aria-label="TMD, The Marketing Department"><svg aria-hidden="true" focusable="false" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1830.3 1070.4"><path d="M491.5,908.1l-28.8,87.2h19.2l6.2-20.8h29.1l6.2,20.8h20l-28.4-87.2h-23.5ZM492.6,958.4l9.6-33.1h.6l9.8,33.1h-20ZM873.4,966.8l15.5,9c-3.2,6.7-7.5,11.8-12.8,15.4-5.3,3.6-12,5.4-20.1,5.4v.2c-5.9,0-11.2-.9-16-2.8s-8.8-4.7-12.1-8.4-5.9-8.3-7.8-13.9c-1.8-5.5-2.8-12-2.8-19.4s.9-13.9,2.8-19.6c1.8-5.7,4.4-10.5,7.8-14.4,3.3-3.9,7.4-6.8,12.1-8.8s10.1-3,16-3,14.8,1.6,20,4.9c5.2,3.3,9.5,8.5,12.6,15.6l-16.4,8.5c-1.2-3.7-3-6.6-5.4-8.8-2.5-2.2-6.1-3.3-10.8-3.3s-10.1,1.8-13.4,5.4-5.1,8.9-5.1,15.8v14c0,6.9,1.7,12.2,5.1,15.8s7.9,5.4,13.4,5.4,8.4-1.3,11.2-3.8,4.9-5.6,6.2-9.2ZM950.3,937.4c-2.6-2.9-5.8-5.2-9.6-6.8-3.8-1.6-8.1-2.4-12.9-2.4s-9.1.8-12.9,2.4-7,3.8-9.6,6.8c-2.7,2.9-4.7,6.6-6.1,10.8-1.4,4.2-2.1,9-2.1,14.2s.7,10,2.1,14.2c1.5,4.3,3.5,7.9,6.1,10.9s5.8,5.3,9.6,6.9c3.8,1.6,8.1,2.4,12.9,2.4s9.1-.8,12.9-2.4c3.8-1.6,6.9-3.9,9.6-6.9s4.7-6.7,6.1-10.9c1.4-4.2,2.1-9,2.1-14.2s-.7-10-2.1-14.2c-1.5-4.2-3.5-7.8-6.1-10.8ZM939.3,969.2c0,4.1-1,7.3-3,9.6s-4.8,3.4-8.5,3.4-6.5-1.2-8.5-3.4-3-5.4-3-9.6v-13.4c0-4.1,1-7.3,3-9.6s4.8-3.4,8.5-3.4,6.5,1.2,8.5,3.4,3,5.4,3,9.6v13.4ZM1061.9,935c3.4,4.6,5.1,10.9,5.1,19.2v41.1h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-5.2.8-7.5,2.4c-2.2,1.6-3.4,4-3.4,7.2v42.5h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-2.6.2-3.9.6c-1.3.4-2.5,1-3.5,1.8s-1.9,1.9-2.5,3.1c-.6,1.2-.9,2.6-.9,4.2v42.5h-18.5l-.2-.1v-65.6h18.5v11.1h.8c1.2-3.5,3.2-6.5,6-8.9,2.8-2.5,6.7-3.7,11.6-3.7s8.3,1.1,11.5,3.4c3.2,2.2,5.5,5.5,6.9,9.9h.4c.6-1.8,1.5-3.6,2.7-5.2,1.2-1.6,2.7-3,4.4-4.2,1.8-1.2,3.7-2.1,5.9-2.8,2.2-.7,4.5-1.1,7-1.1,6.3,0,11.2,2.2,14.6,6.8ZM1120.1,928.2c-4.2,0-8,1.2-11.3,3.5s-5.4,5.3-6.3,9h-.6v-11h-18.5v.2s0,90.6,0,90.6h18.5v-36h.6c.5,1.7,1.3,3.4,2.4,4.9,1,1.5,2.4,2.9,3.9,4,1.6,1.1,3.3,2,5.2,2.6,1.9.6-2.3.9,6.1.9s14.6-2.9,18.9-8.8,6.4-14.4,6.4-25.6-2.2-19.7-6.4-25.5c-4.3-5.9-10.6-8.8-18.9-8.8ZM1126.1,968.2c0,4.1-1.1,7.4-3.4,9.9-2.3,2.5-5.2,3.7-8.7,3.7v.2c-3.5,0-6.4-.9-8.7-2.6-2.3-1.7-3.4-4.1-3.4-7.1v-19.4c0-3,1.1-5.4,3.4-7.1,2.3-1.7,5.2-2.6,8.7-2.6s6.4,1.2,8.7,3.7c2.3,2.4,3.4,5.7,3.4,9.9v11.4ZM1212.1,952.4c0-7.9-2.3-13.8-7-17.9s-14.1-6.1-21-6.1-12.4,1.1-16.4,3.3c-4.1,2.2-7.4,5.3-10.1,9.2l11,9.8c1.4-2,3.2-3.8,5.4-5.4,2.2-1.6,4.9-2.4,8.8-2.4s6.7.9,8.4,2.8c1.7,1.9,2.5,4.4,2.5,7.6v4.1h-10.4c-8.7,0-15.6,1.6-20.6,5-5.1,3.4-7.6,9.7-7.6,15.4s1.7,10.3,5.2,13.8,10.1,5.2,15.1,5.2,9.2-1.1,12.6-3.3,5.6-5.5,6.6-9.7h.8c.6,3.5,2,6.3,4.2,8.4,2.2,2.1,5,3.1,8.3,3.1l.1.3h10.2v-14.4h-6.1v-28.8ZM1193.5,975.4c0,3-1.1,5.2-3.3,6.5-2.2,1.3-4.8,2-7.9,2h-.1c-2.8,0-5-.6-6.4-1.7s-2.2-2.9-2.2-5.3v-1.9c0-4.9,3.7-7.3,10.9-7.3h9v7.7ZM1283.3,934.9c3.5,4.5,5.2,10.9,5.2,19.2v41.1h-18.5v-39.6c0-4.2-.7-7.4-2-9.4s-3.7-3.1-7.1-3.1-3,.2-4.4.6c-1.4.4-2.7,1-3.8,1.8-1.1.8-2,1.9-2.7,3.1-.7,1.2-1,2.6-1,4.2v42.5h-18.5v-65.6h18.5v11.1h.8c1.2-3.4,3.2-6.4,6.1-8.9s7-3.8,12.1-3.8,11.9,2.2,15.3,6.8ZM1344.1,929.7h17.2l-25.2,75.8c-1.7,5.1-4,8.8-7.1,11.2-3,2.4-7.4,3.6-13.1,3.6h-11.5v-14.4h12.4l2.2-7.2-23-69h18.4l9.6,30.6,4.8,19h.8l4.9-19,9.6-30.6ZM761,906.5h0s-31.2,0-31.2,0c-2.3,0-4.1,1.8-4.1,4.1v80.6c0,2.3,1.8,4.1,4.1,4.1h16.9c2.3,0,4.1-1.8,4.1-4.1v-19.9h10.2c23.7-.2,35.6-14.3,35.6-32.5s-11.8-32.3-35.6-32.3ZM761.7,950.4c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM634.9,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM718,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM0,0v866h1830.3V0H0ZM1801.1,836.9H29.2V29.2h1771.9v807.7ZM573.4,127.5h-29.5v-26.6h87.6v26.6h-29.6v157.9h-28.5V127.5ZM674,285.4h-28.2V100.9h28.2v75.3h28.5v-75.3h28.5v184.5h-28.5v-82.5h-28.5v82.5ZM828.1,285.4h-74.3V100.9h74.3v26.7h-45.8v48.3h33v26.7h-33v55.1h45.8v27.7ZM483.1,579h-40.8v186.2h42.1c15.7,0,27.2-4.1,34.4-12.4,7.2-8.2,10.8-21.4,10.8-39.5v-83.2c0-17.4-3.8-30.3-11.4-38.6-7.6-8.3-19.3-12.5-35.1-12.5ZM500.2,718.1h0c0,6.7-1.2,11.6-3.7,14.8s-6.2,4.8-11.3,4.8h-14.5v-131.3h6.6c7.9,0,13.7,1.8,17.4,5.3,3.7,3.5,5.5,9.2,5.5,16.8v89.6ZM550.4,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM686,579h0s-42.1,0-42.1,0v186.2h28.7v-75.7h19.7c11.9,0,21.3-5,28.2-15.1s10.3-23.9,10.3-41.5-3.5-32.6-10.6-41.1-18.5-12.8-34.2-12.8ZM697.9,656.7h-.1c-2.5,4.1-7.2,6.1-13.8,6.1h-11.3v-56.9h10.3c7.1,0,12,1.9,14.7,5.8,2.7,3.9,4,11.1,4,21.6s-1.3,19.3-3.8,23.4ZM762.9,579h-.1l-30.6,186.2h28.2l6.2-40.3h29l5.8,40.3h29.5l-30.5-186.2h-37.5ZM770.1,698.4l10.3-77.8h1.8l9.8,77.8h-21.9ZM929.3,661.1h-.1c2.8-7.2,4.2-16.7,4.2-28.3,0-18.9-3.5-32.6-10.5-41.1s-18.5-12.8-34.2-12.8h-42.1v186.2h28.7v-78.3h13.6l17.8,78.3h29.8l-21.1-86.5c6.4-4.5,11.1-10.3,13.9-17.5ZM900.4,654c-2.6,4-7.2,6-13.8,6h-11.3v-54.1h10.3c7,0,11.9,1.9,14.6,5.6,2.7,3.7,4,10.5,4,20.3s-1.3,18.2-3.9,22.2h.1ZM943.6,579h88.3v26.9h-29.9v159.2h-28.7v-159.2h-29.7v-26.9ZM1126.2,579h38.8v186.2h-26.9v-117.6c0-3.3.2-7.8.6-13.5.4-5.6.9-11.9,1.6-18.9-.5,2.5-1,5.9-1.7,10.3-1.4,8.3-2.3,13.7-2.8,16.1l-23.4,123.6h-14.3l-22.4-123.8c-.9-4.9-1.8-10.4-2.8-16.3-.9-5.9-1.5-9.2-1.7-9.9.6,6.3,1.1,12.3,1.4,17.8s.5,10.4.5,14.6v117.6h-26.7v-186.2h38.2l18.7,103.1c.7,4.1,1.3,8.5,1.7,13.2s.6,9.6.6,14.7c0-4.3.2-8.8.7-13.3s1.1-9.3,2-14.4v.1s17.9-103.4,17.9-103.4ZM1187.9,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM1346.1,579h26.9v186.2h-26.9l-35-102.9c-.2-.4-.5-1.1-.7-1.9-2.4-7.1-4.2-13.1-5.4-18.3,1.1,6.5,1.8,12,2.4,16.3.5,4.4.8,7.5.8,9.5v97.3h-26.7v-186.2h25.8l36.4,111.2c.7,2.1,1.5,5,2.5,8.5s2,7.3,3,11.3c-.9-5.4-1.7-10.4-2.3-15s-.9-8-.9-10.1l.1.1v-106ZM1387.1,579h88.4v26.9h-29.9v159.2h-28.7v-159.2h-29.8v-26.9ZM103,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM88.6,749.4c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,746.8c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1308.6,316c-4.4-4.1-6.6-9.8-6.6-17.3s2.9-13.6,8.8-18.6c6-5.2,14.4-7.7,22.5-7.7s14.7,1.9,19.6,5.8c4.8,3.8,7.1,7.2,7.1,15.9s-2.7,15.4-8.3,20.5c-5.69,5.09-13.08,7.59-22.66,7.6-9.17,0-16.05-2.11-20.44-6.2ZM532.5,498.8c8.3,10.1,19.1,15,33.1,15s32.4-9.4,44.3-28.6l3.3-5.3,2.1,5.8c3.1,8.7,7.8,15.7,13.9,20.7,6.1,5,12.5,7.4,19.7,7.4s19.6-4,30-11.9c1.2-.9,2.4-1.9,3.6-2.9l4.6-3.8,1.4,4.1.6,2.1c3.2,8.3,8.6,12.4,16.3,12.4s11.2-1.7,14-4.9c3.1-3.5,5.9-10.7,8.5-21.4,3.6-14.6,8.3-28.7,14.1-42,5.8-13.2,11.7-24.1,17.7-32.2,6.6-9,11.8-13.2,16.5-13.2s6.9.6,6.9,8.7-.2,5-.8,10.2c-2.1,10.7-1.2,24.1,6.2,32.8,4.1,4.8,10,7.7,16.2,9,8.8,1.9,18.5,1.4,27.2-.9l7.2-1-1.4,4.5c-5.4,17.8-10.2,32.5-15.2,46.3-1.9,5.3-1.5,10.1,1.3,14,3.2,4.6,9.3,7.5,15.8,7.5s15-4.6,17.7-12.3c8.3-23.1,15.9-47.3,22.6-71.7l.4-1.4,1.3-.6c7-3,14-6.2,21-9.5l4.3-2v4.8c-.4,26,4.4,59.9,28.9,74.3,10.2,6,20.3,9,30.8,9,21.7,0,41.9-12.7,61.5-25l1.9-1.2,1.7,1.4c13,11.2,30.9,16.9,53.2,16.9s34.6-4.4,50.2-13.2c15.7-8.8,28-18.6,36.5-29,1.2-1.4,2.2-3.1,3.3-5.5l3.2-7.2,2.4,7.5c10,31.9,30.7,47.4,63.2,47.4s28.6-3.9,40.2-11.7c2.3-1.5,4.6-3.2,6.8-4.9l3-1.3,1.7,2.8c6.5,10.1,16.7,15.1,31.3,15.1s24.8-5.4,38.1-16.1l3.3-2.7,1.4,4,.7,2.3c3.2,8.3,8.6,12.4,16.3,12.4s11.1-1.6,14-4.9c3.1-3.5,6-10.8,8.5-21.4,3.6-14.6,8.4-28.7,14.3-42,5.9-13.2,11.7-24,17.4-32.1,6.4-9.2,11.2-13.2,15.5-13.2s6.9.6,6.9,8.7-1.5,16.4-4.7,31.7c-3.3,16.9-4.9,28.7-4.9,35.2,0,12.5,2.9,22.2,8.6,28.6,5.6,6.3,14.1,9.5,25.3,9.5s27.3-3.9,38.5-11.6c2.8-1.9,5.5-4,8.2-6.1l2.4-2,1.8,2.5c.3.4.6.8.8,1.2.2.3.4.7.7,1,8.3,10.1,19.1,15,33.1,15s13.6-1.7,19.7-4.9c6.1-3.2,12.3-6.7,16-12.6l2.6,1-2.3,15.1-.9.7c-36.3,28-61.3,51.9-74.4,71-12.9,18.8-19.5,36.6-19.5,52.8s3.5,20.4,10.6,27.3c7.1,7,16.1,10.4,27.6,10.4,24.3,0,44.1-17.4,58.9-51.6,11.8-27.2,21.8-62.9,29.9-106l.2-1.2.9-.7c17.5-12.9,35.3-24.9,53.1-35.7,6.1-3.7,5.3-9.4,4.7-11.7l-.7.2c-1.2-4.3-5-8.6-10-8.6s-3.6.6-5.4,1.6c-9.8,6-20.2,12.7-32.5,21.1l-5.5,3,1-6.7c.9-6.7,3.2-20.4,6.8-41.1,4.8-29.6,7.9-49.4,8.9-57.1.2-1.6.3-3.7.3-6.4s-.4-6.6-2.5-8.1c-1.4-1-4.4-2.1-10.9-2.1h-3.2c-.3-.6-.7-1.3-1.2-1.9-3.5-4.3-8.9-6.8-14-8.7-2.6-1-5.1-1.4-7.5-1.6-1.2-.2-2.8-.4-4.8-.4-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.6,16.5-12.9,34.3-12.9,52.8,0,4.99,0,7.51.02,8.57l-.12.43s-2.9,2.8-3.7,3.5c-7.2,6.4-13.4,9.5-18.9,9.5s-13.3-2.2-13.3-17.3,2.2-20.6,6.8-41.7c5.2-24,7.8-40.7,7.8-49.8,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9.1,5.3-18.4,14.3-27.9,26.7-5.3,6.9-9.8,14.4-13.8,22.1-2.3,4.4-4.4,8.8-6.4,13.3-1.1,2.4-2.1,4.8-3.1,7.2-.5,1.2-1,2.5-1.5,3.7-.4,1-.7,2.1-1.3,3-.2.2-.4.5-.6.7-.8.8-2.2,1.2-3.2.7-.9-.4-1.4-1.3-1.7-2.3-.2-1.2,0-2.4.2-3.5.1-1.3.3-2.6.4-3.9.3-2.5.6-4.9.9-7.3.6-4.2,1.2-8.4,2-12.5,1.4-7.2,3.4-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.4-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.6,1.5-18.9,4.3s-7.4,7.4-9.3,13.6c-8.7,27.4-13.1,56.8-13.1,87.4v5.2c.1,0-.7.9-.7.9-2.9,3-5.6,5.8-7.9,7.9-7.1,6.5-13,9.7-18.1,9.7s-9.9-2.6-12.3-7.4c-2-4-3-9.5-3.1-17.3.1-1.4.3-2.9.2-4.6v-.9c-.1,0,0-.3,0-.3.8-10.3,3.6-26.6,8.4-48.6,4.4-21.4,6.7-35.1,6.7-40.8s0-9.2-15.2-9.2-12.3,1.2-15.3,3.6c-3.1,2.5-5.6,7.2-7.6,14.2-4.2,14.4-7.8,30-10.5,46.6-2.7,16.6-4.1,30.3-4.1,40.8s.1,3.7.2,5.5l.2,2.1-.3,1.8-1.1,1c-1.4,1.2-2.8,2.4-4.1,3.5-8.4,6.6-18.2,9.9-29,9.9s-23.9-5.5-30.3-16.5c-2.4-4.2-4.4-9.8-6-16.8-2.9-21.4-3.6-43.2-2.2-64.9l.2-2.8h27.1c37.4,0,37.4-16.3,37.4-21.7s-1-6.6-1.6-7.2c-1.1-1.1-3.2-1.6-6.1-1.6h-53.2l.6-3.5c5.5-31.8,15.5-65.1,30.5-102,2.1-5.1,1.8-9.8-.7-13.6-3-4.5-9.2-7.4-15.9-7.4s-15.3,4.5-18.4,12.1c-16,39.3-26.4,75.8-31.8,111.8l-.4,2.5h-24.7c-5.6,0-13.1,1.8-13.1,17s1,8.4,2.9,10.5c1.3,1.4,4.5,3,12.3,3h17.1l-.2,3.2c-.7,10.7-1.1,21.3-1.1,31.6s.3,14,.9,21.1l.2,2.1c-3.2-.7-6.3.3-8.8,2.4-.9.6-1.8,1.4-2.7,2.4-10.2,12.4-22.5,22.5-36.4,30.2-14.1,7.7-26.9,11.6-38.1,11.6-17.8,0-30.1-6-36.6-18l-1.8-3.4,3.8-.9c27.4-6.7,47.1-15.9,58.5-27.3,11.2-11.2,16.8-24.7,16.8-40.2s-3.9-23.7-11.6-31.3c-7.8-7.7-18-11.5-31.1-11.5s-28.3,4-40,12c-11.8,8-21.1,19-27.8,32.6-6.7,13.7-10.1,28.7-10.1,44.6s.8,15.4,2.5,22.3l.5,2-1.7,1.2c-12.8,9-24.9,17.5-43.6,17.5-6.2,0-11.3-2.4-15.2-7-11.8-13.8-9.4-44.8-6.9-62.1l.2-1.4,1.2-.7c21.5-12.8,42.7-27.3,63-43.1,5.5-4.3,7.4-9.8,5.4-15.6-2.6-7.6-11.2-13.6-19.6-13.6s-8.2,1.4-11.8,4.2c-19.4,15.1-40.5,29.2-63.2,41.9-1.2.4-2.2,1-3.5,1.9l-2.9,1.6c-3.1,1.8-6.3,3.5-9.5,5.2l-12.8,6.8,1.3-6.3c12.7-59.1,19.9-119.4,21.4-179.3.1-4.9-1.3-9-4.3-12.1-3.2-3.3-8-5.1-13.2-5.1-8.7,0-18.2,5.4-18.5,17.4-1.7,67.6-11.1,135.8-27.8,202.6l-.4,1.6-1.6.5c-7.7,2.5-15.3,4-22.4,4.5h-1.2l-.9-.6c-3.2-2.6-4.8-7-4.8-13s1-8.7,2.9-18.4c2.1-11.7,3.2-19.1,3.2-22,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9,5.3-18.4,14.2-27.9,26.7-3.4,4.5-6.5,9.3-9.4,14.2-2.4,3.4-4.7,7-6.9,10.6-2.3,3.8-4.5,7.6-6.8,11.4-1.2,1.9-5.9,10.9-8.5,11.2,0-1,.1-2,.2-3,.2-1.8.4-3.6.6-5.4.4-3.4.8-6.9,1.4-10.3.4-2.5.8-5,1.3-7.5,1.4-7.2,3.3-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.5-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.5,1.5-18.9,4.3-4.3,2.9-7.4,7.3-9.3,13.6-8.7,27.4-13.1,56.8-13.1,87.4v5.1c.1,0-.7.9-.7.9-3,3.2-5.8,6-8.2,8.2-7.1,6.4-13.1,9.5-18.4,9.5s-6.9-1.5-9.3-4.3c-2.2-2.7-3.4-6.2-3.4-10.5,0-10.9,2.8-30.3,8.3-57.7,3.5-18.6,5.3-30.4,5.3-35.2s-1.6-9.5-14.5-9.5h-.7c-.3-.6-.7-1.2-1.2-1.8-3.5-4.3-8.9-6.8-14-8.7-3.7-1.4-7.1-1.7-10.5-1.6-1.1-.2-2.5-.3-4.4-.3-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.5,16.5-12.9,34.3-12.9,52.8s4.2,30.1,12.5,40.3ZM1600.2,554.2c-6.9,31.3-14.3,54.5-21.9,69-8.1,15.5-15.6,23-22.8,23s-8.8-2.9-10.3-5.4c-1.8-3.1-2.7-7-2.7-11.5,0-10.1,4.2-21.8,12.6-34.8,8.2-12.8,21.8-27.3,40.2-43.2l6.8-5.8-1.9,8.7h0ZM1573,420.2c5.2-12.3,12.2-22.3,20.8-29.9,8.8-7.7,18.6-11.8,29-12h3.7l-12.1,64.6h.1c-2.2,12.8-6,22.9-11.3,29.9-5.6,7.4-11.7,11.2-18.1,11.2s-11.1-2.2-14.6-6.4c-3.4-4.1-5.2-10.3-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM1527,463.6l.2,2.1-.41,1.44c.05-1.49.12-4.27.21-3.54ZM1055.3,397.6h0c6.6-11.2,15-16.8,24.9-16.8s9.3,1.7,12.4,5.1c3,3.3,4.5,7.6,4.5,12.9,0,9.7-4.4,18.3-13.2,25.5-.8.7-1.7,1.4-2.6,2-10.7,6.3-23.1,8.5-35.4,6.6.4-13.6,3.6-25.5,9.4-35.3ZM566,420.2c5.2-12.3,12.2-22.3,21-29.9,9-7.7,18.9-11.7,29.6-12h3.7l-14,69.3h.1c-2.2,10.6-5.9,19.3-10.9,25.9-5.3,6.9-11.2,10.5-17.4,10.5s-11.1-2.2-14.6-6.4c-3.5-4.1-5.2-10.1-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM144,667.8c-3.6-5.9-3.8-12.7-.6-19.1,57.8-115.1,104.3-250.3,146.3-425.4,2.3-9.5,12.5-13.7,19.5-13.7s16,3.6,17.8,13.6c10,54.8,22.5,119.4,40.3,182.8l1.7,6,3.6-5.1c41.5-58.1,79.5-120,116.2-179.8l7.2-11.8c3.7-6.2,9.9-9.6,15.6-9.6s11.5,2.8,15.4,7.5c4,4.7,5.6,10.9,4.4,17.2-3.3,18.4-7.2,37.1-11,55.2-7.9,38.1-16.1,77.5-19.9,117v1.6c-7.1,76-2.2,117.5,15.1,127,1.2.7,2.7,2,1.9,5.3-1.7,6.8-12.7,17-25.7,17s-23.2-10.3-29.7-29.6c-11.1-33.4-1-124.9,5.9-168.7.5-3.1,1-6.2,1.6-9.2.2-.7.3-1.4.4-2.1.2-1,.6-2,.5-3.1-.2-1.9-2.2-2.6-3.9-2.4-.5,0-1.1.2-1.5.5-.7.6-1.1,1.5-1.6,2.3-.6,1-1.1,2.1-1.7,3.1-1.3,2.1-2.6,4.1-4,6.2h.2c-2.2,3.4-4.5,6.8-6.7,10.2-4.3,6.5-8.6,13-12.9,19.5-4.1,6.2-8.3,12.4-12.5,18.5-4,5.9-8,11.7-12.1,17.5-4,5.6-7.9,11.2-11.9,16.7-3.9,5.3-7.8,10.6-11.7,15.9-3.8,5.1-7.6,10.2-11.5,15.2-4.5,5.8-9.6,9.3-18,9.3s-15-5.2-17.8-13.8c-.3-1.1-.7-2.3-1.1-3.5-2-6.5-4-13.1-6-19.6-2-6.7-4-13.5-5.9-20.3-1.9-7.1-3.8-14.1-5.7-21.2-2-7.3-3.8-14.7-5.6-22.1-1.9-7.7-3.7-15.4-5.5-23.1-.9-3.9-1.8-7.9-2.7-11.9-.4-2.1-.9-4.1-1.3-6.1-.3-1.6-.5-3.3-2-4.2-1.1-.6-2.5-.5-3.4.2-1.1.9-1.2,2.4-1.6,3.7-.5,1.5-.9,3.1-1.3,4.6-.9,3.1-1.7,6.2-2.6,9.3-2.2,7.7-4.4,15.4-6.6,23.1-2.2,7.6-4.4,15.1-6.7,22.7-2.3,7.4-4.6,14.9-6.9,22.3-2.3,7.3-4.6,14.6-7,21.9-2.3,7.2-4.7,14.4-7.1,21.5-2.3,7.1-4.7,14.1-7.2,21.1-2.4,6.9-4.8,13.8-7.3,20.7-2.5,6.8-5,13.5-7.5,20.3-2.5,6.7-5,13.4-7.6,20-2.6,6.6-5.2,13.1-7.8,19.6-2.6,6.4-5.2,12.8-7.9,19.2-2.7,6.3-5.4,12.6-8.1,18.9-2.7,6.2-5.4,12.3-8.2,18.5-2.8,6.1-5.6,12.2-8.4,18.2-2.8,6-5.6,11.9-8.5,17.9-2.8,5.8-5.7,11.7-8.6,17.5-4.1,8-7.6,9.7-14.6,9.7s-14.3-4.3-18.2-10.6Z"></path></svg></div>
+    <div class="hero-text">
+      <p class="crumb">Book Notes · Account Strategy</p>
+      <h1>The New Successful Large Account Management</h1>
+      <p class="sub">Memory Map · Chapters 1 and 2</p>
+      <p class="meta">Robert B. Miller and Stephen E. Heiman with Tad Tuleja · Revised and Updated edition</p>
+    </div>
+    <div class="progress">
+      <div class="prog-ring" id="progRing"></div>
+      <div class="prog-facts" id="progFacts"></div>
+      <div class="reset" id="resetBox"><button class="btn-ghost" id="resetBtn" type="button">Reset progress</button></div>
+    </div>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Study modes">
+  <div class="wrap bar-in">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-map" data-view="map" type="button">Mind Map</button>
+      <button class="tab" role="tab" id="tab-cards" data-view="cards" type="button">Flashcards</button>
+      <button class="tab" role="tab" id="tab-quiz" data-view="quiz" type="button">Quiz</button>
+      <button class="tab" role="tab" id="tab-drills" data-view="drills" type="button">Drills</button>
+    </div>
+    <div class="chips" role="group" aria-label="Chapter filter">
+      <span>Chapter</span>
+      <button class="chip" type="button" data-ch="all" id="chip-all">All</button>
+      <button class="chip" type="button" data-ch="c1" id="chip-c1">Ch 1</button>
+      <button class="chip" type="button" data-ch="c2" id="chip-c2">Ch 2</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="view" id="view-map" aria-labelledby="tab-map">
+    <div class="view-head">
+      <h2>Mind Map</h2>
+      <p>Pick any branch to open its key points, diagram and memory hook. Rings fill as you answer correctly in the quiz and flashcards.</p>
+    </div>
+    <div class="map-layout">
+      <div class="map-scroll"><div class="map" id="map"></div><p class="map-hint">Tip: the numbered branches of Chapter 1 follow the book's order of the eight lessons.</p></div>
+      <aside class="panel" id="panel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section class="view" id="view-cards" aria-labelledby="tab-cards" hidden>
+    <div class="view-head">
+      <h2>Flashcards</h2>
+      <p>Say the answer out loud, then flip. Mark "Got it" only if you recalled the main idea without peeking.</p>
+    </div>
+    <div class="fc-wrap" id="cards"></div>
+  </section>
+
+  <section class="view" id="view-quiz" aria-labelledby="tab-quiz" hidden>
+    <div class="view-head">
+      <h2>Quiz</h2>
+      <p>Each answer comes with the reason from the book. Wrong answers lower that concept's ring, so the map shows what to review.</p>
+    </div>
+    <div class="qz-wrap" id="quiz"></div>
+  </section>
+
+  <section class="view" id="view-drills" aria-labelledby="tab-drills" hidden>
+    <div class="view-head">
+      <h2>Drills</h2>
+      <p>Short games that train structure: the order of the lessons, the parts of account selection, and who said what.</p>
+    </div>
+    <div class="dr-tabs" id="drTabs"></div>
+    <div class="drill" id="drill"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Personal study notes on The New Successful Large Account Management by Miller, Heiman and Tuleja. Quotes are from the book. Diagrams marked "Memory aid" are study devices, not figures from the book.</p>
+    <p>Progress is saved in this browser only.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+"use strict";
+
+/* =====================================================================
+   CONTENT. To add a chapter: push to CHAPTERS, CONCEPTS, QUIZ.
+   ===================================================================== */
+const CHAPTERS = [
+  {
+    id: "c1", n: 1,
+    title: "The New Landscape of Account Management",
+    short: "The New Landscape",
+    sub: "Eight Lessons",
+    thesis: `Technology tools are now an entry fee, not an advantage. The real differentiator is the ability to build relationships that bring your customers measurable value over time. The eight lessons are the "field position changes" to understand before you plan for any Large Account.`,
+    quote: { t: `Change alone is unchanging.`, w: `Heraclitus, the chapter's opening line` },
+    remember: `Tools are the entry fee. Relationships that create measurable value are the edge.`,
+    diagram: "c1"
+  },
+  {
+    id: "c2", n: 2,
+    title: "Selecting the Large Account",
+    short: "Selecting the Large Account",
+    sub: "Choosing where to invest",
+    thesis: `Not all accounts are created equal. Treating every customer as strategic spreads your resources too thin, so choose Large Accounts deliberately: look past revenue, test doubtful accounts, compare the portfolio, and define the exact Field of Play you will plan for.`,
+    quote: { t: `An account only deserves the royal treatment if it treats you like royalty.`, w: `Miller and Heiman` },
+    remember: `Few accounts, chosen on more than revenue, where value flows both ways.`,
+    diagram: "c2"
+  }
+];
+
+const CONCEPTS = [
+  /* ---------------- Chapter 1 ---------------- */
+  {
+    id: "l1", ch: "c1", n: 1, tag: "Lesson 1",
+    title: "Technology Changes Everything",
+    hook: `Information is instant and everywhere. Your competitors, new entrants and your customers all have the same public data you do.`,
+    points: [
+      `New market entrants can gather, within minutes, as much public information about your accounts as you have.`,
+      `Customers use the same information to research your capabilities, compare you with competitors and negotiate harder.`,
+      `The sheer volume of data becomes a problem, so you need an information management system that turns data into usable business knowledge.`,
+      `Private information is the real edge. Showing you how to get it is a large part of the book.`
+    ],
+    remember: `Public data is the entry fee. Private knowledge is the edge.`,
+    ask: `Lesson 1: "Technology Changes Everything". What changed, and where is your edge now?`,
+    diagram: "l1"
+  },
+  {
+    id: "l2", ch: "c1", n: 2, tag: "Lesson 2",
+    title: "Technology Changes Nothing",
+    hook: `An information management system is not software. Tools never deliver results on their own.`,
+    points: [
+      `First SFA, then CRM, then ERM. Many companies saw little or no return on massive IT investments.`,
+      `Reason 1: buyers assumed the software would run itself and underinvested in integration, data cleansing and training.`,
+      `Reason 2: the "user adoption problem". Salespeople saw a gimmick that took their data and gave nothing back, so they didn't use it.`,
+      `Reason 3: companies automated processes they never analyzed, and got the same old selling blunders, only faster.`,
+      `Results come from a professional using the tool inside a replicable, tested process. Managing relationships still drives long-term business.`
+    ],
+    quote: { t: `Software can no more turn an incompetent salesperson into a double-quota winner than a $200 driver can turn your average five-year-old into Tiger Woods.`, w: `Miller and Heiman` },
+    remember: `Tool + professional + tested process = results.`,
+    ask: `Lesson 2: why did so many CRM and sales automation projects fail? Name the three reasons.`,
+    diagram: "l2"
+  },
+  {
+    id: "l3", ch: "c1", n: 3, tag: "Lesson 3",
+    title: "Customers Are Still in Charge",
+    hook: `The Web expanded choice instead of replacing old channels. Customers are better informed, more demanding and less loyal.`,
+    points: [
+      `Customers use the Web to research and as a bargaining tool. Internet auctions have intensified competition for corporate contracts.`,
+      `Used to instant, personalized responses online, they now expect the same speed and service everywhere.`,
+      `Their single biggest complaint about vendors (HR Chally research): salespeople don't understand their businesses.`,
+      `Loyalty is fleeting. Churn in telecom runs at 18 to 24 percent.`,
+      `Answer the demand for consultative service: use technology to help customers plan their future.`
+    ],
+    quote: { t: `You've got to realize that your job isn't to write new contracts, but to sustain the profitability of the business you already have.`, w: `Ged Holmes, former head of business sales, O2` },
+    remember: `Machines made customers more insistent on personal responsiveness.`,
+    ask: `Lesson 3: what is customers' number one complaint about salespeople, and what does it mean for loyalty?`,
+    diagram: "l3"
+  },
+  {
+    id: "l4", ch: "c1", n: 4, tag: "Lesson 4",
+    title: "Short Lists Are Getting Shorter",
+    hook: `Supply chain management has made procurement central to selling, and procurement pushes suppliers toward commodity.`,
+    points: [
+      `Proposals used to be judged on price, reputation, spec compliance and delivery. Now buyers gauge the total cost of doing business with each supplier.`,
+      `Leading corporations are consciously narrowing their vendor base, whatever they are buying.`,
+      `Large procurement departments are tasked by the C level to drive costs down.`,
+      `After expensive mergers, some buyers hammer suppliers into volume discounts to justify the deal.`,
+      `"Getting out of commodity" is the challenge. The book answers it with the Buy-Sell Hierarchy.`
+    ],
+    quote: { t: `Some procurement departments justify their entire existence by pushing suppliers down into a commodity position.`, w: `Don McKelvie, Director of Worldwide Sales, Baker Atlas` },
+    remember: `Fewer seats at the table, and procurement guards the door.`,
+    ask: `Lesson 4: what is shrinking supplier short lists, and what is the big challenge it creates?`,
+    diagram: "l4"
+  },
+  {
+    id: "l5", ch: "c1", n: 5, tag: "Lesson 5",
+    title: "It's Not About Making the Sale",
+    hook: `Chasing single transactions locks you into commodity. Set your sights three or four years out. Retention is the name of the game.`,
+    points: [
+      `Quick serial wins make you look shortsighted. Working for the account's long-term benefit protects retention.`,
+      `Opportunistic firms work quarter to quarter, or deal to deal. Customer-centric firms see each deal as part of a larger account picture.`,
+      `Successful firms help clients run their businesses, not just buy supplies or use services.`,
+      `Keep the focus on your customer's customers, and ask how each sale ties to the account's overall strategy.`,
+      `Win-Win: your success is a function of your customers' success, for the long haul.`
+    ],
+    quote: { t: `Rather than selling products into customer organizations, the real challenge is to understand their pain points, their problems with customer retention, and deliver solutions that will alleviate those problems.`, w: `Neville Seabridge, Sales Director, Experian` },
+    remember: `Sell to the account's future, not to this quarter.`,
+    ask: `Lesson 5: if it's not about making the sale, what is it about? Where should your focus be?`,
+    diagram: "l5"
+  },
+  {
+    id: "l6", ch: "c1", n: 6, tag: "Lesson 6",
+    title: "Account Management Is Business Management",
+    hook: `The Large Account manager now works like a general manager running an external business unit.`,
+    points: [
+      `A generation ago, "account manager" meant follow-up and service: complaint calls, client lunches, documentation.`,
+      `Today you earn a major account only after proving yourself in selling.`,
+      `You own both P&L and relational aspects, may work from the customer's site, and run a dedicated team.`,
+      `You are the account's advocate inside your company. Manage how your company perceives your loyalty, so you are not seen as having "gone native", and never promise what your firm won't deliver.`,
+      `Large Account management is becoming a senior management function, driven by executive vision and resources.`
+    ],
+    remember: `The account is your business unit. You are its general manager.`,
+    ask: `Lesson 6: how has the account manager's role changed, and what is the risk of being the account's advocate?`,
+    diagram: "l6"
+  },
+  {
+    id: "l7", ch: "c1", n: 7, tag: "Lesson 7",
+    title: "The Lone Ranger Has Left the Building",
+    hook: `No single person can hold an account in their head anymore. Large Accounts need coordinated, cross-functional teams.`,
+    points: [
+      `Flexible: a small core plus ad hoc members whose roles change with the account's needs. A team locked onto the org chart stops responding.`,
+      `Aligned: your teams mirror the customer's teams, with your people face to face with their counterparts.`,
+      `Rewarded: compensation recognizes everyone who contributes, not just the superstars who close big deals at quarter end.`,
+      `Empowered: internal resources, authority and executive sponsors, so the team doesn't overpromise and underdeliver.`
+    ],
+    quote: { t: `LAMP is the best tool for marshaling internal resources that our firm has ever seen.`, w: `A LAMP client` },
+    remember: `Flexible, aligned, rewarded, empowered.`,
+    ask: `Lesson 7: what are the four points to remember about Large Account teams?`,
+    diagram: "l7"
+  },
+  {
+    id: "l8", ch: "c1", n: 8, tag: "Lesson 8",
+    title: "You Ain't Seen Nothing Yet",
+    hook: `Whatever got you where you are today will not keep you there. Change is the only constant, and it keeps accelerating.`,
+    points: [
+      `This principle goes back to Miller Heiman's very first program, Strategic Selling.`,
+      `Moore's Law: chip capability doubles roughly every eighteen months.`,
+      `In a technology-driven world, change is exponential, not arithmetic.`,
+      `You need a planning process flexible enough for challenges you haven't imagined yet.`
+    ],
+    remember: `Plan with a process that bends, because the future speeds up.`,
+    ask: `Lesson 8: what does Moore's Law teach about change, and what kind of planning tool does that demand?`,
+    diagram: "l8"
+  },
+
+  /* ---------------- Chapter 2 ---------------- */
+  {
+    id: "traps", ch: "c2", n: 1, tag: "Selection traps",
+    title: "Four Selection Traps",
+    hook: `Most selection mistakes come from choosing too many accounts, or choosing them for the wrong reasons.`,
+    points: [
+      `Too many accounts: by definition, not everyone can be "strategic".`,
+      `Revenue alone: revenue is only part of the assessment.`,
+      `Blue Ribbon names: famous household names can hold vendors hostage and demand special treatment.`,
+      `No real relationship: a relationship is sustainable only where value is realized on both ends.`
+    ],
+    quote: { t: `An account only deserves the royal treatment if it treats you like royalty.`, w: `Miller and Heiman` },
+    remember: `Too many, revenue only, famous name, one-way value.`,
+    ask: `Chapter 2: name the four traps to avoid when selecting a Large Account.`,
+    diagram: "traps"
+  },
+  {
+    id: "diag", ch: "c2", n: 2, tag: "Doubtful accounts",
+    title: "Preliminary Diagnosis",
+    hook: `For accounts you're unsure about, surface hidden problems before they have a chance to become overwhelming.`,
+    points: [
+      `Run it before you commit a team and resources to a doubtful account.`,
+      `Look for problems that are hidden today but could grow overwhelming later.`,
+      `If you are still uncertain after the diagnosis, the answer is probably no.`
+    ],
+    remember: `Still in doubt? Probably no.`,
+    ask: `Chapter 2: what is a Preliminary Diagnosis for, and what do you decide if you're still uncertain?`,
+    diagram: "diag"
+  },
+  {
+    id: "port", ch: "c2", n: 3, tag: "Comparing accounts",
+    title: "Portfolio Analysis",
+    hook: `Compare candidate accounts across several dimensions, not just one.`,
+    points: [
+      `Revenue: what the account brings in.`,
+      `Costs: what it takes to serve it.`,
+      `Growth potential: where the business with them can go.`,
+      `Relationship potential: whether a mutual, value-based relationship can develop.`
+    ],
+    remember: `Revenue, costs, growth, relationship. All four, never one.`,
+    ask: `Chapter 2: which four factors does a Portfolio Analysis weigh?`,
+    diagram: "port"
+  },
+  {
+    id: "fop", ch: "c2", n: 4, tag: "Scope",
+    title: "Field of Play",
+    hook: `Define exactly which part of the Large Account you are planning for.`,
+    points: [
+      `A Large Account is often too big and varied to plan for as one block.`,
+      `The Field of Play is the specific part you focus on, such as a division, business unit or location.`,
+      `It anchors the rest of the process: later tools like the Charter Statement and Goals are written for the Field of Play.`
+    ],
+    remember: `Plan for a field you can actually cover.`,
+    ask: `Chapter 2: what is the Field of Play, and why define it?`,
+    diagram: "fop"
+  },
+  {
+    id: "qs", ch: "c2", n: 5, tag: "Know the account",
+    title: "Five Diagnostic Questions",
+    hook: `Questions to answer about an account before you call it strategic.`,
+    points: [
+      `What are their problems?`,
+      `What are their priorities?`,
+      `What is the account's potential?`,
+      `What is our knowledge base about them?`,
+      `How does the account see itself?`
+    ],
+    remember: `Problems, priorities, potential, knowledge, self-image.`,
+    ask: `Chapter 2: list the five questions to ask about a candidate Large Account.`,
+    diagram: "qs"
+  }
+];
+
+/* Quiz: first option is the correct one (shuffled at runtime). */
+const QUIZ = [
+  { c: "c1", q: `According to Chapter 1, why don't ICT tools (Web sites, CRM, mobile) give you a competitive advantage?`,
+    o: [`Everyone has them, so they are just an entry fee`, `They are too expensive for most firms`, `Customers don't trust them`, `They are hard to learn`],
+    why: `Because the tools are everywhere, owning them is "merely an entry fee", something you need just to be in the game.` },
+  { c: "c1", q: `What does Chapter 1 call the key differentiating factor with Large Accounts today?`,
+    o: [`Building relationships that bring customers measurable value over time`, `Having the lowest price on the short list`, `Owning the most advanced CRM`, `Closing more deals per quarter`],
+    why: `The thread tying the eight lessons together is the ability to build relationships that bring customers measurable value over time.` },
+  { c: "l1", q: `Lesson 1: who can now gather as much public information about your accounts as you have?`,
+    o: [`New market entrants, competitors and the customers themselves`, `Only your largest competitors`, `Only paid research firms`, `Nobody, public data is still scarce`],
+    why: `Search engines and databanks let even the newest entrants get rich account data in minutes. Customers use it too, to research you.` },
+  { c: "l1", q: `Lesson 1: where does your real information advantage come from?`,
+    o: [`Private information about the account, turned into business knowledge`, `Gathering more public data than rivals`, `Buying more databases`, `Faster Internet access`],
+    why: `Public information is open to all. Private information is "another matter", and getting it is a large part of the book.` },
+  { c: "l2", q: `Lesson 2: which of these was NOT one of the three reasons sales automation and CRM projects failed?`,
+    o: [`The software licenses were too expensive`, `Buyers assumed the software would run itself`, `Salespeople refused to use it (the user adoption problem)`, `Companies automated processes they never analyzed`],
+    why: `The three reasons: underinvesting in integration, data cleansing and training; the user adoption problem; and automating unanalyzed processes.` },
+  { c: "l2", q: `"The same old selling blunders, only faster" describes which mistake?`,
+    o: [`Automating processes without analyzing them first`, `Skipping training`, `Hiring too many salespeople`, `Moving all sales online`],
+    why: `Companies dazzled by CRM features failed to analyze the processes they were automating.` },
+  { c: "l2", q: `The "$200 driver and Tiger Woods" image makes which point?`,
+    o: [`Tools only work in the hands of a professional following a tested process`, `Premium tools are worth the price`, `Training should start young`, `Technology is a waste of money`],
+    why: `Results are never provided by a tool itself, but by a professional who follows a replicable, tested process.` },
+  { c: "l3", q: `Lesson 3: what is customers' single biggest complaint about vendors (HR Chally research)?`,
+    o: [`Salespeople don't understand their businesses`, `Prices are too high`, `Delivery is too slow`, `There are too many sales calls`],
+    why: `When asked to name vendors' shortcomings, customers most often say salespeople don't understand their businesses.` },
+  { c: "l3", q: `What average churn range does Ged Holmes of O2 cite for telecom?`,
+    o: [`18 to 24 percent`, `5 to 8 percent`, `30 to 40 percent`, `50 percent`],
+    why: `He calls the industry churn averages of 18 to 24 percent "staggering".` },
+  { c: "l3", q: `Lesson 3: what did the Internet do to customers instead of replacing traditional buying?`,
+    o: [`It expanded their choices and made them more discerning and demanding`, `It made them more loyal to known brands`, `It moved almost all B2B purchases online`, `It made price less important`],
+    why: `The Web became a research and bargaining tool. Customers now expect Web-level speed and service in every channel.` },
+  { c: "l4", q: `Lesson 4: what is driving supplier short lists to get shorter?`,
+    o: [`Supply chain management and measuring the total cost of doing business`, `Fewer suppliers in every market`, `Government regulation`, `Customers outsourcing everything`],
+    why: `Leading corporations gauge the total cost of doing business with each supplier and consciously narrow their vendor base.` },
+  { c: "l4", q: `In the procurement-driven world, what is the major challenge for suppliers?`,
+    o: [`Getting out of commodity`, `Finding procurement contacts`, `Answering RFPs faster`, `Lowering prices every year`],
+    why: `Procurement tends toward commoditization. The book addresses "getting out of commodity" through the Buy-Sell Hierarchy.` },
+  { c: "l5", q: `Lesson 5: how far ahead should you set your sights with a Large Account?`,
+    o: [`Three or four years`, `The current quarter`, `One fiscal year`, `Ten years`],
+    why: `Build long-term business three or four years out, not just today's opportunities.` },
+  { c: "l5", q: `Lesson 5 says to keep the focus not on your customer, but on...`,
+    o: [`Your customer's customers`, `Your competitors`, `Your own quota`, `Your product roadmap`],
+    why: `The goal is better business returns for the account, so focus on the stakeholders who make your Large Account successful.` },
+  { c: "l5", q: `"In today's environment, ___ is the name of the game."`,
+    o: [`Retention`, `Acquisition`, `Price`, `Volume`],
+    why: `Working for the account's long-term benefit helps ensure retention, and retention is the name of the game.` },
+  { c: "l6", q: `Lesson 6: the modern Large Account manager functions most like...`,
+    o: [`A general manager or business development specialist`, `A customer service representative`, `A transactional salesperson`, `A procurement officer`],
+    why: `You run a team focused on one account, often with P&L responsibility. The account is an extended business unit.` },
+  { c: "l6", q: `Being the account's advocate inside your company creates which risk?`,
+    o: [`Being seen as having "gone native", so you must manage perceptions and never overpromise`, `Losing your sales quota`, `Being moved to another account`, `Losing access to the customer`],
+    why: `Top management may wonder about your loyalty. Never promise the account anything your firm won't deliver.` },
+  { c: "l7", q: `Lesson 7: how should a Large Account team be composed?`,
+    o: [`A small core plus flexible, ad hoc members`, `A permanent team fixed on the org chart`, `One star account manager`, `Only salespeople`],
+    why: `Once a team is locked into a permanent org chart position, it loses its ability to respond to the client's needs.` },
+  { c: "l7", q: `Lesson 7: who should the team's compensation reward?`,
+    o: [`Everybody who contributes`, `Only the person who closes the deal`, `Only the account manager`, `Only executive sponsors`],
+    why: `People do effectively what they're rewarded for. Large Account management is not just a "sales function".` },
+  { c: "l7", q: `Why do executive sponsors matter for account teams?`,
+    o: [`They give the leverage to deliver and avoid overpromising and underdelivering`, `They replace the account manager`, `They negotiate prices`, `They handle complaints`],
+    why: `Teams need executive support and interdepartmental clout to meet client needs as they arise.` },
+  { c: "l8", q: `Lesson 8 uses Moore's Law to show that change is...`,
+    o: [`Exponential, not arithmetic`, `Slowing down`, `Predictable ten years ahead`, `Limited to computing`],
+    why: `Capability doubles roughly every 18 months, so change compounds. We "ain't seen nothing yet".` },
+  { c: "l8", q: `Which principle from Strategic Selling does Lesson 8 repeat?`,
+    o: [`Whatever got you where you are today won't keep you there`, `Always be closing`, `The customer is always right`, `Price wins in the end`],
+    why: `Because change accelerates, you need a planning tool flexible enough for challenges you haven't imagined yet.` },
+
+  /* Chapter 2 */
+  { c: "c2", q: `Why shouldn't you treat every customer as a Large Account?`,
+    o: [`By definition, not everyone can be "strategic"; resources are finite`, `Small customers don't matter`, `It confuses the CRM`, `Customers dislike special attention`],
+    why: `Trying to focus on too many customers is the first selection trap.` },
+  { c: "traps", q: `Which of these is NOT one of the four selection traps?`,
+    o: [`Choosing accounts where value flows both ways`, `Trying to focus on too many accounts`, `Selecting on revenue alone`, `Chasing Blue Ribbon household names`],
+    why: `Two-way value is what you want. The traps are too many accounts, revenue alone, Blue Ribbon names and no real relationship.` },
+  { c: "traps", q: `What is the danger of a "Blue Ribbon" account?`,
+    o: [`Famous names can hold vendors hostage, demanding special treatment`, `They pay too slowly`, `They never buy`, `They only buy online`],
+    why: `An account only deserves the royal treatment if it treats you like royalty.` },
+  { c: "traps", q: `"An account only deserves the royal treatment if..."`,
+    o: [`...it treats you like royalty`, `...it is a household name`, `...it pays on time`, `...it is your largest customer`],
+    why: `Selection must be mutual. Prestige alone doesn't earn your best resources.` },
+  { c: "traps", q: `Why is revenue alone a poor way to select Large Accounts?`,
+    o: [`It is only part of the assessment; cost, growth and relationship potential matter too`, `Revenue numbers are always wrong`, `Large revenue accounts never grow`, `Revenue is confidential`],
+    why: `The Portfolio Analysis weighs revenue together with costs, growth potential and relationship potential.` },
+  { c: "diag", q: `After a Preliminary Diagnosis you are still uncertain about an account. The answer is...`,
+    o: [`Probably no`, `Probably yes`, `Run the diagnosis again next year`, `Ask procurement`],
+    why: `If you're still uncertain, the answer is probably no.` },
+  { c: "diag", q: `What is the purpose of a Preliminary Diagnosis?`,
+    o: [`To surface hidden problems before they become overwhelming`, `To forecast next quarter's revenue`, `To rank competitors`, `To set the price`],
+    why: `It is for accounts you're unsure about: find the hidden problems early.` },
+  { c: "port", q: `Which of these is NOT one of the four Portfolio Analysis factors?`,
+    o: [`Brand prestige`, `Costs`, `Growth potential`, `Relationship potential`],
+    why: `The four are revenue, costs, growth potential and relationship potential. Prestige is the Blue Ribbon trap.` },
+  { c: "fop", q: `What is the Field of Play?`,
+    o: [`The specific part of the account you plan for, such as a division or business unit`, `The whole market you sell into`, `Your list of competitors`, `The customer's procurement team`],
+    why: `Defining the Field of Play keeps the plan focused on a part of the account you can actually cover.` },
+  { c: "qs", q: `Which question belongs to the five diagnostic questions about an account?`,
+    o: [`How does the account see itself?`, `How big is our discount?`, `Who is our cheapest competitor?`, `How fast can we close?`],
+    why: `The five: their problems, their priorities, the account's potential, our knowledge base, and how the account sees itself.` },
+  { c: "qs", q: `"What is our knowledge base?" asks about...`,
+    o: [`How much we really know about the account`, `Our product documentation`, `Our CRM licenses`, `Our training budget`],
+    why: `Selection depends on how well you understand the account's problems, priorities and potential.` }
+];
+
+const SORT_ITEMS = [
+  { t: `Trying to make every customer "strategic"`, b: "trap" },
+  { t: `Judging accounts on revenue alone`, b: "trap" },
+  { t: `Chasing a famous household name`, b: "trap" },
+  { t: `An account where value flows one way only`, b: "trap" },
+  { t: `Revenue, as one part of the picture`, b: "crit" },
+  { t: `Costs to serve the account`, b: "crit" },
+  { t: `Growth potential`, b: "crit" },
+  { t: `Relationship potential`, b: "crit" },
+  { t: `What are their problems?`, b: "q" },
+  { t: `What are their priorities?`, b: "q" },
+  { t: `What is the account's potential?`, b: "q" },
+  { t: `What is our knowledge base?`, b: "q" },
+  { t: `How does the account see itself?`, b: "q" }
+];
+const BINS = [
+  { id: "trap", t: "Selection trap", s: "Avoid it" },
+  { id: "crit", t: "Portfolio factor", s: "Weigh it" },
+  { id: "q", t: "Diagnostic question", s: "Ask it" }
+];
+
+const QUOTES = [
+  { t: `Software can no more turn an incompetent salesperson into a double-quota winner than a $200 driver can turn your average five-year-old into Tiger Woods.`, w: `Miller and Heiman`, c: "l2" },
+  { t: `Your job isn't to write new contracts, but to sustain the profitability of the business you already have.`, w: `Ged Holmes, O2`, c: "l3" },
+  { t: `Some procurement departments justify their entire existence by pushing suppliers down into a commodity position.`, w: `Don McKelvie, Baker Atlas`, c: "l4" },
+  { t: `In an opportunistic company, you work from quarter to quarter at best, and sometimes even from deal to deal.`, w: `Bill Clement, Siemens Building Technologies`, c: "l5" },
+  { t: `The real challenge is to understand their pain points, their problems with customer retention, and deliver solutions that will alleviate those problems.`, w: `Neville Seabridge, Experian`, c: "l5" },
+  { t: `LAMP is the best tool for marshaling internal resources that our firm has ever seen.`, w: `A LAMP client`, c: "l7" },
+  { t: `One of the great ironies of the computer age is that machines have made customers more insistent on personal responsiveness.`, w: `Miller and Heiman`, c: "l3" },
+  { t: `However rapidly the business environment has been changing up to now, we ain't seen nothing yet.`, w: `Miller and Heiman`, c: "l8" },
+  { t: `It's still the effective management of relationships that drives long-term business.`, w: `Miller and Heiman`, c: "l2" },
+  { t: `Your success is a function of your customers' success. Not for this quarter alone, but for the long haul.`, w: `Miller and Heiman`, c: "l5" },
+  { t: `You're aware that you have to manage your company's perception of your loyalty.`, w: `Miller and Heiman`, c: "l6" },
+  { t: `With very little investment of either time or money, they can acquire as much public information about your accounts as you have yourselves.`, w: `Miller and Heiman`, c: "l1" }
+];
+
+/* =====================================================================
+   STATE
+   ===================================================================== */
+const KEY = "lam-memory-v1";
+const MAX = 3;
+let S = { m: {}, quizBest: {} };
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+function score(id) { return Math.max(0, Math.min(MAX, S.m[id] || 0)); }
+function bump(id, d) { if (!id || id.charAt(0) === "c" && /^c\d+$/.test(id)) return; S.m[id] = Math.max(0, Math.min(MAX, (S.m[id] || 0) + d)); save(); refreshMastery(); }
+
+const UI = { view: "map", ch: "all", sel: "c1" };
+
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const byId = id => CONCEPTS.find(c => c.id === id) || CHAPTERS.find(c => c.id === id);
+const chOf = id => { const x = byId(id); return x ? (x.ch || x.id) : null; };
+const inCh = id => UI.ch === "all" || chOf(id) === UI.ch;
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function ring(frac, size, stroke, track, fill) {
+  const r = (size - stroke) / 2, c = 2 * Math.PI * r, off = c * (1 - frac);
+  return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${track}" stroke-width="${stroke}"/>` +
+    (frac > 0 ? `<circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${fill}" stroke-width="${stroke}" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}" transform="rotate(-90 ${size/2} ${size/2})"/>` : "") + `</svg>`;
+}
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* =====================================================================
+   DIAGRAMS
+   ===================================================================== */
+const AID = `<p class="aid">Memory aid</p>`;
+const DIAGRAMS = {
+  c1: () => `<div class="dg">${AID}<div class="dg-grid">
+      <div class="dg-cell"><span class="k">1 + 2</span><b>The technology paradox</b><span>It changes everything, and it changes nothing.</span></div>
+      <div class="dg-cell"><span class="k">3 + 4</span><b>The buyer's power</b><span>Informed customers, shorter short lists.</span></div>
+      <div class="dg-cell"><span class="k">5 + 6</span><b>Your new job</b><span>Long-term account value, run like a business.</span></div>
+      <div class="dg-cell"><span class="k">7 + 8</span><b>Team and future</b><span>No Lone Rangers, and change keeps speeding up.</span></div>
+    </div><p class="dg-cap">Remember the eight lessons as four pairs.</p></div>`,
+  c2: () => `<div class="dg">${AID}<div class="flow">
+      <div class="st"><span class="k">1</span>Start from all your accounts</div><div class="ar"></div>
+      <div class="st"><span class="k">2</span>Avoid the four selection traps</div><div class="ar"></div>
+      <div class="st"><span class="k">3</span>Diagnose doubtful accounts</div><div class="ar"></div>
+      <div class="st"><span class="k">4</span>Run the Portfolio Analysis</div><div class="ar"></div>
+      <div class="st"><span class="k">5</span>Define the Field of Play</div><div class="ar"></div>
+      <div class="st end">Your Large Accounts</div>
+    </div></div>`,
+  l1: () => `<div class="dg">${AID}<div class="cmp">
+      <div><h4>Public information</h4><ul><li>You</li><li>Current competitors</li><li>New entrants</li><li>The customer</li></ul></div>
+      <div><h4>Private information</h4><ul><li>Only those inside the relationship</li><li>Turned into business knowledge</li><li>This is your edge</li></ul></div>
+    </div></div>`,
+  l2: () => `<div class="dg">${AID}<div class="flow">
+      <div class="st"><span class="k">1</span>"The software will run itself"</div>
+      <div class="st"><span class="k">2</span>User adoption problem</div>
+      <div class="st"><span class="k">3</span>Automating unanalyzed processes</div>
+      <div class="ar"></div>
+      <div class="st end">Same old blunders, only faster</div>
+    </div><p class="dg-cap">The fix: tool + trained professional + tested process.</p></div>`,
+  l3: () => `<div class="dg"><div class="dg-grid">
+      <div class="stat"><b>18-24%</b><span>Average churn in telecom, cited by Ged Holmes of O2</span></div>
+      <div class="stat"><b>No. 1</b><span>Customer complaint: salespeople don't understand our business</span></div>
+    </div></div>`,
+  l4: () => {
+    const row = (y, n, lbl) => { let s = `<text x="0" y="${y + 15}" class="tx">${lbl}</text>`; for (let i = 0; i < 9; i++) { const on = i < n; s += `<rect x="${78 + i * 26}" y="${y}" width="20" height="20" rx="2" fill="${on ? css("--tmd-gold") : "none"}" stroke="${on ? css("--tmd-gold") : css("--tmd-blue-dark")}" stroke-width="1"/>`; } return s; };
+    return `<div class="dg">${AID}<svg viewBox="0 0 320 112" role="img" aria-label="Vendor short list shrinking from nine to five to three suppliers">
+      <style>.tx{font:500 12px var(--font);fill:${css("--tmd-blue-light")}}</style>
+      ${row(4, 9, "Before")}${row(44, 5, "Today")}${row(84, 3, "Next")}
+    </svg><p class="dg-cap">Buyers gauge the total cost of doing business and keep fewer suppliers. Counts are illustrative.</p></div>`;
+  },
+  l5: () => `<div class="dg">${AID}<div class="flow">
+      <div class="st"><span class="k">1</span>You</div><div class="ar"></div>
+      <div class="st"><span class="k">2</span>Your Large Account</div><div class="ar"></div>
+      <div class="st end">Your customer's customers: keep the focus here</div>
+    </div><div class="cmp">
+      <div><h4>Opportunistic</h4><ul><li>Quarter to quarter</li><li>Deal to deal</li><li>Seen as shortsighted</li></ul></div>
+      <div><h4>Customer-centric</h4><ul><li>3 to 4 years out</li><li>Account picture</li><li>Retention</li></ul></div>
+    </div></div>`,
+  l6: () => `<div class="dg"><div class="cmp">
+      <div><h4>A generation ago</h4><ul><li>Follow-up and service</li><li>Complaint calls, lunches, paperwork</li><li>Non-revenue role</li></ul></div>
+      <div><h4>Today</h4><ul><li>Earned after selling success</li><li>P&amp;L and relationship owner</li><li>Leads a dedicated team</li><li>Senior management function</li></ul></div>
+    </div></div>`,
+  l7: () => `<div class="dg"><div class="dg-grid">
+      <div class="dg-cell"><span class="k">1</span><b>Flexible</b><span>Small core, ad hoc members</span></div>
+      <div class="dg-cell"><span class="k">2</span><b>Aligned</b><span>Mirrors the customer's teams</span></div>
+      <div class="dg-cell"><span class="k">3</span><b>Rewarded</b><span>Pay everyone who contributes</span></div>
+      <div class="dg-cell"><span class="k">4</span><b>Empowered</b><span>Resources and executive sponsors</span></div>
+    </div></div>`,
+  l8: () => {
+    const X = i => 44 + i * 44, Y = v => 132 - v * (120 / 64);
+    let exp = "", ari = "", ticks = "";
+    for (let i = 0; i <= 6; i++) {
+      exp += (i ? "L" : "M") + X(i) + " " + Y(Math.pow(2, i)).toFixed(1);
+      ari += (i ? "L" : "M") + X(i) + " " + Y(1 + i).toFixed(1);
+      ticks += `<text x="${X(i)}" y="150" text-anchor="middle" class="tx">${i}</text>`;
+    }
+    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark");
+    return `<div class="dg">${AID}<svg viewBox="0 0 320 176" role="img" aria-label="Exponential versus arithmetic growth over six 18-month periods">
+      <style>.tx{font:500 11px var(--font);fill:${w}}</style>
+      <line x1="44" y1="132" x2="312" y2="132" stroke="${l}"/><line x1="44" y1="12" x2="44" y2="132" stroke="${l}"/>
+      <line x1="44" y1="72" x2="312" y2="72" stroke="${l}" stroke-dasharray="3 4"/><line x1="44" y1="12" x2="312" y2="12" stroke="${l}" stroke-dasharray="3 4"/>
+      <text x="38" y="136" text-anchor="end" class="tx">0</text><text x="38" y="76" text-anchor="end" class="tx">32</text><text x="38" y="16" text-anchor="end" class="tx">64</text>
+      ${ticks}
+      <path d="${ari}" fill="none" stroke="${w}" stroke-width="2"/>
+      <path d="${exp}" fill="none" stroke="${g}" stroke-width="2.5"/>
+      <text x="212" y="32" class="tx" style="fill:${g}">Exponential (x2)</text>
+      <text x="230" y="112" class="tx">Arithmetic (+1)</text>
+      <text x="178" y="170" text-anchor="middle" class="tx">Periods of 18 months</text>
+    </svg><p class="dg-cap">Doubling every period reaches 64 while adding 1 reaches 7.</p></div>`;
+  },
+  traps: () => `<div class="dg"><div class="dg-grid">
+      <div class="dg-cell"><span class="k">Trap 1</span><b>Too many</b><span>Not everyone can be strategic</span></div>
+      <div class="dg-cell"><span class="k">Trap 2</span><b>Revenue only</b><span>Only part of the assessment</span></div>
+      <div class="dg-cell"><span class="k">Trap 3</span><b>Blue Ribbon</b><span>Famous names can hold you hostage</span></div>
+      <div class="dg-cell"><span class="k">Trap 4</span><b>One-way value</b><span>No value on both ends, no relationship</span></div>
+    </div></div>`,
+  diag: () => `<div class="dg">${AID}<div class="flow">
+      <div class="st"><span class="k">1</span>Doubtful account</div><div class="ar"></div>
+      <div class="st"><span class="k">2</span>Surface hidden problems early</div><div class="ar"></div>
+      <div class="st"><span class="k">3</span>Still uncertain?</div><div class="ar"></div>
+      <div class="st end">Probably no</div>
+    </div></div>`,
+  port: () => `<div class="dg"><div class="dg-grid">
+      <div class="dg-cell"><span class="k">1</span><b>Revenue</b><span>What it brings in</span></div>
+      <div class="dg-cell"><span class="k">2</span><b>Costs</b><span>What it takes to serve</span></div>
+      <div class="dg-cell"><span class="k">3</span><b>Growth potential</b><span>Where it can go</span></div>
+      <div class="dg-cell"><span class="k">4</span><b>Relationship potential</b><span>Can value flow both ways?</span></div>
+    </div></div>`,
+  fop: () => {
+    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark"), d = css("--tmd-dark");
+    const box = (x, lbl, on) => `<rect x="${x}" y="52" width="88" height="56" rx="2" fill="${on ? g : "none"}" stroke="${on ? g : l}"/><text x="${x + 44}" y="78" text-anchor="middle" class="tx" style="fill:${on ? d : w}">${lbl}</text>` + (on ? `<text x="${x + 44}" y="95" text-anchor="middle" class="tx b" style="fill:${d}">Field of Play</text>` : "");
+    return `<div class="dg">${AID}<svg viewBox="0 0 320 124" role="img" aria-label="A Large Account made of three units, one highlighted as the Field of Play">
+      <style>.tx{font:500 11px var(--font)}.b{font-weight:700}</style>
+      <rect x="2" y="2" width="316" height="120" rx="2" fill="none" stroke="${w}"/>
+      <text x="14" y="26" class="tx" style="fill:${w}">The Large Account (whole company)</text>
+      ${box(14, "Division A", false)}${box(116, "Division B", true)}${box(218, "Region C", false)}
+    </svg></div>`;
+  },
+  qs: () => `<div class="dg"><div class="flow">
+      <div class="st"><span class="k">1</span>Problems</div>
+      <div class="st"><span class="k">2</span>Priorities</div>
+      <div class="st"><span class="k">3</span>Potential</div>
+      <div class="st"><span class="k">4</span>Our knowledge base</div>
+      <div class="st"><span class="k">5</span>How they see themselves</div>
+    </div></div>`
+};
+
+/* =====================================================================
+   MASTERY
+   ===================================================================== */
+function refreshMastery() {
+  const list = CONCEPTS.filter(c => inCh(c.id));
+  const tot = list.reduce((a, c) => a + score(c.id), 0), max = list.length * MAX;
+  const pct = max ? Math.round(tot / max * 100) : 0;
+  const mastered = list.filter(c => score(c.id) >= MAX).length;
+  $("#progRing").innerHTML = ring(pct / 100, 52, 5, css("--tmd-blue-dark"), css("--tmd-gold")) +
+    `<div><div class="prog-num">${pct}%</div><div class="prog-lbl">Mastery${UI.ch === "all" ? "" : " · Chapter " + UI.ch.slice(1)}</div></div>`;
+  $("#progFacts").innerHTML = `<span><b>${mastered}</b> of <b>${list.length}</b> concepts mastered</span><span><b>${CHAPTERS.length}</b> chapters loaded</span>`;
+  document.querySelectorAll(".node[data-id]").forEach(n => {
+    const r = n.querySelector(".ring"); if (r) r.innerHTML = ring(score(n.dataset.id) / MAX, 20, 3, css("--tmd-blue-dark"), css("--tmd-gold"));
+  });
+  const pm = $("#pMastery"); if (pm) pm.innerHTML = masteryLine(UI.sel);
+}
+function masteryLine(id) {
+  if (!CONCEPTS.find(c => c.id === id)) return "";
+  const s = score(id);
+  return ring(s / MAX, 22, 3, css("--tmd-blue-dark"), css("--tmd-gold")) + `<span>${s >= MAX ? "Mastered" : `Mastery ${s} of ${MAX}`}</span>`;
+}
+
+/* =====================================================================
+   MIND MAP
+   ===================================================================== */
+function renderMap() {
+  const map = $("#map");
+  let h = `<svg class="links" id="links" aria-hidden="true"></svg>
+    <button class="node root" type="button" data-sel="root" aria-current="${UI.sel === "root"}"><small>The book</small><span class="t">Large Account Management</span></button>
+    <div class="groups">`;
+  CHAPTERS.forEach(ch => {
+    h += `<div class="group${inCh(ch.id) ? "" : " dim"}" data-ch="${ch.id}">
+      <button class="node chap" type="button" data-sel="${ch.id}" aria-current="${UI.sel === ch.id}"><small>Chapter ${ch.n}</small><span class="t">${esc(ch.short)}</span></button>
+      <div class="leaves">`;
+    CONCEPTS.filter(c => c.ch === ch.id).forEach(c => {
+      h += `<button class="node" type="button" data-sel="${c.id}" data-id="${c.id}" aria-current="${UI.sel === c.id}">
+        <span class="n">${ch.id === "c1" ? c.n : String.fromCharCode(64 + c.n)}</span><span class="t">${esc(c.title)}</span><span class="ring"></span></button>`;
+    });
+    h += `</div></div>`;
+  });
+  h += `</div>`;
+  map.innerHTML = h;
+  map.querySelectorAll("[data-sel]").forEach(b => b.addEventListener("click", () => select(b.dataset.sel, true)));
+  drawLinks();
+  refreshMastery();
+}
+function drawLinks() {
+  const map = $("#map"), svg = $("#links");
+  if (!map || !svg || getComputedStyle(svg).display === "none") return;
+  const mb = map.getBoundingClientRect();
+  const pt = (el, side) => { const r = el.getBoundingClientRect(); return { x: (side === "r" ? r.right : r.left) - mb.left, y: r.top + r.height / 2 - mb.top }; };
+  const curve = (a, b) => { const mx = (a.x + b.x) / 2; return `M${a.x} ${a.y}C${mx} ${a.y} ${mx} ${b.y} ${b.x} ${b.y}`; };
+  const root = map.querySelector(".node.root");
+  const selCh = chOf(UI.sel);
+  let p = "";
+  map.querySelectorAll(".group").forEach(g => {
+    const chEl = g.querySelector(".node.chap"), cid = g.dataset.ch;
+    p += `<path class="${selCh === cid ? "on" : ""}" d="${curve(pt(root, "r"), pt(chEl, "l"))}"/>`;
+    g.querySelectorAll(".leaves .node").forEach(l => {
+      p += `<path class="${UI.sel === l.dataset.id ? "on" : ""}" d="${curve(pt(chEl, "r"), pt(l, "l"))}"/>`;
+    });
+  });
+  svg.innerHTML = p;
+}
+const isOverlay = () => window.matchMedia("(max-width: 1060px)").matches;
+function select(id, user) {
+  UI.sel = id;
+  document.querySelectorAll("#map [data-sel]").forEach(b => b.setAttribute("aria-current", String(b.dataset.sel === id)));
+  drawLinks();
+  renderPanel();
+  if (user && isOverlay()) openPanel(true);
+}
+function openPanel(on) {
+  const p = $("#panel");
+  p.classList.toggle("open", on);
+  document.body.classList.toggle("lock", on && isOverlay());
+  if (on) { p.scrollTop = 0; const f = p.querySelector("h2"); if (f) f.focus({ preventScroll: true }); }
+}
+function renderPanel() {
+  const id = UI.sel, p = $("#panel");
+  let h = `<div class="panel-in"><div class="panel-close"><span class="p-crumb">Mind Map</span><button class="btn alt" type="button" id="pClose">Close</button></div>`;
+  if (id === "root") {
+    h += `<p class="p-crumb">The book</p><h2 class="p-title" tabindex="-1">The New Successful Large Account Management</h2>
+      <p class="p-hook">Maintaining and growing your most important assets: your customers. The book lays out the Large Account Management Process (LAMP).</p>
+      <div class="p-sec"><h3>How to use this map</h3><ul class="pts">
+        <li>Open a branch, read the key points, then close your eyes and repeat the memory hook.</li>
+        <li>Use Flashcards for recall, the Quiz for understanding, and Drills for structure.</li>
+        <li>Rings fill to 3 with correct answers and drop with wrong ones. Aim for all rings full.</li></ul></div>
+      <div class="p-sec"><h3>Chapters loaded</h3><ul class="pts">${CHAPTERS.map(c => `<li>Chapter ${c.n}: ${esc(c.title)}</li>`).join("")}</ul></div>`;
+  } else {
+    const x = byId(id), isCh = !x.ch, ch = isCh ? x : byId(x.ch);
+    h += `<p class="p-crumb">Chapter ${ch.n}${isCh ? " · " + esc(x.sub) : " · " + esc(x.tag)}</p>
+      <h2 class="p-title" tabindex="-1">${esc(x.title)}</h2>
+      <p class="p-hook">${esc(isCh ? x.thesis : x.hook)}</p>`;
+    if (!isCh) h += `<div class="p-mastery" id="pMastery">${masteryLine(id)}</div>`;
+    if (x.diagram && DIAGRAMS[x.diagram]) h += DIAGRAMS[x.diagram]();
+    if (isCh) {
+      const kids = CONCEPTS.filter(c => c.ch === x.id);
+      h += `<div class="p-sec"><h3>${x.id === "c1" ? "The eight lessons" : "What's inside"}</h3><ul class="pts">${kids.map(k => `<li>${esc(k.title)}</li>`).join("")}</ul></div>`;
+    } else {
+      h += `<div class="p-sec"><h3>Key points</h3><ul class="pts">${x.points.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>`;
+    }
+    if (x.quote) h += `<blockquote class="quote" style="margin:0"><p>"${esc(x.quote.t)}"</p><cite>${esc(x.quote.w)}</cite></blockquote>`;
+    h += `<div class="remember"><b>Remember it as</b><p>${esc(x.remember)}</p></div>`;
+    h += `<div class="p-actions"><button class="btn" type="button" id="pQuiz">${isCh ? "Quiz this chapter" : "Quiz me on this"}</button>`;
+    if (!isCh) {
+      const sib = CONCEPTS.filter(c => c.ch === x.ch), i = sib.indexOf(x);
+      if (i > 0) h += `<button class="btn alt" type="button" data-go="${sib[i - 1].id}">Previous</button>`;
+      if (i < sib.length - 1) h += `<button class="btn alt" type="button" data-go="${sib[i + 1].id}">Next</button>`;
+    } else {
+      const first = CONCEPTS.find(c => c.ch === x.id);
+      h += `<button class="btn alt" type="button" data-go="${first.id}">Start with ${esc(first.tag)}</button>`;
+    }
+    h += `</div>`;
+  }
+  h += `</div>`;
+  p.innerHTML = h;
+  $("#pClose").addEventListener("click", () => openPanel(false));
+  const q = $("#pQuiz"); if (q) q.addEventListener("click", () => { openPanel(false); startQuiz(id); go("quiz"); });
+  p.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => select(b.dataset.go, false)));
+}
+
+/* =====================================================================
+   FLASHCARDS
+   ===================================================================== */
+let FC = { deck: [], i: 0, flip: false, got: 0 };
+function buildDeck() { FC = { deck: shuffle(CONCEPTS.filter(c => inCh(c.id))), i: 0, flip: false, got: 0 }; }
+function renderCards() {
+  const el = $("#cards");
+  if (!FC.deck.length) buildDeck();
+  if (FC.i >= FC.deck.length) {
+    el.innerHTML = `<div class="light result"><p class="lab">Deck complete</p>
+      <div class="result-top">${ring(FC.got / FC.deck.length, 96, 8, css("--tmd-blue-light"), css("--tmd-teal-dark"))}
+      <div><div class="big">${FC.got} / ${FC.deck.length}</div><p>recalled without peeking</p></div></div>
+      <div class="qz-foot"><button class="btn dark" type="button" id="fcAgain">Shuffle and go again</button>
+      <button class="linkish" type="button" id="fcMap">Review on the map</button></div></div>`;
+    $("#fcAgain").addEventListener("click", () => { buildDeck(); renderCards(); });
+    $("#fcMap").addEventListener("click", () => go("map"));
+    return;
+  }
+  const c = FC.deck[FC.i], ch = byId(c.ch);
+  el.innerHTML = `<div class="fc-meta"><span>Card <b>${FC.i + 1}</b> of <b>${FC.deck.length}</b></span><span>Recalled <b>${FC.got}</b></span></div>
+    <div class="fc-bar"><i style="width:${FC.i / FC.deck.length * 100}%"></i></div>
+    <button class="card${FC.flip ? " flip" : ""}" type="button" id="fcCard" aria-label="Flip card">
+      <div class="card-in">
+        <div class="face front"><p class="lab">Chapter ${ch.n} · ${esc(c.tag)}</p><p class="q">${esc(c.ask)}</p><p class="tap">Tap to flip</p></div>
+        <div class="face back"><p class="lab">Chapter ${ch.n} · ${esc(c.tag)}</p><h3>${esc(c.title)}</h3><p class="hook">${esc(c.hook)}</p>
+          <ul class="pts">${c.points.slice(0, 4).map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+      </div>
+    </button>
+    <div class="fc-actions">
+      <button class="btn alt" type="button" id="fcFlip">${FC.flip ? "Show question" : "Flip"}</button>
+      <button class="btn again" type="button" id="fcNo"${FC.flip ? "" : " disabled"}>Again</button>
+      <button class="btn got" type="button" id="fcYes"${FC.flip ? "" : " disabled"}>Got it</button>
+    </div>`;
+  const flip = () => { FC.flip = !FC.flip; $("#fcCard").classList.toggle("flip", FC.flip); $("#fcFlip").textContent = FC.flip ? "Show question" : "Flip"; $("#fcNo").disabled = $("#fcYes").disabled = !FC.flip; };
+  $("#fcCard").addEventListener("click", flip);
+  $("#fcFlip").addEventListener("click", flip);
+  $("#fcNo").addEventListener("click", () => { bump(c.id, -1); FC.deck.push(c); FC.i++; FC.flip = false; renderCards(); });
+  $("#fcYes").addEventListener("click", () => { bump(c.id, 1); FC.got++; FC.i++; FC.flip = false; renderCards(); });
+}
+
+/* =====================================================================
+   QUIZ
+   ===================================================================== */
+let QZ = null;
+function startQuiz(focus) {
+  let pool;
+  if (focus && focus !== "root" && !/^c\d+$/.test(focus)) pool = QUIZ.filter(q => q.c === focus);
+  else if (focus && /^c\d+$/.test(focus)) pool = QUIZ.filter(q => chOf(q.c) === focus);
+  else pool = QUIZ.filter(q => inCh(q.c));
+  pool = shuffle(pool).slice(0, focus && !/^c\d+$/.test(focus) ? pool.length : 12);
+  QZ = { focus: focus || null, qs: pool.map(q => ({ q, order: shuffle(q.o.map((t, i) => ({ t, ok: i === 0 }))) })), i: 0, right: 0, streak: 0, best: 0, picked: null, miss: {} };
+  renderQuiz();
+}
+function quizLabel() {
+  if (!QZ.focus) return UI.ch === "all" ? "Mixed, all chapters" : "Chapter " + UI.ch.slice(1);
+  const x = byId(QZ.focus); return x ? (x.ch ? x.title : "Chapter " + x.n) : "Mixed";
+}
+function renderQuiz() {
+  const el = $("#quiz");
+  if (!QZ) startQuiz();
+  if (QZ.i >= QZ.qs.length) {
+    const n = QZ.qs.length, pct = n ? QZ.right / n : 0;
+    const weak = Object.keys(QZ.miss).map(id => byId(id)).filter(Boolean);
+    el.innerHTML = `<div class="light result"><p class="lab">${esc(quizLabel())} · Results</p>
+      <div class="result-top">${ring(pct, 96, 8, css("--tmd-blue-light"), css("--tmd-teal-dark"))}
+      <div><div class="big">${QZ.right} / ${n}</div><p>${pct >= .9 ? "Excellent recall." : pct >= .6 ? "Solid. Review the misses below." : "Worth another pass through the map."} Best streak: ${QZ.best}.</p></div></div>
+      ${weak.length ? `<div class="weak"><p class="lab">Review these</p>${weak.map(w => `<button type="button" data-review="${w.id}"><span>${esc(w.title)}</span><span>Open on map</span></button>`).join("")}</div>` : ""}
+      <div class="qz-foot"><button class="btn dark" type="button" id="qzAgain">New quiz</button></div></div>`;
+    $("#qzAgain").addEventListener("click", () => { startQuiz(QZ.focus); });
+    el.querySelectorAll("[data-review]").forEach(b => b.addEventListener("click", () => { go("map"); select(b.dataset.review, true); }));
+    return;
+  }
+  const cur = QZ.qs[QZ.i], x = byId(cur.q.c), ch = byId(chOf(cur.q.c));
+  const answered = QZ.picked !== null;
+  el.innerHTML = `<div class="qz-score"><span>${esc(quizLabel())}</span><span>Question <b>${QZ.i + 1}</b> of <b>${QZ.qs.length}</b></span><span>Score <b>${QZ.right}</b></span><span class="streak">Streak <b>${QZ.streak}</b></span></div>
+    <div class="fc-bar"><i style="width:${QZ.i / QZ.qs.length * 100}%"></i></div>
+    <div class="light qz-card">
+      <p class="lab">Chapter ${ch.n}${x.ch ? " · " + esc(x.tag) : ""}</p>
+      <p class="qz-q">${esc(cur.q.q)}</p>
+      <div class="opts">${cur.order.map((o, i) => {
+        let cls = "";
+        if (answered) { if (o.ok) cls = " ok"; else if (i === QZ.picked) cls = " bad"; }
+        return `<button class="opt${cls}" type="button" data-i="${i}"${answered ? " disabled" : ""}><span class="k">${"ABCD"[i]}</span><span>${esc(o.t)}</span></button>`;
+      }).join("")}</div>
+      ${answered ? `<div class="why"><b class="${cur.order[QZ.picked].ok ? "ok" : "bad"}">${cur.order[QZ.picked].ok ? "Correct" : "Not quite"}</b><p>${esc(cur.q.why)}</p></div>
+      <div class="qz-foot"><button class="linkish" type="button" id="qzMap">Open "${esc(x.title)}" on the map</button><button class="btn dark" type="button" id="qzNext">${QZ.i === QZ.qs.length - 1 ? "See results" : "Next question"}</button></div>` : ""}
+    </div>`;
+  el.querySelectorAll(".opt[data-i]").forEach(b => b.addEventListener("click", () => {
+    if (QZ.picked !== null) return;
+    QZ.picked = +b.dataset.i;
+    const ok = cur.order[QZ.picked].ok;
+    if (ok) { QZ.right++; QZ.streak++; QZ.best = Math.max(QZ.best, QZ.streak); } else { QZ.streak = 0; QZ.miss[cur.q.c] = 1; }
+    bump(cur.q.c, ok ? 1 : -1);
+    renderQuiz();
+    const nx = $("#qzNext"); if (nx) nx.focus({ preventScroll: true });
+  }));
+  const nx = $("#qzNext"); if (nx) nx.addEventListener("click", () => { QZ.i++; QZ.picked = null; renderQuiz(); });
+  const qm = $("#qzMap"); if (qm) qm.addEventListener("click", () => { go("map"); select(cur.q.c, true); });
+}
+
+/* =====================================================================
+   DRILLS
+   ===================================================================== */
+const DRILLS = [
+  { id: "order", t: "Order the eight lessons", s: "Chapter 1 · tap them in the book's order" },
+  { id: "sort", t: "Trap, factor or question?", s: "Chapter 2 · sort each item" },
+  { id: "quote", t: "Who said it, where?", s: "Chapter 1 · match the quote to its lesson" }
+];
+let DR = { id: "order" }, OD, SD, QD;
+function renderDrillTabs() {
+  $("#drTabs").innerHTML = DRILLS.map(d => `<button class="dr-tab" type="button" data-d="${d.id}" aria-pressed="${DR.id === d.id}"><b>${d.t}</b><span>${d.s}</span></button>`).join("");
+  document.querySelectorAll(".dr-tab").forEach(b => b.addEventListener("click", () => { DR.id = b.dataset.d; renderDrillTabs(); renderDrill(true); }));
+}
+function renderDrill(reset) {
+  if (DR.id === "order") { if (reset || !OD) OD = { pool: shuffle(CONCEPTS.filter(c => c.ch === "c1")), done: [], miss: 0 }; drawOrder(); }
+  if (DR.id === "sort") { if (reset || !SD) SD = { items: shuffle(SORT_ITEMS), i: 0, right: 0, last: null }; drawSort(); }
+  if (DR.id === "quote") { if (reset || !QD) QD = { items: shuffle(QUOTES).slice(0, 8), i: 0, right: 0, picked: null }; drawQuote(); }
+}
+function drawOrder() {
+  const el = $("#drill"), total = 8, fin = OD.done.length === total;
+  let slots = "";
+  for (let i = 0; i < total; i++) {
+    const d = OD.done[i];
+    slots += d ? `<div><span class="k">${i + 1}</span>${esc(d.title)}</div>` : `<div class="slot"><span class="k">${i + 1}</span>Lesson ${i + 1}</div>`;
+  }
+  el.innerHTML = `<div class="light drill-card">
+    <p class="lab">Chapter 1 · The eight lessons</p>
+    <div class="drill-stat"><span>Placed ${OD.done.length} of ${total}</span><span>Mistakes ${OD.miss}</span></div>
+    <div class="order-done">${slots}</div>
+    ${fin ? `<p class="feedback"><b>${OD.miss === 0 ? "Perfect order." : OD.miss <= 3 ? "Nearly there." : "Keep practicing."}</b> Finished with ${OD.miss} mistake${OD.miss === 1 ? "" : "s"}.</p>
+      <div class="qz-foot"><button class="btn dark" type="button" id="odAgain">Play again</button></div>` :
+      `<p class="feedback">Tap the lesson that comes next.</p><div class="pool">${OD.pool.map(c => `<button type="button" data-id="${c.id}">${esc(c.title)}</button>`).join("")}</div>`}
+  </div>`;
+  el.querySelectorAll(".pool button").forEach(b => b.addEventListener("click", () => {
+    const c = byId(b.dataset.id);
+    if (c.n === OD.done.length + 1) { OD.done.push(c); OD.pool = OD.pool.filter(p => p.id !== c.id); drawOrder(); }
+    else { OD.miss++; b.classList.remove("shake"); void b.offsetWidth; b.classList.add("shake"); $(".drill-stat span:last-child").textContent = "Mistakes " + OD.miss; }
+  }));
+  const a = $("#odAgain"); if (a) a.addEventListener("click", () => renderDrill(true));
+}
+function drawSort() {
+  const el = $("#drill"), n = SD.items.length;
+  if (SD.i >= n) {
+    el.innerHTML = `<div class="light drill-card"><p class="lab">Chapter 2 · Results</p>
+      <div class="result-top">${ring(SD.right / n, 96, 8, css("--tmd-blue-light"), css("--tmd-teal-dark"))}<div><div class="big" style="font-size:44px;font-weight:700;color:var(--tmd-blue)">${SD.right} / ${n}</div><p>sorted correctly</p></div></div>
+      <div class="qz-foot"><button class="btn dark" type="button" id="sdAgain">Play again</button></div></div>`;
+    $("#sdAgain").addEventListener("click", () => renderDrill(true));
+    return;
+  }
+  const it = SD.items[SD.i], ans = SD.last;
+  el.innerHTML = `<div class="light drill-card">
+    <p class="lab">Chapter 2 · Item ${SD.i + 1} of ${n}</p>
+    <div class="drill-stat"><span>Correct ${SD.right}</span></div>
+    <p class="sort-item">${esc(it.t)}</p>
+    <div class="bins">${BINS.map(b => {
+      let cls = ""; if (ans) { if (b.id === it.b) cls = " ok"; else if (b.id === ans) cls = " bad"; }
+      return `<button class="bin${cls}" type="button" data-b="${b.id}"${ans ? " disabled" : ""}>${b.t}<small>${b.s}</small></button>`;
+    }).join("")}</div>
+    ${ans ? `<div class="qz-foot"><p class="feedback">${ans === it.b ? "Correct." : "It's a " + BINS.find(b => b.id === it.b).t.toLowerCase() + "."}</p><button class="btn dark" type="button" id="sdNext">Next</button></div>` : `<p class="feedback">Where does this belong?</p>`}
+  </div>`;
+  el.querySelectorAll(".bin").forEach(b => b.addEventListener("click", () => {
+    if (SD.last) return; SD.last = b.dataset.b; if (SD.last === it.b) SD.right++;
+    const map = { trap: "traps", crit: "port", q: "qs" }; bump(map[it.b], SD.last === it.b ? 1 : -1);
+    drawSort(); const nx = $("#sdNext"); if (nx) nx.focus({ preventScroll: true });
+  }));
+  const nx = $("#sdNext"); if (nx) nx.addEventListener("click", () => { SD.i++; SD.last = null; drawSort(); });
+}
+function drawQuote() {
+  const el = $("#drill"), n = QD.items.length;
+  if (QD.i >= n) {
+    el.innerHTML = `<div class="light drill-card"><p class="lab">Quotes · Results</p>
+      <div class="result-top">${ring(QD.right / n, 96, 8, css("--tmd-blue-light"), css("--tmd-teal-dark"))}<div><div class="big" style="font-size:44px;font-weight:700;color:var(--tmd-blue)">${QD.right} / ${n}</div><p>matched to the right lesson</p></div></div>
+      <div class="qz-foot"><button class="btn dark" type="button" id="qdAgain">Play again</button></div></div>`;
+    $("#qdAgain").addEventListener("click", () => renderDrill(true));
+    return;
+  }
+  const it = QD.items[QD.i], ans = QD.picked, lessons = CONCEPTS.filter(c => c.ch === "c1");
+  el.innerHTML = `<div class="light drill-card">
+    <p class="lab">Quote ${QD.i + 1} of ${n} · Correct ${QD.right}</p>
+    <p class="quote-big">"${esc(it.t)}"</p>
+    <p class="lab" style="color:var(--tmd-dark);font-weight:500">${esc(it.w)}</p>
+    <div class="lesson-pick">${lessons.map(l => {
+      let cls = ""; if (ans) { if (l.id === it.c) cls = " ok"; else if (l.id === ans) cls = " bad"; }
+      return `<button class="opt${cls}" type="button" data-l="${l.id}"${ans ? " disabled" : ""}><span class="k">${l.n}</span><span>${esc(l.title)}</span></button>`;
+    }).join("")}</div>
+    ${ans ? `<div class="qz-foot"><p class="feedback">${ans === it.c ? "Correct." : "That one is from Lesson " + byId(it.c).n + "."}</p><button class="btn dark" type="button" id="qdNext">Next</button></div>` : ""}
+  </div>`;
+  el.querySelectorAll(".opt[data-l]").forEach(b => b.addEventListener("click", () => {
+    if (QD.picked) return; QD.picked = b.dataset.l; const ok = QD.picked === it.c; if (ok) QD.right++;
+    bump(it.c, ok ? 1 : -1); drawQuote(); const nx = $("#qdNext"); if (nx) nx.focus({ preventScroll: true });
+  }));
+  const nx = $("#qdNext"); if (nx) nx.addEventListener("click", () => { QD.i++; QD.picked = null; drawQuote(); });
+}
+
+/* =====================================================================
+   ROUTING + WIRING
+   ===================================================================== */
+const VIEWS = ["map", "cards", "quiz", "drills"];
+function go(v, fromHash) {
+  if (!VIEWS.includes(v)) v = "map";
+  UI.view = v;
+  VIEWS.forEach(n => { $("#view-" + n).hidden = n !== v; $("#tab-" + n).setAttribute("aria-selected", String(n === v)); });
+  if (!fromHash && location.hash !== "#" + v) { try { history.replaceState(null, "", "#" + v); } catch (e) { location.hash = v; } }
+  if (v === "map") { requestAnimationFrame(drawLinks); }
+  if (v === "cards") renderCards();
+  if (v === "quiz") renderQuiz();
+  if (v === "drills") { renderDrillTabs(); renderDrill(false); }
+}
+function setCh(ch) {
+  UI.ch = ch;
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.ch === ch)));
+  document.querySelectorAll(".group").forEach(g => g.classList.toggle("dim", !inCh(g.dataset.ch)));
+  if (ch !== "all" && chOf(UI.sel) !== ch) select(ch, false);
+  buildDeck(); QZ = null;
+  if (UI.view === "cards") renderCards();
+  if (UI.view === "quiz") renderQuiz();
+  refreshMastery();
+}
+
+function start(data) {
+  data = data || {};
+  if (data.ch) UI.ch = data.ch;
+  if (data.sel && (data.sel === "root" || byId(data.sel))) UI.sel = data.sel;
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => go(t.dataset.view)));
+  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => setCh(c.dataset.ch)));
+  const rb = $("#resetBtn");
+  rb.addEventListener("click", () => {
+    const box = $("#resetBox");
+    box.innerHTML = `<span>Clear all rings?</span><button class="btn-ghost" type="button" id="rsYes">Clear</button><button class="btn-ghost" type="button" id="rsNo">Keep</button>`;
+    $("#rsYes").addEventListener("click", () => { S.m = {}; save(); refreshMastery(); restoreReset(); });
+    $("#rsNo").addEventListener("click", restoreReset);
+  });
+  function restoreReset() { $("#resetBox").innerHTML = `<button class="btn-ghost" id="resetBtn" type="button">Reset progress</button>`; $("#resetBtn").addEventListener("click", () => rb.click()); }
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#panel").classList.contains("open")) openPanel(false); });
+
+  renderMap();
+  renderPanel();
+  setCh(UI.ch);
+  const hv = (location.hash || "").slice(1);
+  go(VIEWS.includes(hv) ? hv : (data.view || "map"), true);
+  window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (VIEWS.includes(v) && v !== UI.view) go(v, true); });
+  let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => { drawLinks(); if (!isOverlay()) { document.body.classList.remove("lock"); } }, 60); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawLinks);
+  if ("ResizeObserver" in window) new ResizeObserver(() => drawLinks()).observe($("#map"));
+
+  try { window.claude && window.claude.hot && window.claude.hot.snapshot && window.claude.hot.snapshot(() => ({ view: UI.view, ch: UI.ch, sel: UI.sel })); } catch (e) {}
+}
+const hot = window.claude && window.claude.hot;
+if (hot && hot.ready) hot.ready(start); else start((hot && hot.data) || {});
+})();
+</script>
