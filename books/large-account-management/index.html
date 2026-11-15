@@ -384,6 +384,189 @@ footer .wrap { display: grid; gap: 6px; }
   .dg-grid.g3 { grid-template-columns: 1fr; }
   .bins.b2 { grid-template-columns: 1fr; }
 }
+/* ---------- v3: Flow, Gold Sheet, Simulation ---------- */
+body[data-view="flow"] .chips, body[data-view="gold"] .chips, body[data-view="sim"] .chips { display: none; }
+.sar { display: inline-block; width: .9em; height: .9em; vertical-align: -0.08em; }
+.amt { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.k-lab, .fl-why .k, .sd-io .k, .sd-tools .k, .charter-band .k { font-size: 12px; font-weight: 600; color: var(--accent); }
+
+/* Flow */
+.fl-frame { display: grid; gap: 12px; }
+.fl-why { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 14px; color: var(--fg-2); }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.stages li { position: relative; display: flex; }
+.stages li + li::before { content: ""; position: absolute; left: -9px; top: 50%; width: 10px; height: 10px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); transform: translateY(-50%) rotate(45deg); z-index: 2; }
+.stage { flex: 1; margin: 0 6px; display: grid; gap: 2px; justify-items: start; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; min-height: 92px; }
+.stage .sn { font-size: 12px; font-weight: 700; color: var(--accent); }
+.stage b { font-size: 17px; font-weight: 700; }
+.stage small { font-size: 12px; color: var(--fg-2); }
+.stage:hover { border-color: var(--fg-2); }
+.stage[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+.stage[aria-pressed="true"] .sn, .stage[aria-pressed="true"] small { color: var(--tmd-dark); }
+.loop { margin: 0 6px; border: 2px dashed var(--line); border-top: 0; height: 18px; margin-left: calc(100% / 6 * 2 + 6px); position: relative; }
+.loop span { position: absolute; right: 8px; top: 20px; font-size: 12px; color: var(--fg-2); }
+.stage-detail { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+.sd-main { display: grid; gap: 10px; align-content: start; }
+.sd-main h3 { font-size: 26px; font-weight: 700; }
+.sd-does { font-size: 16px; color: var(--fg-2); max-width: 60ch; }
+.sd-io { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sd-io > div { border: 1px solid var(--line); border-radius: var(--r); padding: 10px; display: grid; gap: 4px; align-content: start; }
+.sd-io p { font-size: 14px; }
+.sd-tools { display: grid; gap: 8px; align-content: start; }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 10px; font-size: 13px; font-weight: 500; color: var(--fg); }
+.tool:hover { border-color: var(--accent); }
+.tool .ring { display: inline-flex; }
+.tool .ring svg { width: 14px; height: 14px; }
+.tool.sm { padding: 4px 8px; font-size: 12px; align-self: center; }
+.thread-head { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 24px; }
+.thread-head h3 { font-size: 24px; font-weight: 700; }
+.thread-head p { color: var(--fg-2); font-size: 15px; }
+.switch { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg-2); cursor: pointer; }
+.switch input { width: 18px; height: 18px; accent-color: var(--tmd-gold); }
+.charter-band { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; border: 1px solid var(--accent); border-radius: var(--r); padding: 10px 14px; font-size: 14px; }
+.linkd { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: inherit; }
+.thread { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 0; max-width: 820px; }
+.tn { display: flex; gap: 8px; align-items: stretch; }
+.tn > button:first-child { flex: 1; min-width: 0; display: flex; gap: 12px; align-items: flex-start; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; opacity: .45; }
+.tn.on > button:first-child { opacity: 1; }
+.tn.cur > button:first-child { border-color: var(--accent); outline: 1px solid var(--accent); }
+.tn .sn { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--accent); color: var(--tmd-dark); border-radius: var(--r); }
+.tb { display: grid; gap: 2px; min-width: 0; }
+.tb b { font-size: 16px; font-weight: 700; }
+.tb small { font-size: 12px; color: var(--fg-2); }
+.tex { margin-top: 6px; font-size: 14px; background: var(--tmd-white); color: var(--tmd-dark); border-radius: var(--r); padding: 8px 10px; }
+.tl { margin-left: 26px; border-left: 2px solid var(--line); padding: 8px 0 8px 22px; font-size: 14px; color: var(--fg-2); min-height: 18px; }
+.tl.on { border-left-color: var(--accent); }
+.tl.cur span { color: var(--fg); font-weight: 500; }
+.thread-ctl { margin-top: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--fg-2); }
+.btn:disabled, .btn-ghost:disabled { opacity: .4; cursor: default; }
+
+/* Gold Sheet */
+.gs-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-bottom: 16px; font-size: 14px; color: var(--fg-2); }
+.gs-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.badge { display: inline-block; background: var(--accent); color: var(--tmd-dark); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: var(--r); margin-right: 6px; }
+.badge.mine { background: var(--tmd-teal-dark); color: var(--tmd-white); }
+.gs { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start; }
+.sheet { padding: 0 0 8px; overflow: hidden; }
+.sh-head { background: var(--accent); color: var(--tmd-dark); padding: 14px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
+.sh-head span { font-size: 22px; font-weight: 700; }
+.sh-head small { font-size: 13px; font-weight: 500; }
+.gs-sec { padding: 18px 24px; border-top: 1px solid var(--tmd-blue-light); display: grid; gap: 10px; }
+.gs-sec h3 { font-size: 16px; font-weight: 700; color: var(--tmd-blue); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sl { width: 24px; height: 24px; display: inline-grid; place-items: center; background: var(--tmd-blue); color: var(--tmd-white); font-size: 12px; border-radius: var(--r); }
+.gch { background: none; border: 1px solid var(--tmd-blue-light); color: var(--tmd-blue); border-radius: var(--r); padding: 2px 8px; font-size: 12px; font-weight: 600; }
+.gch:hover { border-color: var(--tmd-blue); }
+.gl { display: block; font-size: 12px; font-weight: 600; color: var(--tmd-blue); margin-bottom: 4px; }
+.hint { font-size: 13px; color: var(--tmd-dark); }
+.gi { width: 100%; min-width: 0; font: inherit; font-size: 14px; color: var(--tmd-dark); background: var(--tmd-blue-light); border: 1px solid var(--tmd-blue-light); border-radius: var(--r); padding: 8px 10px; }
+.gi:focus { outline: none; border-color: var(--tmd-blue); background: var(--tmd-white); }
+select.gi { padding: 7px 8px; }
+textarea.gi { resize: vertical; margin-bottom: 12px; }
+.row2, .row3, .row4 { display: grid; gap: 12px; }
+.row2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.row3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.row4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.three { display: grid; gap: 6px; }
+.pair { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 6px; margin-bottom: 6px; }
+.money { display: flex; align-items: center; gap: 6px; color: var(--tmd-dark); }
+.money .sar { flex: none; }
+.ladder { display: flex; gap: 4px; align-items: stretch; flex-wrap: wrap; }
+.rung { flex: 1 1 0; min-width: 0; min-height: 40px; border: 1px solid var(--tmd-blue-light); border-radius: var(--r); padding: 6px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.rung .k { font-size: 12px; font-weight: 700; color: var(--tmd-blue); margin-right: 2px; }
+.rung i { font-style: normal; font-size: 11px; font-weight: 600; background: var(--tmd-blue-light); color: var(--tmd-blue); padding: 1px 5px; border-radius: var(--r); }
+.rung.now { border-color: var(--tmd-blue); }
+.rung.tgt { background: var(--tmd-gold-light); border-color: var(--tmd-gold-dark); }
+.gap { width: 10px; border-left: 2px dashed var(--tmd-gold-dark); }
+.ptable { display: grid; gap: 6px; }
+.prow { display: grid; grid-template-columns: minmax(0, 1.3fr) 170px minmax(0, 1fr) auto; gap: 6px; align-items: center; }
+.btn-ghost.x { color: var(--tmd-blue); border-color: var(--tmd-blue-light); }
+.btn.sm { padding: 6px 12px; font-size: 13px; justify-self: start; }
+.sheet .btn.alt { color: var(--tmd-blue); border-color: var(--tmd-blue); }
+.goal-row, .sso-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 14px; color: var(--tmd-dark); padding: 10px; border: 1px solid var(--tmd-blue-light); border-radius: var(--r); margin-bottom: 6px; }
+.goal-row .gi, .sso-row .gi { width: auto; flex: 1 1 140px; }
+.goal-row select.gi { flex: 0 1 auto; }
+.sso-row .money { flex: 1 1 140px; }
+.sso-row input[type="date"] { flex: 0 1 160px; }
+.preview { font-size: 15px; color: var(--tmd-dark); background: var(--tmd-gold-light); border-radius: var(--r); padding: 10px 12px; }
+.preview:empty { display: none; }
+.checks { border: 1px solid var(--tmd-blue-light); border-radius: var(--r); padding: 10px 12px; display: grid; gap: 6px; margin: 0; }
+.checks legend { font-size: 12px; font-weight: 600; color: var(--tmd-blue); padding: 0 4px; display: flex; gap: 6px; align-items: center; }
+.checks label { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--tmd-dark); }
+.checks input { width: 16px; height: 16px; margin-top: 3px; accent-color: var(--tmd-blue); flex: none; }
+.bracket { display: grid; gap: 4px; }
+.br { display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13px; color: var(--tmd-dark); }
+.br i { display: block; height: 14px; border: 1px solid var(--tmd-blue); border-radius: var(--r); }
+.br i.on { background: var(--tmd-blue); }
+.br b { font-weight: 600; }
+.gs-check { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: grid; gap: 12px; max-height: calc(100vh - 96px); overflow-y: auto; }
+.gc-top { display: flex; gap: 12px; align-items: center; }
+.gc-top svg { width: 56px; height: 56px; }
+.gc-top b { display: block; font-size: 28px; font-weight: 700; line-height: 1; }
+.gc-top span { font-size: 13px; color: var(--fg-2); }
+.gc-sub { font-size: 13px; color: var(--fg-2); }
+.gc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.gc-list li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; align-items: start; }
+.gc-list .tag { font-size: 11px; font-weight: 700; text-align: center; padding: 3px 0; border-radius: var(--r); }
+.gc-list li.ok .tag { background: var(--tmd-teal-dark); color: var(--tmd-white); }
+.gc-list li.warn .tag { background: var(--tmd-red-dark); color: var(--tmd-white); }
+.gc-list li.todo .tag { background: var(--accent); color: var(--tmd-dark); }
+.gc-list li.info .tag { border: 1px solid var(--fg-2); color: var(--fg-2); }
+.gc-list button { background: none; border: 0; padding: 0; text-align: left; font-size: 13px; color: var(--fg); line-height: 1.4; }
+.gc-list button:hover { text-decoration: underline; }
+
+/* Simulation */
+.sim-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: 16px; }
+.meters { display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 12px; }
+.meter { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.meter > span { font-size: 12px; font-weight: 600; color: var(--accent); }
+.meter b { font-size: 13px; font-weight: 600; }
+.meter .big2 { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lvbar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.lvbar i { height: 10px; border: 1px solid var(--line); border-radius: var(--r); }
+.lvbar i.on { background: var(--accent); border-color: var(--accent); }
+.lvbar i.ch { margin-right: 6px; }
+.resbar { height: 10px; border: 1px solid var(--line); border-radius: var(--r); }
+.resbar i { display: block; height: 100%; background: var(--tmd-teal-dark); transition: width .4s; }
+.sim-card { padding: 28px; display: grid; gap: 16px; }
+.sim-title { font-size: 28px; font-weight: 700; color: var(--tmd-dark); }
+.sim-card > p { font-size: 16px; }
+.sim-text { font-size: clamp(17px, 2.2vw, 20px); font-weight: 500; line-height: 1.45; }
+.dark-pts li { color: var(--tmd-dark); }
+.dark-pts li::before { background: var(--tmd-blue); }
+.opt.mid { background: var(--tmd-gold-light); border-color: var(--tmd-gold-dark); }
+.opt.mid .k { background: var(--tmd-gold-dark); border-color: var(--tmd-gold-dark); color: var(--tmd-dark); }
+.why b.mid { color: var(--tmd-gold-dark); }
+.okt { color: var(--tmd-teal-dark); font-weight: 600; }
+.midt { color: var(--tmd-gold-dark); font-weight: 600; }
+.badt { color: var(--tmd-red-dark); font-weight: 600; }
+
+@media (max-width: 1060px) {
+  .gs { grid-template-columns: minmax(0, 1fr); }
+  .gs-check { position: static; max-height: none; order: -1; }
+  .stages { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 12px; }
+  .stages li:nth-child(4)::before { display: none; }
+  .loop { display: none; }
+  .stage-detail { grid-template-columns: minmax(0, 1fr); margin-top: 16px; }
+}
+@media (max-width: 760px) {
+  .stages { grid-template-columns: minmax(0, 1fr); }
+  .stages li + li::before { left: 50%; top: -9px; transform: translateX(-50%) rotate(135deg); }
+  .stages li:nth-child(4)::before { display: block; }
+  .stage { margin: 0; min-height: 0; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 10px; }
+  .sd-io { grid-template-columns: 1fr; }
+  .row2, .row3, .row4 { grid-template-columns: minmax(0, 1fr); }
+  .prow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .prow > input:first-child { grid-column: 1 / -1; }
+  .pair { grid-template-columns: minmax(0, 1fr); }
+  .gs-sec { padding: 16px; }
+  .sh-head { padding: 12px 16px; }
+  .meters { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .meters .meter:first-child { grid-column: 1 / -1; }
+  .sim-card { padding: 20px; }
+  .br { grid-template-columns: 64px minmax(0, 1fr); }
+  .br b { grid-column: 2; }
+}
 </style>
 
 <header class="hero">
@@ -392,7 +575,7 @@ footer .wrap { display: grid; gap: 6px; }
     <div class="hero-text">
       <p class="crumb">Book Notes · Account Strategy</p>
       <h1>The New Successful Large Account Management</h1>
-      <p class="sub">Memory Map · All 18 chapters</p>
+      <p class="sub">Memory Map, Flow, Gold Sheet and Simulation · All 18 chapters</p>
       <p class="meta">Robert B. Miller and Stephen E. Heiman with Tad Tuleja · Revised and Updated edition</p>
     </div>
     <div class="progress">
@@ -407,9 +590,12 @@ footer .wrap { display: grid; gap: 6px; }
   <div class="wrap bar-in">
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tab-map" data-view="map" type="button">Mind Map</button>
+      <button class="tab" role="tab" id="tab-flow" data-view="flow" type="button">LAMP Flow</button>
       <button class="tab" role="tab" id="tab-cards" data-view="cards" type="button">Flashcards</button>
       <button class="tab" role="tab" id="tab-quiz" data-view="quiz" type="button">Quiz</button>
       <button class="tab" role="tab" id="tab-drills" data-view="drills" type="button">Drills</button>
+      <button class="tab" role="tab" id="tab-gold" data-view="gold" type="button">Gold Sheet</button>
+      <button class="tab" role="tab" id="tab-sim" data-view="sim" type="button">Simulation</button>
     </div>
     <div class="chips" role="group" aria-label="Part filter">
       <span>Part</span>
@@ -432,6 +618,14 @@ footer .wrap { display: grid; gap: 6px; }
       <div class="map-scroll"><div class="map" id="map"></div><p class="map-hint">Chapters marked "Add your notes" in the panel have thin public sources. Fill them in from your copy.</p></div>
       <aside class="panel" id="panel" aria-live="polite"></aside>
     </div>
+  </section>
+
+  <section class="view" id="view-flow" aria-labelledby="tab-flow" hidden>
+    <div class="view-head">
+      <h2>LAMP Flow</h2>
+      <p>The whole book as one process. Pick a stage to see what it does, what it takes in, what it produces and which tools it uses. Then follow the thread that links the appraisal to the revenue.</p>
+    </div>
+    <div id="flow"></div>
   </section>
 
   <section class="view" id="view-cards" aria-labelledby="tab-cards" hidden>
@@ -457,6 +651,21 @@ footer .wrap { display: grid; gap: 6px; }
     </div>
     <div class="dr-tabs" id="drTabs"></div>
     <div class="drill" id="drill"></div>
+  </section>
+  <section class="view" id="view-gold" aria-labelledby="tab-gold" hidden>
+    <div class="view-head">
+      <h2>Gold Sheet</h2>
+      <p>Apply the book to a real client. Fill in one page, section by section, and the plan check tells you what the book's rules say is missing.</p>
+    </div>
+    <div id="gold"></div>
+  </section>
+
+  <section class="view" id="view-sim" aria-labelledby="tab-sim" hidden>
+    <div class="view-head">
+      <h2>Simulation</h2>
+      <p>Eleven decisions on one fictional account, from selection to the 90-day review. Every choice is scored and explained.</p>
+    </div>
+    <div class="sim-wrap" id="sim"></div>
   </section>
 </main>
 
@@ -1214,6 +1423,149 @@ const DRILLS = [
 ];
 
 /* =====================================================================
+   CONTENT v3: Flow stages, the golden thread, simulation scenario.
+   ===================================================================== */
+const SAR = `<svg class="sar" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" role="img" aria-label="Saudi Riyal" viewBox="0 0 1124.14 1256.39"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>`;
+const money = n => `<span class="amt">${SAR}&#8202;${Number(n).toLocaleString("en-US")}</span>`;
+
+const STAGES = [
+  { id: "s1", k: "Select", ch: [2], tools: ["traps", "diag", "port", "fop", "qs"],
+    does: `Choose the few accounts worth a full plan, and define the exact Field of Play inside each one.`,
+    out: `A short list of Large Accounts, each with a defined Field of Play.` },
+  { id: "s2", k: "Gather", ch: [5], tools: ["gather"],
+    does: `Collect the facts before judging: key players, revenue history, industry trends, business and organizational issues, and how the account sees you and your competitors.`,
+    out: `A fact base the whole team shares.` },
+  { id: "s3", k: "Appraise", ch: [4, 6, 7, 8, 9], tools: ["bsh5", "perceive", "players", "sponsor", "coach", "anti", "flags", "trends", "opps", "kpi", "strengths", "vuln", "gold"],
+    does: `Read your position through the customer's eyes: your level on the Buy-Sell Hierarchy, the Strategic Players, the account's Trends, Opportunities and KPIs, your Strengths and your Critical Vulnerability.`,
+    out: `The Situation Appraisal: the left column of the Gold Sheet, three critical items per area.` },
+  { id: "s4", k: "Strategize", ch: [10, 11, 12, 13, 14, 15], tools: ["charter4", "chartest", "goaltpl", "goalcheck", "focus", "stop", "rtwhy", "sso", "bracket", "preact"],
+    does: `Write the Charter Statement, set relational Goals, decide where to invest and what to stop, then set Revenue Targets built from Single Sales Objectives. Check the whole plan before acting.`,
+    out: `A plan: Charter, Goals, Focus and Stop Investments, Revenue Targets and SSOs.` },
+  { id: "s5", k: "Execute", ch: [16], tools: ["act4", "programs", "buyin"],
+    does: `Secure buy-in on both sides, then run information gathering, sales and support programs, action items and reviews.`,
+    out: `The plan in motion, owned by a cross-functional team.` },
+  { id: "s6", k: "Review", ch: [17], tools: ["review90"],
+    does: `Every ninety days, check what's working and update the appraisal and plan before you're locked in.`,
+    out: `An updated plan that loops back into the appraisal.` }
+];
+
+const THREAD = [
+  { k: "Trend", c: "trends", ch: 7, ex: `Customers are moving everyday banking to mobile apps.`,
+    link: `A Trend acting on the Field of Play creates an Opportunity for the account.` },
+  { k: "Field of Play Opportunity", c: "opps", ch: 7, ex: `Grow digital account openings among first-time customers.`,
+    link: `You address that Opportunity with a Strength the account actually values.` },
+  { k: "Strategic Strength", c: "strengths", ch: 8, ex: `Our performance marketing and analytics team.`,
+    link: `A Goal states that you helped achieve the Opportunity through that Strength.` },
+  { k: "Goal", c: "goaltpl", ch: 11, ex: `Be recognized by Retail Digital as the partner who helped grow digital account openings through performance marketing.`,
+    link: `Focus Investments put resources where they serve your Goals and the biggest-payoff Opportunities.` },
+  { k: "Focus Investment", c: "focus", ch: 12, ex: `An analytics lead embedded with Retail Digital two days a week.`,
+    link: `Sales and support programs then move specific Single Sales Objectives forward.` },
+  { k: "Single Sales Objective", c: "sso", ch: 14, exHtml: () => `To deliver to Retail Digital a 12-month acquisition program for ${money(1200000)} by 31 March 2027.`,
+    link: `Single Sales Objectives add up to the Revenue Target, which quantifies the yield of your Focus Investments.` },
+  { k: "Revenue Target", c: "rtwhy", ch: 14, exHtml: () => `Realistic: ${money(2000000)} from Retail Digital over two years.`, link: null }
+];
+
+/* Fictional example account used across the Flow, Gold Sheet and Simulation. */
+const EXAMPLE_SHEET = {
+  example: true,
+  account: "Northwind Bank (fictional)", fop: "Retail Digital division",
+  lvlLast: "2", lvlNow: "3", lvlTarget: "4",
+  players: [
+    { name: "Head of Retail Digital", type: "sponsor", owner: "Account director" },
+    { name: "Strategy manager (former colleague)", type: "coach", owner: "Account lead" },
+    { name: "CFO office, procurement lead", type: "anti", owner: "Agency CEO" },
+    { name: "New Chief Customer Officer", type: "player", owner: "" }],
+  trends: ["Customers are moving everyday banking to mobile apps.", "New digital-only banks are entering the market.", ""],
+  opps: ["Grow digital account openings among first-time customers.", "Cut drop-off in the app onboarding journey.", ""],
+  kpis: ["Digital account openings per month", "Onboarding completion rate", ""],
+  strengths: ["Performance marketing and analytics team", "Bilingual content studio", ""],
+  vuln: "No relationship yet with the new Chief Customer Officer.",
+  charter: { value: "more digital account openings at a lower cost per account", solution: "a performance marketing and analytics program", gain: "a long-term, growing partnership with Northwind's retail business" },
+  charterChecks: [true, true, false, false],
+  goals: [
+    { verb: "recognized", who: "Retail Digital", as: "partner", opp: "0", str: "0" },
+    { verb: "seen", who: "the Chief Customer Officer", as: "expert", opp: "1", str: "0" }],
+  focus: [{ t: "Embed an analytics lead with Retail Digital two days a week", addr: "opp" }, { t: "Executive meeting between our CEO and the Chief Customer Officer", addr: "vuln" }, { t: "", addr: "" }],
+  stop: [{ t: "Quarterly print newsletter nobody at the bank mentions", why: "novalue" }, { t: "", why: "" }, { t: "", why: "" }],
+  rt: { period: "2", high: "3500000", low: "1200000", real: "2000000" },
+  ssos: [
+    { amt: "a 12-month", what: "acquisition program", rev: "1200000", date: "2027-03-31" },
+    { amt: "one", what: "onboarding journey redesign", rev: "450000", date: "2026-12-31" },
+    { amt: "", what: "", rev: "", date: "" }],
+  review: ""
+};
+
+/* ---------------- Simulation ---------------- */
+const SIM = [
+  { scene: "Choosing accounts", c: "port",
+    text: `You lead a marketing agency's client service team. Leadership asks which of your 40 clients should get a full Large Account plan.`,
+    opts: [
+      { t: `All 40. Every client deserves strategic treatment.`, pts: 0, res: -30, fb: `Trap 1: by definition, not everyone can be strategic. Spreading a full plan across 40 clients burns your resources.` },
+      { t: `The top five by revenue.`, pts: 1, res: 0, fb: `Better, but Trap 2: revenue is only part of the assessment. Costs, growth and relationship potential matter too.` },
+      { t: `A short list weighed on revenue, cost to serve, growth potential and relationship potential.`, pts: 2, res: 0, fb: `Right. That is the Portfolio Analysis: all four factors, never one.` }] },
+  { scene: "A famous name calls", c: "traps",
+    text: `A household-name brand wants to work with you, but asks for free extra work and exclusive terms before signing anything.`,
+    opts: [
+      { t: `Accept. The logo is worth it.`, pts: 0, res: -20, fb: `The Blue Ribbon trap. Famous names can hold vendors hostage. An account only deserves the royal treatment if it treats you like royalty.` },
+      { t: `Run a Preliminary Diagnosis. If you are still uncertain, say no.`, pts: 2, res: 0, fb: `Right. Surface hidden problems before they become overwhelming. If still uncertain, the answer is probably no.` },
+      { t: `Accept, but cap the free work.`, pts: 1, res: -10, fb: `A compromise, but you still commit resources before testing whether value can flow both ways.` }] },
+  { scene: "Defining the Field of Play", c: "fop",
+    text: `You choose Northwind Bank (fictional). It is huge: retail, corporate and Islamic banking, plus 13 regions. Your contacts and results are in Retail Digital.`,
+    opts: [
+      { t: `Write one plan for the whole bank.`, pts: 0, res: -10, fb: `Too big to plan as one block. Define a Field of Play you can actually cover.` },
+      { t: `Make Retail Digital the Field of Play.`, pts: 2, res: 0, fb: `Right. A specific division where you have access and growth potential. The Charter, Goals and Targets will be written for it.` },
+      { t: `Write 13 regional plans at once.`, pts: 0, res: -20, fb: `That multiplies the work without focus. Start with one Field of Play.` }] },
+  { scene: "Where do you stand?", c: "perceive",
+    text: `Your main contact is a marketing manager. Your conversations are about campaign specs and deadlines. Your team says, "We're strategic partners."`,
+    opts: [
+      { t: `Agree. We're at level 4 or 5.`, pts: 0, res: 0, fb: `The customer decides your level, not you. Talking specs with a mid-level contact suggests level 2 or 3.` },
+      { t: `Check who your contacts are, what you talk about and what you share. That points to level 2 or 3.`, pts: 2, res: 0, lvl: 0, fb: `Right. Use the book's questions: where your contacts sit on the ladder, what you talk about, what you share.` },
+      { t: `Assume level 1 to stay humble.`, pts: 1, res: 0, fb: `Honest, but not evidence-based. Judge from the customer's perception, not modesty.` }] },
+  { scene: "Mapping the players", c: "sponsor",
+    text: `The Head of Retail Digital has authority over the division, influence with leadership and loves your work. The CFO's office favors a rival agency. A former colleague on the strategy team tells you where the bank is heading.`,
+    opts: [
+      { t: `Sponsor: Head of Retail Digital. Anti-Sponsor: CFO's office. Strategic Coach: the strategy colleague.`, pts: 2, res: 0, fb: `Right. Authority, influence and support make a Sponsor. Guidance on direction makes a Coach. Working against you makes an Anti-Sponsor.` },
+      { t: `All three are Sponsors.`, pts: 0, res: 0, fb: `Only one meets the Sponsor criteria. The CFO's office works against you and must be planned for.` },
+      { t: `Focus on the Head of Digital and ignore the rest.`, pts: 0, res: 0, fb: `Ignoring an Anti-Sponsor doesn't make them go away, and the Coach is valuable guidance.` }] },
+  { scene: "An uncovered base", c: "flags",
+    text: `The bank appoints a new Chief Customer Officer. Nobody on your team knows them.`,
+    opts: [
+      { t: `Wait until they contact you.`, pts: 0, res: 0, lvl: -1, fb: `An uncovered base is a red flag. Waiting leaves the space to your rival.` },
+      { t: `Treat it as a red flag: ask your Coach for context and assign an executive counterpart.`, pts: 2, res: -5, fb: `Right. Cover the base, align your people with theirs, and use executive involvement.` },
+      { t: `Email them a capabilities brochure.`, pts: 1, res: 0, fb: `Something, but a brochure is level 2 talk. Build a real relationship with a counterpart.` }] },
+  { scene: "Writing the charter", c: "charter4",
+    text: `Pick the best Charter Statement draft.`,
+    opts: [
+      { t: `"We will become Northwind's number one agency and grow our fees by 30 percent."`, pts: 0, res: 0, fb: `It only says what you gain. A charter starts with the value the Field of Play will gain.` },
+      { t: `"Retail Digital will gain more digital account openings at a lower cost through the performance marketing program we provide. In return, we will gain a long-term, growing partnership."`, pts: 2, res: 0, lvl: 1, fb: `Right. Field of Play, value, solution, and what you gain in return. They would recognize you even without your name on it.` },
+      { t: `"We provide high-quality creative services at competitive prices."`, pts: 0, res: 0, fb: `That is a product claim. It answers none of the charter's four questions.` }] },
+  { scene: "Where to invest", c: "stop",
+    text: `Budget is tight. Your team runs a quarterly newsletter nobody at the bank mentions, and chases an RFP where a rival is deeply entrenched. Retail Digital wants analytics help.`,
+    opts: [
+      { t: `Keep everything running. Stopping looks bad.`, pts: 0, res: -20, fb: `Stopping is strategy. Activities with no endorsed value, or on the outside track, drain resources.` },
+      { t: `Stop the newsletter and the RFP chase, and fund an analytics lead embedded with Retail Digital.`, pts: 2, res: 10, lvl: 1, fb: `Right. Stop Investments free resources for a Focus Investment that serves a Goal and a big-payoff Opportunity.` },
+      { t: `Cut the analytics idea to save money.`, pts: 0, res: 0, fb: `That cuts the one investment with a real payoff chance and keeps the ones without.` }] },
+  { scene: "Setting the objective", c: "sso",
+    text: `Pick the valid Single Sales Objective.`,
+    opts: [
+      { t: `"Deliver campaigns and social media to the bank this year."`, pts: 0, res: 0, fb: `It uses "and", has no amount or revenue, and "this year" isn't a date.` },
+      { tHtml: () => `"To deliver to Retail Digital a 12-month acquisition program for ${money(1200000)} by 31 March 2027."`, pts: 2, res: 0, fb: `Right. Field of Play, amount, solution, revenue and date. Truly single.` },
+      { t: `"Grow revenue with Northwind as much as possible."`, pts: 0, res: 0, fb: `Not specific, not measurable, not tied to a timeline.` }] },
+  { scene: "The chasm moment", c: "chasm",
+    text: `Your Sponsor asks why so many customers abandon the app sign-up at step 3.`,
+    opts: [
+      { t: `Pitch a new ad campaign to drive more traffic.`, pts: 0, res: 0, fb: `Pushing product when the customer raised a business problem. That keeps you below the chasm.` },
+      { t: `Analyze the sign-up funnel with their team and bring ideas to raise completion.`, pts: 2, res: -5, lvl: 1, fb: `Right. Contributing to a business issue is how you cross from level 3 to level 4.` },
+      { t: `Say it's outside your scope.`, pts: 0, res: 0, lvl: -1, fb: `That signals you only care about your deliverables. Level 4 suppliers help with business issues.` }] },
+  { scene: "The 90-day review", c: "review90",
+    text: `Three months in, your Sponsor is moving to a new role in another division.`,
+    opts: [
+      { t: `Stick to the plan. It was approved.`, pts: 0, res: 0, lvl: -1, fb: `A plan is a living document. Losing a Sponsor changes the appraisal.` },
+      { t: `Run the review now: update the players, develop a new Sponsor and adjust the plan.`, pts: 2, res: 0, fb: `Right. You must have at least one Sponsor. Review, adjust, then review again in ninety days.` },
+      { t: `Pause all work until things settle.`, pts: 0, res: -10, lvl: -1, fb: `Pausing hands momentum to your rival. Adjust the plan instead.` }] }
+];
+
+/* =====================================================================
    STATE + LOOKUPS
    ===================================================================== */
 const KEY = "lam-memory-v1";
@@ -1671,16 +2023,20 @@ function drawPick(d, st) {
 /* =====================================================================
    ROUTING + WIRING
    ===================================================================== */
-const VIEWS = ["map", "cards", "quiz", "drills"];
+const VIEWS = ["map", "flow", "cards", "quiz", "drills", "gold", "sim"];
 function go(v, fromHash) {
   if (!VIEWS.includes(v)) v = "map";
   UI.view = v;
+  document.body.dataset.view = v;
   VIEWS.forEach(n => { $("#view-" + n).hidden = n !== v; $("#tab-" + n).setAttribute("aria-selected", String(n === v)); });
   if (!fromHash && location.hash !== "#" + v) { try { history.replaceState(null, "", "#" + v); } catch (e) { location.hash = v; } }
   if (v === "map") requestAnimationFrame(drawLinks);
   if (v === "cards") renderCards();
   if (v === "quiz") renderQuiz();
   if (v === "drills") { renderDrillTabs(); renderDrill(false); }
+  if (v === "flow") renderFlow();
+  if (v === "gold") renderGold();
+  if (v === "sim") renderSim();
 }
 function setPart(pid) {
   UI.part = pid;
@@ -1718,6 +2074,360 @@ function start(data) {
   if ("ResizeObserver" in window) new ResizeObserver(() => drawLinks()).observe($("#map"));
   try { window.claude && window.claude.hot && window.claude.hot.snapshot && window.claude.hot.snapshot(() => ({ view: UI.view, part: UI.part, sel: UI.sel })); } catch (e) {}
 }
+/* =====================================================================
+   FLOW VIEW
+   ===================================================================== */
+const FL = { stage: "s3", step: 0, ex: true };
+function chip(id) { const x = byId(id); return `<button class="tool" type="button" data-open="${id}">${esc(x.title)}<span class="ring">${darkRing(fracOf(id), 14, 3)}</span></button>`; }
+function renderFlow() {
+  const el = $("#flow"), st = STAGES.find(s => s.id === FL.stage);
+  let h = `<div class="fl-frame">
+    <div class="fl-why"><span class="k">Why</span><span>Chapter 1 explains why the landscape demands this process. Chapter 18 explains what it takes organization-wide.</span>
+      <button class="tool" type="button" data-open="c1">Chapter 1</button><button class="tool" type="button" data-open="c18">Chapter 18</button></div>
+    <ol class="stages">${STAGES.map((s, i) => `<li><button class="stage" type="button" data-stage="${s.id}" aria-pressed="${s.id === FL.stage}">
+      <span class="sn">${i + 1}</span><b>${s.k}</b><small>Ch ${s.ch.join(", ")}</small></button></li>`).join("")}</ol>
+    <div class="loop"><span>Every 90 days, the review loops back into the appraisal</span></div>
+  </div>
+  <div class="stage-detail">
+    <div class="sd-main"><p class="p-crumb">Stage ${STAGES.indexOf(st) + 1} of ${STAGES.length} · Chapter${st.ch.length > 1 ? "s" : ""} ${st.ch.join(", ")}</p>
+      <h3>${st.k}</h3><p class="sd-does">${esc(st.does)}</p>
+      <div class="sd-io"><div><span class="k">Takes in</span><p>${STAGES.indexOf(st) ? esc(STAGES[STAGES.indexOf(st) - 1].out) : "Your whole client list."}</p></div>
+      <div><span class="k">Produces</span><p>${esc(st.out)}</p></div></div></div>
+    <div class="sd-tools"><span class="k">Tools in this stage</span><div class="tools">${st.tools.map(chip).join("")}</div></div>
+  </div>
+  <div class="thread-head"><div><h3>The main thread through the book</h3><p>One chain links the appraisal to the money. Step through it link by link.</p></div>
+    <label class="switch"><input type="checkbox" id="exToggle"${FL.ex ? " checked" : ""}> Show the Northwind Bank example (fictional)</label></div>
+  <div class="charter-band"><span class="k">Above it all</span><span>Every link serves the <button class="linkd" type="button" data-open="charter4">Charter Statement</button>, and delivering it moves you up the <button class="linkd" type="button" data-open="bsh5">Buy-Sell Hierarchy</button>.</span></div>
+  <ol class="thread">`;
+  THREAD.forEach((t, i) => {
+    const on = i <= FL.step, cur = i === FL.step;
+    h += `<li class="tn${on ? " on" : ""}${cur ? " cur" : ""}"><button type="button" data-step="${i}"><span class="sn">${i + 1}</span><span class="tb"><b>${t.k}</b><small>Chapter ${t.ch}</small>
+      ${FL.ex ? `<span class="tex">${t.exHtml ? t.exHtml() : esc(t.ex)}</span>` : ""}</span></button><button class="tool sm" type="button" data-open="${t.c}">Open</button></li>`;
+    if (t.link) h += `<li class="tl${i < FL.step ? " on" : ""}${i === FL.step ? " cur" : ""}" aria-hidden="${i > FL.step}"><span>${i < FL.step + 1 ? esc(t.link) : "&nbsp;"}</span></li>`;
+  });
+  h += `</ol><div class="thread-ctl"><button class="btn alt" type="button" id="thPrev"${FL.step ? "" : " disabled"}>Previous link</button>
+    <span>${FL.step + 1} of ${THREAD.length}</span>
+    <button class="btn" type="button" id="thNext">${FL.step < THREAD.length - 1 ? "Next link" : "Start over"}</button></div>`;
+  el.innerHTML = h;
+  el.querySelectorAll("[data-stage]").forEach(b => b.addEventListener("click", () => { FL.stage = b.dataset.stage; renderFlow(); }));
+  el.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+  el.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => { FL.step = +b.dataset.step; renderFlow(); }));
+  $("#exToggle").addEventListener("change", e => { FL.ex = e.target.checked; renderFlow(); });
+  $("#thPrev").addEventListener("click", () => { FL.step = Math.max(0, FL.step - 1); renderFlow(); });
+  $("#thNext").addEventListener("click", () => { FL.step = FL.step < THREAD.length - 1 ? FL.step + 1 : 0; renderFlow(); });
+}
+function openOnMap(id) {
+  if (UI.part !== "all" && partOf(id) !== UI.part) setPart("all");
+  go("map"); select(id, true);
+  const el = $(`#map [data-sel="${id}"]`); if (el && !isOverlay()) el.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+/* =====================================================================
+   GOLD SHEET WORKSPACE
+   ===================================================================== */
+const GKEY = "lam-goldsheet-v1";
+const blankSheet = () => ({
+  example: false, account: "", fop: "", lvlLast: "", lvlNow: "", lvlTarget: "",
+  players: [{ name: "", type: "sponsor", owner: "" }],
+  trends: ["", "", ""], opps: ["", "", ""], kpis: ["", "", ""], strengths: ["", "", ""], vuln: "",
+  charter: { value: "", solution: "", gain: "" }, charterChecks: [false, false, false, false],
+  goals: [{ verb: "seen", who: "", as: "partner", opp: "", str: "" }],
+  focus: [{ t: "", addr: "" }, { t: "", addr: "" }, { t: "", addr: "" }],
+  stop: [{ t: "", why: "" }, { t: "", why: "" }, { t: "", why: "" }],
+  rt: { period: "2", high: "", low: "", real: "" },
+  ssos: [{ amt: "", what: "", rev: "", date: "" }, { amt: "", what: "", rev: "", date: "" }, { amt: "", what: "", rev: "", date: "" }],
+  review: ""
+});
+let G;
+try { G = JSON.parse(localStorage.getItem(GKEY)); } catch (e) {}
+if (!G || typeof G !== "object") G = JSON.parse(JSON.stringify(EXAMPLE_SHEET));
+function saveG() { try { localStorage.setItem(GKEY, JSON.stringify(G)); } catch (e) {} }
+const getP = p => p.split(".").reduce((o, k) => o == null ? o : o[k], G);
+function setP(p, v) { const ks = p.split("."), last = ks.pop(); const o = ks.reduce((a, k) => a[k], G); o[last] = v; }
+const LEVELS = ["", "1 · Commodity that meets specs", "2 · Good products and services", "3 · Dedicated service and support", "4 · Contributes to business issues", "5 · Contributes to organizational issues"];
+const PTYPES = [["sponsor", "Sponsor"], ["coach", "Strategic Coach"], ["anti", "Anti-Sponsor"], ["player", "Other Strategic Player"]];
+const ADDR = [["", "Addresses..."], ["player", "A Strategic Player"], ["process", "A broken process"], ["trend", "A Trend"], ["opp", "An Opportunity"], ["vuln", "Our Vulnerability"]];
+const WHY = [["", "Why stop?"], ["novalue", "No value or endorsement"], ["nogoal", "Not advancing a Goal"], ["outside", "Outside track vs entrenched rival"], ["notours", "Not our real business"], ["vacuum", "Information vacuum"], ["losing", "Losing time or money"]];
+const fid = p => "gs-" + p.replace(/\./g, "-");
+const inp = (p, ph, type) => `<input class="gi" id="${fid(p)}" data-p="${p}" type="${type || "text"}" value="${esc(getP(p) || "")}" placeholder="${esc(ph || "")}"${type === "number" ? ' inputmode="numeric" min="0" step="1000"' : ""}>`;
+const sel = (p, opts) => `<select class="gi" id="${fid(p)}" data-p="${p}">${opts.map(o => `<option value="${o[0]}"${String(getP(p)) === String(o[0]) ? " selected" : ""}>${esc(o[1])}</option>`).join("")}</select>`;
+const lab = (p, t) => `<label class="gl" for="${fid(p)}">${t}</label>`;
+const goTo = (c, t) => `<button class="gch" type="button" data-open="${c}">${t}</button>`;
+function optList(arr, empty) { return [["", empty]].concat(arr.map((t, i) => [String(i), t])).filter((o, i) => i === 0 || o[1]); }
+
+function renderGold() {
+  const el = $("#gold");
+  el.innerHTML = `<div class="gs-bar">
+      <div>${G.example ? `<span class="badge">Example account</span> Fictional data, so you can see a finished sheet.` : `<span class="badge mine">Your account</span> Saved in this browser only.`}</div>
+      <div class="gs-actions" id="gsActions"></div>
+    </div>
+    <div class="gs">
+      <div class="sheet light" id="sheet"></div>
+      <aside class="gs-check" id="gsCheck" aria-live="polite"></aside>
+    </div>`;
+  renderGsActions();
+  renderSheet();
+  renderChecks();
+}
+function renderGsActions(confirmMode) {
+  const a = $("#gsActions");
+  if (confirmMode) {
+    a.innerHTML = `<span>Clear this sheet?</span><button class="btn-ghost" type="button" id="gsYes">Clear it</button><button class="btn-ghost" type="button" id="gsNo">Keep it</button>`;
+    $("#gsYes").addEventListener("click", () => { G = blankSheet(); saveG(); renderGold(); });
+    $("#gsNo").addEventListener("click", () => renderGsActions());
+    return;
+  }
+  a.innerHTML = `<button class="btn" type="button" id="gsCopy">Copy plan as text</button>
+    ${G.example ? `<button class="btn alt" type="button" id="gsNew">Start my own sheet</button>` : `<button class="btn alt" type="button" id="gsEx">View the example</button><button class="btn-ghost" type="button" id="gsClear">Clear</button>`}`;
+  $("#gsCopy").addEventListener("click", copyPlan);
+  const n = $("#gsNew"); if (n) n.addEventListener("click", () => { G = blankSheet(); saveG(); renderGold(); });
+  const ex = $("#gsEx"); if (ex) ex.addEventListener("click", () => { if (!sheetEmpty()) { try { localStorage.setItem(GKEY + "-mine", JSON.stringify(G)); } catch (e) {} } G = JSON.parse(JSON.stringify(EXAMPLE_SHEET)); G.hasMine = true; saveG(); renderGold(); });
+  const c = $("#gsClear"); if (c) c.addEventListener("click", () => renderGsActions(true));
+  if (G.example && G.hasMine) {
+    a.insertAdjacentHTML("beforeend", `<button class="btn-ghost" type="button" id="gsBack">Back to my sheet</button>`);
+    $("#gsBack").addEventListener("click", () => { try { const m = JSON.parse(localStorage.getItem(GKEY + "-mine")); if (m) G = m; } catch (e) {} saveG(); renderGold(); });
+  }
+}
+function sheetEmpty() { return !G.account && !G.fop && !G.trends.some(Boolean) && !G.charter.value; }
+function renderSheet() {
+  const s = $("#sheet");
+  const three = (key, ph) => `<div class="three">${[0, 1, 2].map(i => inp(`${key}.${i}`, i === 0 ? ph : "")).join("")}</div>`;
+  let h = `<div class="sh-head"><span>Gold Sheet</span><small>Large Account Management Process</small></div>`;
+  h += `<section class="gs-sec"><h3><span class="sl">A</span>Account and Field of Play ${goTo("fop", "Ch 2")}</h3>
+      <div class="row2"><div>${lab("account", "Large Account")}${inp("account", "Client company")}</div><div>${lab("fop", "Field of Play")}${inp("fop", "Division, business unit or location")}</div></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">B</span>Buy-Sell Hierarchy, as the customer sees you ${goTo("perceive", "Ch 4")}</h3>
+      <div class="row3"><div>${lab("lvlLast", "Last year")}${sel("lvlLast", LEVELS.map((t, i) => [i ? String(i) : "", t || "Choose level"]))}</div>
+      <div>${lab("lvlNow", "Now")}${sel("lvlNow", LEVELS.map((t, i) => [i ? String(i) : "", t || "Choose level"]))}</div>
+      <div>${lab("lvlTarget", "Target in 3 years")}${sel("lvlTarget", LEVELS.map((t, i) => [i ? String(i) : "", t || "Choose level"]))}</div></div>
+      <div class="ladder" id="ladder"></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">C</span>Strategic Players ${goTo("players", "Ch 6")}</h3><div id="players"></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">D</span>The account's world ${goTo("trends", "Ch 7")}</h3><p class="hint">Three most critical items per area, no more.</p>
+      <div class="row3 top"><div>${lab("trends.0", "Trends")}${three("trends", "A force acting on the Field of Play")}</div>
+      <div>${lab("opps.0", "Field of Play Opportunities")}${three("opps", "What they could achieve or fix")}</div>
+      <div>${lab("kpis.0", "Their KPIs")}${three("kpis", "How they measure success")}</div></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">E</span>Your Strengths and Critical Vulnerability ${goTo("strengths", "Ch 8")}</h3>
+      <div class="row2 top"><div>${lab("strengths.0", "Strategic Strengths (valued by the account)")}${three("strengths", "A capability they value")}</div>
+      <div>${lab("vuln", "Critical Vulnerability (one)")}${inp("vuln", "The weakness that could do the most damage")}</div></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">F</span>Charter Statement ${goTo("charter4", "Ch 10")}</h3>
+      <div class="row3"><div>${lab("charter.value", "Value they gain")}${inp("charter.value", "contribution or value")}</div>
+      <div>${lab("charter.solution", "Through")}${inp("charter.solution", "solution we provide")}</div>
+      <div>${lab("charter.gain", "In return, we gain")}${inp("charter.gain", "value for us")}</div></div>
+      <p class="preview" id="pvCharter"></p>
+      <fieldset class="checks"><legend>Validate it ${goTo("chartest", "Ch 10")}</legend>${["Our Strategic Players would understand it without much explanation", "They would recognize us even with our name removed", "Reaching it gets us to our target hierarchy level", "We are willing to share it with the Strategic Players"].map((t, i) =>
+        `<label><input type="checkbox" class="gi" id="${fid("charterChecks." + i)}" data-p="charterChecks.${i}"${G.charterChecks[i] ? " checked" : ""}> ${t}</label>`).join("")}</fieldset></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">G</span>Goals ${goTo("goaltpl", "Ch 11")}</h3><div id="goals"></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">H</span>Focus and Stop Investments ${goTo("focus", "Ch 12")} ${goTo("stop", "Ch 13")}</h3>
+      <div class="row2 top"><div><p class="gl">Focus Investments</p>${[0, 1, 2].map(i => `<div class="pair">${inp(`focus.${i}.t`, i ? "" : "Where we will put resources")}${sel(`focus.${i}.addr`, ADDR)}</div>`).join("")}</div>
+      <div><p class="gl">Stop Investments</p>${[0, 1, 2].map(i => `<div class="pair">${inp(`stop.${i}.t`, i ? "" : "What we will stop doing")}${sel(`stop.${i}.why`, WHY)}</div>`).join("")}</div></div></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">I</span>Revenue Targets ${goTo("bracket", "Ch 14")}</h3>
+      <div class="row4"><div>${lab("rt.period", "Period")}${sel("rt.period", [["1", "1 year"], ["2", "2 years"], ["3", "3 years"]])}</div>
+      <div>${lab("rt.high", "1. High (unconstrained)")}<div class="money">${SAR}${inp("rt.high", "0", "number")}</div></div>
+      <div>${lab("rt.low", "2. Low (minimum acceptable)")}<div class="money">${SAR}${inp("rt.low", "0", "number")}</div></div>
+      <div>${lab("rt.real", "3. Realistic")}<div class="money">${SAR}${inp("rt.real", "0", "number")}</div></div></div>
+      <div class="bracket" id="bracketViz"></div>
+      <p class="gl" style="margin-top:12px">Single Sales Objectives ${goTo("sso", "Ch 14")}</p>
+      ${[0, 1, 2].map(i => `<div class="sso-row"><span>To deliver to ${esc(G.fop || "the Field of Play")}</span>${inp(`ssos.${i}.amt`, "amount or volume")}<span>of</span>${inp(`ssos.${i}.what`, "product, service or solution")}<span>for</span><div class="money">${SAR}${inp(`ssos.${i}.rev`, "revenue", "number")}</div><span>by</span>${inp(`ssos.${i}.date`, "", "date")}</div>`).join("")}
+      <p class="preview" id="pvSso"></p></section>`;
+  h += `<section class="gs-sec"><h3><span class="sl">J</span>Next 90-day review ${goTo("review90", "Ch 17")}</h3>
+      <div class="row2"><div>${lab("review", "Review date")}${inp("review", "", "date")}</div><div class="gl" id="reviewNote"></div></div></section>`;
+  s.innerHTML = h;
+  renderPlayers(); renderGoals();
+  s.addEventListener("input", onSheetInput);
+  s.addEventListener("change", onSheetInput);
+  s.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+  refreshDerived();
+}
+function onSheetInput(e) {
+  const t = e.target; if (!t.dataset || !t.dataset.p) return;
+  const v = t.type === "checkbox" ? t.checked : t.value;
+  if (getP(t.dataset.p) === v) return;
+  setP(t.dataset.p, v);
+  if (G.example) { G.example = false; G.hasMine = false; renderGsActions(); $(".gs-bar > div").innerHTML = `<span class="badge mine">Your account</span> Saved in this browser only. Started from the example.`; }
+  saveG();
+  if (/^(opps|strengths)\./.test(t.dataset.p) && e.type === "change") renderGoals();
+  if (t.dataset.p === "fop" && e.type === "change") { document.querySelectorAll(".sso-row > span:first-child").forEach(x => x.textContent = "To deliver to " + (G.fop || "the Field of Play")); }
+  refreshDerived();
+}
+function renderPlayers() {
+  const box = $("#players");
+  box.innerHTML = `<div class="ptable">${G.players.map((p, i) => `<div class="prow">
+      ${inp(`players.${i}.name`, "Name or role")}${sel(`players.${i}.type`, PTYPES)}${inp(`players.${i}.owner`, "Covered by (our team)")}
+      <button class="btn-ghost x" type="button" data-rm="${i}" aria-label="Remove player"${G.players.length < 2 ? " disabled" : ""}>Remove</button></div>`).join("")}</div>
+    <button class="btn alt sm" type="button" id="addPlayer"${G.players.length >= 10 ? " disabled" : ""}>Add player</button>`;
+  box.querySelectorAll("[data-rm]").forEach(b => b.addEventListener("click", () => { G.players.splice(+b.dataset.rm, 1); saveG(); renderPlayers(); refreshDerived(); }));
+  $("#addPlayer").addEventListener("click", () => { G.players.push({ name: "", type: "player", owner: "" }); saveG(); renderPlayers(); refreshDerived(); const n = $(`#${fid("players." + (G.players.length - 1) + ".name")}`); if (n) n.focus(); });
+}
+function renderGoals() {
+  const box = $("#goals");
+  box.innerHTML = G.goals.map((g, i) => `<div class="goal-row"><span>Be</span>${sel(`goals.${i}.verb`, [["seen", "seen"], ["known", "known"], ["recognized", "recognized"]])}
+      <span>by</span>${inp(`goals.${i}.who`, "Field of Play or Strategic Players")}<span>as the</span>${sel(`goals.${i}.as`, [["supplier", "supplier"], ["partner", "partner"], ["consultant", "consultant"], ["expert", "expert"]])}
+      <span>who helped achieve</span>${sel(`goals.${i}.opp`, optList(G.opps, "pick an Opportunity (D)"))}
+      <span>through</span>${sel(`goals.${i}.str`, optList(G.strengths, "pick a Strength (E)"))}
+      <button class="btn-ghost x" type="button" data-rmg="${i}"${G.goals.length < 2 ? " disabled" : ""}>Remove</button></div>`).join("") +
+    `<button class="btn alt sm" type="button" id="addGoal"${G.goals.length >= 3 ? " disabled" : ""}>Add goal</button>`;
+  box.querySelectorAll("[data-rmg]").forEach(b => b.addEventListener("click", () => { G.goals.splice(+b.dataset.rmg, 1); saveG(); renderGoals(); refreshDerived(); }));
+  $("#addGoal").addEventListener("click", () => { G.goals.push({ verb: "seen", who: "", as: "partner", opp: "", str: "" }); saveG(); renderGoals(); refreshDerived(); });
+}
+const num = v => { const n = parseFloat(String(v).replace(/,/g, "")); return isFinite(n) ? n : null; };
+function refreshDerived() {
+  // ladder
+  const L = $("#ladder");
+  if (L) L.innerHTML = [1, 2, 3, 4, 5].map(n => { const tags = []; if (G.lvlLast == n) tags.push("Last year"); if (G.lvlNow == n) tags.push("Now"); if (G.lvlTarget == n) tags.push("Target");
+    return `<div class="rung${G.lvlNow == n ? " now" : ""}${G.lvlTarget == n ? " tgt" : ""}"><span class="k">${n}</span>${tags.map(t => `<i>${t}</i>`).join("")}</div>` + (n === 3 ? `<div class="gap" title="The chasm"></div>` : ""); }).join("");
+  // charter preview
+  const c = G.charter, pv = $("#pvCharter");
+  if (pv) pv.innerHTML = `The <b>${esc(G.fop || "Field of Play")}</b> will gain <b>${esc(c.value || "...")}</b> through the implementation of <b>${esc(c.solution || "...")}</b> that we provide. In return, we will gain <b>${esc(c.gain || "...")}</b>.`;
+  // bracket
+  const hi = num(G.rt.high), lo = num(G.rt.low), re = num(G.rt.real), B = $("#bracketViz");
+  if (B) {
+    const mx = Math.max(hi || 0, lo || 0, re || 0);
+    B.innerHTML = mx ? [["High", hi, ""], ["Low", lo, ""], ["Realistic", re, "on"]].map(r => `<div class="br"><span>${r[0]}</span><i class="${r[2]}" style="width:${r[1] ? Math.max(2, r[1] / mx * 100) : 0}%"></i><b>${r[1] != null ? money(r[1]) : ""}</b></div>`).join("") : "";
+  }
+  // SSO sum
+  const sum = G.ssos.reduce((a, s) => a + (num(s.rev) || 0), 0), ps = $("#pvSso");
+  if (ps) ps.innerHTML = sum ? `Single Sales Objectives add up to ${money(sum)}${re ? ` of a realistic target of ${money(re)} (${Math.round(sum / re * 100)}%)` : ""}.` : "";
+  // review
+  const rn = $("#reviewNote");
+  if (rn) { if (G.review) { const days = Math.round((new Date(G.review + "T00:00:00") - new Date(new Date().toDateString())) / 864e5); rn.textContent = days < 0 ? `Review was due ${-days} days ago.` : days === 0 ? "Review is today." : `${days} days to go.`; } else rn.textContent = "Set a date within 90 days."; }
+  renderChecks();
+}
+function checks() {
+  const out = [], add = (st, t, c) => out.push({ st, t, c });
+  const P = G.players.filter(p => p.name.trim());
+  if (!G.fop.trim()) add("todo", "Define the Field of Play.", "fop");
+  else if (G.account && G.fop.trim().toLowerCase() === G.account.trim().toLowerCase()) add("warn", "Your Field of Play is the whole account. Narrow it to a division, unit or location.", "fop");
+  else add("ok", "Field of Play defined.", "fop");
+  const now = +G.lvlNow, tg = +G.lvlTarget;
+  if (!now || !tg) add("todo", "Place yourself on the Buy-Sell Hierarchy, now and target.", "perceive");
+  else if (tg <= now) add("warn", "Your target level isn't above where you are now.", "bsh5");
+  else if (now <= 3 && tg >= 4) add("info", "Your target crosses the chasm (level 3 to 4). Plan to contribute to their business issues.", "chasm");
+  else add("ok", `Aiming from level ${now} to level ${tg}.`, "bsh5");
+  if (!P.some(p => p.type === "sponsor")) add("warn", "No Sponsor yet. You must have or develop at least one.", "sponsor");
+  else add("ok", "At least one Sponsor identified.", "sponsor");
+  const unc = P.filter(p => !p.owner.trim());
+  if (unc.length) add("warn", `${unc.length} uncovered base${unc.length > 1 ? "s" : ""}: ${unc.map(p => p.name).join(", ")}. Assign someone on your team.`, "flags");
+  const anti = P.filter(p => p.type === "anti");
+  if (anti.length) add("info", `Plan for your Anti-Sponsor${anti.length > 1 ? "s" : ""}: ${anti.map(p => p.name).join(", ")}.`, "anti");
+  if (!P.some(p => p.type === "coach")) add("info", "Consider developing a Strategic Coach for guidance.", "coach");
+  [["trends", "Trend", "trends"], ["opps", "Opportunity", "opps"], ["strengths", "Strength", "strengths"]].forEach(([k, t, c]) => { if (!G[k].some(x => x.trim())) add("todo", `Add at least one ${t}.`, c); });
+  if (!G.vuln.trim()) add("todo", "Name your Critical Vulnerability.", "vuln"); else add("ok", "Critical Vulnerability named.", "vuln");
+  const ch = G.charter;
+  if (!ch.value.trim() || !ch.solution.trim() || !ch.gain.trim()) add("todo", "Complete the Charter Statement.", "charter4");
+  else if (G.charterChecks.filter(Boolean).length < 4) add("warn", `Charter passes ${G.charterChecks.filter(Boolean).length} of 4 validation tests.`, "chartest");
+  else add("ok", "Charter Statement written and validated.", "chartest");
+  const goals = G.goals.filter(g => g.who.trim() || g.opp !== "" || g.str !== "");
+  if (!goals.length) add("todo", "Write at least one Goal.", "goaltpl");
+  else if (goals.some(g => g.opp === "" || g.str === "")) add("warn", "Each Goal should link an Opportunity to a Strength.", "goalcheck");
+  else add("ok", `${goals.length} Goal${goals.length > 1 ? "s" : ""} linked to Opportunities and Strengths.`, "goaltpl");
+  const F = G.focus.filter(f => f.t.trim()), Sx = G.stop.filter(f => f.t.trim());
+  if (!F.length) add("todo", "Choose at least one Focus Investment.", "focus");
+  else if (G.vuln.trim() && !F.some(f => f.addr === "vuln")) add("info", "No Focus Investment addresses your Critical Vulnerability yet.", "vuln");
+  else add("ok", `${F.length} Focus Investment${F.length > 1 ? "s" : ""}.`, "focus");
+  if (!Sx.length) add("info", "Every plan should ask what to stop. Any Stop Investments?", "stop");
+  const hi = num(G.rt.high), lo = num(G.rt.low), re = num(G.rt.real);
+  if (hi == null || lo == null || re == null) add("todo", "Bracket your Revenue Target: high, low, then realistic.", "bracket");
+  else if (!(lo <= re && re <= hi)) add("warn", "The realistic target should sit between the low and the high.", "bracket");
+  else add("ok", "Revenue Target bracketed.", "bracket");
+  const S2 = G.ssos.filter(s => s.what.trim() || s.rev || s.amt.trim());
+  if (!S2.length) add("todo", "Write at least one Single Sales Objective.", "sso");
+  S2.forEach((s, i) => {
+    if (/\band\b|&/i.test(s.what + " " + s.amt)) add("warn", `SSO ${i + 1} uses "and". Make it truly single.`, "sso");
+    if (!s.rev || !s.date || !s.amt.trim() || !s.what.trim()) add("warn", `SSO ${i + 1} needs amount, solution, revenue and date.`, "sso");
+  });
+  if (S2.length && S2.every(s => s.rev && s.date && s.amt.trim() && s.what.trim() && !/\band\b|&/i.test(s.what + " " + s.amt))) add("ok", "Single Sales Objectives are complete and single.", "sso");
+  if (!G.review) add("todo", "Set your next 90-day review date.", "review90");
+  else { const days = Math.round((new Date(G.review + "T00:00:00") - new Date(new Date().toDateString())) / 864e5); if (days > 90) add("warn", "Your review is more than 90 days away.", "review90"); else if (days < 0) add("warn", "Your review date has passed. Run it now.", "review90"); else add("ok", "90-day review scheduled.", "review90"); }
+  return out;
+}
+function renderChecks() {
+  const box = $("#gsCheck"); if (!box) return;
+  const cs = checks(), ok = cs.filter(c => c.st === "ok").length, todo = cs.filter(c => c.st === "todo" || c.st === "warn").length;
+  const frac = cs.length ? ok / (ok + todo || 1) : 0;
+  const order = { warn: 0, todo: 1, info: 2, ok: 3 }, lbl = { warn: "Fix", todo: "To do", info: "Tip", ok: "Done" };
+  box.innerHTML = `<div class="gc-top">${darkRing(frac, 56, 5)}<div><b>${Math.round(frac * 100)}%</b><span>Plan check</span></div></div>
+    <p class="gc-sub">Live checks against the book's rules. Tap one to open its concept.</p>
+    <ul class="gc-list">${cs.slice().sort((a, b) => order[a.st] - order[b.st]).map(c => `<li class="${c.st}"><span class="tag">${lbl[c.st]}</span><button type="button" data-open="${c.c}">${esc(c.t)}</button></li>`).join("")}</ul>`;
+  box.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+}
+function planText() {
+  const L = [], line = s => L.push(s), list = (h, arr) => { const a = arr.filter(x => x && String(x).trim()); if (a.length) { line(h); a.forEach(x => line("- " + x)); } };
+  const fmt = v => v ? Number(v).toLocaleString("en-US") + " Saudi riyals" : "";
+  line(`GOLD SHEET: ${G.account || "Account"} / Field of Play: ${G.fop || "-"}`); line("");
+  line(`Buy-Sell Hierarchy: last year ${G.lvlLast || "-"}, now ${G.lvlNow || "-"}, target ${G.lvlTarget || "-"}`);
+  list("Strategic Players:", G.players.filter(p => p.name).map(p => `${p.name} (${PTYPES.find(t => t[0] === p.type)[1]}), covered by ${p.owner || "NOBODY"}`));
+  list("Trends:", G.trends); list("Field of Play Opportunities:", G.opps); list("KPIs:", G.kpis); list("Strategic Strengths:", G.strengths);
+  if (G.vuln) line("Critical Vulnerability: " + G.vuln);
+  line(""); line(`Charter: The ${G.fop || "Field of Play"} will gain ${G.charter.value || "..."} through the implementation of ${G.charter.solution || "..."} that we provide. In return, we will gain ${G.charter.gain || "..."}.`);
+  list("Goals:", G.goals.map(g => `Be ${g.verb} by ${g.who || "..."} as the ${g.as} who helped achieve ${G.opps[g.opp] || "..."} through ${G.strengths[g.str] || "..."}.`));
+  list("Focus Investments:", G.focus.map(f => f.t)); list("Stop Investments:", G.stop.map(f => f.t));
+  line(""); line(`Revenue Target (${G.rt.period} years): high ${fmt(G.rt.high) || "-"}, low ${fmt(G.rt.low) || "-"}, realistic ${fmt(G.rt.real) || "-"}`);
+  list("Single Sales Objectives:", G.ssos.filter(s => s.what).map(s => `To deliver to ${G.fop || "the Field of Play"} ${s.amt} of ${s.what} for ${fmt(s.rev)} by ${s.date}.`));
+  if (G.review) line("Next 90-day review: " + G.review);
+  return L.join("\n");
+}
+function copyPlan() {
+  const txt = planText(), b = $("#gsCopy");
+  const fallback = () => {
+    let ta = $("#gsText"); if (!ta) { $("#sheet").insertAdjacentHTML("afterbegin", `<label class="gl" for="gsText">Copy failed in this view. Select the text below and copy it.</label><textarea id="gsText" class="gi" rows="10" readonly></textarea>`); ta = $("#gsText"); }
+    ta.value = txt; ta.focus(); ta.select();
+  };
+  try { navigator.clipboard.writeText(txt).then(() => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy plan as text"; }, 1600); }, fallback); } catch (e) { fallback(); }
+}
+
+/* =====================================================================
+   SIMULATION
+   ===================================================================== */
+let SM = { i: -1, pts: 0, lvl: 2, res: 100, picked: null, order: null, log: [] };
+function simStart() { SM = { i: 0, pts: 0, lvl: 2, res: 100, picked: null, order: null, log: [] }; renderSim(); }
+function meters() {
+  return `<div class="meters">
+    <div class="meter"><span>Hierarchy level</span><div class="lvbar">${[1, 2, 3, 4, 5].map(n => `<i class="${n <= SM.lvl ? "on" : ""}${n === 3 ? " ch" : ""}"></i>`).join("")}</div><b>${SM.lvl} · ${LEVELS[SM.lvl].split(" · ")[1]}</b></div>
+    <div class="meter"><span>Resources</span><div class="resbar"><i style="width:${Math.max(0, SM.res)}%"></i></div><b>${Math.max(0, SM.res)}%</b></div>
+    <div class="meter"><span>Decision score</span><b class="big2">${SM.pts} / ${SIM.length * 2}</b></div></div>`;
+}
+function renderSim() {
+  const el = $("#sim");
+  if (SM.i < 0) {
+    el.innerHTML = `<div class="light sim-card"><p class="lab">Account simulation · 11 decisions · about 6 minutes</p>
+      <h3 class="sim-title">Grow Northwind Bank</h3>
+      <p>You lead client service at a marketing agency. Northwind Bank (fictional) is a big client where you sit at level 2 on the Buy-Sell Hierarchy. Make the calls the book trains you for: which accounts to pick, who the players are, what to stop, and how to cross the chasm.</p>
+      <ul class="pts dark-pts"><li>Each decision is scored 0 to 2 and explained with the chapter behind it.</li><li>Good calls move you up the hierarchy. Poor ones drain resources or push you down.</li></ul>
+      <div class="qz-foot"><button class="btn dark" type="button" id="simGo">Start the simulation</button></div></div>`;
+    $("#simGo").addEventListener("click", simStart);
+    return;
+  }
+  if (SM.i >= SIM.length) {
+    const max = SIM.length * 2, pct = SM.pts / max;
+    const rating = pct >= .9 && SM.lvl >= 4 ? "Strategic partner in the making" : pct >= .7 ? "Solid account manager" : pct >= .45 ? "Promising, with gaps" : "Still thinking like a vendor";
+    el.innerHTML = meters() + `<div class="light sim-card"><p class="lab">Simulation complete</p>
+      <div class="result-top">${lightRing(pct)}<div><div class="big">${SM.pts} / ${max}</div><p><b>${rating}.</b> You finished at level ${SM.lvl} with ${Math.max(0, SM.res)}% of your resources.</p></div></div>
+      <div class="weak"><p class="lab">Your decisions</p>${SM.log.map((l, i) => `<button type="button" data-open="${l.c}"><span>${i + 1}. ${esc(SIM[i].scene)}</span><span class="${l.pts === 2 ? "okt" : l.pts ? "midt" : "badt"}">${l.pts === 2 ? "Best call" : l.pts ? "Partial" : "Missed"}</span></button>`).join("")}</div>
+      <div class="qz-foot"><button class="btn dark" type="button" id="simAgain">Play again</button></div></div>`;
+    $("#simAgain").addEventListener("click", simStart);
+    el.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+    return;
+  }
+  const sc = SIM[SM.i]; if (!SM.order) SM.order = shuffle(sc.opts.map((o, i) => i));
+  const ans = SM.picked;
+  el.innerHTML = meters() + `<div class="light sim-card"><p class="lab">Decision ${SM.i + 1} of ${SIM.length} · ${esc(sc.scene)}</p>
+    <p class="sim-text">${esc(sc.text)}</p>
+    <div class="opts">${SM.order.map((oi, k) => { const o = sc.opts[oi]; let cls = ""; if (ans !== null) { if (o.pts === 2) cls = " ok"; else if (oi === ans) cls = o.pts ? " mid" : " bad"; }
+      return `<button class="opt${cls}" type="button" data-o="${oi}"${ans !== null ? " disabled" : ""}><span class="k">${"ABC"[k]}</span><span>${o.tHtml ? o.tHtml() : esc(o.t)}</span></button>`; }).join("")}</div>
+    ${ans !== null ? `<div class="why"><b class="${sc.opts[ans].pts === 2 ? "ok" : sc.opts[ans].pts ? "mid" : "bad"}">${sc.opts[ans].pts === 2 ? "Best call" : sc.opts[ans].pts ? "Partly right" : "Missed"}</b><p>${esc(sc.opts[ans].fb)}</p></div>
+      <div class="qz-foot"><button class="linkish" type="button" data-open="${sc.c}">Open the concept on the map</button><button class="btn dark" type="button" id="simNext">${SM.i === SIM.length - 1 ? "See the outcome" : "Next decision"}</button></div>` : ""}
+  </div>`;
+  el.querySelectorAll(".opt[data-o]").forEach(b => b.addEventListener("click", () => {
+    if (SM.picked !== null) return;
+    const o = sc.opts[+b.dataset.o]; SM.picked = +b.dataset.o;
+    SM.pts += o.pts; SM.res += o.res || 0; SM.lvl = Math.max(1, Math.min(5, SM.lvl + (o.lvl || 0)));
+    SM.log.push({ pts: o.pts, c: sc.c });
+    bump(sc.c, o.pts === 2 ? 1 : o.pts ? 0 : -1);
+    renderSim(); const nx = $("#simNext"); if (nx) nx.focus({ preventScroll: true });
+  }));
+  const nx = $("#simNext"); if (nx) nx.addEventListener("click", () => { SM.i++; SM.picked = null; SM.order = null; renderSim(); el.scrollIntoView({ block: "start", behavior: "smooth" }); });
+  el.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+}
+
 const hot = window.claude && window.claude.hot;
 if (hot && hot.ready) hot.ready(start); else start((hot && hot.data) || {});
 
