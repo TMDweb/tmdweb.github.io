@@ -145,3 +145,18 @@ td .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2p
 .quad.three .q .k { font-size: 16px; margin-bottom: 12px; }
 .quad.three .q h4 { font-size: 30px; margin-bottom: 16px; }
 .quad.three .q p { font-size: 20px; line-height: 1.7; }
+
+/* v14 */
+.opts.two { grid-template-columns: 1fr 1fr; gap: 28px; top: 200px; bottom: 70px; }
+.opts.two .opt { padding: 28px 30px; gap: 12px; }
+.opts.two .opt .tag { font-size: 16px; }
+.opts.two .opt h4 { font-size: 38px; color: #fcbf2c; }
+.opts.two .opt p { font-size: 20px; line-height: 1.6; }
+.opts.two .opt dl { font-size: 18px; line-height: 1.6; margin-top: 10px; }
+.opts.two .opt dt { font-size: 15px; margin-top: 8px; }
+.opts.two .opt dd { font-size: 19px; color: #fff; }
+.mgrid.g3 { grid-template-columns: repeat(3, 1fr); }
+.mgrid.g4 { grid-template-columns: repeat(4, 1fr); }
+.mgrid.g3 .mcard img, .mgrid.g4 .mcard img { height: 150px; }
+.slide.light table.tmd.sm td { padding: 10px 12px; font-size: 16px; }
+.slide.light table.tmd.sm th { font-size: 14px; padding: 10px 12px; }
