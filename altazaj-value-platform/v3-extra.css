@@ -200,3 +200,20 @@ table.tmd.big td.k { font-size: 21px; white-space: nowrap; }
 .chip { font-size: 19px; padding: 8px 14px; }
 .pk-h { font-size: 17px; }
 .pk-ex { font-size: 20px; }
+
+/* v16 option 3 */
+.pick3 { position: absolute; top: 186px; right: 64px; left: 64px; bottom: 58px; display: grid; grid-template-columns: 250px 1fr; gap: 26px; direction: rtl; }
+.pick3 .pk-prices { display: flex; flex-direction: column; gap: 16px; }
+.pick3 .pk { flex: 1; padding: 10px 16px; }
+.pick3 .pk .n { font-size: 26px; }
+.pick3 .pk .p { font-size: 66px; }
+.pick3 .pk .s { font-size: 16px; }
+.pk-right { display: flex; flex-direction: column; min-height: 0; }
+.pgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: 1fr 1fr; gap: 10px; }
+.pcard { background: #fff; display: flex; flex-direction: column; align-items: center; padding: 6px 6px 8px; min-height: 0; }
+.pcard img { width: 100%; flex: 1; min-height: 0; object-fit: contain; }
+.pcard .pn { font-size: 16px; font-weight: 700; color: #0C0E1D; margin-top: 4px; text-align: center; }
+.pcard .pp { font-size: 17px; font-weight: 700; color: #29366C; }
+.pk-exs { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 26px; }
+.pk-exs .pk-h { margin: 0; }
+.pk-exs .pk-ex { margin: 0; font-size: 19px; line-height: 1.5; }

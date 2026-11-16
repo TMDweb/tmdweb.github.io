@@ -414,6 +414,23 @@ table.tmd.big td.k { font-size: 21px; white-space: nowrap; }
 .pk-h { font-size: 17px; }
 .pk-ex { font-size: 20px; }
 
+/* v16 option 3 */
+.pick3 { position: absolute; top: 186px; right: 64px; left: 64px; bottom: 58px; display: grid; grid-template-columns: 250px 1fr; gap: 26px; direction: rtl; }
+.pick3 .pk-prices { display: flex; flex-direction: column; gap: 16px; }
+.pick3 .pk { flex: 1; padding: 10px 16px; }
+.pick3 .pk .n { font-size: 26px; }
+.pick3 .pk .p { font-size: 66px; }
+.pick3 .pk .s { font-size: 16px; }
+.pk-right { display: flex; flex-direction: column; min-height: 0; }
+.pgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: 1fr 1fr; gap: 10px; }
+.pcard { background: #fff; display: flex; flex-direction: column; align-items: center; padding: 6px 6px 8px; min-height: 0; }
+.pcard img { width: 100%; flex: 1; min-height: 0; object-fit: contain; }
+.pcard .pn { font-size: 16px; font-weight: 700; color: #0C0E1D; margin-top: 4px; text-align: center; }
+.pcard .pp { font-size: 17px; font-weight: 700; color: #29366C; }
+.pk-exs { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 26px; }
+.pk-exs .pk-h { margin: 0; }
+.pk-exs .pk-ex { margin: 0; font-size: 19px; line-height: 1.5; }
+
 details.notes { width: min(1280px, calc(100vw - 16px)); }
 </style>
 </head>
@@ -613,7 +630,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
         <tr><td class="k">تندوري رول</td><td>مشوي</td><td>تندوري منزوع العظم في خبز صاج مع ثومية</td><td class="price">13 [[SAR]]</td></tr>
         <tr><td class="k">رايس بول مشوي</td><td>مشوي</td><td>أرز الطازج، دجاج مشوي مقطع، دقوس</td><td class="price">13 [[SAR]]</td></tr>
         <tr><td class="k">حمص بالدجاج</td><td>مشوي</td><td>حمص، دجاج مشوي مقطع، خبز</td><td class="price">12 [[SAR]]</td></tr>
-        <tr><td class="k">صاج ميني</td><td>مشوي</td><td>نصف محمص صاج بالثومية والمخلل</td><td class="price">7 [[SAR]]</td></tr>
+        <tr><td class="k">نص ساندوتش دجاج</td><td>مشوي</td><td>نصف ساندوتش الدجاج، وهو يُقدَّم نصفين أصلًا</td><td class="price">7 [[SAR]]</td></tr>
         <tr><td class="k">نص ونص ورز</td><td>مشوي ومقلي</td><td>قطعة بروست، سيخ كباب، أرز الطازج، دقوس</td><td class="price">16 [[SAR]]</td></tr>
         <tr><td class="k">نص ونص</td><td>مشوي ومقلي</td><td>قطعة بروست، سيخ كباب، خبز، ثومية</td><td class="price">13 [[SAR]]</td></tr>
         <tr><td class="k">بروست ورز</td><td>مقلي</td><td>قطعتا بروست، أرز الطازج، دقوس</td><td class="price">15 [[SAR]]</td></tr>
@@ -634,7 +651,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
     <div class="title">الخيار 2: أصناف جديدة على المنيو، من 7 إلى 20</div>
   </div>
   <div class="mgrid g6">
-    <div class="mcard"><img src="assets/menu-ai/tandoori_rice.jpg" alt="ربع تندوري ورز" loading="eager"><div class="mname">ربع تندوري ورز</div><div class="mprice">20 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/kebab_hummus2.jpg" alt="سيخين كباب وحمص" loading="eager"><div class="mname">سيخين كباب وحمص</div><div class="mprice">18 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/tandoori_roll.jpg" alt="تندوري رول" loading="eager"><div class="mname">تندوري رول</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/rice_bowl.jpg" alt="رايس بول مشوي" loading="eager"><div class="mname">رايس بول مشوي</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/hummus_chicken.jpg" alt="حمص بالدجاج" loading="eager"><div class="mname">حمص بالدجاج</div><div class="mprice">12 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/mini_saj.jpg" alt="صاج ميني" loading="eager"><div class="mname">صاج ميني</div><div class="mprice">7 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_half_rice.jpg" alt="نص ونص ورز" loading="eager"><div class="mname">نص ونص ورز</div><div class="mprice">16 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_half.jpg" alt="نص ونص" loading="eager"><div class="mname">نص ونص</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/broast_rice.jpg" alt="بروست ورز" loading="eager"><div class="mname">بروست ورز</div><div class="mprice">15 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_broast.jpg" alt="نص بروست" loading="eager"><div class="mname">نص بروست</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/crispy_rice_bowl.jpg" alt="كرسبي رايس بول" loading="eager"><div class="mname">كرسبي رايس بول</div><div class="mprice">13 [[SAR]]</div></div>
+    <div class="mcard"><img src="assets/menu-ai/tandoori_rice.jpg" alt="ربع تندوري ورز" loading="eager"><div class="mname">ربع تندوري ورز</div><div class="mprice">20 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/kebab_hummus2.jpg" alt="سيخين كباب وحمص" loading="eager"><div class="mname">سيخين كباب وحمص</div><div class="mprice">18 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/tandoori_roll.jpg" alt="تندوري رول" loading="eager"><div class="mname">تندوري رول</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/rice_bowl.jpg" alt="رايس بول مشوي" loading="eager"><div class="mname">رايس بول مشوي</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/hummus_chicken.jpg" alt="حمص بالدجاج" loading="eager"><div class="mname">حمص بالدجاج</div><div class="mprice">12 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_chicken_sand.jpg" alt="نص ساندوتش دجاج" loading="eager"><div class="mname">نص ساندوتش دجاج</div><div class="mprice">7 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_half_rice.jpg" alt="نص ونص ورز" loading="eager"><div class="mname">نص ونص ورز</div><div class="mprice">16 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_half.jpg" alt="نص ونص" loading="eager"><div class="mname">نص ونص</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/broast_rice.jpg" alt="بروست ورز" loading="eager"><div class="mname">بروست ورز</div><div class="mprice">15 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/half_broast.jpg" alt="نص بروست" loading="eager"><div class="mname">نص بروست</div><div class="mprice">13 [[SAR]]</div></div><div class="mcard"><img src="assets/menu-ai/crispy_rice_bowl.jpg" alt="كرسبي رايس بول" loading="eager"><div class="mname">كرسبي رايس بول</div><div class="mprice">13 [[SAR]]</div></div>
   </div>
   <div class="footnote">صور توضيحية للأصناف المقترحة. الأسعار مستهدفة حتى يعتمد الطازج تكلفة كل حصة.</div>
 </section></div>
@@ -655,7 +672,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
         <tr><td class="k">ربع تندوري ورز</td><td class="price">20 [[SAR]]</td><td>تندوري 360 (نصف دجاجة) بـ 28</td><td>ربعان بـ 40 مقابل النصف بـ 28</td></tr>
         <tr><td class="k">سيخين كباب وحمص</td><td class="price">18 [[SAR]]</td><td>كباب مع الأرز بـ 19</td><td>الفرق ريال واحد فقط</td></tr>
         <tr><td class="k">نص بروست</td><td class="price">13 [[SAR]]</td><td>بروست 4 قطع بـ 21</td><td>القطعة بـ 6.5 مقابل 5.25 في الكامل</td></tr>
-        <tr><td class="k">صاج ميني</td><td class="price">7 [[SAR]]</td><td>محمص صاج بـ 11</td><td>64% من السعر مقابل نصف الحجم</td></tr>
+        <tr><td class="k">نص ساندوتش دجاج</td><td class="price">7 [[SAR]]</td><td>ساندوتش الدجاج بـ 11</td><td>64% من السعر مقابل نصف الحجم</td></tr>
       </tbody>
     </table>
   </div>
@@ -670,24 +687,20 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
     <div class="crumb">الخيار 3 | اختر وركّب</div>
     <div class="title">العميل يركّب طلبه: اختر 2 بـ 12، أو اختر 3 بـ 18</div>
   </div>
-  <div class="pick">
+  <div class="pick3">
     <div class="pk-prices">
       <div class="pk"><span class="n">اختر 2</span><span class="p">12 [[SAR]]</span><span class="s">بدل 12 إلى 14</span></div>
       <div class="pk"><span class="n">اختر 3</span><span class="p">18 [[SAR]]</span><span class="s">بدل 18 إلى 21</span></div>
     </div>
-    <div class="pk-list">
-      <div class="pk-h">9 أصناف موجودة في المنيو، وسعرها اليوم 6 أو 7 ريال</div>
-      <div class="chips"><span class="chip">4 تشيزي ناجتس<b>7</b></span><span class="chip">5 تشكن فرايز<b>7</b></span><span class="chip">سيخ كباب دجاج<b>6</b></span><span class="chip">حمص<b>7</b></span><span class="chip">ذرة<b>7</b></span><span class="chip">سلطة ملفوف<b>6</b></span><span class="chip">بطاطس وسط<b>6</b></span><span class="chip">أرز الطازج<b>6</b></span><span class="chip">بسبوسة الطازج<b>7</b></span></div>
-      <div class="pk-h" style="margin-top:22px">أمثلة</div>
-      <div class="pk-ex">حمص + سيخ كباب = <b>12 [[SAR]]</b></div>
-      <div class="pk-ex">تشيزي ناجتس + بطاطس + ذرة = <b>18 [[SAR]]</b></div>
-      <div class="pk-ex">سيخ كباب + أرز + بسبوسة = <b>18 [[SAR]]</b></div>
+    <div class="pk-right">
+      <div class="pk-h">9 أصناف من المنيو الحالي، بسعرها اليوم منفردة</div>
+      <div class="pgrid"><div class="pcard"><img src="assets/menu-ai/p_cheesy.jpg" alt="4 تشيزي ناجتس"><div class="pn">4 تشيزي ناجتس</div><div class="pp">7 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_chickenfries.jpg" alt="5 تشكن فرايز"><div class="pn">5 تشكن فرايز</div><div class="pp">7 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_kebab.jpg" alt="سيخ كباب دجاج"><div class="pn">سيخ كباب دجاج</div><div class="pp">6 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_hummus.jpg" alt="حمص"><div class="pn">حمص</div><div class="pp">7 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_corn.jpg" alt="ذرة"><div class="pn">ذرة</div><div class="pp">7 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_slaw.jpg" alt="سلطة ملفوف"><div class="pn">سلطة ملفوف</div><div class="pp">6 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_fries.jpg" alt="بطاطس وسط"><div class="pn">بطاطس وسط</div><div class="pp">6 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_rice.jpg" alt="أرز الطازج"><div class="pn">أرز الطازج</div><div class="pp">6 [[SAR]]</div></div><div class="pcard"><img src="assets/menu-ai/p_basbousa.jpg" alt="بسبوسة الطازج"><div class="pn">بسبوسة الطازج</div><div class="pp">7 [[SAR]]</div></div></div>
+      <div class="pk-exs"><span class="pk-h">أمثلة:</span><span class="pk-ex">حمص + سيخ كباب = <b>12 [[SAR]]</b></span><span class="pk-ex">ناجتس + بطاطس + ذرة = <b>18 [[SAR]]</b></span><span class="pk-ex">سيخ كباب + أرز + بسبوسة = <b>18 [[SAR]]</b></span></div>
     </div>
   </div>
-  <img class="pk-img" src="assets/menu-ai/pick_tray.jpg" alt="">
-  <div class="footnote">الخصم الفعلي من صفر إلى 14% حسب الاختيار. صاج ميني يُضاف للقائمة إن اعتُمد الخيار 2.</div>
+  <div class="footnote">الخصم الفعلي من صفر إلى 14% حسب الاختيار. نص ساندوتش الدجاج يُضاف للقائمة إن اعتُمد الخيار 2.</div>
 </section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>الاختيار نفسه هو اللعبة، وهذا يخدم حملة "الحيرة الحلوة" مباشرة. لا يحتاج أي صنف جديد.</p></details></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>الاختيار نفسه هو اللعبة، لا يحتاج أي صنف جديد.</p></details></div>
 
 <!-- COMPARE -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
@@ -730,9 +743,26 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>إن فضّل الطازج خيارًا واحدًا: الخيار 3 للبساطة، أو الخيار 2 إن كانت الأولوية أصنافًا جديدة.</p></details></div>
 
+<!-- 16 NAMES -->
+<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
+  <div class="page-num">18</div>
+  <div class="header">
+    <div class="crumb">ماذا | الاسم</div>
+    <div class="title">4 أسماء مقترحة للمنصة، نختار منها واحدًا</div>
+  </div>
+  <div class="nmgrid">
+      <div class="nmcard"><span class="n">1</span><span class="nm">بين وبين</span></div>
+      <div class="nmcard"><span class="n">2</span><span class="nm">خفايف</span></div>
+      <div class="nmcard"><span class="n">3</span><span class="nm">تصبيرة</span></div>
+      <div class="nmcard"><span class="n">4</span><span class="nm">تسوى</span></div>
+  </div>
+  <div class="footnote">الاسم المختار يحتاج فحص تسجيل العلامة التجارية قبل الإطلاق.</div>
+</section></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>اطلب من العميل اختيار اسم واحد في الاجتماع. الاسم يُختار بعد اعتماد الخيار.</p></details></div>
+
 <!-- 11 DRINK -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark st rtl">
-  <div class="page-num">18</div>
+  <div class="page-num">19</div>
   <div class="header">
     <div class="title">ترقية المشروب تعيد الفاتورة إلى مستوى الوجبة الحالية أو أعلى</div>
     <div class="subtitle">"زِدها بيبسي" بجانب كل صنف، بثلاثة أحجام</div>
@@ -749,7 +779,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 12 GUARDRAILS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">19</div>
+  <div class="page-num">20</div>
   <div class="header">
     <div class="crumb">ماذا | الضوابط</div>
     <div class="title">4 ضوابط تجعل المنصة تجلب طلبات جديدة، لا تسحب من الوجبات</div>
@@ -769,135 +799,15 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>كل ضابط له رقم نراقبه. إذا سُئلت "كيف نعرف أنه نجح؟" أشر إلى العمود الأخير.</p></details></div>
 
-<!-- 13 SECTION C -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">20</div><div class="bignum">03</div>
-  <div class="content"><p class="kicker">الفكرة الإبداعية</p><h2 class="name">كيف نقول قيمة بدون أن نقول رخيص</h2></div>
-</section></div></div>
-
-<!-- 14 REVEAL -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">21</div>
-  <div class="reveal">
-    <div class="big" style="font-size:96px">على الفحم، زي العادة.</div>
-    <div class="line2">الطعم اللي تعرفه، في طلب يناسب يومك.</div>
-    <div class="small">فروج العائلة والصاج الفردي يطلعان من الشواية نفسها وعلى الفحم نفسه. نثبت الجودة قبل أن نقول السعر، فيبقى السعر دليلًا صغيرًا لا بطلًا، وتبقى صورة الطازج كما هي.</div>
-  </div>
-  <div class="footnote">الحقيقة التي نبني عليها: العميل يبحث عن طلب يناسب لحظته، ولا يقبل جودة أقل. فرضية تُختبر في أبحاث التجربة.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>توقف بعد السطر الأول. لا تشرح كثيرًا. الفكرة تخدم الهدف الثالث في الموجز: حماية العلامة.</p></details></div>
-
-<!-- BVB 2: FILM + KV -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">22</div>
-  <div class="header">
-    <div class="crumb">"بين وبين" | الفيلم 20 ثانية</div>
-    <div class="title">ثلاث فراغات من يوم واحد، والطازج جوابها</div>
-  </div>
-  <div class="sgrid">
-    <figure><img src="assets/story/bvb1.jpg" alt=""><figcaption><b>1</b> "بين محاضرتين": طالبة تخرج من القاعة، نظرة سريعة للجوال.</figcaption></figure>
-    <figure><img src="assets/story/bvb2.jpg" alt=""><figcaption><b>2</b> "بين اجتماعين": موظف يغلق اللابتوب ويأخذ مفاتيحه.</figcaption></figure>
-    <figure><img src="assets/story/bvb3.jpg" alt=""><figcaption><b>3</b> الدرايف ثرو: يد على المقود، والأخرى تستلم الطلب.</figcaption></figure>
-    <figure><img src="assets/story/bvb4.jpg" alt=""><figcaption><b>4</b> لقطة قريبة: صاج في غلاف اليد الواحدة، يُؤكل في الطريق.</figcaption></figure>
-    <figure><img src="assets/story/bvb5.jpg" alt=""><figcaption><b>5</b> لوحة الطريق: "بين مشوارين؟" تتغير جملتها حسب المكان.</figcaption></figure>
-    <figure><img src="assets/story/bvb6.jpg" alt=""><figcaption><b>6</b> الختام: "لا، زِدها بيبسي." ثم التوقيع: "على الفحم، زي العادة."</figcaption></figure>
-  </div>
-  <div class="footnote">اسكتشات القصة المصورة للفيلم. القنوات: فيلم 20 ثانية، سناب حسب الموقع، لوحات طرق متغيرة الجملة، وإشعارات التطبيق في اللحظات نفسها.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>المشاهد كما في العرض الأصلي، مع تعديل الختام: "زِدها بيبسي" بدل "خلها وجبة"، لأن الترقية هي ما يرجّع الخصم.</p></details></div>
-
-<!-- KV -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">23</div>
-  <div class="header">
-    <div class="crumb">الفكرة الإبداعية | التصميم الرئيسي</div>
-    <div class="title">كل إعلان: سؤال اللحظة، ثم الصنف وسعره، ثم التوقيع</div>
-  </div>
-  <div class="kvgrid">
-    <figure class="big"><img src="assets/kv/kv1.jpg" alt=""><figcaption>"بين وبين": إعلان رقمي وسوشال، يتغير سؤال اللحظة حسب الوقت والمكان.</figcaption></figure>
-    <figure><img src="assets/kv/kv2.jpg" alt=""><figcaption>"الحيرة الحلوة": لوحة الفرع وزر "محتار؟" في التطبيق.</figcaption></figure>
-    <figure><img src="assets/kv/kv3.jpg" alt=""><figcaption>لوحة طريق: "بين مشوارين؟"</figcaption></figure>
-  </div>
-  <div class="footnote">نماذج أولية لاتجاه التصميم بصور منيو الطازج الحالي، والتصميم النهائي بعد اعتماد الاسم والمنيو.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>لاحظ الترتيب في كل تصميم: اللحظة أولًا، ثم الصنف، والسعر صغير، والتوقيع "على الفحم، زي العادة" يحمي الجودة.</p></details></div>
-
-<!-- HAYRA 2 -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">24</div>
-  <div class="header">
-    <div class="crumb">"الحيرة الحلوة" | الفيلم 30 ثانية</div>
-    <div class="title">ثانية عند النافذة، ومعركة كاملة في رأسه</div>
-  </div>
-  <div class="sgrid">
-    <figure><img src="assets/story/hyr1.jpg" alt=""><figcaption><b>1</b> الوقت يتجمّد عند النافذة. الشاب وحده يتحرك بعينيه.</figcaption></figure>
-    <figure><img src="assets/story/hyr2.jpg" alt=""><figcaption><b>2</b> داخل رأسه: أصناف المنصة تتنافس على انتباهه.</figcaption></figure>
-    <figure><img src="assets/story/hyr3.jpg" alt=""><figcaption><b>3</b> حجة الكباب: لقطة ماكرو على الفحم.</figcaption></figure>
-    <figure><img src="assets/story/hyr4.jpg" alt=""><figcaption><b>4</b> حجة البروست: قرمشة بالتصوير البطيء.</figcaption></figure>
-    <figure><img src="assets/story/hyr5.jpg" alt=""><figcaption><b>5</b> يحسم ويعود الوقت: "كباب. وزِدها بيبسي."</figcaption></figure>
-    <figure><img src="assets/story/hyr6.jpg" alt=""><figcaption><b>6</b> السوشال: الشلة تصوّت في "ساعدني أختار".</figcaption></figure>
-  </div>
-  <div class="footnote">اسكتشات القصة المصورة للفيلم، والمبارزة بين أصناف المنصة.</div>
-</section></div></div>
-
-<!-- COMMS STRATEGY -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide light pcn rtl">
-  <div class="page-num">25</div>
-  <div class="header">
-    <div class="title">نقول "قيمة" بدون ما نقول "رخيص"</div>
-    <div class="subtitle">استراتيجية التواصل: الفحم أولًا، ثم الدليل، ثم السعر كإذن</div>
-  </div>
-  <div class="body">
-    <div class="col pros">
-      <h4>نقول</h4>
-      <ul>
-        <li>[[OK]]<span>المنتج المشوي والفحم بطل الصورة، والسعر صغير بجانب الصنف.</span></li>
-        <li>[[OK]]<span>لغة اللحظة والحجم: "بين اجتماعين؟" و"على قد يومك".</span></li>
-        <li>[[OK]]<span>دليل الجودة: نفس الدجاج، نفس الشواية، نفس المطبخ.</span></li>
-        <li>[[OK]]<span>المناسبة قبل السعر: غداك في الدوام، سناكك بعد المغرب.</span></li>
-        <li>[[OK]]<span>الترقية كخيار ذكي: "زِدها بيبسي" بثلاثة أحجام.</span></li>
-      </ul>
-    </div>
-    <div class="col cons">
-      <h4>لا نقول</h4>
-      <ul>
-        <li>[[NO]]<span>أسعار مشطوبة، أو "وفّر"، أو "خصم"، أو "عرض".</span></li>
-        <li>[[NO]]<span>كلمات المنافسين: كفو، توفير، تسكيتة.</span></li>
-        <li>[[NO]]<span>الرقم الضخم بطلًا للإعلان، كما يفعل السوق.</span></li>
-        <li>[[NO]]<span>مقارنة مع وجبات الطازج الأساسية، أو تخفيض الفروج الكامل.</span></li>
-        <li>[[NO]]<span>باقات عائلية أو مشاركة تحت اسم المنصة.</span></li>
-      </ul>
-    </div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>هذه الشريحة تجيب على سؤال الموجز الثالث مباشرة: كيف نؤطر القيمة دون "رخيص". كل تنفيذ يُراجع عليها قبل النشر.</p></details></div>
-
-<!-- 16 NAMES -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">26</div>
-  <div class="header">
-    <div class="crumb">الفكرة الإبداعية | الاسم</div>
-    <div class="title">4 أسماء مقترحة للمنصة، نختار منها واحدًا</div>
-  </div>
-  <div class="nmgrid">
-      <div class="nmcard"><span class="n">1</span><span class="nm">بين وبين</span></div>
-      <div class="nmcard"><span class="n">2</span><span class="nm">خفايف</span></div>
-      <div class="nmcard"><span class="n">3</span><span class="nm">تصبيرة</span></div>
-      <div class="nmcard"><span class="n">4</span><span class="nm">تسوى</span></div>
-  </div>
-  <div class="footnote">الاسم المختار يحتاج فحص تسجيل العلامة التجارية قبل الإطلاق.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>اطلب من العميل اختيار اسم واحد في الاجتماع. "بين وبين" تبقى فكرة الحملة أيًا كان الاسم.</p></details></div>
-
 <!-- 17 SECTION D -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">27</div><div class="bignum">04</div>
+  <div class="page-num">21</div><div class="bignum">03</div>
   <div class="content"><p class="kicker">كيف</p><h2 class="name">نقيس قبل أن نعلن</h2></div>
 </section></div></div>
 
 <!-- 18 PILOT -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">28</div>
+  <div class="page-num">22</div>
   <div class="header">
     <div class="crumb">كيف | التجربة</div>
     <div class="title">التجربة تجيب على سؤال واحد: هل المنصة تضيف زيارات أكثر مما تنقل؟</div>
@@ -919,25 +829,9 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>الأرقام مقترحة. شدد أن قيمتها في الاتفاق المسبق: لا نقيّم النتائج بمعايير نختارها بعدها.</p></details></div>
 
-<!-- ENGAGEMENT -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark ps rtl">
-  <div class="page-num">29</div>
-  <div class="header">
-    <div class="title">4 أفكار تصنع زيارات جديدة لا منقولة</div>
-    <div class="subtitle">تجربة، ثم تكرار، ثم وقت جديد، ثم سبب للرجوع</div>
-  </div>
-  <div class="body">
-    <div class="step"><div class="badge">1</div><span class="tag">التجربة</span><h4>تحدي زي العادة</h4><p>تذوق أعمى في الجامعات والمولات: مشوي الطازج مقابل وجبات القيمة المقلية في السوق. كل تجربة تصير محتوى يثبت الجودة.</p></div>
-    <div class="step"><div class="badge">2</div><span class="tag">التكرار</span><h4>بطاقة الولاء في التطبيق</h4><p>كل 4 طلبات من المنصة، الخامس معه ترقية مشروب مجانية. يبني العادة ويسحب الطلب للتطبيق.</p></div>
-    <div class="step"><div class="badge">3</div><span class="tag">وقت جديد</span><h4>لحظات "بين وبين"</h4><p>إشعارات وإعلانات حسب الموقع في الفراغات بين المحاضرات والاجتماعات والمشاوير، خارج أوقات الذروة.</p></div>
-    <div class="step"><div class="badge">4</div><span class="tag">سبب للرجوع</span><h4>صنف الأسبوع</h4><p>صنف دوّار لفترة محدودة كل أسبوعين، ورسالة للمنقطعين: ترقية بيبسي مجانًا مع أول طلب.</p></div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>كل فكرة مربوطة بمؤشر في شريحة السلوك: عملاء جدد، تكرار، معاملات خارج الذروة، استعادة المنقطعين.</p></details></div>
-
 <!-- CHANNELS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">30</div>
+  <div class="page-num">23</div>
   <div class="header">
     <div class="crumb">كيف | القنوات</div>
     <div class="title">لكل قناة دور واحد: السوشال يثبت، الفرع يرقّي، التطبيق يكرر</div>
@@ -946,10 +840,10 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
     <table class="tmd sm">
       <thead><tr><th>القناة</th><th>الدور</th><th>الفعل الرئيسي</th><th>الأصناف</th></tr></thead>
       <tbody>
-        <tr><td class="k">السوشال</td><td>الإثبات</td><td>الفيلم، تحدي التذوق، صنّاع محتوى في يوم دوام</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">السوشال</td><td>الإثبات</td><td>محتوى الشواية والأصناف، تحدي التذوق، صنّاع محتوى في يوم دوام</td><td>كل الأصناف</td></tr>
         <tr><td class="k">الرقمي المدفوع</td><td>الوصول وقت الغداء</td><td>استهداف جغرافي حول المكاتب والجامعات، وإعلانات البحث</td><td>كل الأصناف</td></tr>
         <tr><td class="k">الفرع</td><td>التحويل والترقية</td><td>لوحة منيو مستقلة، شارة خطوط الشوي، "تزيدها بيبسي؟"</td><td>كل الأصناف</td></tr>
-        <tr><td class="k">تطبيق الطازج</td><td>التكرار</td><td>بطاقة الولاء، إشعارات "بين وبين" في لحظاتها</td><td>كل الأصناف</td></tr>
+        <tr><td class="k">تطبيق الطازج</td><td>التكرار</td><td>بطاقة الولاء، إشعارات وقت الغداء والعصر</td><td>كل الأصناف</td></tr>
         <tr><td class="k">تطبيقات التوصيل</td><td>الظهور</td><td>قسم أعلى المنيو، ظهور مدفوع وقت الغداء، ترقية المشروب كخيار</td><td>من 15 فما فوق</td></tr>
         <tr><td class="k">الرسائل</td><td>استعادة المنقطعين</td><td>لمن لم يطلب خلال 90 يومًا: ترقية مشروب مجانية مع أول طلب</td><td>كل الأصناف</td></tr>
       </tbody>
@@ -959,7 +853,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 21 DECISION -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">31</div>
+  <div class="page-num">24</div>
   <div class="header">
     <div class="crumb">القرار</div>
     <div class="title">المطلوب اعتماده اليوم: 4 قرارات تبدأ التجربة خلال أسبوعين</div>
@@ -971,7 +865,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
         <tr><td class="k">1. اختيار المسار من الخيارات الثلاثة، أو الجمع بينها على مراحل</td><td>الإدارة التنفيذية</td><td>اليوم</td></tr>
         <tr><td class="k">2. التجربة: عدد الفروع، ومعايير النجاح والتوقف</td><td>العمليات والمالية</td><td>خلال أسبوع</td></tr>
         <tr><td class="k">3. البيانات: تكلفة حصص الأصناف الجديدة، الهامش، سعر المشروب، العمولات</td><td>المالية والرقمي</td><td>خلال أسبوع</td></tr>
-        <tr><td class="k">4. اختيار الاسم، وبدء تطوير "بين وبين" بتوقيع "على الفحم، زي العادة"</td><td>التسويق</td><td>خلال أسبوع</td></tr>
+        <tr><td class="k">4. اختيار اسم المنصة، وبدء التصميم والتصوير</td><td>التسويق</td><td>خلال أسبوع</td></tr>
       </tbody>
     </table>
   </div>
@@ -981,13 +875,13 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 22 APPENDIX DIVIDER -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">32</div><div class="bignum">م</div>
+  <div class="page-num">25</div><div class="bignum">م</div>
   <div class="content"><p class="kicker">الملحق</p><h2 class="name">تفاصيل الإثبات</h2></div>
 </section></div></div>
 
 <!-- 8 TRADE-DOWN MATH -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">33</div>
+  <div class="page-num">26</div>
   <div class="header">
     <div class="crumb">ملحق | قلق الموجز</div>
     <div class="title">لو ترك العميل الوجبة وطلب من المنصة، المشروب يرجّع الفاتورة</div>
@@ -1009,7 +903,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 6 MEAL STEP -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">34</div>
+  <div class="page-num">27</div>
   <div class="header">
     <div class="crumb">ملحق | العائق الأول</div>
     <div class="title">الفجوة ليست في سعر الساندوتش، بل في قفزة الوجبة</div>
@@ -1035,7 +929,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 7 CHANNEL -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">35</div>
+  <div class="page-num">28</div>
   <div class="header">
     <div class="crumb">ملحق | العائق الثاني</div>
     <div class="title">فرق التطبيقات يلغي أي سعر قيمة ما لم نحدد سياسة القناة</div>
@@ -1049,84 +943,12 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>القرار النهائي يعتمد على عمولات التطبيقات، وهي عند الطازج. اطلبها صراحة في هذه الشريحة.</p></details></div>
 
-<!-- BVB 1: AS PRESENTED -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">36</div>
-  <div class="header">
-    <div class="crumb">ملحق | "بين وبين" كما قُدّمت</div>
-    <div class="title">بين الوجبات جوع صغير بلا اسم، و"بين وبين" تسمّيه</div>
-  </div>
-  <div class="body">
-    <div class="lede">"بين الوجبات الكبيرة لحظات جوع صغيرة بلا اسم. نسمّيها <em>بين وبين</em>."</div>
-    <div class="points">
-      <div class="pt"><h4>السطر الرئيسي</h4><p>"واحد يكفي: لجوعة صغيرة بين الوجبات." بين محاضرتين، بين اجتماعين، بين مشوارين.</p></div>
-      <div class="pt"><h4>ليش تنجح</h4><p>"الجوع بين مشوارين حقيقي، والوجبة الكاملة أكثر من اللازم. صنف واحد بسعر واضح هو المقاس الصحيح."</p></div>
-      <div class="pt"><h4>الأثر التجاري</h4><p>"زيارة إضافية في أوقات أهدأ، تضاف إلى الوجبة الأساسية ولا تأخذ منها."</p></div>
-    </div>
-  </div>
-  <div class="footnote">الفكرة والنصوص من العرض الإبداعي المقدّم في 20 أكتوبر 2026، بعد فصلها عن المنيو الذي بُنيت عليه.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>اعرضها كما قُدّمت أولًا. قوتها أنها تبيع مناسبة جديدة لا سعرًا أقل، وهذا بالضبط ما يطلبه الموجز: زيارات إضافية لا منقولة.</p></details></div>
-
-<!-- BVB 3: IMPROVEMENTS -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">37</div>
-  <div class="header">
-    <div class="crumb">ملحق | "بين وبين" بعد التحسين</div>
-    <div class="title">حسّنا "بين وبين" لتبيع صنفًا محددًا، وتحمي الفاتورة، وتُقاس</div>
-  </div>
-  <div class="body">
-    <table class="tmd sm">
-      <thead><tr><th>العنصر</th><th>كما قُدّم</th><th>بعد التحسين</th><th>ماذا يتغير للبيزنس</th></tr></thead>
-      <tbody>
-        <tr><td class="tier">المنيو</td><td>مبنية على منيو منفصل بسعر موحد</td><td>مبنية على أصناف المنصة: التركيبات ناقص 10%، والجديد بسعره الكامل</td><td>حملة واحدة لمنصة واحدة، ولا صنف جديد يصبح بديلًا أرخص للوجبات الرئيسية</td></tr>
-        <tr><td class="tier">اللحظات</td><td>بين محاضرتين، اجتماعين، مشوارين</td><td>لكل لحظة صنف: كباب وحمص 16، صاج وبطاطس 15، دجاج وذرة 16</td><td>الإعلان يبيع طلبًا محددًا، لا فكرة عامة</td></tr>
-        <tr><td class="tier">الختام</td><td>"لا، خلها وجبة."</td><td>"لا، زِدها بيبسي." بثلاثة أحجام</td><td>الترقية ترجّع الخصم، والفاتورة تقترب من الوجبة الحالية</td></tr>
-        <tr><td class="tier">الجودة</td><td>غير موجودة في الرسالة</td><td>توقيع "على الفحم، زي العادة." في نهاية كل تنفيذ</td><td>السعر الأخف لا يُقرأ رخصًا، وتبقى صورة الطازج</td></tr>
-        <tr><td class="tier">القنوات</td><td>فيلم، سناب حسب الموقع، لوحات طرق</td><td>ونضيف إشعارات التطبيق في اللحظات نفسها، وقسم "بين وبين" في المنيو</td><td>الزيارة تتجه للقنوات المملوكة بلا عمولة</td></tr>
-        <tr><td class="tier">القياس</td><td>الأثر موصوف</td><td>معاملات خارج أوقات الذروة في فروع التجربة مقابل المرجعية</td><td>نثبت أن الزيارة إضافية فعلًا قبل التعميم</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>احترم العمل الأصلي: التحسين لا يغيّر الفكرة، بل يربطها بالمنصة والتسعير والقياس.</p></details></div>
-
-<!-- BVB 4: COMBINED -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark rtl">
-  <div class="page-num">38</div>
-  <div class="reveal">
-    <div class="line2">"بين وبين" تقول متى. "على الفحم، زي العادة" تقول ليش الطازج.</div>
-    <div class="big" style="font-size:64px;line-height:1.35">بين اجتماعين؟ صاج وبطاطس.<br>بين مشوارين؟ دجاج وذرة.<br>على الفحم، زي العادة.</div>
-    <div class="small">الحملة تفتح مناسبة جديدة خارج الذروة، والتوقيع يحمي صورة الجودة، والترقية تحمي الفاتورة. ثلاثة أهداف الموجز في جملة واحدة.</div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>هذه شريحة التوصية الإبداعية. توقف بعد السطور الثلاثة.</p></details></div>
-
-<!-- HAYRA 1 -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark cd rtl">
-  <div class="page-num">39</div>
-  <div class="header">
-    <div class="crumb">ملحق | "الحيرة الحلوة" صوت نقطة الطلب</div>
-    <div class="title">عند النافذة، الحيرة بين صنفين هي أول لقمة</div>
-  </div>
-  <div class="body">
-    <div class="lede">السعر واضح، فما يبقى إلا السؤال الحلو: <em>كباب ولا بروست؟</em></div>
-    <div class="points">
-      <div class="pt"><h4>الفكرة</h4><p>نحوّل لحظة التردد أمام المنيو إلى متعة، بمبارزات بين أصناف المنصة: كباب ولا بروست؟ صاج ولا تندوري؟</p></div>
-      <div class="pt"><h4>دورها</h4><p>"بين وبين" تجيب العميل في الوقت الصحيح. "الحيرة الحلوة" تساعده يختار عند النافذة وفي التطبيق والسوشال.</p></div>
-      <div class="pt"><h4>الأثر التجاري</h4><p>تجربة أصناف أكثر، طلب أسرع عند النافذة، وترقية عند الحسم: "والحيرة الثانية؟ زِدها بيبسي."</p></div>
-    </div>
-  </div>
-  <div class="footnote">التنفيذ: فيلم "المحتار" 30 ثانية، "كأس الحيرة" بمبارزة أسبوعية، لوحة "دليل الحيرة" في الفرع، وزر "محتار؟" في التطبيق.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>الفكرتان لا تتعارضان: الأولى تقول متى، والثانية تقول أي واحد.</p></details></div>
-
 <!-- 15 BEHAVIOR MAP -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">40</div>
+  <div class="page-num">29</div>
   <div class="header">
     <div class="crumb">ملحق | السلوك</div>
-    <div class="title">الفكرة تنقل العميل من "أطلب الأرخص" إلى "أجرب المشوي في الغداء"</div>
+    <div class="title">المنصة تنقل العميل من "أطلب الأرخص" إلى "أجرب المشوي في الغداء"</div>
   </div>
   <div class="body">
     <table class="tmd">
@@ -1134,18 +956,18 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
       <tbody>
         <tr><td class="tier">تجربة أولى</td><td>تحدي تذوق أعمى: مشوي الطازج مقابل وجبات القيمة المقلية في السوق</td><td>عملاء جدد ومنقطعون</td></tr>
         <tr><td class="tier">تكرار</td><td>بطاقة ولاء في التطبيق: كل 4 طلبات، ترقية مشروب مجانية</td><td>تكرار الطلب خلال 30 يومًا</td></tr>
-        <tr><td class="tier">وقت جديد</td><td>"بين وبين": إعلانات حسب الموقع والوقت، بين المحاضرات والاجتماعات والمشاوير</td><td>معاملات خارج أوقات الذروة</td></tr>
+        <tr><td class="tier">وقت جديد</td><td>إعلانات حسب الموقع والوقت، بين المحاضرات والاجتماعات والمشاوير</td><td>معاملات خارج أوقات الذروة</td></tr>
         <tr><td class="tier">فاتورة محمية</td><td>"زِدها بيبسي" عند الكاشير وفي التطبيق</td><td>نسبة ترقية المشروب</td></tr>
-        <tr><td class="tier">صورة العلامة</td><td>الفيلم الرئيسي "زي العادة"، والسعر صغير داخل شارة خطوط الشوي</td><td>صورة "طازج ومشوي وجودة" قبل وبعد</td></tr>
+        <tr><td class="tier">صورة العلامة</td><td>المشوي بطل الصورة، والسعر صغير بجانب الصنف</td><td>صورة "طازج ومشوي وجودة" قبل وبعد</td></tr>
       </tbody>
     </table>
   </div>
 </section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>هذا ما يحوّل الإبداع من رأي إلى أداة قابلة للقياس. كل تنفيذ له مؤشر.</p></details></div>
+<details class="notes"><summary>ملاحظات المتحدث</summary><p>كل تنفيذ له مؤشر قابل للقياس.</p></details></div>
 
 <!-- 19 ROLLOUT -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide light pc-flow rtl">
-  <div class="page-num">41</div>
+  <div class="page-num">30</div>
   <div class="header">
     <div class="title">بعد التجربة نطلق في 4 مراحل، ولكل قناة دور واحد</div>
     <div class="subtitle">السوشال للإثبات، الرقمي للغداء، الفرع للترقية، التطبيق للتكرار، التوصيل للظهور</div>
@@ -1154,35 +976,16 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
     <div class="phases">
       <div class="phase active"><span class="n">01</span><h4>التجربة</h4><span class="duration">الأسابيع 1 إلى 6</span><p>فروع تجربة ومرجعية، اسمان، وقياس أسبوعي.</p></div>
       <div class="phase"><span class="n">02</span><h4>القرار</h4><span class="duration">الأسبوعان 7 و8</span><p>تعميم أو تعديل أو توقف حسب المعايير. حذف الأصناف الضعيفة.</p></div>
-      <div class="phase"><span class="n">03</span><h4>التشويق</h4><span class="duration">أسبوعان</span><p>"على الفحم، زي العادة" بلا سعر وبلا اسم. محتوى الشواية وتحدي التذوق.</p></div>
-      <div class="phase"><span class="n">04</span><h4>الإطلاق والترسيخ</h4><span class="duration">من بعدها</span><p>كشف الاسم والمنيو، مواسم "بين وبين"، بطاقة الولاء، وصنف الأسبوع.</p></div>
+      <div class="phase"><span class="n">03</span><h4>التشويق</h4><span class="duration">أسبوعان</span><p>محتوى الشواية وتحدي التذوق، بلا سعر وبلا اسم.</p></div>
+      <div class="phase"><span class="n">04</span><h4>الإطلاق والترسيخ</h4><span class="duration">من بعدها</span><p>كشف الاسم والمنيو، بطاقة الولاء، وصنف الأسبوع.</p></div>
     </div>
   </div>
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>ميزانية الإنتاج والإعلام تُقدَّم بعد اعتماد الاتجاه والفروع. لا نضع رقمًا الآن.</p></details></div>
 
-<!-- JOURNEY -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tl rtl">
-  <div class="page-num">42</div>
-  <div class="header">
-    <div class="title">رحلة التواصل: من الفضول إلى العادة في 9 أسابيع</div>
-    <div class="subtitle">ماذا نريد العميل أن يقول في كل محطة بعد التجربة</div>
-  </div>
-  <div class="body">
-    <div class="axis">
-      <div class="year-cell"><div class="year">الأسبوع 1</div><div class="dot"></div><h4>الفضول</h4><p class="q">"وش قصة الفحم؟"</p><p>فيلم قصير للشواية، ومحتوى المطبخ بدون أسعار.</p></div>
-      <div class="year-cell"><div class="year">الأسبوع 3</div><div class="dot"></div><h4>الكشف</h4><p class="q">"مشوي الطازج من 12؟"</p><p>فيلم "بين وبين"، لوحات المنيو، وقسم المنصة في التطبيقات.</p></div>
-      <div class="year-cell"><div class="year">الأسبوع 5</div><div class="dot"></div><h4>الإثبات</h4><p class="q">"ما توقعت المشوي بهالسعر."</p><p>تحدي التذوق وصناع المحتوى في الجامعات ومناطق الدوام.</p></div>
-      <div class="year-cell"><div class="year">الأسبوع 9</div><div class="dot"></div><h4>العادة</h4><p class="q">"غداي اليوم بين وبين."</p><p>إشعارات اللحظات، بطاقة الولاء، و"كأس الحيرة".</p></div>
-      <div class="year-cell"><div class="year">المواسم</div><div class="dot"></div><h4>التجديد</h4><p class="q">"وش صنف هالأسبوع؟"</p><p>صنف دوّار، ونسخ موسمية مثل أصناف السحور في رمضان.</p></div>
-    </div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>الأسابيع تُحسب من الإطلاق بعد نجاح التجربة.</p></details></div>
-
 <!-- 20 RISKS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">43</div>
+  <div class="page-num">31</div>
   <div class="header">
     <div class="crumb">ملحق | المخاطر</div>
     <div class="title">أكبر 3 مخاطر لها معالجة محددة قبل الإطلاق</div>
@@ -1192,7 +995,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
       <thead><tr><th>الخطر</th><th>الاحتمال</th><th>المعالجة</th></tr></thead>
       <tbody>
         <tr><td class="k">سحب من الوجبات الأساسية</td><td>متوسط</td><td>ترقية المشروب، ومعيار توقف متفق عليه</td></tr>
-        <tr><td class="k">ضعف الجذب لأن السعر ليس الأرخص</td><td>متوسط</td><td>"على الفحم، زي العادة" وتحدي التذوق، ومراجعة الأصناف بعد التجربة</td></tr>
+        <tr><td class="k">ضعف الجذب لأن السعر ليس الأرخص</td><td>متوسط</td><td>المشوي بطل التواصل، وتحدي التذوق، ومراجعة الأصناف بعد التجربة</td></tr>
         <tr><td class="k">ضغط تشغيلي من الأصناف الجديدة في الذروة</td><td>غير معروف</td><td>اختبار في فروع التجربة، وسقف يومي لربع التندوري</td></tr>
       </tbody>
     </table>
@@ -1202,7 +1005,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 23 A1 COMPETITORS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide light tb rtl">
-  <div class="page-num">44</div>
+  <div class="page-num">32</div>
   <div class="header">
     <div class="crumb">ملحق | المنافسون</div>
     <div class="title">منصات القيمة المرصودة: الأسعار والرسائل والقنوات</div>
@@ -1228,7 +1031,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 25 A3 STAKEHOLDERS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">45</div>
+  <div class="page-num">33</div>
   <div class="header">
     <div class="crumb">ملحق | التوافق المسبق</div>
     <div class="title">6 أطراف نراجع معهم التوصية قبل الاجتماع</div>
@@ -1237,7 +1040,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
     <table class="tmd sm">
       <thead><tr><th>الطرف</th><th>ما يهمه</th><th>الاعتراض المتوقع</th><th>ما نحسمه قبل العرض</th></tr></thead>
       <tbody>
-        <tr><td class="k">الرئيس التنفيذي</td><td>النمو وصورة العلامة</td><td>"لا نريد أن نُرى رخيصين"</td><td>"على الفحم، زي العادة"، والتجربة قبل الإطلاق</td></tr>
+        <tr><td class="k">الرئيس التنفيذي</td><td>النمو وصورة العلامة</td><td>"لا نريد أن نُرى رخيصين"</td><td>المشوي في الواجهة، والتجربة قبل الإطلاق</td></tr>
         <tr><td class="k">المالية</td><td>الهامش والسحب</td><td>"الخصم يأكل الهامش"</td><td>حسبة الفاتورة، ومعيار التوقف، والتكلفة</td></tr>
         <tr><td class="k">العمليات</td><td>سرعة الخدمة</td><td>"الأصناف الجديدة تبطئ الذروة"</td><td>الفروع، والسقف اليومي</td></tr>
         <tr><td class="k">التسويق</td><td>البريوش والناتشو</td><td>"تزاحم مع إطلاق البريوش"</td><td>البريوش خارج المنصة، والتوقيت</td></tr>
@@ -1251,7 +1054,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 27 A5 GAPS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide light ct rtl">
-  <div class="page-num">46</div>
+  <div class="page-num">34</div>
   <div class="header">
     <div class="title">ما نحتاجه من الطازج، وما افترضناه</div>
     <div class="subtitle">ملحق م3: الفجوات والافتراضات</div>
