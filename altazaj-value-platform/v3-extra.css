@@ -217,3 +217,7 @@ table.tmd.big td.k { font-size: 21px; white-space: nowrap; }
 .pk-exs { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 26px; }
 .pk-exs .pk-h { margin: 0; }
 .pk-exs .pk-ex { margin: 0; font-size: 19px; line-height: 1.5; }
+.slide.dark table.tmd.big td { color: #fff; }
+.dnext { position: absolute; left: 64px; right: 64px; bottom: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; direction: rtl; }
+.dnext > div { border: 1px dashed rgba(252,191,44,0.55); padding: 16px 20px; font-size: 18px; line-height: 1.6; color: #f0f2f9; text-align: right; }
+.dnext b { display: block; color: #fcbf2c; font-size: 16px; margin-bottom: 4px; }
