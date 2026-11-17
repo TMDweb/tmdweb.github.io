@@ -48,7 +48,7 @@ body {
 }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
 button { font: inherit; color: inherit; cursor: pointer; }
-button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:focus-visible, a:focus-visible { outline:2px solid var(--accent-line); outline-offset: 2px; }
 h1, h2, h3, h4, p { margin: 0; }
 h1, h2, h3 { text-wrap: balance; }
 .wrap {
@@ -63,9 +63,9 @@ h1, h2, h3 { text-wrap: balance; }
 .hero-logo { grid-column: 2; grid-row: 1; width: 150px; }
 .hero-logo svg { display: block; width: 100%; height: auto; }
 .hero-text { grid-column: 1; grid-row: 1 / span 2; align-self: end; display: grid; gap: 10px; padding-top: 48px; }
-.crumb { font-size: 14px; font-weight: 500; color: var(--accent); }
+.crumb { font-size: 14px; font-weight: 500; color:var(--accent-ink); }
 .hero h1 { font-size: clamp(30px, 5.2vw, 56px); font-weight: 700; line-height: 1.08; max-width: 18ch; }
-.hero .sub { font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; color: var(--accent); }
+.hero .sub { font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; color:var(--accent-ink); }
 .hero .meta { font-size: 14px; color: var(--fg-2); }
 .progress {
   grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
@@ -79,7 +79,7 @@ h1, h2, h3 { text-wrap: balance; }
 .prog-facts b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
 .reset { margin-left: auto; display: flex; gap: 8px; align-items: center; font-size: 13px; }
 .btn-ghost { background: none; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 12px; font-size: 13px; color: var(--fg-2); }
-.btn-ghost:hover { border-color: var(--accent); color: var(--fg); }
+.btn-ghost:hover { border-color:var(--accent-line); color: var(--fg); }
 
 /* ---------- Mode bar ---------- */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -90,14 +90,14 @@ h1, h2, h3 { text-wrap: balance; }
   font-size: 15px; font-weight: 500; color: var(--fg-2); white-space: nowrap;
 }
 .tab:hover { color: var(--fg); }
-.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); font-weight: 600; }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color:var(--accent-line); font-weight: 600; }
 .chips { display: flex; align-items: center; gap: 6px; padding-block: 8px; }
 .chips span { font-size: 13px; color: var(--fg-2); margin-right: 4px; }
 .chip {
   border: 1px solid var(--line); background: none; border-radius: var(--r);
   padding: 5px 11px; font-size: 13px; font-weight: 500; color: var(--fg-2);
 }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+.chip[aria-pressed="true"] { background:var(--accent); border-color:var(--accent-line); color: var(--tmd-dark); }
 
 main { padding-block: 28px 56px; }
 .view[hidden] { display: none !important; }
@@ -111,7 +111,7 @@ main { padding-block: 28px 56px; }
 .map { position: relative; display: flex; align-items: center; gap: 56px; padding-block: 8px; }
 .map svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 .links path { fill: none; stroke: var(--line); stroke-width: 1.5; }
-.links path.on { stroke: var(--accent); stroke-width: 2; }
+.links path.on { stroke:var(--accent-line); stroke-width: 2; }
 .groups { display: flex; flex-direction: column; gap: 32px; flex: 1; min-width: 0; }
 .group { display: flex; align-items: center; gap: 56px; }
 .leaves { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
@@ -121,18 +121,18 @@ main { padding-block: 28px 56px; }
   padding: 9px 12px; min-height: 46px; width: 100%;
 }
 .node:hover { border-color: var(--fg-2); }
-.node[aria-current="true"] { border-color: var(--accent); outline: 1px solid var(--accent); }
+.node[aria-current="true"] { border-color:var(--accent-line); outline:1px solid var(--accent-line); }
 .node .t { flex: 1; min-width: 0; font-size: 15px; font-weight: 500; line-height: 1.3; }
-.node .n { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--accent); border: 1px solid var(--line); border-radius: var(--r); font-variant-numeric: tabular-nums; }
+.node .n { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color:var(--accent-ink); border: 1px solid var(--line); border-radius: var(--r); font-variant-numeric: tabular-nums; }
 .node .ring { flex: none; width: 20px; height: 20px; }
-.node.root { width: 172px; flex: none; background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); display: grid; gap: 2px; padding: 14px; }
+.node.root { width: 172px; flex: none; background:var(--accent); border-color:var(--accent-line); color: var(--tmd-dark); display: grid; gap: 2px; padding: 14px; }
 .node.root .t { font-size: 17px; font-weight: 700; }
 .node.root small { font-size: 12px; font-weight: 500; }
 .node.root[aria-current="true"] { outline-color: var(--fg); }
 .node.chap { width: 196px; flex: none; background: var(--tmd-white); border-color: var(--tmd-white); color: var(--tmd-dark); display: grid; gap: 2px; padding: 12px 14px; }
 .node.chap small { font-size: 12px; font-weight: 600; color: var(--tmd-blue); }
 .node.chap .t { font-size: 16px; font-weight: 700; color: var(--tmd-dark); }
-.node.chap[aria-current="true"] { outline: 2px solid var(--accent); }
+.node.chap[aria-current="true"] { outline:2px solid var(--accent-line); }
 .group.dim .node.chap { opacity: .35; }
 .group.dim .leaves { opacity: .35; }
 .map-hint { margin-top: 18px; font-size: 13px; color: var(--fg-2); }
@@ -141,15 +141,15 @@ main { padding-block: 28px 56px; }
 .panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); max-height: calc(100vh - 96px); overflow-y: auto; }
 .panel-in { padding: 24px; display: grid; gap: 18px; }
 .panel-close { display: none; }
-.p-crumb { font-size: 13px; font-weight: 500; color: var(--accent); }
+.p-crumb { font-size: 13px; font-weight: 500; color:var(--accent-ink); }
 .p-title { font-size: 26px; font-weight: 700; line-height: 1.15; }
 .p-hook { font-size: 17px; color: var(--fg-2); }
 .p-sec { display: grid; gap: 10px; }
-.p-sec h3 { font-size: 13px; font-weight: 600; color: var(--accent); }
+.p-sec h3 { font-size: 13px; font-weight: 600; color:var(--accent-ink); }
 .pts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pts li { position: relative; padding-left: 18px; font-size: 15px; }
-.pts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 3px; background: var(--accent); }
-.quote { border-left: 2px solid var(--accent); padding: 2px 0 2px 14px; display: grid; gap: 6px; }
+.pts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 3px; background:var(--accent); }
+.quote { border-left:2px solid var(--accent-line); padding: 2px 0 2px 14px; display: grid; gap: 6px; }
 .quote p { font-size: 16px; font-style: italic; }
 .quote cite { font-size: 13px; font-style: normal; color: var(--fg-2); }
 .remember { background: var(--tmd-gold-light); color: var(--tmd-dark); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; }
@@ -157,7 +157,7 @@ main { padding-block: 28px 56px; }
 .remember p { font-size: 16px; font-weight: 600; }
 .p-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .btn {
-  border: 1px solid var(--accent); background: var(--accent); color: var(--tmd-dark);
+  border:1px solid var(--accent-line); background:var(--accent); color: var(--tmd-dark);
   border-radius: var(--r); padding: 10px 16px; font-size: 14px; font-weight: 600;
 }
 .btn:hover { background: var(--tmd-gold-dark); border-color: var(--tmd-gold-dark); }
@@ -175,12 +175,12 @@ main { padding-block: 28px 56px; }
 .dg-cell { border: 1px solid var(--line); border-radius: var(--r); padding: 10px; display: grid; gap: 4px; align-content: start; min-width: 0; }
 .dg-cell b { font-size: 14px; font-weight: 600; }
 .dg-cell span { font-size: 13px; color: var(--fg-2); }
-.dg-cell .k { font-size: 12px; font-weight: 700; color: var(--accent); }
-.dg-cell.hi { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+.dg-cell .k { font-size: 12px; font-weight: 700; color:var(--accent-ink); }
+.dg-cell.hi { background:var(--accent); border-color:var(--accent-line); color: var(--tmd-dark); }
 .dg-cell.hi span, .dg-cell.hi .k { color: var(--tmd-dark); }
 .flow { display: grid; gap: 6px; }
 .flow .st { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; font-size: 14px; }
-.flow .st .k { width: 22px; height: 22px; flex: none; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--tmd-dark); background: var(--accent); border-radius: var(--r); }
+.flow .st .k { width: 22px; height: 22px; flex: none; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--tmd-dark); background:var(--accent); border-radius: var(--r); }
 .flow .st.end { background: var(--tmd-white); border-color: var(--tmd-white); color: var(--tmd-dark); font-weight: 600; }
 .flow .ar { height: 10px; width: 2px; background: var(--line); margin-left: 20px; }
 .stat { display: grid; gap: 2px; }
@@ -189,7 +189,7 @@ main { padding-block: 28px 56px; }
 .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--r); }
 .cmp > div { padding: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
 .cmp > div + div { border-left: 1px solid var(--line); }
-.cmp h4 { font-size: 13px; font-weight: 600; color: var(--accent); }
+.cmp h4 { font-size: 13px; font-weight: 600; color:var(--accent-ink); }
 .cmp ul { margin: 0; padding-left: 16px; font-size: 13px; display: grid; gap: 4px; }
 
 /* ---------- Light cards (30% light) ---------- */
@@ -201,7 +201,7 @@ main { padding-block: 28px 56px; }
 .fc-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: var(--fg-2); }
 .fc-meta b { color: var(--fg); font-variant-numeric: tabular-nums; }
 .fc-bar { height: 4px; background: var(--line); }
-.fc-bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+.fc-bar i { display: block; height: 100%; background:var(--accent); width: 0; transition: width .3s; }
 .card { perspective: 1400px; border: 0; background: none; padding: 0; width: 100%; text-align: left; }
 .card-in { position: relative; display: grid; transition: transform .5s; transform-style: preserve-3d; min-height: 320px; }
 .card.flip .card-in { transform: rotateY(180deg); }
@@ -224,7 +224,7 @@ main { padding-block: 28px 56px; }
 .qz-wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 16px; }
 .qz-score { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--fg-2); align-items: center; }
 .qz-score b { color: var(--fg); font-variant-numeric: tabular-nums; }
-.qz-score .streak b { color: var(--accent); }
+.qz-score .streak b { color:var(--accent-ink); }
 .qz-card { padding: 28px; display: grid; gap: 18px; }
 .qz-q { font-size: clamp(19px, 2.6vw, 23px); font-weight: 600; line-height: 1.35; }
 .opts { display: grid; gap: 8px; }
@@ -261,7 +261,7 @@ main { padding-block: 28px 56px; }
 .dr-tab { border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); padding: 12px 14px; text-align: left; display: grid; gap: 2px; min-width: 0; flex: 1 1 200px; }
 .dr-tab b { font-size: 15px; font-weight: 600; }
 .dr-tab span { font-size: 13px; color: var(--fg-2); }
-.dr-tab[aria-pressed="true"] { border-color: var(--accent); outline: 1px solid var(--accent); }
+.dr-tab[aria-pressed="true"] { border-color:var(--accent-line); outline:1px solid var(--accent-line); }
 .drill { max-width: 860px; display: grid; gap: 16px; }
 .drill-card { padding: 24px; display: grid; gap: 16px; }
 .order-done { display: grid; gap: 6px; counter-reset: o; }
@@ -334,47 +334,47 @@ footer .wrap { display: grid; gap: 6px; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 /* ---------- v2: parts > chapters > concepts ---------- */
-.node.part { width: 188px; flex: none; background: var(--tmd-white); border-color: var(--tmd-white); color: var(--tmd-dark); display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 12px 14px; }
-.node.part small { grid-column: 1; font-size: 12px; font-weight: 600; color: var(--tmd-blue); }
-.node.part .t { grid-column: 1; font-size: 16px; font-weight: 700; color: var(--tmd-dark); }
+.node.part { width: 188px; flex: none; background: var(--part-bg); border-color: var(--part-bg); color: var(--part-fg); display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 12px 14px; }
+.node.part small { grid-column: 1; font-size: 12px; font-weight: 600; color: var(--part-sub); }
+.node.part .t { grid-column: 1; font-size: 16px; font-weight: 700; color: var(--part-fg); }
 .node.part .ring { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
-.node.part[aria-current="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+.node.part[aria-current="true"] { outline:2px solid var(--accent-line); outline-offset: 2px; }
 .group.dim .node.part, .group.dim .leaves { opacity: .35; }
 .leaves { gap: 6px; }
 .chwrap { display: grid; gap: 6px; }
 .node.chn { min-height: 42px; padding: 7px 10px; }
 .node.chn .t { font-size: 14px; }
 .node.chn[aria-expanded="true"] { border-color: var(--fg-2); }
-.subs { display: grid; gap: 6px; margin-left: 18px; padding-left: 14px; border-left: 2px solid var(--accent); }
+.subs { display: grid; gap: 6px; margin-left: 18px; padding-left: 14px; border-left:2px solid var(--accent-line); }
 .node.sub { min-height: 36px; padding: 6px 10px; background: var(--bg); }
 .node.sub .t { font-size: 13px; font-weight: 500; }
 .node.sub .ring { width: 16px; height: 16px; }
 .mini { display: grid; gap: 6px; }
 .mini button { display: flex; align-items: center; gap: 10px; text-align: left; background: none; border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; font-size: 14px; }
 .mini button:hover { border-color: var(--fg-2); }
-.mini .k { flex: none; min-width: 24px; height: 24px; padding: 0 4px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--line); border-radius: var(--r); font-variant-numeric: tabular-nums; }
+.mini .k { flex: none; min-width: 24px; height: 24px; padding: 0 4px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color:var(--accent-ink); border: 1px solid var(--line); border-radius: var(--r); font-variant-numeric: tabular-nums; }
 .mini button > span:nth-child(2) { flex: 1; min-width: 0; }
 .mini .ring { width: 18px; height: 18px; flex: none; }
 .mini .ring svg { width: 18px; height: 18px; display: block; }
 .src { font-size: 13px; color: var(--fg-2); border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; }
-.src.thin { border-color: var(--tmd-gold-dark); color: var(--tmd-gold-light); }
-.src.thin b { color: var(--accent); }
+.src.thin { border-color: var(--tmd-gold-dark); color: var(--thin-ink); }
+.src.thin b { color:var(--accent-ink); }
 .quote { margin: 0; }
 .tpl { font-size: 16px; line-height: 2.3; }
-.blank { display: inline; border-bottom: 2px solid var(--accent); padding: 0 4px 2px; font-weight: 600; color: var(--accent); white-space: normal; }
+.blank { display: inline; border-bottom:2px solid var(--accent-line); padding: 0 4px 2px; font-weight: 600; color:var(--accent-ink); white-space: normal; }
 .light-tpl { color: var(--tmd-dark); font-size: clamp(17px, 2.2vw, 20px); }
 .light-tpl .blank { color: var(--tmd-blue); border-bottom-color: var(--tmd-blue); }
 .light-tpl .blank.next { background: var(--tmd-gold-light); border-bottom-color: var(--tmd-gold-dark); color: var(--tmd-dark); }
 .light-tpl .blank.ok { color: var(--tmd-teal-dark); border-bottom-color: var(--tmd-teal-dark); }
 .bsh { display: grid; gap: 4px; justify-items: center; }
 .lv { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; min-width: 0; max-width: 100%; }
-.lv .k { flex: none; width: 20px; height: 20px; display: grid; place-items: center; font-size: 11px; font-weight: 700; background: var(--accent); color: var(--tmd-dark); border-radius: var(--r); }
+.lv .k { flex: none; width: 20px; height: 20px; display: grid; place-items: center; font-size: 11px; font-weight: 700; background:var(--accent); color: var(--tmd-dark); border-radius: var(--r); }
 .lv b { font-size: 12px; font-weight: 500; line-height: 1.3; }
-.lv.hi { border-color: var(--accent); outline: 1px solid var(--accent); }
+.lv.hi { border-color:var(--accent-line); outline:1px solid var(--accent-line); }
 .chasm { width: 100%; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; color: var(--fg-2); }
 .chasm::before, .chasm::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
-.chasm.on { color: var(--accent); }
-.chasm.on::before, .chasm.on::after { border-top-color: var(--accent); }
+.chasm.on { color:var(--accent-ink); }
+.chasm.on::before, .chasm.on::after { border-top-color:var(--accent-line); }
 .dg-grid.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .who { font-size: 14px; font-weight: 500; color: var(--tmd-dark); }
 .bins.b2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -388,20 +388,20 @@ footer .wrap { display: grid; gap: 6px; }
 body[data-view="flow"] .chips, body[data-view="gold"] .chips, body[data-view="sim"] .chips { display: none; }
 .sar { display: inline-block; width: .9em; height: .9em; vertical-align: -0.08em; }
 .amt { white-space: nowrap; font-variant-numeric: tabular-nums; }
-.k-lab, .fl-why .k, .sd-io .k, .sd-tools .k, .charter-band .k { font-size: 12px; font-weight: 600; color: var(--accent); }
+.k-lab, .fl-why .k, .sd-io .k, .sd-tools .k, .charter-band .k { font-size: 12px; font-weight: 600; color:var(--accent-ink); }
 
 /* Flow */
 .fl-frame { display: grid; gap: 12px; }
 .fl-why { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 14px; color: var(--fg-2); }
 .stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; counter-reset: s; }
 .stages li { position: relative; display: flex; }
-.stages li + li::before { content: ""; position: absolute; left: -9px; top: 50%; width: 10px; height: 10px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); transform: translateY(-50%) rotate(45deg); z-index: 2; }
+.stages li + li::before { content: ""; position: absolute; left: -9px; top: 50%; width: 10px; height: 10px; border-top:2px solid var(--accent-line); border-right:2px solid var(--accent-line); transform: translateY(-50%) rotate(45deg); z-index: 2; }
 .stage { flex: 1; margin: 0 6px; display: grid; gap: 2px; justify-items: start; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; min-height: 92px; }
-.stage .sn { font-size: 12px; font-weight: 700; color: var(--accent); }
+.stage .sn { font-size: 12px; font-weight: 700; color:var(--accent-ink); }
 .stage b { font-size: 17px; font-weight: 700; }
 .stage small { font-size: 12px; color: var(--fg-2); }
 .stage:hover { border-color: var(--fg-2); }
-.stage[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--tmd-dark); }
+.stage[aria-pressed="true"] { background:var(--accent); border-color:var(--accent-line); color: var(--tmd-dark); }
 .stage[aria-pressed="true"] .sn, .stage[aria-pressed="true"] small { color: var(--tmd-dark); }
 .loop { margin: 0 6px; border: 2px dashed var(--line); border-top: 0; height: 18px; margin-left: calc(100% / 6 * 2 + 6px); position: relative; }
 .loop span { position: absolute; right: 8px; top: 20px; font-size: 12px; color: var(--fg-2); }
@@ -415,7 +415,7 @@ body[data-view="flow"] .chips, body[data-view="gold"] .chips, body[data-view="si
 .sd-tools { display: grid; gap: 8px; align-content: start; }
 .tools { display: flex; flex-wrap: wrap; gap: 6px; }
 .tool { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 10px; font-size: 13px; font-weight: 500; color: var(--fg); }
-.tool:hover { border-color: var(--accent); }
+.tool:hover { border-color:var(--accent-line); }
 .tool .ring { display: inline-flex; }
 .tool .ring svg { width: 14px; height: 14px; }
 .tool.sm { padding: 4px 8px; font-size: 12px; align-self: center; }
@@ -424,20 +424,20 @@ body[data-view="flow"] .chips, body[data-view="gold"] .chips, body[data-view="si
 .thread-head p { color: var(--fg-2); font-size: 15px; }
 .switch { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg-2); cursor: pointer; }
 .switch input { width: 18px; height: 18px; accent-color: var(--tmd-gold); }
-.charter-band { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; border: 1px solid var(--accent); border-radius: var(--r); padding: 10px 14px; font-size: 14px; }
-.linkd { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: inherit; }
+.charter-band { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; border:1px solid var(--accent-line); border-radius: var(--r); padding: 10px 14px; font-size: 14px; }
+.linkd { background: none; border: 0; padding: 0; color:var(--accent-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: inherit; }
 .thread { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 0; max-width: 820px; }
 .tn { display: flex; gap: 8px; align-items: stretch; }
 .tn > button:first-child { flex: 1; min-width: 0; display: flex; gap: 12px; align-items: flex-start; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; opacity: .45; }
 .tn.on > button:first-child { opacity: 1; }
-.tn.cur > button:first-child { border-color: var(--accent); outline: 1px solid var(--accent); }
-.tn .sn { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--accent); color: var(--tmd-dark); border-radius: var(--r); }
+.tn.cur > button:first-child { border-color:var(--accent-line); outline:1px solid var(--accent-line); }
+.tn .sn { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-size: 12px; font-weight: 700; background:var(--accent); color: var(--tmd-dark); border-radius: var(--r); }
 .tb { display: grid; gap: 2px; min-width: 0; }
 .tb b { font-size: 16px; font-weight: 700; }
 .tb small { font-size: 12px; color: var(--fg-2); }
 .tex { margin-top: 6px; font-size: 14px; background: var(--tmd-white); color: var(--tmd-dark); border-radius: var(--r); padding: 8px 10px; }
 .tl { margin-left: 26px; border-left: 2px solid var(--line); padding: 8px 0 8px 22px; font-size: 14px; color: var(--fg-2); min-height: 18px; }
-.tl.on { border-left-color: var(--accent); }
+.tl.on { border-left-color:var(--accent-line); }
 .tl.cur span { color: var(--fg); font-weight: 500; }
 .thread-ctl { margin-top: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--fg-2); }
 .btn:disabled, .btn-ghost:disabled { opacity: .4; cursor: default; }
@@ -445,11 +445,11 @@ body[data-view="flow"] .chips, body[data-view="gold"] .chips, body[data-view="si
 /* Gold Sheet */
 .gs-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-bottom: 16px; font-size: 14px; color: var(--fg-2); }
 .gs-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.badge { display: inline-block; background: var(--accent); color: var(--tmd-dark); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: var(--r); margin-right: 6px; }
+.badge { display: inline-block; background:var(--accent); color: var(--tmd-dark); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: var(--r); margin-right: 6px; }
 .badge.mine { background: var(--tmd-teal-dark); color: var(--tmd-white); }
 .gs { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start; }
 .sheet { padding: 0 0 8px; overflow: hidden; }
-.sh-head { background: var(--accent); color: var(--tmd-dark); padding: 14px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
+.sh-head { background:var(--accent); color: var(--tmd-dark); padding: 14px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
 .sh-head span { font-size: 22px; font-weight: 700; }
 .sh-head small { font-size: 13px; font-weight: 500; }
 .gs-sec { padding: 18px 24px; border-top: 1px solid var(--tmd-blue-light); display: grid; gap: 10px; }
@@ -510,7 +510,7 @@ textarea.gi { resize: vertical; margin-bottom: 12px; }
 .gc-list .tag { font-size: 11px; font-weight: 700; text-align: center; padding: 3px 0; border-radius: var(--r); }
 .gc-list li.ok .tag { background: var(--tmd-teal-dark); color: var(--tmd-white); }
 .gc-list li.warn .tag { background: var(--tmd-red-dark); color: var(--tmd-white); }
-.gc-list li.todo .tag { background: var(--accent); color: var(--tmd-dark); }
+.gc-list li.todo .tag { background:var(--accent); color: var(--tmd-dark); }
 .gc-list li.info .tag { border: 1px solid var(--fg-2); color: var(--fg-2); }
 .gc-list button { background: none; border: 0; padding: 0; text-align: left; font-size: 13px; color: var(--fg); line-height: 1.4; }
 .gc-list button:hover { text-decoration: underline; }
@@ -519,12 +519,12 @@ textarea.gi { resize: vertical; margin-bottom: 12px; }
 .sim-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: 16px; }
 .meters { display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 12px; }
 .meter { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; display: grid; gap: 6px; align-content: start; min-width: 0; }
-.meter > span { font-size: 12px; font-weight: 600; color: var(--accent); }
+.meter > span { font-size: 12px; font-weight: 600; color:var(--accent-ink); }
 .meter b { font-size: 13px; font-weight: 600; }
 .meter .big2 { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .lvbar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
 .lvbar i { height: 10px; border: 1px solid var(--line); border-radius: var(--r); }
-.lvbar i.on { background: var(--accent); border-color: var(--accent); }
+.lvbar i.on { background:var(--accent); border-color:var(--accent-line); }
 .lvbar i.ch { margin-right: 6px; }
 .resbar { height: 10px; border: 1px solid var(--line); border-radius: var(--r); }
 .resbar i { display: block; height: 100%; background: var(--tmd-teal-dark); transition: width .4s; }
@@ -567,20 +567,61 @@ textarea.gi { resize: vertical; margin-bottom: 12px; }
   .br { grid-template-columns: 64px minmax(0, 1fr); }
   .br b { grid-column: 2; }
 }
+
+/* ---------- v4: theme tokens (dark first; TMD light under light preference or toggle) ---------- */
+:root { --accent-ink: #fcbf2c; --accent-line: #fcbf2c; --track: #2f3e75; --d-ink: #f0f2f9; --d-line: #2f3e75; --d-hi: #fcbf2c; --d-bg: #0C0E1D; --card-edge: #ffffff; --part-bg: #ffffff; --part-fg: #0C0E1D; --part-sub: #29366C; --thin-ink: #fff9eb; --logo-w: block; --logo-c: none; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { color-scheme: light; --bg: #ffffff; --fg: #0C0E1D; --fg-2: #2f3e75; --panel: #f0f2f9; --line: #2f3e75; --accent-ink: #29366C; --accent-line: #dd9c03; --track: #2f3e75; --d-ink: #2f3e75; --d-line: #29366C; --d-hi: #dd9c03; --d-bg: #ffffff; --card-edge: #2f3e75; --part-bg: #29366C; --part-fg: #ffffff; --part-sub: #fcbf2c; --thin-ink: #92112d; --logo-w: none; --logo-c: block; } }
+:root[data-theme="light"] { color-scheme: light; --bg: #ffffff; --fg: #0C0E1D; --fg-2: #2f3e75; --panel: #f0f2f9; --line: #2f3e75; --accent-ink: #29366C; --accent-line: #dd9c03; --track: #2f3e75; --d-ink: #2f3e75; --d-line: #29366C; --d-hi: #dd9c03; --d-bg: #ffffff; --card-edge: #2f3e75; --part-bg: #29366C; --part-fg: #ffffff; --part-sub: #fcbf2c; --thin-ink: #92112d; --logo-w: none; --logo-c: block; }
+:root[data-theme="dark"] { color-scheme: dark; }
+.logo-w { display: var(--logo-w); } .logo-c { display: var(--logo-c); }
+.light { border: 1px solid var(--card-edge); }
+.ico { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; display: block; }
+.node.chn .ico { color: var(--accent-ink); }
+.mini .ico { color: var(--accent-ink); }
+.theme-btn { display: inline-flex; align-items: center; gap: 6px; }
+.hero-help { color: var(--accent-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font-size: 14px; cursor: pointer; justify-self: start; }
+.cl { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cl li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+.cl .cb { flex: none; width: 16px; height: 16px; margin-top: 2px; border-radius: 2px; background: var(--tmd-teal-dark); position: relative; }
+.cl .cb::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px; border: solid #ffffff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+/* Guide */
+.guide { display: grid; gap: 36px; }
+.g-sec { display: grid; gap: 14px; }
+.g-sec h3 { font-size: 22px; font-weight: 700; }
+.g-sec.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.g-sec.two > div { display: grid; gap: 12px; align-content: start; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+.g-sec p { color: var(--fg-2); font-size: 15px; }
+.g-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.g-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.g-card .ico { color: var(--accent-ink); }
+.g-card b { font-size: 17px; font-weight: 700; }
+.g-card p { font-size: 14px; }
+.g-when { font-size: 13px; font-weight: 600; color: var(--accent-ink); }
+.g-card .btn { justify-self: start; }
+.g-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: g; }
+.g-steps li { counter-increment: g; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; font-size: 15px; }
+.g-steps li::before { content: counter(g); width: 30px; height: 30px; display: grid; place-items: center; background: var(--accent); color: var(--tmd-dark); font-weight: 700; border-radius: var(--r); }
+.g-rings { display: flex; flex-wrap: wrap; gap: 16px; }
+.g-rings > div { display: grid; justify-items: center; gap: 4px; font-size: 13px; color: var(--fg-2); }
+.g-rings svg { width: 44px; height: 44px; }
+.g-note { font-size: 13px; }
+@media (max-width: 760px) { .g-sec.two { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <header class="hero">
   <div class="wrap hero-in">
-    <div class="hero-logo" role="img" aria-label="TMD, The Marketing Department"><svg aria-hidden="true" focusable="false" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1830.3 1070.4"><path d="M491.5,908.1l-28.8,87.2h19.2l6.2-20.8h29.1l6.2,20.8h20l-28.4-87.2h-23.5ZM492.6,958.4l9.6-33.1h.6l9.8,33.1h-20ZM873.4,966.8l15.5,9c-3.2,6.7-7.5,11.8-12.8,15.4-5.3,3.6-12,5.4-20.1,5.4v.2c-5.9,0-11.2-.9-16-2.8s-8.8-4.7-12.1-8.4-5.9-8.3-7.8-13.9c-1.8-5.5-2.8-12-2.8-19.4s.9-13.9,2.8-19.6c1.8-5.7,4.4-10.5,7.8-14.4,3.3-3.9,7.4-6.8,12.1-8.8s10.1-3,16-3,14.8,1.6,20,4.9c5.2,3.3,9.5,8.5,12.6,15.6l-16.4,8.5c-1.2-3.7-3-6.6-5.4-8.8-2.5-2.2-6.1-3.3-10.8-3.3s-10.1,1.8-13.4,5.4-5.1,8.9-5.1,15.8v14c0,6.9,1.7,12.2,5.1,15.8s7.9,5.4,13.4,5.4,8.4-1.3,11.2-3.8,4.9-5.6,6.2-9.2ZM950.3,937.4c-2.6-2.9-5.8-5.2-9.6-6.8-3.8-1.6-8.1-2.4-12.9-2.4s-9.1.8-12.9,2.4-7,3.8-9.6,6.8c-2.7,2.9-4.7,6.6-6.1,10.8-1.4,4.2-2.1,9-2.1,14.2s.7,10,2.1,14.2c1.5,4.3,3.5,7.9,6.1,10.9s5.8,5.3,9.6,6.9c3.8,1.6,8.1,2.4,12.9,2.4s9.1-.8,12.9-2.4c3.8-1.6,6.9-3.9,9.6-6.9s4.7-6.7,6.1-10.9c1.4-4.2,2.1-9,2.1-14.2s-.7-10-2.1-14.2c-1.5-4.2-3.5-7.8-6.1-10.8ZM939.3,969.2c0,4.1-1,7.3-3,9.6s-4.8,3.4-8.5,3.4-6.5-1.2-8.5-3.4-3-5.4-3-9.6v-13.4c0-4.1,1-7.3,3-9.6s4.8-3.4,8.5-3.4,6.5,1.2,8.5,3.4,3,5.4,3,9.6v13.4ZM1061.9,935c3.4,4.6,5.1,10.9,5.1,19.2v41.1h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-5.2.8-7.5,2.4c-2.2,1.6-3.4,4-3.4,7.2v42.5h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-2.6.2-3.9.6c-1.3.4-2.5,1-3.5,1.8s-1.9,1.9-2.5,3.1c-.6,1.2-.9,2.6-.9,4.2v42.5h-18.5l-.2-.1v-65.6h18.5v11.1h.8c1.2-3.5,3.2-6.5,6-8.9,2.8-2.5,6.7-3.7,11.6-3.7s8.3,1.1,11.5,3.4c3.2,2.2,5.5,5.5,6.9,9.9h.4c.6-1.8,1.5-3.6,2.7-5.2,1.2-1.6,2.7-3,4.4-4.2,1.8-1.2,3.7-2.1,5.9-2.8,2.2-.7,4.5-1.1,7-1.1,6.3,0,11.2,2.2,14.6,6.8ZM1120.1,928.2c-4.2,0-8,1.2-11.3,3.5s-5.4,5.3-6.3,9h-.6v-11h-18.5v.2s0,90.6,0,90.6h18.5v-36h.6c.5,1.7,1.3,3.4,2.4,4.9,1,1.5,2.4,2.9,3.9,4,1.6,1.1,3.3,2,5.2,2.6,1.9.6-2.3.9,6.1.9s14.6-2.9,18.9-8.8,6.4-14.4,6.4-25.6-2.2-19.7-6.4-25.5c-4.3-5.9-10.6-8.8-18.9-8.8ZM1126.1,968.2c0,4.1-1.1,7.4-3.4,9.9-2.3,2.5-5.2,3.7-8.7,3.7v.2c-3.5,0-6.4-.9-8.7-2.6-2.3-1.7-3.4-4.1-3.4-7.1v-19.4c0-3,1.1-5.4,3.4-7.1,2.3-1.7,5.2-2.6,8.7-2.6s6.4,1.2,8.7,3.7c2.3,2.4,3.4,5.7,3.4,9.9v11.4ZM1212.1,952.4c0-7.9-2.3-13.8-7-17.9s-14.1-6.1-21-6.1-12.4,1.1-16.4,3.3c-4.1,2.2-7.4,5.3-10.1,9.2l11,9.8c1.4-2,3.2-3.8,5.4-5.4,2.2-1.6,4.9-2.4,8.8-2.4s6.7.9,8.4,2.8c1.7,1.9,2.5,4.4,2.5,7.6v4.1h-10.4c-8.7,0-15.6,1.6-20.6,5-5.1,3.4-7.6,9.7-7.6,15.4s1.7,10.3,5.2,13.8,10.1,5.2,15.1,5.2,9.2-1.1,12.6-3.3,5.6-5.5,6.6-9.7h.8c.6,3.5,2,6.3,4.2,8.4,2.2,2.1,5,3.1,8.3,3.1l.1.3h10.2v-14.4h-6.1v-28.8ZM1193.5,975.4c0,3-1.1,5.2-3.3,6.5-2.2,1.3-4.8,2-7.9,2h-.1c-2.8,0-5-.6-6.4-1.7s-2.2-2.9-2.2-5.3v-1.9c0-4.9,3.7-7.3,10.9-7.3h9v7.7ZM1283.3,934.9c3.5,4.5,5.2,10.9,5.2,19.2v41.1h-18.5v-39.6c0-4.2-.7-7.4-2-9.4s-3.7-3.1-7.1-3.1-3,.2-4.4.6c-1.4.4-2.7,1-3.8,1.8-1.1.8-2,1.9-2.7,3.1-.7,1.2-1,2.6-1,4.2v42.5h-18.5v-65.6h18.5v11.1h.8c1.2-3.4,3.2-6.4,6.1-8.9s7-3.8,12.1-3.8,11.9,2.2,15.3,6.8ZM1344.1,929.7h17.2l-25.2,75.8c-1.7,5.1-4,8.8-7.1,11.2-3,2.4-7.4,3.6-13.1,3.6h-11.5v-14.4h12.4l2.2-7.2-23-69h18.4l9.6,30.6,4.8,19h.8l4.9-19,9.6-30.6ZM761,906.5h0s-31.2,0-31.2,0c-2.3,0-4.1,1.8-4.1,4.1v80.6c0,2.3,1.8,4.1,4.1,4.1h16.9c2.3,0,4.1-1.8,4.1-4.1v-19.9h10.2c23.7-.2,35.6-14.3,35.6-32.5s-11.8-32.3-35.6-32.3ZM761.7,950.4c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM634.9,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM718,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM0,0v866h1830.3V0H0ZM1801.1,836.9H29.2V29.2h1771.9v807.7ZM573.4,127.5h-29.5v-26.6h87.6v26.6h-29.6v157.9h-28.5V127.5ZM674,285.4h-28.2V100.9h28.2v75.3h28.5v-75.3h28.5v184.5h-28.5v-82.5h-28.5v82.5ZM828.1,285.4h-74.3V100.9h74.3v26.7h-45.8v48.3h33v26.7h-33v55.1h45.8v27.7ZM483.1,579h-40.8v186.2h42.1c15.7,0,27.2-4.1,34.4-12.4,7.2-8.2,10.8-21.4,10.8-39.5v-83.2c0-17.4-3.8-30.3-11.4-38.6-7.6-8.3-19.3-12.5-35.1-12.5ZM500.2,718.1h0c0,6.7-1.2,11.6-3.7,14.8s-6.2,4.8-11.3,4.8h-14.5v-131.3h6.6c7.9,0,13.7,1.8,17.4,5.3,3.7,3.5,5.5,9.2,5.5,16.8v89.6ZM550.4,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM686,579h0s-42.1,0-42.1,0v186.2h28.7v-75.7h19.7c11.9,0,21.3-5,28.2-15.1s10.3-23.9,10.3-41.5-3.5-32.6-10.6-41.1-18.5-12.8-34.2-12.8ZM697.9,656.7h-.1c-2.5,4.1-7.2,6.1-13.8,6.1h-11.3v-56.9h10.3c7.1,0,12,1.9,14.7,5.8,2.7,3.9,4,11.1,4,21.6s-1.3,19.3-3.8,23.4ZM762.9,579h-.1l-30.6,186.2h28.2l6.2-40.3h29l5.8,40.3h29.5l-30.5-186.2h-37.5ZM770.1,698.4l10.3-77.8h1.8l9.8,77.8h-21.9ZM929.3,661.1h-.1c2.8-7.2,4.2-16.7,4.2-28.3,0-18.9-3.5-32.6-10.5-41.1s-18.5-12.8-34.2-12.8h-42.1v186.2h28.7v-78.3h13.6l17.8,78.3h29.8l-21.1-86.5c6.4-4.5,11.1-10.3,13.9-17.5ZM900.4,654c-2.6,4-7.2,6-13.8,6h-11.3v-54.1h10.3c7,0,11.9,1.9,14.6,5.6,2.7,3.7,4,10.5,4,20.3s-1.3,18.2-3.9,22.2h.1ZM943.6,579h88.3v26.9h-29.9v159.2h-28.7v-159.2h-29.7v-26.9ZM1126.2,579h38.8v186.2h-26.9v-117.6c0-3.3.2-7.8.6-13.5.4-5.6.9-11.9,1.6-18.9-.5,2.5-1,5.9-1.7,10.3-1.4,8.3-2.3,13.7-2.8,16.1l-23.4,123.6h-14.3l-22.4-123.8c-.9-4.9-1.8-10.4-2.8-16.3-.9-5.9-1.5-9.2-1.7-9.9.6,6.3,1.1,12.3,1.4,17.8s.5,10.4.5,14.6v117.6h-26.7v-186.2h38.2l18.7,103.1c.7,4.1,1.3,8.5,1.7,13.2s.6,9.6.6,14.7c0-4.3.2-8.8.7-13.3s1.1-9.3,2-14.4v.1s17.9-103.4,17.9-103.4ZM1187.9,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM1346.1,579h26.9v186.2h-26.9l-35-102.9c-.2-.4-.5-1.1-.7-1.9-2.4-7.1-4.2-13.1-5.4-18.3,1.1,6.5,1.8,12,2.4,16.3.5,4.4.8,7.5.8,9.5v97.3h-26.7v-186.2h25.8l36.4,111.2c.7,2.1,1.5,5,2.5,8.5s2,7.3,3,11.3c-.9-5.4-1.7-10.4-2.3-15s-.9-8-.9-10.1l.1.1v-106ZM1387.1,579h88.4v26.9h-29.9v159.2h-28.7v-159.2h-29.8v-26.9ZM103,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM88.6,749.4c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,746.8c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1308.6,316c-4.4-4.1-6.6-9.8-6.6-17.3s2.9-13.6,8.8-18.6c6-5.2,14.4-7.7,22.5-7.7s14.7,1.9,19.6,5.8c4.8,3.8,7.1,7.2,7.1,15.9s-2.7,15.4-8.3,20.5c-5.69,5.09-13.08,7.59-22.66,7.6-9.17,0-16.05-2.11-20.44-6.2ZM532.5,498.8c8.3,10.1,19.1,15,33.1,15s32.4-9.4,44.3-28.6l3.3-5.3,2.1,5.8c3.1,8.7,7.8,15.7,13.9,20.7,6.1,5,12.5,7.4,19.7,7.4s19.6-4,30-11.9c1.2-.9,2.4-1.9,3.6-2.9l4.6-3.8,1.4,4.1.6,2.1c3.2,8.3,8.6,12.4,16.3,12.4s11.2-1.7,14-4.9c3.1-3.5,5.9-10.7,8.5-21.4,3.6-14.6,8.3-28.7,14.1-42,5.8-13.2,11.7-24.1,17.7-32.2,6.6-9,11.8-13.2,16.5-13.2s6.9.6,6.9,8.7-.2,5-.8,10.2c-2.1,10.7-1.2,24.1,6.2,32.8,4.1,4.8,10,7.7,16.2,9,8.8,1.9,18.5,1.4,27.2-.9l7.2-1-1.4,4.5c-5.4,17.8-10.2,32.5-15.2,46.3-1.9,5.3-1.5,10.1,1.3,14,3.2,4.6,9.3,7.5,15.8,7.5s15-4.6,17.7-12.3c8.3-23.1,15.9-47.3,22.6-71.7l.4-1.4,1.3-.6c7-3,14-6.2,21-9.5l4.3-2v4.8c-.4,26,4.4,59.9,28.9,74.3,10.2,6,20.3,9,30.8,9,21.7,0,41.9-12.7,61.5-25l1.9-1.2,1.7,1.4c13,11.2,30.9,16.9,53.2,16.9s34.6-4.4,50.2-13.2c15.7-8.8,28-18.6,36.5-29,1.2-1.4,2.2-3.1,3.3-5.5l3.2-7.2,2.4,7.5c10,31.9,30.7,47.4,63.2,47.4s28.6-3.9,40.2-11.7c2.3-1.5,4.6-3.2,6.8-4.9l3-1.3,1.7,2.8c6.5,10.1,16.7,15.1,31.3,15.1s24.8-5.4,38.1-16.1l3.3-2.7,1.4,4,.7,2.3c3.2,8.3,8.6,12.4,16.3,12.4s11.1-1.6,14-4.9c3.1-3.5,6-10.8,8.5-21.4,3.6-14.6,8.4-28.7,14.3-42,5.9-13.2,11.7-24,17.4-32.1,6.4-9.2,11.2-13.2,15.5-13.2s6.9.6,6.9,8.7-1.5,16.4-4.7,31.7c-3.3,16.9-4.9,28.7-4.9,35.2,0,12.5,2.9,22.2,8.6,28.6,5.6,6.3,14.1,9.5,25.3,9.5s27.3-3.9,38.5-11.6c2.8-1.9,5.5-4,8.2-6.1l2.4-2,1.8,2.5c.3.4.6.8.8,1.2.2.3.4.7.7,1,8.3,10.1,19.1,15,33.1,15s13.6-1.7,19.7-4.9c6.1-3.2,12.3-6.7,16-12.6l2.6,1-2.3,15.1-.9.7c-36.3,28-61.3,51.9-74.4,71-12.9,18.8-19.5,36.6-19.5,52.8s3.5,20.4,10.6,27.3c7.1,7,16.1,10.4,27.6,10.4,24.3,0,44.1-17.4,58.9-51.6,11.8-27.2,21.8-62.9,29.9-106l.2-1.2.9-.7c17.5-12.9,35.3-24.9,53.1-35.7,6.1-3.7,5.3-9.4,4.7-11.7l-.7.2c-1.2-4.3-5-8.6-10-8.6s-3.6.6-5.4,1.6c-9.8,6-20.2,12.7-32.5,21.1l-5.5,3,1-6.7c.9-6.7,3.2-20.4,6.8-41.1,4.8-29.6,7.9-49.4,8.9-57.1.2-1.6.3-3.7.3-6.4s-.4-6.6-2.5-8.1c-1.4-1-4.4-2.1-10.9-2.1h-3.2c-.3-.6-.7-1.3-1.2-1.9-3.5-4.3-8.9-6.8-14-8.7-2.6-1-5.1-1.4-7.5-1.6-1.2-.2-2.8-.4-4.8-.4-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.6,16.5-12.9,34.3-12.9,52.8,0,4.99,0,7.51.02,8.57l-.12.43s-2.9,2.8-3.7,3.5c-7.2,6.4-13.4,9.5-18.9,9.5s-13.3-2.2-13.3-17.3,2.2-20.6,6.8-41.7c5.2-24,7.8-40.7,7.8-49.8,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9.1,5.3-18.4,14.3-27.9,26.7-5.3,6.9-9.8,14.4-13.8,22.1-2.3,4.4-4.4,8.8-6.4,13.3-1.1,2.4-2.1,4.8-3.1,7.2-.5,1.2-1,2.5-1.5,3.7-.4,1-.7,2.1-1.3,3-.2.2-.4.5-.6.7-.8.8-2.2,1.2-3.2.7-.9-.4-1.4-1.3-1.7-2.3-.2-1.2,0-2.4.2-3.5.1-1.3.3-2.6.4-3.9.3-2.5.6-4.9.9-7.3.6-4.2,1.2-8.4,2-12.5,1.4-7.2,3.4-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.4-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.6,1.5-18.9,4.3s-7.4,7.4-9.3,13.6c-8.7,27.4-13.1,56.8-13.1,87.4v5.2c.1,0-.7.9-.7.9-2.9,3-5.6,5.8-7.9,7.9-7.1,6.5-13,9.7-18.1,9.7s-9.9-2.6-12.3-7.4c-2-4-3-9.5-3.1-17.3.1-1.4.3-2.9.2-4.6v-.9c-.1,0,0-.3,0-.3.8-10.3,3.6-26.6,8.4-48.6,4.4-21.4,6.7-35.1,6.7-40.8s0-9.2-15.2-9.2-12.3,1.2-15.3,3.6c-3.1,2.5-5.6,7.2-7.6,14.2-4.2,14.4-7.8,30-10.5,46.6-2.7,16.6-4.1,30.3-4.1,40.8s.1,3.7.2,5.5l.2,2.1-.3,1.8-1.1,1c-1.4,1.2-2.8,2.4-4.1,3.5-8.4,6.6-18.2,9.9-29,9.9s-23.9-5.5-30.3-16.5c-2.4-4.2-4.4-9.8-6-16.8-2.9-21.4-3.6-43.2-2.2-64.9l.2-2.8h27.1c37.4,0,37.4-16.3,37.4-21.7s-1-6.6-1.6-7.2c-1.1-1.1-3.2-1.6-6.1-1.6h-53.2l.6-3.5c5.5-31.8,15.5-65.1,30.5-102,2.1-5.1,1.8-9.8-.7-13.6-3-4.5-9.2-7.4-15.9-7.4s-15.3,4.5-18.4,12.1c-16,39.3-26.4,75.8-31.8,111.8l-.4,2.5h-24.7c-5.6,0-13.1,1.8-13.1,17s1,8.4,2.9,10.5c1.3,1.4,4.5,3,12.3,3h17.1l-.2,3.2c-.7,10.7-1.1,21.3-1.1,31.6s.3,14,.9,21.1l.2,2.1c-3.2-.7-6.3.3-8.8,2.4-.9.6-1.8,1.4-2.7,2.4-10.2,12.4-22.5,22.5-36.4,30.2-14.1,7.7-26.9,11.6-38.1,11.6-17.8,0-30.1-6-36.6-18l-1.8-3.4,3.8-.9c27.4-6.7,47.1-15.9,58.5-27.3,11.2-11.2,16.8-24.7,16.8-40.2s-3.9-23.7-11.6-31.3c-7.8-7.7-18-11.5-31.1-11.5s-28.3,4-40,12c-11.8,8-21.1,19-27.8,32.6-6.7,13.7-10.1,28.7-10.1,44.6s.8,15.4,2.5,22.3l.5,2-1.7,1.2c-12.8,9-24.9,17.5-43.6,17.5-6.2,0-11.3-2.4-15.2-7-11.8-13.8-9.4-44.8-6.9-62.1l.2-1.4,1.2-.7c21.5-12.8,42.7-27.3,63-43.1,5.5-4.3,7.4-9.8,5.4-15.6-2.6-7.6-11.2-13.6-19.6-13.6s-8.2,1.4-11.8,4.2c-19.4,15.1-40.5,29.2-63.2,41.9-1.2.4-2.2,1-3.5,1.9l-2.9,1.6c-3.1,1.8-6.3,3.5-9.5,5.2l-12.8,6.8,1.3-6.3c12.7-59.1,19.9-119.4,21.4-179.3.1-4.9-1.3-9-4.3-12.1-3.2-3.3-8-5.1-13.2-5.1-8.7,0-18.2,5.4-18.5,17.4-1.7,67.6-11.1,135.8-27.8,202.6l-.4,1.6-1.6.5c-7.7,2.5-15.3,4-22.4,4.5h-1.2l-.9-.6c-3.2-2.6-4.8-7-4.8-13s1-8.7,2.9-18.4c2.1-11.7,3.2-19.1,3.2-22,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9,5.3-18.4,14.2-27.9,26.7-3.4,4.5-6.5,9.3-9.4,14.2-2.4,3.4-4.7,7-6.9,10.6-2.3,3.8-4.5,7.6-6.8,11.4-1.2,1.9-5.9,10.9-8.5,11.2,0-1,.1-2,.2-3,.2-1.8.4-3.6.6-5.4.4-3.4.8-6.9,1.4-10.3.4-2.5.8-5,1.3-7.5,1.4-7.2,3.3-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.5-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.5,1.5-18.9,4.3-4.3,2.9-7.4,7.3-9.3,13.6-8.7,27.4-13.1,56.8-13.1,87.4v5.1c.1,0-.7.9-.7.9-3,3.2-5.8,6-8.2,8.2-7.1,6.4-13.1,9.5-18.4,9.5s-6.9-1.5-9.3-4.3c-2.2-2.7-3.4-6.2-3.4-10.5,0-10.9,2.8-30.3,8.3-57.7,3.5-18.6,5.3-30.4,5.3-35.2s-1.6-9.5-14.5-9.5h-.7c-.3-.6-.7-1.2-1.2-1.8-3.5-4.3-8.9-6.8-14-8.7-3.7-1.4-7.1-1.7-10.5-1.6-1.1-.2-2.5-.3-4.4-.3-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.5,16.5-12.9,34.3-12.9,52.8s4.2,30.1,12.5,40.3ZM1600.2,554.2c-6.9,31.3-14.3,54.5-21.9,69-8.1,15.5-15.6,23-22.8,23s-8.8-2.9-10.3-5.4c-1.8-3.1-2.7-7-2.7-11.5,0-10.1,4.2-21.8,12.6-34.8,8.2-12.8,21.8-27.3,40.2-43.2l6.8-5.8-1.9,8.7h0ZM1573,420.2c5.2-12.3,12.2-22.3,20.8-29.9,8.8-7.7,18.6-11.8,29-12h3.7l-12.1,64.6h.1c-2.2,12.8-6,22.9-11.3,29.9-5.6,7.4-11.7,11.2-18.1,11.2s-11.1-2.2-14.6-6.4c-3.4-4.1-5.2-10.3-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM1527,463.6l.2,2.1-.41,1.44c.05-1.49.12-4.27.21-3.54ZM1055.3,397.6h0c6.6-11.2,15-16.8,24.9-16.8s9.3,1.7,12.4,5.1c3,3.3,4.5,7.6,4.5,12.9,0,9.7-4.4,18.3-13.2,25.5-.8.7-1.7,1.4-2.6,2-10.7,6.3-23.1,8.5-35.4,6.6.4-13.6,3.6-25.5,9.4-35.3ZM566,420.2c5.2-12.3,12.2-22.3,21-29.9,9-7.7,18.9-11.7,29.6-12h3.7l-14,69.3h.1c-2.2,10.6-5.9,19.3-10.9,25.9-5.3,6.9-11.2,10.5-17.4,10.5s-11.1-2.2-14.6-6.4c-3.5-4.1-5.2-10.1-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM144,667.8c-3.6-5.9-3.8-12.7-.6-19.1,57.8-115.1,104.3-250.3,146.3-425.4,2.3-9.5,12.5-13.7,19.5-13.7s16,3.6,17.8,13.6c10,54.8,22.5,119.4,40.3,182.8l1.7,6,3.6-5.1c41.5-58.1,79.5-120,116.2-179.8l7.2-11.8c3.7-6.2,9.9-9.6,15.6-9.6s11.5,2.8,15.4,7.5c4,4.7,5.6,10.9,4.4,17.2-3.3,18.4-7.2,37.1-11,55.2-7.9,38.1-16.1,77.5-19.9,117v1.6c-7.1,76-2.2,117.5,15.1,127,1.2.7,2.7,2,1.9,5.3-1.7,6.8-12.7,17-25.7,17s-23.2-10.3-29.7-29.6c-11.1-33.4-1-124.9,5.9-168.7.5-3.1,1-6.2,1.6-9.2.2-.7.3-1.4.4-2.1.2-1,.6-2,.5-3.1-.2-1.9-2.2-2.6-3.9-2.4-.5,0-1.1.2-1.5.5-.7.6-1.1,1.5-1.6,2.3-.6,1-1.1,2.1-1.7,3.1-1.3,2.1-2.6,4.1-4,6.2h.2c-2.2,3.4-4.5,6.8-6.7,10.2-4.3,6.5-8.6,13-12.9,19.5-4.1,6.2-8.3,12.4-12.5,18.5-4,5.9-8,11.7-12.1,17.5-4,5.6-7.9,11.2-11.9,16.7-3.9,5.3-7.8,10.6-11.7,15.9-3.8,5.1-7.6,10.2-11.5,15.2-4.5,5.8-9.6,9.3-18,9.3s-15-5.2-17.8-13.8c-.3-1.1-.7-2.3-1.1-3.5-2-6.5-4-13.1-6-19.6-2-6.7-4-13.5-5.9-20.3-1.9-7.1-3.8-14.1-5.7-21.2-2-7.3-3.8-14.7-5.6-22.1-1.9-7.7-3.7-15.4-5.5-23.1-.9-3.9-1.8-7.9-2.7-11.9-.4-2.1-.9-4.1-1.3-6.1-.3-1.6-.5-3.3-2-4.2-1.1-.6-2.5-.5-3.4.2-1.1.9-1.2,2.4-1.6,3.7-.5,1.5-.9,3.1-1.3,4.6-.9,3.1-1.7,6.2-2.6,9.3-2.2,7.7-4.4,15.4-6.6,23.1-2.2,7.6-4.4,15.1-6.7,22.7-2.3,7.4-4.6,14.9-6.9,22.3-2.3,7.3-4.6,14.6-7,21.9-2.3,7.2-4.7,14.4-7.1,21.5-2.3,7.1-4.7,14.1-7.2,21.1-2.4,6.9-4.8,13.8-7.3,20.7-2.5,6.8-5,13.5-7.5,20.3-2.5,6.7-5,13.4-7.6,20-2.6,6.6-5.2,13.1-7.8,19.6-2.6,6.4-5.2,12.8-7.9,19.2-2.7,6.3-5.4,12.6-8.1,18.9-2.7,6.2-5.4,12.3-8.2,18.5-2.8,6.1-5.6,12.2-8.4,18.2-2.8,6-5.6,11.9-8.5,17.9-2.8,5.8-5.7,11.7-8.6,17.5-4.1,8-7.6,9.7-14.6,9.7s-14.3-4.3-18.2-10.6Z"></path></svg></div>
+    <div class="hero-logo" role="img" aria-label="TMD, The Marketing Department"><div class="logo-w"><svg aria-hidden="true" focusable="false" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1830.3 1070.4"><path d="M491.5,908.1l-28.8,87.2h19.2l6.2-20.8h29.1l6.2,20.8h20l-28.4-87.2h-23.5ZM492.6,958.4l9.6-33.1h.6l9.8,33.1h-20ZM873.4,966.8l15.5,9c-3.2,6.7-7.5,11.8-12.8,15.4-5.3,3.6-12,5.4-20.1,5.4v.2c-5.9,0-11.2-.9-16-2.8s-8.8-4.7-12.1-8.4-5.9-8.3-7.8-13.9c-1.8-5.5-2.8-12-2.8-19.4s.9-13.9,2.8-19.6c1.8-5.7,4.4-10.5,7.8-14.4,3.3-3.9,7.4-6.8,12.1-8.8s10.1-3,16-3,14.8,1.6,20,4.9c5.2,3.3,9.5,8.5,12.6,15.6l-16.4,8.5c-1.2-3.7-3-6.6-5.4-8.8-2.5-2.2-6.1-3.3-10.8-3.3s-10.1,1.8-13.4,5.4-5.1,8.9-5.1,15.8v14c0,6.9,1.7,12.2,5.1,15.8s7.9,5.4,13.4,5.4,8.4-1.3,11.2-3.8,4.9-5.6,6.2-9.2ZM950.3,937.4c-2.6-2.9-5.8-5.2-9.6-6.8-3.8-1.6-8.1-2.4-12.9-2.4s-9.1.8-12.9,2.4-7,3.8-9.6,6.8c-2.7,2.9-4.7,6.6-6.1,10.8-1.4,4.2-2.1,9-2.1,14.2s.7,10,2.1,14.2c1.5,4.3,3.5,7.9,6.1,10.9s5.8,5.3,9.6,6.9c3.8,1.6,8.1,2.4,12.9,2.4s9.1-.8,12.9-2.4c3.8-1.6,6.9-3.9,9.6-6.9s4.7-6.7,6.1-10.9c1.4-4.2,2.1-9,2.1-14.2s-.7-10-2.1-14.2c-1.5-4.2-3.5-7.8-6.1-10.8ZM939.3,969.2c0,4.1-1,7.3-3,9.6s-4.8,3.4-8.5,3.4-6.5-1.2-8.5-3.4-3-5.4-3-9.6v-13.4c0-4.1,1-7.3,3-9.6s4.8-3.4,8.5-3.4,6.5,1.2,8.5,3.4,3,5.4,3,9.6v13.4ZM1061.9,935c3.4,4.6,5.1,10.9,5.1,19.2v41.1h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-5.2.8-7.5,2.4c-2.2,1.6-3.4,4-3.4,7.2v42.5h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-2.6.2-3.9.6c-1.3.4-2.5,1-3.5,1.8s-1.9,1.9-2.5,3.1c-.6,1.2-.9,2.6-.9,4.2v42.5h-18.5l-.2-.1v-65.6h18.5v11.1h.8c1.2-3.5,3.2-6.5,6-8.9,2.8-2.5,6.7-3.7,11.6-3.7s8.3,1.1,11.5,3.4c3.2,2.2,5.5,5.5,6.9,9.9h.4c.6-1.8,1.5-3.6,2.7-5.2,1.2-1.6,2.7-3,4.4-4.2,1.8-1.2,3.7-2.1,5.9-2.8,2.2-.7,4.5-1.1,7-1.1,6.3,0,11.2,2.2,14.6,6.8ZM1120.1,928.2c-4.2,0-8,1.2-11.3,3.5s-5.4,5.3-6.3,9h-.6v-11h-18.5v.2s0,90.6,0,90.6h18.5v-36h.6c.5,1.7,1.3,3.4,2.4,4.9,1,1.5,2.4,2.9,3.9,4,1.6,1.1,3.3,2,5.2,2.6,1.9.6-2.3.9,6.1.9s14.6-2.9,18.9-8.8,6.4-14.4,6.4-25.6-2.2-19.7-6.4-25.5c-4.3-5.9-10.6-8.8-18.9-8.8ZM1126.1,968.2c0,4.1-1.1,7.4-3.4,9.9-2.3,2.5-5.2,3.7-8.7,3.7v.2c-3.5,0-6.4-.9-8.7-2.6-2.3-1.7-3.4-4.1-3.4-7.1v-19.4c0-3,1.1-5.4,3.4-7.1,2.3-1.7,5.2-2.6,8.7-2.6s6.4,1.2,8.7,3.7c2.3,2.4,3.4,5.7,3.4,9.9v11.4ZM1212.1,952.4c0-7.9-2.3-13.8-7-17.9s-14.1-6.1-21-6.1-12.4,1.1-16.4,3.3c-4.1,2.2-7.4,5.3-10.1,9.2l11,9.8c1.4-2,3.2-3.8,5.4-5.4,2.2-1.6,4.9-2.4,8.8-2.4s6.7.9,8.4,2.8c1.7,1.9,2.5,4.4,2.5,7.6v4.1h-10.4c-8.7,0-15.6,1.6-20.6,5-5.1,3.4-7.6,9.7-7.6,15.4s1.7,10.3,5.2,13.8,10.1,5.2,15.1,5.2,9.2-1.1,12.6-3.3,5.6-5.5,6.6-9.7h.8c.6,3.5,2,6.3,4.2,8.4,2.2,2.1,5,3.1,8.3,3.1l.1.3h10.2v-14.4h-6.1v-28.8ZM1193.5,975.4c0,3-1.1,5.2-3.3,6.5-2.2,1.3-4.8,2-7.9,2h-.1c-2.8,0-5-.6-6.4-1.7s-2.2-2.9-2.2-5.3v-1.9c0-4.9,3.7-7.3,10.9-7.3h9v7.7ZM1283.3,934.9c3.5,4.5,5.2,10.9,5.2,19.2v41.1h-18.5v-39.6c0-4.2-.7-7.4-2-9.4s-3.7-3.1-7.1-3.1-3,.2-4.4.6c-1.4.4-2.7,1-3.8,1.8-1.1.8-2,1.9-2.7,3.1-.7,1.2-1,2.6-1,4.2v42.5h-18.5v-65.6h18.5v11.1h.8c1.2-3.4,3.2-6.4,6.1-8.9s7-3.8,12.1-3.8,11.9,2.2,15.3,6.8ZM1344.1,929.7h17.2l-25.2,75.8c-1.7,5.1-4,8.8-7.1,11.2-3,2.4-7.4,3.6-13.1,3.6h-11.5v-14.4h12.4l2.2-7.2-23-69h18.4l9.6,30.6,4.8,19h.8l4.9-19,9.6-30.6ZM761,906.5h0s-31.2,0-31.2,0c-2.3,0-4.1,1.8-4.1,4.1v80.6c0,2.3,1.8,4.1,4.1,4.1h16.9c2.3,0,4.1-1.8,4.1-4.1v-19.9h10.2c23.7-.2,35.6-14.3,35.6-32.5s-11.8-32.3-35.6-32.3ZM761.7,950.4c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM634.9,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM718,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM0,0v866h1830.3V0H0ZM1801.1,836.9H29.2V29.2h1771.9v807.7ZM573.4,127.5h-29.5v-26.6h87.6v26.6h-29.6v157.9h-28.5V127.5ZM674,285.4h-28.2V100.9h28.2v75.3h28.5v-75.3h28.5v184.5h-28.5v-82.5h-28.5v82.5ZM828.1,285.4h-74.3V100.9h74.3v26.7h-45.8v48.3h33v26.7h-33v55.1h45.8v27.7ZM483.1,579h-40.8v186.2h42.1c15.7,0,27.2-4.1,34.4-12.4,7.2-8.2,10.8-21.4,10.8-39.5v-83.2c0-17.4-3.8-30.3-11.4-38.6-7.6-8.3-19.3-12.5-35.1-12.5ZM500.2,718.1h0c0,6.7-1.2,11.6-3.7,14.8s-6.2,4.8-11.3,4.8h-14.5v-131.3h6.6c7.9,0,13.7,1.8,17.4,5.3,3.7,3.5,5.5,9.2,5.5,16.8v89.6ZM550.4,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM686,579h0s-42.1,0-42.1,0v186.2h28.7v-75.7h19.7c11.9,0,21.3-5,28.2-15.1s10.3-23.9,10.3-41.5-3.5-32.6-10.6-41.1-18.5-12.8-34.2-12.8ZM697.9,656.7h-.1c-2.5,4.1-7.2,6.1-13.8,6.1h-11.3v-56.9h10.3c7.1,0,12,1.9,14.7,5.8,2.7,3.9,4,11.1,4,21.6s-1.3,19.3-3.8,23.4ZM762.9,579h-.1l-30.6,186.2h28.2l6.2-40.3h29l5.8,40.3h29.5l-30.5-186.2h-37.5ZM770.1,698.4l10.3-77.8h1.8l9.8,77.8h-21.9ZM929.3,661.1h-.1c2.8-7.2,4.2-16.7,4.2-28.3,0-18.9-3.5-32.6-10.5-41.1s-18.5-12.8-34.2-12.8h-42.1v186.2h28.7v-78.3h13.6l17.8,78.3h29.8l-21.1-86.5c6.4-4.5,11.1-10.3,13.9-17.5ZM900.4,654c-2.6,4-7.2,6-13.8,6h-11.3v-54.1h10.3c7,0,11.9,1.9,14.6,5.6,2.7,3.7,4,10.5,4,20.3s-1.3,18.2-3.9,22.2h.1ZM943.6,579h88.3v26.9h-29.9v159.2h-28.7v-159.2h-29.7v-26.9ZM1126.2,579h38.8v186.2h-26.9v-117.6c0-3.3.2-7.8.6-13.5.4-5.6.9-11.9,1.6-18.9-.5,2.5-1,5.9-1.7,10.3-1.4,8.3-2.3,13.7-2.8,16.1l-23.4,123.6h-14.3l-22.4-123.8c-.9-4.9-1.8-10.4-2.8-16.3-.9-5.9-1.5-9.2-1.7-9.9.6,6.3,1.1,12.3,1.4,17.8s.5,10.4.5,14.6v117.6h-26.7v-186.2h38.2l18.7,103.1c.7,4.1,1.3,8.5,1.7,13.2s.6,9.6.6,14.7c0-4.3.2-8.8.7-13.3s1.1-9.3,2-14.4v.1s17.9-103.4,17.9-103.4ZM1187.9,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM1346.1,579h26.9v186.2h-26.9l-35-102.9c-.2-.4-.5-1.1-.7-1.9-2.4-7.1-4.2-13.1-5.4-18.3,1.1,6.5,1.8,12,2.4,16.3.5,4.4.8,7.5.8,9.5v97.3h-26.7v-186.2h25.8l36.4,111.2c.7,2.1,1.5,5,2.5,8.5s2,7.3,3,11.3c-.9-5.4-1.7-10.4-2.3-15s-.9-8-.9-10.1l.1.1v-106ZM1387.1,579h88.4v26.9h-29.9v159.2h-28.7v-159.2h-29.8v-26.9ZM103,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM88.6,749.4c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,746.8c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1308.6,316c-4.4-4.1-6.6-9.8-6.6-17.3s2.9-13.6,8.8-18.6c6-5.2,14.4-7.7,22.5-7.7s14.7,1.9,19.6,5.8c4.8,3.8,7.1,7.2,7.1,15.9s-2.7,15.4-8.3,20.5c-5.69,5.09-13.08,7.59-22.66,7.6-9.17,0-16.05-2.11-20.44-6.2ZM532.5,498.8c8.3,10.1,19.1,15,33.1,15s32.4-9.4,44.3-28.6l3.3-5.3,2.1,5.8c3.1,8.7,7.8,15.7,13.9,20.7,6.1,5,12.5,7.4,19.7,7.4s19.6-4,30-11.9c1.2-.9,2.4-1.9,3.6-2.9l4.6-3.8,1.4,4.1.6,2.1c3.2,8.3,8.6,12.4,16.3,12.4s11.2-1.7,14-4.9c3.1-3.5,5.9-10.7,8.5-21.4,3.6-14.6,8.3-28.7,14.1-42,5.8-13.2,11.7-24.1,17.7-32.2,6.6-9,11.8-13.2,16.5-13.2s6.9.6,6.9,8.7-.2,5-.8,10.2c-2.1,10.7-1.2,24.1,6.2,32.8,4.1,4.8,10,7.7,16.2,9,8.8,1.9,18.5,1.4,27.2-.9l7.2-1-1.4,4.5c-5.4,17.8-10.2,32.5-15.2,46.3-1.9,5.3-1.5,10.1,1.3,14,3.2,4.6,9.3,7.5,15.8,7.5s15-4.6,17.7-12.3c8.3-23.1,15.9-47.3,22.6-71.7l.4-1.4,1.3-.6c7-3,14-6.2,21-9.5l4.3-2v4.8c-.4,26,4.4,59.9,28.9,74.3,10.2,6,20.3,9,30.8,9,21.7,0,41.9-12.7,61.5-25l1.9-1.2,1.7,1.4c13,11.2,30.9,16.9,53.2,16.9s34.6-4.4,50.2-13.2c15.7-8.8,28-18.6,36.5-29,1.2-1.4,2.2-3.1,3.3-5.5l3.2-7.2,2.4,7.5c10,31.9,30.7,47.4,63.2,47.4s28.6-3.9,40.2-11.7c2.3-1.5,4.6-3.2,6.8-4.9l3-1.3,1.7,2.8c6.5,10.1,16.7,15.1,31.3,15.1s24.8-5.4,38.1-16.1l3.3-2.7,1.4,4,.7,2.3c3.2,8.3,8.6,12.4,16.3,12.4s11.1-1.6,14-4.9c3.1-3.5,6-10.8,8.5-21.4,3.6-14.6,8.4-28.7,14.3-42,5.9-13.2,11.7-24,17.4-32.1,6.4-9.2,11.2-13.2,15.5-13.2s6.9.6,6.9,8.7-1.5,16.4-4.7,31.7c-3.3,16.9-4.9,28.7-4.9,35.2,0,12.5,2.9,22.2,8.6,28.6,5.6,6.3,14.1,9.5,25.3,9.5s27.3-3.9,38.5-11.6c2.8-1.9,5.5-4,8.2-6.1l2.4-2,1.8,2.5c.3.4.6.8.8,1.2.2.3.4.7.7,1,8.3,10.1,19.1,15,33.1,15s13.6-1.7,19.7-4.9c6.1-3.2,12.3-6.7,16-12.6l2.6,1-2.3,15.1-.9.7c-36.3,28-61.3,51.9-74.4,71-12.9,18.8-19.5,36.6-19.5,52.8s3.5,20.4,10.6,27.3c7.1,7,16.1,10.4,27.6,10.4,24.3,0,44.1-17.4,58.9-51.6,11.8-27.2,21.8-62.9,29.9-106l.2-1.2.9-.7c17.5-12.9,35.3-24.9,53.1-35.7,6.1-3.7,5.3-9.4,4.7-11.7l-.7.2c-1.2-4.3-5-8.6-10-8.6s-3.6.6-5.4,1.6c-9.8,6-20.2,12.7-32.5,21.1l-5.5,3,1-6.7c.9-6.7,3.2-20.4,6.8-41.1,4.8-29.6,7.9-49.4,8.9-57.1.2-1.6.3-3.7.3-6.4s-.4-6.6-2.5-8.1c-1.4-1-4.4-2.1-10.9-2.1h-3.2c-.3-.6-.7-1.3-1.2-1.9-3.5-4.3-8.9-6.8-14-8.7-2.6-1-5.1-1.4-7.5-1.6-1.2-.2-2.8-.4-4.8-.4-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.6,16.5-12.9,34.3-12.9,52.8,0,4.99,0,7.51.02,8.57l-.12.43s-2.9,2.8-3.7,3.5c-7.2,6.4-13.4,9.5-18.9,9.5s-13.3-2.2-13.3-17.3,2.2-20.6,6.8-41.7c5.2-24,7.8-40.7,7.8-49.8,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9.1,5.3-18.4,14.3-27.9,26.7-5.3,6.9-9.8,14.4-13.8,22.1-2.3,4.4-4.4,8.8-6.4,13.3-1.1,2.4-2.1,4.8-3.1,7.2-.5,1.2-1,2.5-1.5,3.7-.4,1-.7,2.1-1.3,3-.2.2-.4.5-.6.7-.8.8-2.2,1.2-3.2.7-.9-.4-1.4-1.3-1.7-2.3-.2-1.2,0-2.4.2-3.5.1-1.3.3-2.6.4-3.9.3-2.5.6-4.9.9-7.3.6-4.2,1.2-8.4,2-12.5,1.4-7.2,3.4-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.4-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.6,1.5-18.9,4.3s-7.4,7.4-9.3,13.6c-8.7,27.4-13.1,56.8-13.1,87.4v5.2c.1,0-.7.9-.7.9-2.9,3-5.6,5.8-7.9,7.9-7.1,6.5-13,9.7-18.1,9.7s-9.9-2.6-12.3-7.4c-2-4-3-9.5-3.1-17.3.1-1.4.3-2.9.2-4.6v-.9c-.1,0,0-.3,0-.3.8-10.3,3.6-26.6,8.4-48.6,4.4-21.4,6.7-35.1,6.7-40.8s0-9.2-15.2-9.2-12.3,1.2-15.3,3.6c-3.1,2.5-5.6,7.2-7.6,14.2-4.2,14.4-7.8,30-10.5,46.6-2.7,16.6-4.1,30.3-4.1,40.8s.1,3.7.2,5.5l.2,2.1-.3,1.8-1.1,1c-1.4,1.2-2.8,2.4-4.1,3.5-8.4,6.6-18.2,9.9-29,9.9s-23.9-5.5-30.3-16.5c-2.4-4.2-4.4-9.8-6-16.8-2.9-21.4-3.6-43.2-2.2-64.9l.2-2.8h27.1c37.4,0,37.4-16.3,37.4-21.7s-1-6.6-1.6-7.2c-1.1-1.1-3.2-1.6-6.1-1.6h-53.2l.6-3.5c5.5-31.8,15.5-65.1,30.5-102,2.1-5.1,1.8-9.8-.7-13.6-3-4.5-9.2-7.4-15.9-7.4s-15.3,4.5-18.4,12.1c-16,39.3-26.4,75.8-31.8,111.8l-.4,2.5h-24.7c-5.6,0-13.1,1.8-13.1,17s1,8.4,2.9,10.5c1.3,1.4,4.5,3,12.3,3h17.1l-.2,3.2c-.7,10.7-1.1,21.3-1.1,31.6s.3,14,.9,21.1l.2,2.1c-3.2-.7-6.3.3-8.8,2.4-.9.6-1.8,1.4-2.7,2.4-10.2,12.4-22.5,22.5-36.4,30.2-14.1,7.7-26.9,11.6-38.1,11.6-17.8,0-30.1-6-36.6-18l-1.8-3.4,3.8-.9c27.4-6.7,47.1-15.9,58.5-27.3,11.2-11.2,16.8-24.7,16.8-40.2s-3.9-23.7-11.6-31.3c-7.8-7.7-18-11.5-31.1-11.5s-28.3,4-40,12c-11.8,8-21.1,19-27.8,32.6-6.7,13.7-10.1,28.7-10.1,44.6s.8,15.4,2.5,22.3l.5,2-1.7,1.2c-12.8,9-24.9,17.5-43.6,17.5-6.2,0-11.3-2.4-15.2-7-11.8-13.8-9.4-44.8-6.9-62.1l.2-1.4,1.2-.7c21.5-12.8,42.7-27.3,63-43.1,5.5-4.3,7.4-9.8,5.4-15.6-2.6-7.6-11.2-13.6-19.6-13.6s-8.2,1.4-11.8,4.2c-19.4,15.1-40.5,29.2-63.2,41.9-1.2.4-2.2,1-3.5,1.9l-2.9,1.6c-3.1,1.8-6.3,3.5-9.5,5.2l-12.8,6.8,1.3-6.3c12.7-59.1,19.9-119.4,21.4-179.3.1-4.9-1.3-9-4.3-12.1-3.2-3.3-8-5.1-13.2-5.1-8.7,0-18.2,5.4-18.5,17.4-1.7,67.6-11.1,135.8-27.8,202.6l-.4,1.6-1.6.5c-7.7,2.5-15.3,4-22.4,4.5h-1.2l-.9-.6c-3.2-2.6-4.8-7-4.8-13s1-8.7,2.9-18.4c2.1-11.7,3.2-19.1,3.2-22,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9,5.3-18.4,14.2-27.9,26.7-3.4,4.5-6.5,9.3-9.4,14.2-2.4,3.4-4.7,7-6.9,10.6-2.3,3.8-4.5,7.6-6.8,11.4-1.2,1.9-5.9,10.9-8.5,11.2,0-1,.1-2,.2-3,.2-1.8.4-3.6.6-5.4.4-3.4.8-6.9,1.4-10.3.4-2.5.8-5,1.3-7.5,1.4-7.2,3.3-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.5-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.5,1.5-18.9,4.3-4.3,2.9-7.4,7.3-9.3,13.6-8.7,27.4-13.1,56.8-13.1,87.4v5.1c.1,0-.7.9-.7.9-3,3.2-5.8,6-8.2,8.2-7.1,6.4-13.1,9.5-18.4,9.5s-6.9-1.5-9.3-4.3c-2.2-2.7-3.4-6.2-3.4-10.5,0-10.9,2.8-30.3,8.3-57.7,3.5-18.6,5.3-30.4,5.3-35.2s-1.6-9.5-14.5-9.5h-.7c-.3-.6-.7-1.2-1.2-1.8-3.5-4.3-8.9-6.8-14-8.7-3.7-1.4-7.1-1.7-10.5-1.6-1.1-.2-2.5-.3-4.4-.3-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.5,16.5-12.9,34.3-12.9,52.8s4.2,30.1,12.5,40.3ZM1600.2,554.2c-6.9,31.3-14.3,54.5-21.9,69-8.1,15.5-15.6,23-22.8,23s-8.8-2.9-10.3-5.4c-1.8-3.1-2.7-7-2.7-11.5,0-10.1,4.2-21.8,12.6-34.8,8.2-12.8,21.8-27.3,40.2-43.2l6.8-5.8-1.9,8.7h0ZM1573,420.2c5.2-12.3,12.2-22.3,20.8-29.9,8.8-7.7,18.6-11.8,29-12h3.7l-12.1,64.6h.1c-2.2,12.8-6,22.9-11.3,29.9-5.6,7.4-11.7,11.2-18.1,11.2s-11.1-2.2-14.6-6.4c-3.4-4.1-5.2-10.3-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM1527,463.6l.2,2.1-.41,1.44c.05-1.49.12-4.27.21-3.54ZM1055.3,397.6h0c6.6-11.2,15-16.8,24.9-16.8s9.3,1.7,12.4,5.1c3,3.3,4.5,7.6,4.5,12.9,0,9.7-4.4,18.3-13.2,25.5-.8.7-1.7,1.4-2.6,2-10.7,6.3-23.1,8.5-35.4,6.6.4-13.6,3.6-25.5,9.4-35.3ZM566,420.2c5.2-12.3,12.2-22.3,21-29.9,9-7.7,18.9-11.7,29.6-12h3.7l-14,69.3h.1c-2.2,10.6-5.9,19.3-10.9,25.9-5.3,6.9-11.2,10.5-17.4,10.5s-11.1-2.2-14.6-6.4c-3.5-4.1-5.2-10.1-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM144,667.8c-3.6-5.9-3.8-12.7-.6-19.1,57.8-115.1,104.3-250.3,146.3-425.4,2.3-9.5,12.5-13.7,19.5-13.7s16,3.6,17.8,13.6c10,54.8,22.5,119.4,40.3,182.8l1.7,6,3.6-5.1c41.5-58.1,79.5-120,116.2-179.8l7.2-11.8c3.7-6.2,9.9-9.6,15.6-9.6s11.5,2.8,15.4,7.5c4,4.7,5.6,10.9,4.4,17.2-3.3,18.4-7.2,37.1-11,55.2-7.9,38.1-16.1,77.5-19.9,117v1.6c-7.1,76-2.2,117.5,15.1,127,1.2.7,2.7,2,1.9,5.3-1.7,6.8-12.7,17-25.7,17s-23.2-10.3-29.7-29.6c-11.1-33.4-1-124.9,5.9-168.7.5-3.1,1-6.2,1.6-9.2.2-.7.3-1.4.4-2.1.2-1,.6-2,.5-3.1-.2-1.9-2.2-2.6-3.9-2.4-.5,0-1.1.2-1.5.5-.7.6-1.1,1.5-1.6,2.3-.6,1-1.1,2.1-1.7,3.1-1.3,2.1-2.6,4.1-4,6.2h.2c-2.2,3.4-4.5,6.8-6.7,10.2-4.3,6.5-8.6,13-12.9,19.5-4.1,6.2-8.3,12.4-12.5,18.5-4,5.9-8,11.7-12.1,17.5-4,5.6-7.9,11.2-11.9,16.7-3.9,5.3-7.8,10.6-11.7,15.9-3.8,5.1-7.6,10.2-11.5,15.2-4.5,5.8-9.6,9.3-18,9.3s-15-5.2-17.8-13.8c-.3-1.1-.7-2.3-1.1-3.5-2-6.5-4-13.1-6-19.6-2-6.7-4-13.5-5.9-20.3-1.9-7.1-3.8-14.1-5.7-21.2-2-7.3-3.8-14.7-5.6-22.1-1.9-7.7-3.7-15.4-5.5-23.1-.9-3.9-1.8-7.9-2.7-11.9-.4-2.1-.9-4.1-1.3-6.1-.3-1.6-.5-3.3-2-4.2-1.1-.6-2.5-.5-3.4.2-1.1.9-1.2,2.4-1.6,3.7-.5,1.5-.9,3.1-1.3,4.6-.9,3.1-1.7,6.2-2.6,9.3-2.2,7.7-4.4,15.4-6.6,23.1-2.2,7.6-4.4,15.1-6.7,22.7-2.3,7.4-4.6,14.9-6.9,22.3-2.3,7.3-4.6,14.6-7,21.9-2.3,7.2-4.7,14.4-7.1,21.5-2.3,7.1-4.7,14.1-7.2,21.1-2.4,6.9-4.8,13.8-7.3,20.7-2.5,6.8-5,13.5-7.5,20.3-2.5,6.7-5,13.4-7.6,20-2.6,6.6-5.2,13.1-7.8,19.6-2.6,6.4-5.2,12.8-7.9,19.2-2.7,6.3-5.4,12.6-8.1,18.9-2.7,6.2-5.4,12.3-8.2,18.5-2.8,6.1-5.6,12.2-8.4,18.2-2.8,6-5.6,11.9-8.5,17.9-2.8,5.8-5.7,11.7-8.6,17.5-4.1,8-7.6,9.7-14.6,9.7s-14.3-4.3-18.2-10.6Z"></path></svg></div><div class="logo-c"><svg aria-hidden="true" focusable="false" id="Layer_2c" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1830.3 1070.4"><path d="M491.5,908.1l-28.8,87.2h19.2l6.2-20.8h29.1l6.2,20.8h20l-28.4-87.2h-23.5ZM492.6,958.4l9.6-33.1h.6l9.8,33.1h-20ZM873.4,966.8l15.5,9c-3.2,6.7-7.5,11.8-12.8,15.4-5.3,3.6-12,5.4-20.1,5.4v.2c-5.9,0-11.2-.9-16-2.8s-8.8-4.7-12.1-8.4-5.9-8.3-7.8-13.9c-1.8-5.5-2.8-12-2.8-19.4s.9-13.9,2.8-19.6c1.8-5.7,4.4-10.5,7.8-14.4,3.3-3.9,7.4-6.8,12.1-8.8s10.1-3,16-3,14.8,1.6,20,4.9c5.2,3.3,9.5,8.5,12.6,15.6l-16.4,8.5c-1.2-3.7-3-6.6-5.4-8.8-2.5-2.2-6.1-3.3-10.8-3.3s-10.1,1.8-13.4,5.4-5.1,8.9-5.1,15.8v14c0,6.9,1.7,12.2,5.1,15.8s7.9,5.4,13.4,5.4,8.4-1.3,11.2-3.8,4.9-5.6,6.2-9.2ZM950.3,937.4c-2.6-2.9-5.8-5.2-9.6-6.8-3.8-1.6-8.1-2.4-12.9-2.4s-9.1.8-12.9,2.4-7,3.8-9.6,6.8c-2.7,2.9-4.7,6.6-6.1,10.8-1.4,4.2-2.1,9-2.1,14.2s.7,10,2.1,14.2c1.5,4.3,3.5,7.9,6.1,10.9s5.8,5.3,9.6,6.9c3.8,1.6,8.1,2.4,12.9,2.4s9.1-.8,12.9-2.4c3.8-1.6,6.9-3.9,9.6-6.9s4.7-6.7,6.1-10.9c1.4-4.2,2.1-9,2.1-14.2s-.7-10-2.1-14.2c-1.5-4.2-3.5-7.8-6.1-10.8ZM939.3,969.2c0,4.1-1,7.3-3,9.6s-4.8,3.4-8.5,3.4-6.5-1.2-8.5-3.4-3-5.4-3-9.6v-13.4c0-4.1,1-7.3,3-9.6s4.8-3.4,8.5-3.4,6.5,1.2,8.5,3.4,3,5.4,3,9.6v13.4ZM1061.9,935c3.4,4.6,5.1,10.9,5.1,19.2v41.1h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-5.2.8-7.5,2.4c-2.2,1.6-3.4,4-3.4,7.2v42.5h-18.5v-39.6c0-8.3-3-12.5-9-12.5s-2.6.2-3.9.6c-1.3.4-2.5,1-3.5,1.8s-1.9,1.9-2.5,3.1c-.6,1.2-.9,2.6-.9,4.2v42.5h-18.5l-.2-.1v-65.6h18.5v11.1h.8c1.2-3.5,3.2-6.5,6-8.9,2.8-2.5,6.7-3.7,11.6-3.7s8.3,1.1,11.5,3.4c3.2,2.2,5.5,5.5,6.9,9.9h.4c.6-1.8,1.5-3.6,2.7-5.2,1.2-1.6,2.7-3,4.4-4.2,1.8-1.2,3.7-2.1,5.9-2.8,2.2-.7,4.5-1.1,7-1.1,6.3,0,11.2,2.2,14.6,6.8ZM1120.1,928.2c-4.2,0-8,1.2-11.3,3.5s-5.4,5.3-6.3,9h-.6v-11h-18.5v.2s0,90.6,0,90.6h18.5v-36h.6c.5,1.7,1.3,3.4,2.4,4.9,1,1.5,2.4,2.9,3.9,4,1.6,1.1,3.3,2,5.2,2.6,1.9.6-2.3.9,6.1.9s14.6-2.9,18.9-8.8,6.4-14.4,6.4-25.6-2.2-19.7-6.4-25.5c-4.3-5.9-10.6-8.8-18.9-8.8ZM1126.1,968.2c0,4.1-1.1,7.4-3.4,9.9-2.3,2.5-5.2,3.7-8.7,3.7v.2c-3.5,0-6.4-.9-8.7-2.6-2.3-1.7-3.4-4.1-3.4-7.1v-19.4c0-3,1.1-5.4,3.4-7.1,2.3-1.7,5.2-2.6,8.7-2.6s6.4,1.2,8.7,3.7c2.3,2.4,3.4,5.7,3.4,9.9v11.4ZM1212.1,952.4c0-7.9-2.3-13.8-7-17.9s-14.1-6.1-21-6.1-12.4,1.1-16.4,3.3c-4.1,2.2-7.4,5.3-10.1,9.2l11,9.8c1.4-2,3.2-3.8,5.4-5.4,2.2-1.6,4.9-2.4,8.8-2.4s6.7.9,8.4,2.8c1.7,1.9,2.5,4.4,2.5,7.6v4.1h-10.4c-8.7,0-15.6,1.6-20.6,5-5.1,3.4-7.6,9.7-7.6,15.4s1.7,10.3,5.2,13.8,10.1,5.2,15.1,5.2,9.2-1.1,12.6-3.3,5.6-5.5,6.6-9.7h.8c.6,3.5,2,6.3,4.2,8.4,2.2,2.1,5,3.1,8.3,3.1l.1.3h10.2v-14.4h-6.1v-28.8ZM1193.5,975.4c0,3-1.1,5.2-3.3,6.5-2.2,1.3-4.8,2-7.9,2h-.1c-2.8,0-5-.6-6.4-1.7s-2.2-2.9-2.2-5.3v-1.9c0-4.9,3.7-7.3,10.9-7.3h9v7.7ZM1283.3,934.9c3.5,4.5,5.2,10.9,5.2,19.2v41.1h-18.5v-39.6c0-4.2-.7-7.4-2-9.4s-3.7-3.1-7.1-3.1-3,.2-4.4.6c-1.4.4-2.7,1-3.8,1.8-1.1.8-2,1.9-2.7,3.1-.7,1.2-1,2.6-1,4.2v42.5h-18.5v-65.6h18.5v11.1h.8c1.2-3.4,3.2-6.4,6.1-8.9s7-3.8,12.1-3.8,11.9,2.2,15.3,6.8ZM1344.1,929.7h17.2l-25.2,75.8c-1.7,5.1-4,8.8-7.1,11.2-3,2.4-7.4,3.6-13.1,3.6h-11.5v-14.4h12.4l2.2-7.2-23-69h18.4l9.6,30.6,4.8,19h.8l4.9-19,9.6-30.6ZM761,906.5h0s-31.2,0-31.2,0c-2.3,0-4.1,1.8-4.1,4.1v80.6c0,2.3,1.8,4.1,4.1,4.1h16.9c2.3,0,4.1-1.8,4.1-4.1v-19.9h10.2c23.7-.2,35.6-14.3,35.6-32.5s-11.8-32.3-35.6-32.3ZM761.7,950.4c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM634.9,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM718,910.6v12.5c0,2.3-1.8,4.1-4.1,4.1h-21.9v64c0,2.3-1.8,4.1-4.1,4.1h-16.8c-2.3,0-4.1-1.8-4.1-4.1v-64h-21.8c-2.3,0-4.1-1.8-4.1-4.1v-12.5c0-2.3,1.8-4.1,4.1-4.1h68.7c2.3,0,4.1,1.8,4.1,4.1ZM0,0v866h1830.3V0H0ZM1801.1,836.9H29.2V29.2h1771.9v807.7ZM573.4,127.5h-29.5v-26.6h87.6v26.6h-29.6v157.9h-28.5V127.5ZM674,285.4h-28.2V100.9h28.2v75.3h28.5v-75.3h28.5v184.5h-28.5v-82.5h-28.5v82.5ZM828.1,285.4h-74.3V100.9h74.3v26.7h-45.8v48.3h33v26.7h-33v55.1h45.8v27.7ZM483.1,579h-40.8v186.2h42.1c15.7,0,27.2-4.1,34.4-12.4,7.2-8.2,10.8-21.4,10.8-39.5v-83.2c0-17.4-3.8-30.3-11.4-38.6-7.6-8.3-19.3-12.5-35.1-12.5ZM500.2,718.1h0c0,6.7-1.2,11.6-3.7,14.8s-6.2,4.8-11.3,4.8h-14.5v-131.3h6.6c7.9,0,13.7,1.8,17.4,5.3,3.7,3.5,5.5,9.2,5.5,16.8v89.6ZM550.4,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM686,579h0s-42.1,0-42.1,0v186.2h28.7v-75.7h19.7c11.9,0,21.3-5,28.2-15.1s10.3-23.9,10.3-41.5-3.5-32.6-10.6-41.1-18.5-12.8-34.2-12.8ZM697.9,656.7h-.1c-2.5,4.1-7.2,6.1-13.8,6.1h-11.3v-56.9h10.3c7.1,0,12,1.9,14.7,5.8,2.7,3.9,4,11.1,4,21.6s-1.3,19.3-3.8,23.4ZM762.9,579h-.1l-30.6,186.2h28.2l6.2-40.3h29l5.8,40.3h29.5l-30.5-186.2h-37.5ZM770.1,698.4l10.3-77.8h1.8l9.8,77.8h-21.9ZM929.3,661.1h-.1c2.8-7.2,4.2-16.7,4.2-28.3,0-18.9-3.5-32.6-10.5-41.1s-18.5-12.8-34.2-12.8h-42.1v186.2h28.7v-78.3h13.6l17.8,78.3h29.8l-21.1-86.5c6.4-4.5,11.1-10.3,13.9-17.5ZM900.4,654c-2.6,4-7.2,6-13.8,6h-11.3v-54.1h10.3c7,0,11.9,1.9,14.6,5.6,2.7,3.7,4,10.5,4,20.3s-1.3,18.2-3.9,22.2h.1ZM943.6,579h88.3v26.9h-29.9v159.2h-28.7v-159.2h-29.7v-26.9ZM1126.2,579h38.8v186.2h-26.9v-117.6c0-3.3.2-7.8.6-13.5.4-5.6.9-11.9,1.6-18.9-.5,2.5-1,5.9-1.7,10.3-1.4,8.3-2.3,13.7-2.8,16.1l-23.4,123.6h-14.3l-22.4-123.8c-.9-4.9-1.8-10.4-2.8-16.3-.9-5.9-1.5-9.2-1.7-9.9.6,6.3,1.1,12.3,1.4,17.8s.5,10.4.5,14.6v117.6h-26.7v-186.2h38.2l18.7,103.1c.7,4.1,1.3,8.5,1.7,13.2s.6,9.6.6,14.7c0-4.3.2-8.8.7-13.3s1.1-9.3,2-14.4v.1s17.9-103.4,17.9-103.4ZM1187.9,579h74.9v26.9h-46.2v48.8h33.3v26.9h-33.3v55.6h46.2v27.9h-74.9v-186.1ZM1346.1,579h26.9v186.2h-26.9l-35-102.9c-.2-.4-.5-1.1-.7-1.9-2.4-7.1-4.2-13.1-5.4-18.3,1.1,6.5,1.8,12,2.4,16.3.5,4.4.8,7.5.8,9.5v97.3h-26.7v-186.2h25.8l36.4,111.2c.7,2.1,1.5,5,2.5,8.5s2,7.3,3,11.3c-.9-5.4-1.7-10.4-2.3-15s-.9-8-.9-10.1l.1.1v-106ZM1387.1,579h88.4v26.9h-29.9v159.2h-28.7v-159.2h-29.8v-26.9ZM103,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,119.2c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM88.6,749.4c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1705,746.8c0-10.1,8.2-18.3,18.3-18.3s18.3,8.2,18.3,18.3-8.2,18.3-18.3,18.3-18.3-8.2-18.3-18.3ZM1308.6,316c-4.4-4.1-6.6-9.8-6.6-17.3s2.9-13.6,8.8-18.6c6-5.2,14.4-7.7,22.5-7.7s14.7,1.9,19.6,5.8c4.8,3.8,7.1,7.2,7.1,15.9s-2.7,15.4-8.3,20.5c-5.69,5.09-13.08,7.59-22.66,7.6-9.17,0-16.05-2.11-20.44-6.2ZM532.5,498.8c8.3,10.1,19.1,15,33.1,15s32.4-9.4,44.3-28.6l3.3-5.3,2.1,5.8c3.1,8.7,7.8,15.7,13.9,20.7,6.1,5,12.5,7.4,19.7,7.4s19.6-4,30-11.9c1.2-.9,2.4-1.9,3.6-2.9l4.6-3.8,1.4,4.1.6,2.1c3.2,8.3,8.6,12.4,16.3,12.4s11.2-1.7,14-4.9c3.1-3.5,5.9-10.7,8.5-21.4,3.6-14.6,8.3-28.7,14.1-42,5.8-13.2,11.7-24.1,17.7-32.2,6.6-9,11.8-13.2,16.5-13.2s6.9.6,6.9,8.7-.2,5-.8,10.2c-2.1,10.7-1.2,24.1,6.2,32.8,4.1,4.8,10,7.7,16.2,9,8.8,1.9,18.5,1.4,27.2-.9l7.2-1-1.4,4.5c-5.4,17.8-10.2,32.5-15.2,46.3-1.9,5.3-1.5,10.1,1.3,14,3.2,4.6,9.3,7.5,15.8,7.5s15-4.6,17.7-12.3c8.3-23.1,15.9-47.3,22.6-71.7l.4-1.4,1.3-.6c7-3,14-6.2,21-9.5l4.3-2v4.8c-.4,26,4.4,59.9,28.9,74.3,10.2,6,20.3,9,30.8,9,21.7,0,41.9-12.7,61.5-25l1.9-1.2,1.7,1.4c13,11.2,30.9,16.9,53.2,16.9s34.6-4.4,50.2-13.2c15.7-8.8,28-18.6,36.5-29,1.2-1.4,2.2-3.1,3.3-5.5l3.2-7.2,2.4,7.5c10,31.9,30.7,47.4,63.2,47.4s28.6-3.9,40.2-11.7c2.3-1.5,4.6-3.2,6.8-4.9l3-1.3,1.7,2.8c6.5,10.1,16.7,15.1,31.3,15.1s24.8-5.4,38.1-16.1l3.3-2.7,1.4,4,.7,2.3c3.2,8.3,8.6,12.4,16.3,12.4s11.1-1.6,14-4.9c3.1-3.5,6-10.8,8.5-21.4,3.6-14.6,8.4-28.7,14.3-42,5.9-13.2,11.7-24,17.4-32.1,6.4-9.2,11.2-13.2,15.5-13.2s6.9.6,6.9,8.7-1.5,16.4-4.7,31.7c-3.3,16.9-4.9,28.7-4.9,35.2,0,12.5,2.9,22.2,8.6,28.6,5.6,6.3,14.1,9.5,25.3,9.5s27.3-3.9,38.5-11.6c2.8-1.9,5.5-4,8.2-6.1l2.4-2,1.8,2.5c.3.4.6.8.8,1.2.2.3.4.7.7,1,8.3,10.1,19.1,15,33.1,15s13.6-1.7,19.7-4.9c6.1-3.2,12.3-6.7,16-12.6l2.6,1-2.3,15.1-.9.7c-36.3,28-61.3,51.9-74.4,71-12.9,18.8-19.5,36.6-19.5,52.8s3.5,20.4,10.6,27.3c7.1,7,16.1,10.4,27.6,10.4,24.3,0,44.1-17.4,58.9-51.6,11.8-27.2,21.8-62.9,29.9-106l.2-1.2.9-.7c17.5-12.9,35.3-24.9,53.1-35.7,6.1-3.7,5.3-9.4,4.7-11.7l-.7.2c-1.2-4.3-5-8.6-10-8.6s-3.6.6-5.4,1.6c-9.8,6-20.2,12.7-32.5,21.1l-5.5,3,1-6.7c.9-6.7,3.2-20.4,6.8-41.1,4.8-29.6,7.9-49.4,8.9-57.1.2-1.6.3-3.7.3-6.4s-.4-6.6-2.5-8.1c-1.4-1-4.4-2.1-10.9-2.1h-3.2c-.3-.6-.7-1.3-1.2-1.9-3.5-4.3-8.9-6.8-14-8.7-2.6-1-5.1-1.4-7.5-1.6-1.2-.2-2.8-.4-4.8-.4-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.6,16.5-12.9,34.3-12.9,52.8,0,4.99,0,7.51.02,8.57l-.12.43s-2.9,2.8-3.7,3.5c-7.2,6.4-13.4,9.5-18.9,9.5s-13.3-2.2-13.3-17.3,2.2-20.6,6.8-41.7c5.2-24,7.8-40.7,7.8-49.8,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9.1,5.3-18.4,14.3-27.9,26.7-5.3,6.9-9.8,14.4-13.8,22.1-2.3,4.4-4.4,8.8-6.4,13.3-1.1,2.4-2.1,4.8-3.1,7.2-.5,1.2-1,2.5-1.5,3.7-.4,1-.7,2.1-1.3,3-.2.2-.4.5-.6.7-.8.8-2.2,1.2-3.2.7-.9-.4-1.4-1.3-1.7-2.3-.2-1.2,0-2.4.2-3.5.1-1.3.3-2.6.4-3.9.3-2.5.6-4.9.9-7.3.6-4.2,1.2-8.4,2-12.5,1.4-7.2,3.4-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.4-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.6,1.5-18.9,4.3s-7.4,7.4-9.3,13.6c-8.7,27.4-13.1,56.8-13.1,87.4v5.2c.1,0-.7.9-.7.9-2.9,3-5.6,5.8-7.9,7.9-7.1,6.5-13,9.7-18.1,9.7s-9.9-2.6-12.3-7.4c-2-4-3-9.5-3.1-17.3.1-1.4.3-2.9.2-4.6v-.9c-.1,0,0-.3,0-.3.8-10.3,3.6-26.6,8.4-48.6,4.4-21.4,6.7-35.1,6.7-40.8s0-9.2-15.2-9.2-12.3,1.2-15.3,3.6c-3.1,2.5-5.6,7.2-7.6,14.2-4.2,14.4-7.8,30-10.5,46.6-2.7,16.6-4.1,30.3-4.1,40.8s.1,3.7.2,5.5l.2,2.1-.3,1.8-1.1,1c-1.4,1.2-2.8,2.4-4.1,3.5-8.4,6.6-18.2,9.9-29,9.9s-23.9-5.5-30.3-16.5c-2.4-4.2-4.4-9.8-6-16.8-2.9-21.4-3.6-43.2-2.2-64.9l.2-2.8h27.1c37.4,0,37.4-16.3,37.4-21.7s-1-6.6-1.6-7.2c-1.1-1.1-3.2-1.6-6.1-1.6h-53.2l.6-3.5c5.5-31.8,15.5-65.1,30.5-102,2.1-5.1,1.8-9.8-.7-13.6-3-4.5-9.2-7.4-15.9-7.4s-15.3,4.5-18.4,12.1c-16,39.3-26.4,75.8-31.8,111.8l-.4,2.5h-24.7c-5.6,0-13.1,1.8-13.1,17s1,8.4,2.9,10.5c1.3,1.4,4.5,3,12.3,3h17.1l-.2,3.2c-.7,10.7-1.1,21.3-1.1,31.6s.3,14,.9,21.1l.2,2.1c-3.2-.7-6.3.3-8.8,2.4-.9.6-1.8,1.4-2.7,2.4-10.2,12.4-22.5,22.5-36.4,30.2-14.1,7.7-26.9,11.6-38.1,11.6-17.8,0-30.1-6-36.6-18l-1.8-3.4,3.8-.9c27.4-6.7,47.1-15.9,58.5-27.3,11.2-11.2,16.8-24.7,16.8-40.2s-3.9-23.7-11.6-31.3c-7.8-7.7-18-11.5-31.1-11.5s-28.3,4-40,12c-11.8,8-21.1,19-27.8,32.6-6.7,13.7-10.1,28.7-10.1,44.6s.8,15.4,2.5,22.3l.5,2-1.7,1.2c-12.8,9-24.9,17.5-43.6,17.5-6.2,0-11.3-2.4-15.2-7-11.8-13.8-9.4-44.8-6.9-62.1l.2-1.4,1.2-.7c21.5-12.8,42.7-27.3,63-43.1,5.5-4.3,7.4-9.8,5.4-15.6-2.6-7.6-11.2-13.6-19.6-13.6s-8.2,1.4-11.8,4.2c-19.4,15.1-40.5,29.2-63.2,41.9-1.2.4-2.2,1-3.5,1.9l-2.9,1.6c-3.1,1.8-6.3,3.5-9.5,5.2l-12.8,6.8,1.3-6.3c12.7-59.1,19.9-119.4,21.4-179.3.1-4.9-1.3-9-4.3-12.1-3.2-3.3-8-5.1-13.2-5.1-8.7,0-18.2,5.4-18.5,17.4-1.7,67.6-11.1,135.8-27.8,202.6l-.4,1.6-1.6.5c-7.7,2.5-15.3,4-22.4,4.5h-1.2l-.9-.6c-3.2-2.6-4.8-7-4.8-13s1-8.7,2.9-18.4c2.1-11.7,3.2-19.1,3.2-22,0-13.8-6.4-20.2-20.2-20.2s-15.5,2.6-24.4,7.8c-9,5.3-18.4,14.2-27.9,26.7-3.4,4.5-6.5,9.3-9.4,14.2-2.4,3.4-4.7,7-6.9,10.6-2.3,3.8-4.5,7.6-6.8,11.4-1.2,1.9-5.9,10.9-8.5,11.2,0-1,.1-2,.2-3,.2-1.8.4-3.6.6-5.4.4-3.4.8-6.9,1.4-10.3.4-2.5.8-5,1.3-7.5,1.4-7.2,3.3-15.6,5.8-25.2,4.3-16.2,5.3-22.5,5.3-25s-.5-3.7-1.5-4.3c-.8-.5-3-1.3-8.4-1.3-8.2,0-14.5,1.5-18.9,4.3-4.3,2.9-7.4,7.3-9.3,13.6-8.7,27.4-13.1,56.8-13.1,87.4v5.1c.1,0-.7.9-.7.9-3,3.2-5.8,6-8.2,8.2-7.1,6.4-13.1,9.5-18.4,9.5s-6.9-1.5-9.3-4.3c-2.2-2.7-3.4-6.2-3.4-10.5,0-10.9,2.8-30.3,8.3-57.7,3.5-18.6,5.3-30.4,5.3-35.2s-1.6-9.5-14.5-9.5h-.7c-.3-.6-.7-1.2-1.2-1.8-3.5-4.3-8.9-6.8-14-8.7-3.7-1.4-7.1-1.7-10.5-1.6-1.1-.2-2.5-.3-4.4-.3-15.7,0-30.8,5-44.9,15-14.2,10-25.7,23.5-34.3,40-8.5,16.5-12.9,34.3-12.9,52.8s4.2,30.1,12.5,40.3ZM1600.2,554.2c-6.9,31.3-14.3,54.5-21.9,69-8.1,15.5-15.6,23-22.8,23s-8.8-2.9-10.3-5.4c-1.8-3.1-2.7-7-2.7-11.5,0-10.1,4.2-21.8,12.6-34.8,8.2-12.8,21.8-27.3,40.2-43.2l6.8-5.8-1.9,8.7h0ZM1573,420.2c5.2-12.3,12.2-22.3,20.8-29.9,8.8-7.7,18.6-11.8,29-12h3.7l-12.1,64.6h.1c-2.2,12.8-6,22.9-11.3,29.9-5.6,7.4-11.7,11.2-18.1,11.2s-11.1-2.2-14.6-6.4c-3.4-4.1-5.2-10.3-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM1527,463.6l.2,2.1-.41,1.44c.05-1.49.12-4.27.21-3.54ZM1055.3,397.6h0c6.6-11.2,15-16.8,24.9-16.8s9.3,1.7,12.4,5.1c3,3.3,4.5,7.6,4.5,12.9,0,9.7-4.4,18.3-13.2,25.5-.8.7-1.7,1.4-2.6,2-10.7,6.3-23.1,8.5-35.4,6.6.4-13.6,3.6-25.5,9.4-35.3ZM566,420.2c5.2-12.3,12.2-22.3,21-29.9,9-7.7,18.9-11.7,29.6-12h3.7l-14,69.3h.1c-2.2,10.6-5.9,19.3-10.9,25.9-5.3,6.9-11.2,10.5-17.4,10.5s-11.1-2.2-14.6-6.4c-3.5-4.1-5.2-10.1-5.2-18.4,0-13.7,2.6-26.8,7.7-39ZM144,667.8c-3.6-5.9-3.8-12.7-.6-19.1,57.8-115.1,104.3-250.3,146.3-425.4,2.3-9.5,12.5-13.7,19.5-13.7s16,3.6,17.8,13.6c10,54.8,22.5,119.4,40.3,182.8l1.7,6,3.6-5.1c41.5-58.1,79.5-120,116.2-179.8l7.2-11.8c3.7-6.2,9.9-9.6,15.6-9.6s11.5,2.8,15.4,7.5c4,4.7,5.6,10.9,4.4,17.2-3.3,18.4-7.2,37.1-11,55.2-7.9,38.1-16.1,77.5-19.9,117v1.6c-7.1,76-2.2,117.5,15.1,127,1.2.7,2.7,2,1.9,5.3-1.7,6.8-12.7,17-25.7,17s-23.2-10.3-29.7-29.6c-11.1-33.4-1-124.9,5.9-168.7.5-3.1,1-6.2,1.6-9.2.2-.7.3-1.4.4-2.1.2-1,.6-2,.5-3.1-.2-1.9-2.2-2.6-3.9-2.4-.5,0-1.1.2-1.5.5-.7.6-1.1,1.5-1.6,2.3-.6,1-1.1,2.1-1.7,3.1-1.3,2.1-2.6,4.1-4,6.2h.2c-2.2,3.4-4.5,6.8-6.7,10.2-4.3,6.5-8.6,13-12.9,19.5-4.1,6.2-8.3,12.4-12.5,18.5-4,5.9-8,11.7-12.1,17.5-4,5.6-7.9,11.2-11.9,16.7-3.9,5.3-7.8,10.6-11.7,15.9-3.8,5.1-7.6,10.2-11.5,15.2-4.5,5.8-9.6,9.3-18,9.3s-15-5.2-17.8-13.8c-.3-1.1-.7-2.3-1.1-3.5-2-6.5-4-13.1-6-19.6-2-6.7-4-13.5-5.9-20.3-1.9-7.1-3.8-14.1-5.7-21.2-2-7.3-3.8-14.7-5.6-22.1-1.9-7.7-3.7-15.4-5.5-23.1-.9-3.9-1.8-7.9-2.7-11.9-.4-2.1-.9-4.1-1.3-6.1-.3-1.6-.5-3.3-2-4.2-1.1-.6-2.5-.5-3.4.2-1.1.9-1.2,2.4-1.6,3.7-.5,1.5-.9,3.1-1.3,4.6-.9,3.1-1.7,6.2-2.6,9.3-2.2,7.7-4.4,15.4-6.6,23.1-2.2,7.6-4.4,15.1-6.7,22.7-2.3,7.4-4.6,14.9-6.9,22.3-2.3,7.3-4.6,14.6-7,21.9-2.3,7.2-4.7,14.4-7.1,21.5-2.3,7.1-4.7,14.1-7.2,21.1-2.4,6.9-4.8,13.8-7.3,20.7-2.5,6.8-5,13.5-7.5,20.3-2.5,6.7-5,13.4-7.6,20-2.6,6.6-5.2,13.1-7.8,19.6-2.6,6.4-5.2,12.8-7.9,19.2-2.7,6.3-5.4,12.6-8.1,18.9-2.7,6.2-5.4,12.3-8.2,18.5-2.8,6.1-5.6,12.2-8.4,18.2-2.8,6-5.6,11.9-8.5,17.9-2.8,5.8-5.7,11.7-8.6,17.5-4.1,8-7.6,9.7-14.6,9.7s-14.3-4.3-18.2-10.6Z"></path></svg></div></div>
     <div class="hero-text">
       <p class="crumb">Book Notes · Account Strategy</p>
       <h1>The New Successful Large Account Management</h1>
       <p class="sub">Memory Map, Flow, Gold Sheet and Simulation · All 18 chapters</p>
       <p class="meta">Robert B. Miller and Stephen E. Heiman with Tad Tuleja · Revised and Updated edition</p>
+      <button class="hero-help" type="button" data-goto-guide>New here? How to use this page</button>
     </div>
     <div class="progress">
       <div class="prog-ring" id="progRing"></div>
       <div class="prog-facts" id="progFacts"></div>
+      <button class="btn-ghost theme-btn" id="themeBtn" type="button">Light mode</button>
       <div class="reset" id="resetBox"><button class="btn-ghost" id="resetBtn" type="button">Reset progress</button></div>
     </div>
   </div>
@@ -596,6 +637,7 @@ textarea.gi { resize: vertical; margin-bottom: 12px; }
       <button class="tab" role="tab" id="tab-drills" data-view="drills" type="button">Drills</button>
       <button class="tab" role="tab" id="tab-gold" data-view="gold" type="button">Gold Sheet</button>
       <button class="tab" role="tab" id="tab-sim" data-view="sim" type="button">Simulation</button>
+      <button class="tab" role="tab" id="tab-guide" data-view="guide" type="button">How to use</button>
     </div>
     <div class="chips" role="group" aria-label="Part filter">
       <span>Part</span>
@@ -666,6 +708,34 @@ textarea.gi { resize: vertical; margin-bottom: 12px; }
       <p>Eleven decisions on one fictional account, from selection to the 90-day review. Every choice is scored and explained.</p>
     </div>
     <div class="sim-wrap" id="sim"></div>
+  </section>
+  <section class="view" id="view-guide" aria-labelledby="tab-guide" hidden>
+    <div class="view-head">
+      <h2>How to use this page</h2>
+      <p>Your study companion for The New Successful Large Account Management: what each tab does, a simple plan to make the book stick, and how your progress is kept.</p>
+    </div>
+    <div class="guide" id="guide">
+      <div class="g-sec"><h3>Seven ways to study</h3><div class="g-grid"><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 11h4v2H3z M7 12h3 M10 12V6h4 M10 12h4 M10 12v6h4 M14 5h6v2h-6z M14 11h6v2h-6z M14 17h6v2h-6z"/></svg><b>Mind Map</b><p>See the whole book: 4 parts, 18 chapters, 47 concepts. Open any branch for key points, a diagram and a memory hook.</p><span class="g-when">Use it to learn and review</span><button class="btn alt sm" type="button" data-goto="map">Open Mind Map</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M2 9h5v6H2z M9.5 9h5v6h-5z M17 9h5v6h-5z M7 12h2.5 M14.5 12H17"/></svg><b>LAMP Flow</b><p>The book as one process, from selecting an account to the 90-day review, plus the thread from Trend to Revenue Target.</p><span class="g-when">Use it to see how it fits together</span><button class="btn alt sm" type="button" data-goto="flow">Open LAMP Flow</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4h13v14H7z M4 7v13h13"/></svg><b>Flashcards</b><p>Decks of up to 15 cards, weakest concepts first. Say the answer, flip, then mark Again or Got it.</p><span class="g-when">Use it for 10 minutes a day</span><button class="btn alt sm" type="button" data-goto="cards">Open Flashcards</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 6l2 2 3-3 M4 13l2 2 3-3 M12 7h8 M12 14h8 M4 20h16"/></svg><b>Quiz</b><p>Twelve questions a round, each with the reason from the book. Quiz the whole book, a part, a chapter or one concept.</p><span class="g-when">Use it to test understanding</span><button class="btn alt sm" type="button" data-goto="quiz">Open Quiz</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"/></svg><b>Drills</b><p>Nine short games: put sequences in order, sort ideas into groups, and fill in the book's templates.</p><span class="g-when">Use it to lock in structure</span><button class="btn alt sm" type="button" data-goto="drills">Open Drills</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h4"/></svg><b>Gold Sheet</b><p>Plan a real client account on one page. Live checks show what the book's rules say is missing.</p><span class="g-when">Use it to apply the book</span><button class="btn alt sm" type="button" data-goto="gold">Open Gold Sheet</button></div><div class="g-card"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><b>Simulation</b><p>Eleven decisions on a fictional account. Every choice is scored and explained with the chapter behind it.</p><span class="g-when">Use it to test your judgment</span><button class="btn alt sm" type="button" data-goto="sim">Open Simulation</button></div></div></div>
+      <div class="g-sec"><h3>A simple study plan</h3><ol class="g-steps">
+        <li><span><b>Get the big picture.</b> Open LAMP Flow, click through the six stages, then step through the main thread.</span></li>
+        <li><span><b>Learn one part at a time.</b> Press Part I at the top, then open each chapter and its concepts on the Mind Map.</span></li>
+        <li><span><b>Recall it.</b> Run a Flashcards deck for that part. Mark "Got it" only if you remembered without peeking.</span></li>
+        <li><span><b>Test it.</b> Take a Quiz on the part, then open the concepts you missed from the results.</span></li>
+        <li><span><b>Repeat for Parts II to IV,</b> then play the Drills for structure and templates.</span></li>
+        <li><span><b>Apply it.</b> Run the Simulation, then fill in a Gold Sheet for one of your real accounts.</span></li>
+      </ol></div>
+      <div class="g-sec two">
+        <div><h3>How progress works</h3><p>Every concept has a ring that fills from 0 to 3.</p><div class="g-rings" id="gRings"></div>
+          <ul class="pts"><li>A correct answer adds a step. A wrong answer removes one.</li><li>A full ring means mastered. Chapter and part rings show the average of their concepts.</li><li>The Part buttons at the top narrow the Mind Map, Flashcards, Quiz and Drills to one part.</li><li>Reset progress, at the top, clears every ring.</li></ul></div>
+        <div><h3>Where the notes come from</h3><p>Each chapter panel says how its notes were built.</p>
+          <ul class="pts"><li><b>Excerpt:</b> a published excerpt of the chapter (Chapter 1).</li><li><b>Summary:</b> a detailed summary of the book. Check details against your copy.</li><li><b>LAMP materials:</b> Miller Heiman's LAMP terms and training materials.</li><li><b>Add your notes:</b> sources were thin (Chapters 3, 15 and 18), so fill them in from your copy.</li></ul>
+          <p class="g-note">Diagrams marked "Memory aid" are study devices, not figures from the book.</p></div>
+      </div>
+      <div class="g-sec two">
+        <div><h3>Your data stays with you</h3><ul class="pts"><li>Progress, your Gold Sheet and your theme are saved in this browser only.</li><li>They don't move to other devices, and people you share the link with can't see them.</li><li>Use "Copy plan as text" on the Gold Sheet to keep a plan somewhere else.</li></ul></div>
+        <div><h3>Handy tips</h3><ul class="pts"><li>Switch between light and dark mode with the button at the top.</li><li>Any "Open" or chapter button jumps straight to that concept on the Mind Map.</li><li>On a phone, a concept opens full screen. Close it with the Close button.</li><li>Each tab has its own link, so you can bookmark the Quiz or the Gold Sheet.</li></ul></div>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -1603,7 +1673,7 @@ function ring(frac, size, stroke, track, fill) {
   return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${track}" stroke-width="${stroke}"/>` +
     (frac > 0 ? `<circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${fill}" stroke-width="${stroke}" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}" transform="rotate(-90 ${size / 2} ${size / 2})"/>` : "") + `</svg>`;
 }
-const darkRing = (f, s, w) => ring(f, s, w, css("--tmd-blue-dark"), css("--tmd-gold"));
+const darkRing = (f, s, w) => ring(f, s, w, css("--track"), css("--d-hi"));
 const lightRing = f => ring(f, 96, 8, css("--tmd-blue-light"), css("--tmd-teal-dark"));
 const label = id => { const x = byId(id), k = kind(id); return k === "part" ? `Part ${x.n}` : k === "chapter" ? `Chapter ${x.n}` : x.title; };
 
@@ -1636,8 +1706,8 @@ const DIAGRAMS = {
   l2: () => dg(list([`"The software will run itself"`, "User adoption problem", "Automating unanalyzed processes"]) + `<div class="flow"><div class="ar"></div><div class="st end">Same old blunders, only faster</div></div>`, { aid: true, cap: "The fix: tool + trained professional + tested process." }),
   l3: () => dg(`<div class="dg-grid"><div class="stat"><b>18-24%</b><span>Average churn in telecom, cited by Ged Holmes of O2</span></div><div class="stat"><b>No. 1</b><span>Customer complaint: salespeople don't understand our business</span></div></div>`),
   l4: () => {
-    const row = (y, n, lbl) => { let s = `<text x="0" y="${y + 15}" class="tx">${lbl}</text>`; for (let i = 0; i < 9; i++) { const on = i < n; s += `<rect x="${78 + i * 26}" y="${y}" width="20" height="20" rx="2" fill="${on ? css("--tmd-gold") : "none"}" stroke="${on ? css("--tmd-gold") : css("--tmd-blue-dark")}" stroke-width="1"/>`; } return s; };
-    return dg(`<svg viewBox="0 0 320 112" role="img" aria-label="Vendor short list shrinking from nine to five to three suppliers"><style>.tx{font:500 12px var(--font);fill:${css("--tmd-blue-light")}}</style>${row(4, 9, "Before")}${row(44, 5, "Today")}${row(84, 3, "Next")}</svg>`, { aid: true, cap: "Buyers gauge the total cost of doing business and keep fewer suppliers. Counts are illustrative." });
+    const row = (y, n, lbl) => { let s = `<text x="0" y="${y + 15}" class="tx">${lbl}</text>`; for (let i = 0; i < 9; i++) { const on = i < n; s += `<rect x="${78 + i * 26}" y="${y}" width="20" height="20" rx="2" fill="${on ? css("--tmd-gold") : "none"}" stroke="${on ? css("--tmd-gold") : css("--d-line")}" stroke-width="1"/>`; } return s; };
+    return dg(`<svg viewBox="0 0 320 112" role="img" aria-label="Vendor short list shrinking from nine to five to three suppliers"><style>.tx{font:500 12px var(--font);fill:${css("--d-ink")}}</style>${row(4, 9, "Before")}${row(44, 5, "Today")}${row(84, 3, "Next")}</svg>`, { aid: true, cap: "Buyers gauge the total cost of doing business and keep fewer suppliers. Counts are illustrative." });
   },
   l5: () => dg(flow([[1, "You"], [2, "Your Large Account"]], "Your customer's customers: keep the focus here") + cmp(["Opportunistic", ["Quarter to quarter", "Deal to deal", "Seen as shortsighted"]], ["Customer-centric", ["3 to 4 years out", "Account picture", "Retention"]]), { aid: true }),
   l6: () => dg(cmp(["A generation ago", ["Follow-up and service", "Complaint calls, lunches, paperwork", "Non-revenue role"]], ["Today", ["Earned after selling success", "P&amp;L and relationship owner", "Leads a dedicated team", "Senior management function"]])),
@@ -1646,7 +1716,7 @@ const DIAGRAMS = {
     const X = i => 44 + i * 44, Y = v => 132 - v * (120 / 64);
     let exp = "", ari = "", ticks = "";
     for (let i = 0; i <= 6; i++) { exp += (i ? "L" : "M") + X(i) + " " + Y(Math.pow(2, i)).toFixed(1); ari += (i ? "L" : "M") + X(i) + " " + Y(1 + i).toFixed(1); ticks += `<text x="${X(i)}" y="150" text-anchor="middle" class="tx">${i}</text>`; }
-    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark");
+    const g = css("--d-hi"), w = css("--d-ink"), l = css("--d-line");
     return dg(`<svg viewBox="0 0 320 176" role="img" aria-label="Exponential versus arithmetic growth over six 18-month periods"><style>.tx{font:500 11px var(--font);fill:${w}}</style>
       <line x1="44" y1="132" x2="312" y2="132" stroke="${l}"/><line x1="44" y1="12" x2="44" y2="132" stroke="${l}"/>
       <line x1="44" y1="72" x2="312" y2="72" stroke="${l}" stroke-dasharray="3 4"/><line x1="44" y1="12" x2="312" y2="12" stroke="${l}" stroke-dasharray="3 4"/>
@@ -1659,7 +1729,7 @@ const DIAGRAMS = {
   diag: () => dg(flow([[1, "Doubtful account"], [2, "Surface hidden problems early"], [3, "Still uncertain?"]], "Probably no"), { aid: true }),
   port: () => dg(grid([["1", "Revenue", "What it brings in"], ["2", "Costs", "What it takes to serve"], ["3", "Growth potential", "Where it can go"], ["4", "Relationship potential", "Can value flow both ways?"]])),
   fop: () => {
-    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark"), d = css("--tmd-dark");
+    const g = css("--tmd-gold"), w = css("--d-ink"), l = css("--d-line"), d = css("--d-bg");
     const box = (x, lbl, on) => `<rect x="${x}" y="52" width="88" height="56" rx="2" fill="${on ? g : "none"}" stroke="${on ? g : l}"/><text x="${x + 44}" y="78" text-anchor="middle" class="tx" style="fill:${on ? d : w}">${lbl}</text>` + (on ? `<text x="${x + 44}" y="95" text-anchor="middle" class="tx b" style="fill:${d}">Field of Play</text>` : "");
     return dg(`<svg viewBox="0 0 320 124" role="img" aria-label="A Large Account made of three units, one highlighted as the Field of Play"><style>.tx{font:500 11px var(--font)}.b{font-weight:700}</style>
       <rect x="2" y="2" width="316" height="120" rx="2" fill="none" stroke="${w}"/><text x="14" y="26" class="tx" style="fill:${w}">The Large Account (whole company)</text>
@@ -1678,7 +1748,7 @@ const DIAGRAMS = {
   tplSso: () => dg(tpl(["To deliver to the ", ["Field of Play"], " ", ["amount or volume"], " of ", ["product, service or solution"], " for ", ["revenue or other units"], " by ", ["date"], "."]), { cap: "Single Sales Objective formula" }),
   focusstop: () => dg(cmp(["Focus Investment", ["Key Strategic Players", "Broken processes", "Helpful Trends", "Big-payoff Opportunities", "Reducing your Vulnerability"]], ["Stop Investment", ["No value, no endorsement", "Not advancing a Goal", "Outside track vs entrenched rival", "Not our real business", "Information vacuum, losing money"]])),
   bracket: () => {
-    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark");
+    const g = css("--d-hi"), w = css("--d-ink"), l = css("--d-line");
     const bar = (y, v, lbl, fill) => `<text x="0" y="${y + 15}" class="tx">${lbl}</text><rect x="96" y="${y}" width="${v * 2.1}" height="22" rx="2" fill="${fill ? g : "none"}" stroke="${fill ? g : w}"/>`;
     return dg(`<svg viewBox="0 0 320 112" role="img" aria-label="Bracketing: high unconstrained target, realistic target, low minimum target"><style>.tx{font:500 12px var(--font);fill:${w}}</style>
       ${bar(4, 100, "1. High", false)}${bar(44, 45, "2. Low", false)}${bar(84, 72, "3. Realistic", true)}
@@ -1686,7 +1756,7 @@ const DIAGRAMS = {
   },
   act4: () => dg(grid([["1", "Information gathering", "Fill the gaps"], ["2", "Sales and support programs", "Advance your SSOs"], ["3", "Action items", "Improve your position"], ["4", "Reviews", "Share and adjust the plan"]])),
   ninety: () => {
-    const g = css("--tmd-gold"), w = css("--tmd-blue-light"), l = css("--tmd-blue-dark"), d = css("--tmd-dark");
+    const g = css("--tmd-gold"), w = css("--d-ink"), l = css("--d-line"), d = css("--d-bg");
     let s = `<line x1="20" y1="44" x2="300" y2="44" stroke="${l}" stroke-width="2"/>`;
     [0, 90, 180, 270, 360].forEach((day, i) => { const x = 20 + i * 70; s += `<rect x="${x - 7}" y="37" width="14" height="14" rx="2" fill="${i ? g : d}" stroke="${g}"/><text x="${x}" y="72" text-anchor="middle" class="tx">Day ${day}</text>` + (i ? `<text x="${x}" y="26" text-anchor="middle" class="tx g">Review</text>` : `<text x="${x}" y="26" text-anchor="middle" class="tx">Start</text>`); });
     return dg(`<svg viewBox="0 0 320 84" role="img" aria-label="A plan reviewed every ninety days across a year"><style>.tx{font:500 11px var(--font);fill:${w}}.g{fill:${g}}</style>${s}</svg>`, { cap: "Four reviews a year keep the plan current." });
@@ -1729,7 +1799,7 @@ function renderMap() {
     chaptersOf(p.id).forEach(c => {
       const open = openCh === c.id;
       h += `<div class="chwrap"><button class="node chn" type="button" data-sel="${c.id}" aria-current="${UI.sel === c.id}" aria-expanded="${open}">
-        <span class="n">${c.n}</span><span class="t">${esc(c.short)}</span><span class="ring"></span></button>`;
+        <span class="n">${c.n}</span>${icon(c.id, 18)}<span class="t">${esc(c.short)}</span><span class="ring"></span></button>`;
       if (open) h += `<div class="subs">${conceptsOf(c.id).map(k => `<button class="node sub" type="button" data-sel="${k.id}" aria-current="${UI.sel === k.id}"><span class="t">${esc(k.title)}</span><span class="ring"></span></button>`).join("")}</div>`;
       h += `</div>`;
     });
@@ -1774,7 +1844,7 @@ function openPanel(on) {
   if (on) { p.scrollTop = 0; const f = p.querySelector("h2"); if (f) f.focus({ preventScroll: true }); }
 }
 function miniList(ids) {
-  return `<div class="mini">${ids.map(id => { const x = byId(id), k = kind(id); return `<button type="button" data-go="${id}"><span class="k">${k === "chapter" ? x.n : x.n}</span><span>${esc(k === "chapter" ? x.title : x.title)}</span><span class="ring">${darkRing(fracOf(id), 18, 3)}</span></button>`; }).join("")}</div>`;
+  return `<div class="mini">${ids.map(id => { const x = byId(id), k = kind(id); return `<button type="button" data-go="${id}"><span class="k">${x.n}</span>${k === "chapter" ? icon(id, 18) : ""}<span>${esc(k === "chapter" ? x.title : x.title)}</span><span class="ring">${darkRing(fracOf(id), 18, 3)}</span></button>`; }).join("")}</div>`;
 }
 function renderPanel() {
   const id = UI.sel, p = $("#panel"), k = kind(id), x = byId(id);
@@ -2023,7 +2093,7 @@ function drawPick(d, st) {
 /* =====================================================================
    ROUTING + WIRING
    ===================================================================== */
-const VIEWS = ["map", "flow", "cards", "quiz", "drills", "gold", "sim"];
+const VIEWS = ["map", "flow", "cards", "quiz", "drills", "gold", "sim", "guide"];
 function go(v, fromHash) {
   if (!VIEWS.includes(v)) v = "map";
   UI.view = v;
@@ -2037,6 +2107,7 @@ function go(v, fromHash) {
   if (v === "flow") renderFlow();
   if (v === "gold") renderGold();
   if (v === "sim") renderSim();
+  if (v === "guide") renderGuide();
 }
 function setPart(pid) {
   UI.part = pid;
@@ -2051,6 +2122,7 @@ function setPart(pid) {
 }
 function start(data) {
   data = data || {};
+  initTheme();
   if (data.part && (data.part === "all" || byId(data.part))) UI.part = data.part;
   if (data.sel && (data.sel === "root" || byId(data.sel))) UI.sel = data.sel;
   document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => go(t.dataset.view)));
@@ -2426,6 +2498,157 @@ function renderSim() {
   }));
   const nx = $("#simNext"); if (nx) nx.addEventListener("click", () => { SM.i++; SM.picked = null; SM.order = null; renderSim(); el.scrollIntoView({ block: "start", behavior: "smooth" }); });
   el.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openOnMap(b.dataset.open)));
+}
+
+/* =====================================================================
+   v4: chapter icons, more diagrams, light/dark theme, guide
+   ===================================================================== */
+const ICONS = {
+  c1: "M12 3a9 9 0 1 0 .01 0Z M15.5 8.5l-2 5-5 2 2-5z",
+  c2: "M3 5h18l-7 8v6l-4 2v-8z",
+  c3: "M3 8h18v11H3z M9 8V5h6v3 M3 13h18",
+  c4: "M3 20h4v-4h4v-4h4V8h4V4",
+  c5: "M10.5 3a7.5 7.5 0 1 0 .01 0Z M16 16l5 5",
+  c6: "M8 8a3 3 0 1 0 .01 0Z M16 8a3 3 0 1 0 .01 0Z M2 20c0-3 2.7-5 6-5s6 2 6 5 M10 20c0-3 2.7-5 6-5s6 2 6 5",
+  c7: "M3 17l6-6 4 4 8-8 M15 7h6v6",
+  c8: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4",
+  c9: "M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h4",
+  c10: "M5 21V4 M5 4h12l-2 4 2 4H5",
+  c11: "M12 3a9 9 0 1 0 .01 0Z M12 8a4 4 0 1 0 .01 0Z M12 11.5v1",
+  c12: "M4 7c0-1.5 3.6-3 8-3s8 1.5 8 3-3.6 3-8 3-8-1.5-8-3z M4 7v5c0 1.5 3.6 3 8 3s8-1.5 8-3V7 M4 12v5c0 1.5 3.6 3 8 3s8-1.5 8-3v-5",
+  c13: "M8 3h8l5 5v8l-5 5H8l-5-5V8z M8 12h8",
+  c14: "M3 21h18 M6 21v-6 M11 21V9 M16 21v-9 M20 21V5",
+  c15: "M4 6l2 2 3-3 M4 13l2 2 3-3 M12 7h8 M12 14h8 M4 20h16",
+  c16: "M7 4l13 8-13 8z",
+  c17: "M20 12a8 8 0 1 1-2.3-5.7 M20 4v4h-4",
+  c18: "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"
+};
+const icon = (id, size) => ICONS[id] ? `<svg class="ico" viewBox="0 0 24 24" width="${size || 20}" height="${size || 20}" aria-hidden="true"><path d="${ICONS[id]}"/></svg>` : "";
+
+/* Diagram colors follow the theme. */
+const DC = () => ({ ink: css("--d-ink"), line: css("--d-line"), hi: css("--d-hi"), gold: css("--tmd-gold"), red: css("--tmd-red-dark"), teal: css("--tmd-teal-dark"), bg: css("--d-bg"), panel: css("--panel") });
+const sv = (h, inner, label) => { const c = DC(); return `<svg viewBox="0 0 320 ${h}" role="img" aria-label="${label}"><style>.tx{font:500 11px var(--font);fill:${c.ink}}.tb{font:700 12px var(--font);fill:${c.ink}}</style>${inner}</svg>`; };
+const pers = (x, y, f) => `<circle cx="${x}" cy="${y - 9}" r="5.5" fill="${f}"/><path d="M${x - 9} ${y + 7} q0 -10 9 -10 q9 0 9 10 z" fill="${f}"/>`;
+const check = (x, y, c) => `<rect x="${x}" y="${y}" width="14" height="14" rx="2" fill="${c}"/><path d="M${x + 3} ${y + 7} l3 3 l5 -6" fill="none" stroke="#ffffff" stroke-width="2"/>`;
+const checklist = items => `<ul class="cl">${items.map(t => `<li><span class="cb"></span>${t}</li>`).join("")}</ul>`;
+const arrowHead = (x, y, dir, f) => dir > 0 ? `<path d="M${x} ${y - 6} L${x + 10} ${y} L${x} ${y + 6} Z" fill="${f}"/>` : `<path d="M${x} ${y - 6} L${x - 10} ${y} L${x} ${y + 6} Z" fill="${f}"/>`;
+
+Object.assign(DIAGRAMS, {
+  case: () => dg(flow([[1, "A real account"], [2, "Situation Appraisal"], [3, "Strategy on the Gold Sheet"], [4, "Actions, reviewed every 90 days"]], "A plan you can actually run"), { aid: true }),
+  web: () => { const c = DC(); const ours = [[34, 40], [34, 85], [34, 130]], theirs = [[200, 32], [262, 44], [184, 82], [246, 96], [208, 130], [276, 138]];
+    let s = `<rect x="160" y="8" width="152" height="150" rx="3" fill="none" stroke="${c.line}" stroke-width="2"/><text x="236" y="174" text-anchor="middle" class="tx">The account</text><text x="34" y="174" text-anchor="middle" class="tx">Your team</text>`;
+    ours.forEach((o, i) => theirs.filter((_, j) => j % 3 === i).concat([theirs[(i * 2 + 1) % 6]]).forEach(t => { s += `<path d="M${o[0] + 12} ${o[1]} L${t[0] - 10} ${t[1]}" stroke="${c.hi}" stroke-width="1.6" fill="none"/>`; }));
+    s += `<path d="M95 85 L46 40 M95 85 L46 85 M95 85 L46 130" stroke="${c.line}" stroke-width="2" stroke-dasharray="4 3" fill="none"/>` + pers(100, 92, c.gold) + `<text x="100" y="118" text-anchor="middle" class="tb">You</text>`;
+    ours.forEach(o => { s += pers(o[0], o[1] + 6, c.teal); }); theirs.forEach(t => { s += pers(t[0], t[1] + 6, c.ink); });
+    return dg(sv(182, s, "Your team connected to people across the account, with you orchestrating"), { cap: "A business relationship is the sum of personal ones. You orchestrate every contact toward one strategy." }); },
+  pillars: () => { const c = DC(); let s = `<rect x="40" y="46" width="240" height="14" rx="2" fill="${c.gold}"/>` + pers(160, 40, c.hi) + `<text x="160" y="16" text-anchor="middle" class="tb">Sponsor</text>`;
+    ["Authority", "Influence", "Support"].forEach((t, i) => { const x = 62 + i * 80; s += `<rect x="${x}" y="60" width="36" height="84" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><text x="${x + 18}" y="162" text-anchor="middle" class="tx">${t}</text>`; });
+    s += `<rect x="30" y="144" width="260" height="6" fill="${c.line}"/>`;
+    return dg(sv(172, s, "A Sponsor stands on three pillars: authority, influence and support"), { cap: "All three pillars, or it isn't a Sponsor. You need at least one." }); },
+  route: () => { const c = DC(); const s = `<path d="M30 140 C 90 140, 80 70, 150 80 S 230 120, 280 36" fill="none" stroke="${c.hi}" stroke-width="3" stroke-dasharray="7 6"/>` +
+      `<rect x="18" y="128" width="24" height="24" rx="2" fill="${c.gold}"/><text x="30" y="170" text-anchor="middle" class="tx">You</text>` +
+      `<path d="M280 40 V10 H300 L294 17 L300 24 H280" fill="${c.red}" stroke="${c.red}"/><text x="282" y="58" text-anchor="middle" class="tx">Strategy goal</text>` +
+      `<rect x="146" y="96" width="4" height="56" fill="${c.line}"/><path d="M150 100 H196 L204 108 L196 116 H150 Z" fill="${c.teal}"/>` + pers(130, 150, c.teal) + `<text x="150" y="170" text-anchor="middle" class="tx">Strategic Coach points the way</text>`;
+    return dg(sv(178, s, "A Strategic Coach acting as a signpost on your route to the goal"), { cap: "The Coach guides direction and explains the players. The Sponsor promotes you." }); },
+  tug: () => { const c = DC(); const s = `<rect x="148" y="58" width="24" height="24" rx="2" fill="${c.gold}"/><text x="160" y="104" text-anchor="middle" class="tb">Your position</text>` +
+      `<path d="M30 70 H136" stroke="${c.hi}" stroke-width="6"/>${arrowHead(136, 70, 1, c.hi)}<text x="70" y="52" text-anchor="middle" class="tx">Sponsor promotes you</text>` +
+      `<path d="M290 70 H184" stroke="${c.red}" stroke-width="6"/>${arrowHead(184, 70, -1, c.red)}<text x="250" y="52" text-anchor="middle" class="tx">Anti-Sponsor works against</text>` +
+      pers(22, 82, c.teal) + pers(298, 82, c.red);
+    return dg(sv(116, s, "A Sponsor pushes your position forward while an Anti-Sponsor pushes back"), { cap: "Plan for the Anti-Sponsor. Your Sponsors are the counterweight." }); },
+  uncovered: () => { const c = DC(); const nodes = [[160, 22, 1], [80, 72, 1], [160, 72, 1], [240, 72, 0], [50, 124, 1], [110, 124, 1], [200, 124, 1], [270, 124, 1]];
+    let s = `<path d="M160 30 V48 M80 48 H240 M80 48 V64 M160 48 V64 M240 48 V64 M80 80 V100 M50 100 H110 M50 100 V116 M110 100 V116 M240 80 V100 M200 100 H270 M200 100 V116 M270 100 V116" stroke="${c.line}" stroke-width="2" fill="none"/>`;
+    nodes.forEach(([x, y, cov]) => { s += cov ? `<rect x="${x - 12}" y="${y - 8}" width="24" height="16" rx="2" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><rect x="${x + 6}" y="${y - 12}" width="8" height="8" fill="${c.gold}"/>` :
+      `<rect x="${x - 12}" y="${y - 8}" width="24" height="16" rx="2" fill="none" stroke="${c.red}" stroke-width="2" stroke-dasharray="4 3"/><path d="M${x + 16} ${y + 8} V${y - 22} H${x + 32} L${x + 27} ${y - 17} L${x + 32} ${y - 12} H${x + 16}" fill="${c.red}" stroke="${c.red}" stroke-width="1.5"/>`; });
+    s += `<rect x="20" y="150" width="8" height="8" fill="${c.gold}"/><text x="34" y="158" class="tx">Someone on your team covers them</text><path d="M206 160 V146 H218 L214 150 L218 154 H206" fill="${c.red}"/><text x="224" y="158" class="tx">Uncovered base</text>`;
+    return dg(sv(166, s, "An org chart where every player is covered by your team except one, marked with a red flag"), { cap: "Every uncovered Strategic Player is a red flag. So are missing information, newcomers and reorganizations." }); },
+  oppcmp: () => dg(cmp(["Field of Play Opportunity", ["Theirs: what the account can gain or fix", "Defined in their words", "Example: grow digital sign-ups"]], ["Your sales opportunity", ["Yours: something to sell", "Comes later, as an SSO", "Example: a 12-month campaign"]]), { cap: "Start from their opportunity. Your sale follows from it." }),
+  gauges: () => { const c = DC(); let s = "";
+    [["Sign-ups", 0.72], ["Cost per account", 0.45], ["Retention", 0.83]].forEach(([t, v], i) => { const x = 58 + i * 102, y = 70, a = Math.PI * (1 - v), nx = x + 30 * Math.cos(a), ny = y - 30 * Math.sin(a);
+      s += `<path d="M${x - 36} ${y} A36 36 0 0 1 ${x + 36} ${y}" fill="none" stroke="${c.line}" stroke-width="8"/><path d="M${x - 36} ${y} A36 36 0 0 1 ${(x + 36 * Math.cos(a)).toFixed(1)} ${(y - 36 * Math.sin(a)).toFixed(1)}" fill="none" stroke="${c.gold}" stroke-width="8"/>` +
+        `<path d="M${x} ${y} L${nx.toFixed(1)} ${ny.toFixed(1)}" stroke="${c.ink}" stroke-width="3"/><text x="${x}" y="${y + 22}" text-anchor="middle" class="tx">${t}</text>`; });
+    return dg(sv(100, s, "Three gauges standing for the account's own KPIs"), { aid: true, cap: "Example KPIs. Tie your contribution to the measures they already watch." }); },
+  sieve: () => { const c = DC(); let s = `<text x="44" y="14" text-anchor="middle" class="tx">Your capabilities</text><text x="160" y="14" text-anchor="middle" class="tx">Does the account value it?</text><text x="276" y="14" text-anchor="middle" class="tx">Strategic Strengths</text>`;
+    [0, 1, 2, 3, 4].forEach(i => { s += `<rect x="16" y="${26 + i * 24}" width="56" height="16" rx="2" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/>`; });
+    s += `<path d="M110 26 H210 L178 96 V140 H142 V96 Z" fill="none" stroke="${c.line}" stroke-width="2"/><path d="M80 82 H104" stroke="${c.line}" stroke-width="2"/>${arrowHead(104, 82, 1, c.line)}<path d="M216 82 H240" stroke="${c.hi}" stroke-width="2"/>${arrowHead(240, 82, 1, c.hi)}`;
+    [0, 1].forEach(i => { s += `<rect x="248" y="${62 + i * 26}" width="56" height="16" rx="2" fill="${c.gold}"/>`; });
+    return dg(sv(146, s, "Five capabilities pass through a filter; two come out as Strategic Strengths"), { cap: "Only what the account values counts as a Strength." }); },
+  chainlink: () => { const c = DC(); let s = "";
+    [0, 1, 2, 3, 4].forEach(i => { const x = 18 + i * 58, weak = i === 3;
+      s += `<rect x="${x}" y="${weak ? 34 : 30}" width="64" height="30" rx="4" fill="none" stroke="${weak ? c.red : c.line}" stroke-width="${weak ? 4 : 6}"${weak ? ' stroke-dasharray="10 6"' : ""}/>`; });
+    s += `<text x="221" y="88" text-anchor="middle" class="tb">Critical Vulnerability</text><text x="80" y="88" text-anchor="middle" class="tx">Your position in the account</text>`;
+    return dg(sv(98, s, "A chain where one link is weak and marked as the Critical Vulnerability"), { cap: "Name the one weakest link, then aim a Focus Investment at it." }); },
+  three: () => { const c = DC(); let s = "";
+    for (let i = 0; i < 6; i++) { const keep = i < 3, y = 8 + i * 22;
+      s += `<rect x="20" y="${y}" width="${keep ? 200 : 160}" height="14" rx="2" fill="${keep ? c.gold : c.panel}" stroke="${keep ? c.gold : c.line}" stroke-width="2"/>` + (keep ? `<text x="232" y="${y + 11}" class="tb">Keep</text>` : `<path d="M14 ${y + 7} H190" stroke="${c.red}" stroke-width="2"/>`); }
+    return dg(sv(140, s, "Six items in an area; the top three are kept and the rest struck out"), { cap: "No more than the three most critical items in each area." }); },
+  chartest: () => dg(checklist(["Clear to Strategic Players without explanation", "Recognizably ours, even without our name", "Reaching it lifts our hierarchy level", "We'd share it with the Strategic Players"])),
+  goalcheck: () => dg(checklist(["Aligned with their mission and needs", "Furthers a specific Opportunity", "Brings a named Strength", "Achievable in the next several months", "Serves a Strategic Player", "Advances the Charter", "Written in their language"])),
+  quota: () => { const c = DC(); const s = `<text x="78" y="14" text-anchor="middle" class="tb">Quota</text><text x="242" y="14" text-anchor="middle" class="tb">Revenue Target</text>` +
+      `<rect x="54" y="24" width="48" height="24" rx="2" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><text x="78" y="40" text-anchor="middle" class="tx">Manager</text><path d="M78 50 V88" stroke="${c.red}" stroke-width="4"/><path d="M71 86 L78 98 L85 86 Z" fill="${c.red}"/>` + pers(78, 116, c.ink) + `<text x="78" y="140" text-anchor="middle" class="tx">Pushed down</text>` +
+      `<path d="M160 10 V140" stroke="${c.line}" stroke-width="1"/>` + pers(196, 80, c.gold) + pers(288, 80, c.ink) +
+      `<path d="M210 66 H274" stroke="${c.hi}" stroke-width="3"/>${arrowHead(274, 66, 1, c.hi)}<path d="M274 84 H210" stroke="${c.teal}" stroke-width="3"/>${arrowHead(210, 84, -1, c.teal)}` +
+      `<text x="196" y="108" text-anchor="middle" class="tx">You</text><text x="288" y="108" text-anchor="middle" class="tx">Account</text><text x="242" y="140" text-anchor="middle" class="tx">Agreed together</text>`;
+    return dg(sv(148, s, "A quota pushed down by a manager compared with a revenue target agreed with the account"), { cap: "Targets quantify the yield of Focus Investments and make the case for them inside your company." }); },
+  preact: () => { const c = DC(); let s = `<rect x="90" y="6" width="140" height="150" rx="3" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><rect x="90" y="6" width="140" height="18" rx="3" fill="${c.gold}"/>`;
+    ["Players", "Trends", "Strengths", "Charter", "Goals", "Investments"].forEach((t, i) => { const y = 34 + i * 20; s += check(102, y, c.teal) + `<text x="124" y="${y + 11}" class="tx">${t}</text>`; });
+    s += `<text x="252" y="80" class="tx">One page,</text><text x="252" y="95" class="tx">checked</text><text x="252" y="110" class="tx">before you</text><text x="252" y="125" class="tx">spend</text>`;
+    return dg(sv(162, s, "A one-page plan with each section checked off"), { aid: true }); },
+  programs: () => dg(`<div class="dg-grid g3"><div class="dg-cell"><span class="k">1</span><b>Solve</b><span>Their basic and top-level problems</span></div><div class="dg-cell"><span class="k">2</span><b>Broaden</b><span>Your scope in the account</span></div><div class="dg-cell"><span class="k">3</span><b>Fund</b><span>Stretch the budget: access to funds</span></div></div>`),
+  buyin: () => { const c = DC(); const s = `<rect x="20" y="60" width="70" height="90" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><rect x="230" y="40" width="70" height="110" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/>` +
+      pers(55, 54, c.gold) + pers(265, 34, c.ink) + check(66, 26, c.teal) + check(276, 6, c.teal) +
+      `<rect x="120" y="70" width="80" height="56" rx="2" fill="${c.gold}"/><path d="M132 84 H188 M132 96 H188 M132 108 H170" stroke="${c.bg}" stroke-width="3"/><path d="M90 98 H120 M200 98 H230" stroke="${c.hi}" stroke-width="3"/>` +
+      `<text x="55" y="168" text-anchor="middle" class="tx">Your executives</text><text x="160" y="146" text-anchor="middle" class="tb">The plan</text><text x="265" y="168" text-anchor="middle" class="tx">Their executives</text>`;
+    return dg(sv(176, s, "The plan in the middle, approved by executives in your company and in the account"), { cap: "Two approvals before you act: yours and theirs." }); },
+  silo: () => { const c = DC(); let s = `<text x="78" y="14" text-anchor="middle" class="tb">Silos</text><text x="242" y="14" text-anchor="middle" class="tb">One team</text>`;
+    ["Sales", "Service", "Finance", "Ops"].forEach((t, i) => { const x = 14 + i * 36, x2 = 178 + i * 36;
+      s += `<rect x="${x}" y="30" width="28" height="90" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><rect x="${x2}" y="30" width="28" height="90" fill="${c.panel}" stroke="${c.line}" stroke-width="2"/><text x="${x + 14}" y="136" text-anchor="middle" class="tx" style="font-size:9px">${t}</text><text x="${x2 + 14}" y="136" text-anchor="middle" class="tx" style="font-size:9px">${t}</text>`; });
+    s += `<rect x="172" y="66" width="146" height="18" rx="2" fill="${c.gold}"/><text x="245" y="79" text-anchor="middle" style="font:700 11px var(--font);fill:${c.bg}">One account plan</text><path d="M160 24 V140" stroke="${c.line}" stroke-width="1"/>`;
+    return dg(sv(146, s, "Four separate silos compared with the same four departments joined by one account plan"), { cap: "The biggest obstacle to alignment is the silo. Large account management is an organization-wide job." }); },
+  ratio: () => { const c = DC(); let s = pers(80, 96, c.gold);
+    for (let i = 0; i < 8; i++) { const a = Math.PI * (0.1 + i * 0.8 / 7) + Math.PI, x = 80 + 62 * Math.cos(a), y = 96 + 62 * Math.sin(a); s += `<rect x="${(x - 9).toFixed(1)}" y="${(y - 9).toFixed(1)}" width="18" height="18" rx="2" fill="${c.panel}" stroke="${c.hi}" stroke-width="2"/>`; }
+    s += pers(250, 96, c.ink);
+    let sd = 5; const r = () => (sd = (sd * 16807) % 2147483647) / 2147483647; for (let i = 0; i < 40; i++) { const a = r() * Math.PI * 2, d = 26 + r() * 46; s += `<rect x="${(250 + d * Math.cos(a) - 4).toFixed(1)}" y="${(84 + d * Math.sin(a) * 0.8 - 4).toFixed(1)}" width="8" height="8" fill="${c.line}"/>`; }
+    s += `<text x="80" y="130" text-anchor="middle" class="tx">5 to 10 accounts</text><text x="250" y="150" text-anchor="middle" class="tx">Spread too thin</text>`;
+    return dg(sv(158, s, "One manager with eight accounts compared with one manager buried under forty"), { cap: "One manager for five to ten Large Accounts." }); },
+  relrev: () => dg(flow([[1, "Relationships"], [2, "Value as the account perceives it"]], "Revenue follows")),
+  sv: () => dg(cmp(["Strategic Strengths", ["Capabilities the account values", "Brought to bear in each Goal", "Leveraged by Focus Investments"]], ["Critical Vulnerability", ["The one weakness that could cost you", "Named honestly", "Reduced by a Focus Investment"]])),
+  target: () => { const c = DC(); let s = "";
+    [54, 38, 22, 8].forEach((r, i) => { s += `<circle cx="110" cy="74" r="${r}" fill="${i % 2 ? c.panel : "none"}" stroke="${i === 3 ? c.gold : c.line}" stroke-width="${i === 3 ? 8 : 2}"/>`; });
+    [[-60, 30], [-50, 50], [-64, 40]].forEach(([dx, dy], i) => { s += `<path d="M${110 + dx * 2} ${74 - dy * 0.3 - 30 + i * 22} L${108} ${74}" stroke="${c.hi}" stroke-width="2.5"/>`; });
+    s += `<path d="M300 20 L210 10 M300 140 L230 150" stroke="${c.line}" stroke-width="2" stroke-dasharray="4 3"/><text x="200" y="66" class="tb">Goals and</text><text x="200" y="82" class="tb">big payoffs</text><text x="250" y="118" class="tx">Scattered effort</text><text x="250" y="132" class="tx">misses</text>`;
+    return dg(sv(156, s, "Focused effort hits the centre of a target while scattered effort misses"), { aid: true, cap: "Put finite resources where they have a decent chance of paying off." }); },
+  stopflow: () => dg(flow([[1, "An activity in the account"], [2, "Valued? Endorsed? Serving a Goal?"], [3, "Inside track? Our real business?"]], "If not: stop it and reallocate"), { aid: true })
+});
+const setD = (id, key) => { const x = byId(id); if (x && !x.diagram) x.diagram = key; };
+[["ex", "case"], ["players", "web"], ["sponsor", "pillars"], ["coach", "route"], ["anti", "tug"], ["flags", "uncovered"], ["opps", "oppcmp"], ["kpi", "gauges"], ["strengths", "sieve"], ["vuln", "chainlink"], ["three", "three"], ["chartest", "chartest"], ["goalcheck", "goalcheck"], ["rtwhy", "quota"], ["preact", "preact"], ["programs", "programs"], ["buyin", "buyin"], ["silo", "silo"], ["ratio", "ratio"], ["relrev", "relrev"],
+ ["c3", "case"], ["c5", "gather"], ["c8", "sv"], ["c9", "gold"], ["c10", "tplCharter"], ["c11", "tplGoal"], ["c12", "target"], ["c13", "stopflow"], ["c14", "bracket"], ["c15", "preact"], ["c16", "act4"], ["c18", "silo"]].forEach(([i, k]) => setD(i, k));
+
+/* ---------------- Theme ---------------- */
+const TKEY = "lam-theme";
+function currentTheme() { const a = document.documentElement.getAttribute("data-theme"); if (a === "light" || a === "dark") return a; return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"; }
+function rerenderAll() { renderMap(); renderPanel(); refreshMastery(); go(UI.view, true); paintThemeBtn(); }
+function paintThemeBtn() {
+  const b = $("#themeBtn"); if (!b) return;
+  const t = currentTheme();
+  b.innerHTML = (t === "dark" ? `<svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4a8 8 0 1 0 .01 0Z M12 4V2 M12 22v-2 M4 12H2 M22 12h-2"/></svg>Light mode` : `<svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>Dark mode`);
+  b.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+function initTheme() {
+  try { const s = localStorage.getItem(TKEY); if (s === "light" || s === "dark") document.documentElement.setAttribute("data-theme", s); } catch (e) {}
+  const b = $("#themeBtn");
+  if (b) b.addEventListener("click", () => { const n = currentTheme() === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", n); try { localStorage.setItem(TKEY, n); } catch (e) {} rerenderAll(); });
+  try { window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { if (!document.documentElement.getAttribute("data-theme")) rerenderAll(); }); } catch (e) {}
+  try { new MutationObserver(() => rerenderAll()).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] }); } catch (e) {}
+  document.querySelectorAll("[data-goto-guide]").forEach(b => b.addEventListener("click", () => { go("guide"); window.scrollTo({ top: $(".bar").offsetTop, behavior: "smooth" }); }));
+  paintThemeBtn();
+}
+
+/* ---------------- Guide ---------------- */
+function renderGuide() {
+  const el = $("#guide");
+  $("#gRings").innerHTML = [0, 1, 2, 3].map(n => `<div>${darkRing(n / 3, 44, 5)}<span>${n === 3 ? "Mastered" : n + " of 3"}</span></div>`).join("");
+  if (el.dataset.done) return; el.dataset.done = "1";
+  el.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => { go(b.dataset.goto); window.scrollTo({ top: $(".bar").offsetTop, behavior: "smooth" }); }));
 }
 
 const hot = window.claude && window.claude.hot;
