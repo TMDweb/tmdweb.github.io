@@ -1,9 +1,9 @@
 const { chromium } = require('playwright');
 (async () => {
-  const [,, fontDir, out] = process.argv;
+  const [,, fontDir, out, st] = process.argv; const START = parseInt(st);
   const dark = { 2: 1, 6: 1, 9: 1, 11: 1 }; let h = '';
   for (let p = 2; p <= 11; p++) {
-    const n = 24 + p, d = dark[p];
+    const n = START + p - 2, d = dark[p];
     h += `<div class="pg">` + (p === 10 ? '' : `<div class="patch" style="background:${d ? '#0C0E1D' : '#fff'}"></div><div class="num" style="color:${d ? '#f0f2f9' : '#2f3e75'}">${n}</div>`) + `</div>`;
   }
   const html = `<html><head><style>

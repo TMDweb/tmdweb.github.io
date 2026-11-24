@@ -441,6 +441,14 @@ table.tmd.big td.k { font-size: 21px; white-space: nowrap; }
 .mgrid.g54 .mcard:nth-child(6) { grid-column: 2 / span 2; }
 .mgrid.g54 .mcard img { height: 150px; }
 
+/* final: client logo on cover, preferred option */
+.cover .logo-sep { position: absolute; top: 72px; left: 390px; width: 1px; height: 104px; background: rgba(255,255,255,0.35); }
+.cover .logo2 { position: absolute; top: 69px; left: 416px; height: 110px; width: auto; display: block; }
+.opts .opt.pref { border: 2px solid #fcbf2c; }
+.quad.three { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; top: 210px; bottom: 130px; }
+.quad.three .q h4 { font-size: 25px; }
+.quad.three .q p { font-size: 18px; }
+
 details.notes { width: min(1280px, calc(100vw - 16px)); }
 </style>
 </head>
@@ -450,11 +458,12 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 <!-- 1 COVER -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark cover">
   <img class="logo" src="assets/TMD-logo-white.svg" alt="The Marketing Department">
+  <span class="logo-sep"></span><img class="logo2" src="assets/altazaj-logo-white.png" alt="الطازج">
   <div class="text-block">
     <h1 class="title">منصة القيمة من الطازج</h1>
-    <p class="subtitle">توصية المنيو والقرار المطلوب</p>
+    <p class="subtitle">توصية المنيو</p>
   </div>
-  <div class="versioning"><span>رد على موجز منصة القيمة</span><span>نوفمبر 2026</span></div>
+  <div class="versioning"><span>نوفمبر 2026</span></div>
 </section></div></div>
 
 <!-- EXEC SUMMARY -->
@@ -462,13 +471,12 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
   <div class="page-num">02</div>
   <div class="header">
     <div class="crumb">الخلاصة التنفيذية</div>
-    <div class="title">نوصي بمنيو قيمة فردي يبدأ بالأصناف الموجودة، ثم تُضاف الأصناف الجديدة</div>
+    <div class="title">نوصي بمنيو قيمة فردي، ونفضّل الخيار 2 بأصناف جديدة من مكونات المطبخ</div>
   </div>
-  <div class="quad">
-    <div class="q"><div class="k">ماذا نوصي</div><h4>البدء بالتجميع و"اختر 2 بـ 12"، ثم إضافة الأصناف الجديدة بعد حساب تكلفتها</h4><p>الخياران الأول والثالث لا يغيران شيئًا في المطبخ. الخيار الثاني يدخل على مراحل، وأفضل 4 أصناف منه فقط.</p></div>
+  <div class="quad three">
+    <div class="q"><div class="k">ماذا نوصي</div><h4>نفضّل الخيار 2: أصناف جديدة بحصة أصغر وسعر أقل</h4><p>يقدّم جديدًا يستحق الإعلان، ويضبط الهامش بحجم الحصة، وخطر السحب من الوجبات الحالية فيه أقل. الخياران 1 و3 متاحان للتنفيذ الفوري.</p></div>
     <div class="q"><div class="k">لماذا</div><h4>لا أحد يبيع مشويًا تحت 20 ريال، والطازج معروف بالمشوي</h4><p>السوق يتنافس بالمقلي عند 15 ريال. والقفزة من ساندوتش الطازج إلى وجبته 7 إلى 9 ريال، مقابل 5 عند المنافسين.</p></div>
     <div class="q"><div class="k">الأثر المتوقع</div><h4>طلبات إضافية وقت الغداء والعصر، مع الحفاظ على متوسط الفاتورة</h4><p>ترقية المشروب تعيد الفاتورة إلى مستوى الوجبة الحالية. يُقاس الأثر بعدد المعاملات ونسبة ترقية المشروب ومتوسط فاتورة الفرع.</p></div>
-    <div class="q ask"><div class="k">القرار المطلوب</div><h4>اعتماد الخيارين 1 و3 للإطلاق</h4><p>ومعه مشاركة تكلفة الحصص لتسعير الخيار الثاني.</p></div>
   </div>
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>ابدأ بالقرار ثم الأسباب. لا تذكر أرقام أثر لا نملكها: قل إن الحدود مقترحة والأثر يُقاس في التجربة. الجزء الإبداعي يعرضه سلمان بعد هذا العرض.</p></details></div>
@@ -626,7 +634,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
   </div>
   <div class="opts big3">
     <div class="opt"><span class="tag">الخيار 1</span><h4>التجميع</h4><p>صنفان موجودان يُباعان معًا بسعر أقل 10% من مجموعهما.</p><dl><dt>مثال</dt><dd>محمص صاج 11 + بطاطس 6 = 17، يصير 15 [[SAR]]</dd><dt>السعر الأقل يأتي من</dt><dd>الخصم</dd><dt>التغيير في المطبخ</dt><dd>لا شيء</dd></dl></div>
-    <div class="opt"><span class="tag">الخيار 2</span><h4>أصناف جديدة</h4><p>صنف جديد من مكونات موجودة، بحصة مصممة على سعر محدد.</p><dl><dt>مثال</dt><dd>رايس بول مشوي: أرز + دجاج مشوي + دقوس بـ 13 [[SAR]]</dd><dt>السعر الأقل يأتي من</dt><dd>حجم الحصة</dd><dt>التغيير في المطبخ</dt><dd>تحضير وتغليف جديد، بدون مكونات جديدة</dd></dl></div>
+    <div class="opt pref"><span class="tag">الخيار 2 (مفضّل)</span><h4>أصناف جديدة</h4><p>صنف جديد من مكونات موجودة، بحصة مصممة على سعر محدد.</p><dl><dt>مثال</dt><dd>رايس بول مشوي: أرز + دجاج مشوي + دقوس بـ 13 [[SAR]]</dd><dt>السعر الأقل يأتي من</dt><dd>حجم الحصة</dd><dt>التغيير في المطبخ</dt><dd>تحضير وتغليف جديد، بدون مكونات جديدة</dd></dl></div>
     <div class="opt"><span class="tag">الخيار 3</span><h4>مكسّ ووفر</h4><p>العميل يختار صنفين أو ثلاثة من قائمة أصناف صغيرة بسعر ثابت.</p><dl><dt>مثال</dt><dd>حمص + سيخ كباب = 13، يصير 12 [[SAR]]</dd><dt>السعر الأقل يأتي من</dt><dd>سعر ثابت للاختيار</dd><dt>التغيير في المطبخ</dt><dd>لا شيء</dd></dl></div>
   </div>
 </section></div>
@@ -783,27 +791,9 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>الخلاصة: 1 و3 جاهزان اليوم. 2 يعطي أصنافًا جديدة بسعر تحكمه الحصة لكنه يحتاج وقتًا.</p></details></div>
 
-<!-- RECO -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide light pc-flow rtl">
-  <div class="page-num">19</div>
-  <div class="header">
-    <div class="title">نوصي بالبدء بما هو جاهز، ثم إضافة الأصناف الجديدة على مراحل</div>
-    <div class="subtitle">الخياران 1 و3 للبداية السريعة، والخيار 2 يضيف الأصناف الجديدة</div>
-  </div>
-  <div class="body">
-    <div class="phases">
-      <div class="phase active"><span class="n">01</span><h4>الآن: الخياران 1 و3</h4><span class="duration">عند الاعتماد</span><p>التركيبات و"اختر 2 بـ 12" في الفروع، بدون أي تغيير في المطبخ.</p></div>
-      <div class="phase"><span class="n">02</span><h4>بالتوازي: تجهيز الخيار 2</h4><span class="duration">بعد الإطلاق</span><p>الطازج يحسب تكلفة الحصص، ونختار أفضل 4 أصناف: 2 مشوي و2 مقلي.</p></div>
-      <div class="phase"><span class="n">03</span><h4>إضافة الأصناف الجديدة</h4><span class="duration">بعد اعتماد التكلفة</span><p>تُضاف الأصناف الأربعة إلى المنيو، وتُقارن مبيعاتها بالباقي.</p></div>
-      <div class="phase"><span class="n">04</span><h4>المنيو النهائي</h4><span class="duration">بعد مراجعة المبيعات</span><p>يبقى الأفضل من الخيارات الثلاثة في منيو واحد، ويُحذف الأضعف.</p></div>
-    </div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>إن فضّل الطازج خيارًا واحدًا: الخيار 3 للبساطة، أو الخيار 2 إن كانت الأولوية أصنافًا جديدة.</p></details></div>
-
 <!-- 11 DRINK -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark st rtl">
-  <div class="page-num">20</div>
+  <div class="page-num">19</div>
   <div class="header">
     <div class="title">ترقية المشروب تعيد الفاتورة إلى مستوى الوجبة الحالية أو أعلى</div>
     <div class="subtitle">"زِدها بيبسي" بجانب كل صنف، بثلاثة أحجام</div>
@@ -820,7 +810,7 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
 
 <!-- 12 GUARDRAILS -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">21</div>
+  <div class="page-num">20</div>
   <div class="header">
     <div class="crumb">ماذا | الضوابط</div>
     <div class="title">3 ضوابط تحمي الوجبات الحالية من السحب</div>
@@ -838,61 +828,9 @@ details.notes { width: min(1280px, calc(100vw - 16px)); }
   <div class="footnote">هذه الضوابط تقلل الوصول في تطبيقات التوصيل، وفي المقابل تحمي الهامش والوجبات الأساسية.</div>
 </section></div>
 <details class="notes"><summary>ملاحظات المتحدث</summary><p>كل ضابط له رقم نراقبه. إذا سُئلت "كيف نعرف أنه نجح؟" أشر إلى العمود الأخير.</p></details></div>
-<!-- 17 SECTION D -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">22</div><div class="bignum">03</div>
-  <div class="content"><p class="kicker">كيف</p><h2 class="name">القنوات والقرار</h2></div>
-</section></div></div>
-
-<!-- CHANNELS -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">23</div>
-  <div class="header">
-    <div class="crumb">كيف | القنوات</div>
-    <div class="title">الأصناف الأرخص تُباع في الفرع وتطبيق الطازج فقط، حمايةً لهامشها</div>
-  </div>
-  <div class="body">
-    <table class="tmd big">
-      <thead><tr><th>القناة</th><th>ما يُباع فيها</th><th>لماذا</th></tr></thead>
-      <tbody>
-        <tr><td class="k">الفرع</td><td>الخيارات الثلاثة، ولوحة منيو مستقلة، و"زِدها بيبسي" عند الكاشير</td><td>أعلى هامش، وفرصة إضافة المشروب</td></tr>
-        <tr><td class="k">تطبيق الطازج</td><td>الخيارات الثلاثة، مع اقتراح المشروب قبل الدفع</td><td>طلب معرّف يتيح قياس العملاء الجدد</td></tr>
-        <tr><td class="k">تطبيقات التوصيل</td><td>الأصناف من 15 ريال فما فوق فقط، بسعر القناة</td><td>العمولة تأخذ هامش الأصناف الأرخص</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="footnote">عمولات التطبيقات وحصة كل قناة غير متوفرة لدينا، ويُحسم القرار النهائي بعد مشاركتها.</div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>اطلب العمولات صراحة في هذه الشريحة.</p></details></div>
-
-<!-- DECISION -->
-<div class="unit-wrap"><div class="slide-wrap"><section class="slide dark tb rtl">
-  <div class="page-num">24</div>
-  <div class="header">
-    <div class="crumb">القرار</div>
-    <div class="title">المطلوب اعتماد الخيارين 1 و3 للإطلاق، ومشاركة التكلفة لتسعير الخيار 2</div>
-  </div>
-  <div class="body" style="top:180px">
-    <table class="tmd big">
-      <thead><tr><th>القرار</th><th>المسؤول عند الطازج</th><th>الموعد</th><th>ما يترتب عليه</th></tr></thead>
-      <tbody>
-        <tr><td class="k">1. اعتماد الخيارين 1 و3 وضوابط المنصة</td><td>الإدارة التنفيذية</td><td>هذا الأسبوع</td><td>بدء تجهيز المنيو ومواد الفروع</td></tr>
-        <tr><td class="k">2. مشاركة تكلفة الحصص والهامش وأسعار المشروب</td><td>المالية</td><td>خلال أسبوع</td><td>تثبيت أسعار الخيار 2 واختيار أفضل 4 أصناف</td></tr>
-        <tr><td class="k">3. إضافة الأصناف إلى نقاط البيع والتطبيق</td><td>الرقمي والتقنية</td><td>قبل الإطلاق</td><td>قياس الطلبات ونسبة ترقية المشروب</td></tr>
-        <tr><td class="k">4. تدريب الفروع على المنيو وطريقة الطلب</td><td>العمليات</td><td>قبل الإطلاق</td><td>جاهزية الفروع للإطلاق</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="dnext">
-    <div><b>الميزانية</b>لا خصم يموَّل خارج سعر المنتج. تكلفة الإطلاق (مواد الفروع والتصوير والإعلان) تُقدَّم خلال أسبوع من الاعتماد.</div>
-    <div><b>الخطوة التالية</b>خطة الإطلاق التفصيلية خلال أسبوع من استلام بيانات التكلفة.</div>
-  </div>
-</section></div>
-<details class="notes"><summary>ملاحظات المتحدث</summary><p>اختم بسؤال مباشر: "هل نعتمد التجربة بالخيارين الأول والثالث بهذه المعايير؟" بعدها يعرض سلمان الجزء الإبداعي.</p></details></div>
-
 <!-- SECTION E -->
 <div class="unit-wrap"><div class="slide-wrap"><section class="slide dark sd">
-  <div class="page-num">25</div><div class="bignum">04</div>
+  <div class="page-num">21</div><div class="bignum">03</div>
   <div class="content"><p class="kicker">الحملة</p><h2 class="name">3 أفكار إبداعية</h2></div>
 </section></div></div>
 <!-- 28 CLOSING -->

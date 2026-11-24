@@ -227,3 +227,11 @@ table.tmd.big td.k { font-size: 21px; white-space: nowrap; }
 .mgrid.g54 .mcard { grid-column: span 2; }
 .mgrid.g54 .mcard:nth-child(6) { grid-column: 2 / span 2; }
 .mgrid.g54 .mcard img { height: 150px; }
+
+/* final: client logo on cover, preferred option */
+.cover .logo-sep { position: absolute; top: 72px; left: 390px; width: 1px; height: 104px; background: rgba(255,255,255,0.35); }
+.cover .logo2 { position: absolute; top: 69px; left: 416px; height: 110px; width: auto; display: block; }
+.opts .opt.pref { border: 2px solid #fcbf2c; }
+.quad.three { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; top: 210px; bottom: 130px; }
+.quad.three .q h4 { font-size: 25px; }
+.quad.three .q p { font-size: 18px; }
